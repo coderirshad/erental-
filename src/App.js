@@ -1,7 +1,7 @@
 
 import './App.css';
 import React, {Component} from 'react';
-
+import { Route, Link, BrowserRouter as Router, BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Checkout from './components/Checkout';
 import FeatureProduct from './components/FeatureProduct';
@@ -16,6 +16,7 @@ import Product from './components/Product';
 import Dash_side from './components/Dash_side';
 import Order_review from './components/Order_review';
 import Order_Dash from './components/Order_Dash';
+import AboutProduct from './components/AboutProduct';
 
 
 class App extends React.Component {
@@ -23,22 +24,18 @@ class App extends React.Component {
   render() {
   
     return(  
+      // <BrowserRouter>
+          
+      //     <Router>
+      //       <Route path="/" Component={AddProduct}></Route>
+            
+      //     </Router>
+      // </BrowserRouter>
       <>
-      <SideBar/>
-      <Checkout/>
-      <FeatureProduct/>
-      <New/>
-        <TopSeller/>
-<Payment/>
-<Report/>
-<Product_list/>
-<Dash_side/>
-{/* <Order_review/> */}
-<Product/>
-<AddProduct/>
-<Order_Dash></Order_Dash>
-
-    
+      <AddProduct></AddProduct>
+      <AboutProduct></AboutProduct>
+      <Checkout></Checkout>
+      <Dash_side></Dash_side>
       </>
       ) 
 

@@ -1,25 +1,17 @@
 import React,{useEffect,useState} from 'react';
 
  function Side() {
-
-    const [product, setProduct] =  useState([]);
-    const fetchData =()=>{
-        fetch("http://144.24.99.210:4545/category")
-        .then((response)=>{
-            return response.json();
-        }).then((data)=>{
-             console.log(data);
+    const [product, setProduct] = useState([]);
          
+    const fetchdata = async() =>{
+        const response = await fetch('http://140.238.230.250:4545/category');
+        setProduct(await response.json());
           
-            setProduct(data)
-
-          
-        })
     }
-    useEffect(()=>{
-        fetchData();
-    },[])
-  return (
+    useEffect(() => {
+        fetchdata();
+    }, []);
+    return(
     
     <section className="slider-area">
     <div className="container">
@@ -59,7 +51,10 @@ import React,{useEffect,useState} from 'react';
         </div>
         
     </div>
+
+
 </section>
-  );
+    )
 }
+
 export default Side

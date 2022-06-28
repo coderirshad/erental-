@@ -5,7 +5,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 
 import 'owl.carousel/dist/assets/owl.theme.default.css';  
 
-export default function Top() {
+export default function TopSeller() {
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
         fetch("http://144.24.99.210:4545/top-sold-product")
