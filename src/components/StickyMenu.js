@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function StockyMenu() {
+export default function StickyMenu() {
   return (
     <section className="sticky-menu">
             <div className="container">

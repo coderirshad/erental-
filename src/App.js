@@ -1,8 +1,9 @@
 
 import './App.css';
 import React, {Component} from 'react';
-import { Route, Link, BrowserRouter as Router, BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/style.css';
 import Checkout from './components/Checkout';
 import FeatureProduct from './components/FeatureProduct';
 import New from './components/New';
@@ -17,6 +18,14 @@ import Dash_side from './components/Dash_side';
 import Order_review from './components/Order_review';
 import Order_Dash from './components/Order_Dash';
 import AboutProduct from './components/AboutProduct';
+import TopBar from './components/TopBar';
+import Home from './components/Home';
+import StickyMenu from './components/StickyMenu';
+import NavigationBar from './components/NavigationBar';
+import BreadCrumb from './components/BreadCrumb';
+import Login from './components/Login';
+import FooterArea from './components/FooterArea';
+import Contact from './components/Contact';
 
 
 class App extends React.Component {
@@ -24,19 +33,19 @@ class App extends React.Component {
   render() {
   
     return(  
-      // <BrowserRouter>
-          
-      //     <Router>
-      //       <Route path="/" Component={AddProduct}></Route>
-            
-      //     </Router>
-      // </BrowserRouter>
-      <>
-      <AddProduct></AddProduct>
-      <AboutProduct></AboutProduct>
-      <Checkout></Checkout>
-      <Dash_side></Dash_side>
-      </>
+      <div className='App'>
+        <NavigationBar></NavigationBar>
+        <Routes>
+          <Route exact path='/' element={<Home/>}></Route>
+          <Route exact path='/login' element={<Login/>}></Route>
+          <Route exact path='/checkout' element={<Checkout/>}></Route>
+          <Route exact path='/wishlist' element={<Checkout/>}></Route>
+          <Route exact path='/myaccount' element={<Checkout/>}></Route>
+        </Routes>
+        <FooterArea></FooterArea>
+        <BreadCrumb></BreadCrumb>
+      </div>
+      
       ) 
 
     

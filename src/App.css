@@ -5,7 +5,9 @@
 .slider-area {
   margin-bottom: 30px;
 }
-
+.App{
+  text-align: center;
+}
 .slider-area .menu-widget p {
   font-size: 15px;
   color: #fff;

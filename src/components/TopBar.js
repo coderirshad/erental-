@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function TopBar() {
   return (
@@ -32,10 +33,11 @@ export default function TopBar() {
                 <div className="col-md-6">
                     <div className="top-right text-right">
                         <ul className="list-unstyled list-inline">
-                            <li className="list-inline-item"><a href=""><img src="images/user.png" alt=""/>My Account</a></li>
-                            <li className="list-inline-item"><a href=""><img src="images/wishlist.png" alt=""/>Wishlist</a></li>
-                            <li className="list-inline-item"><a href=""><img src="images/checkout.png" alt=""/>Checkout</a></li>
-                            <li className="list-inline-item"><a href=""><img src="images/login.png" alt=""/>Login</a></li>
+                            <li className="list-inline-item"><a href="/myaccount"><img src="images/user.png" alt=""/>My Account</a></li>
+                            <li className="list-inline-item"><a href="wishlist"><img src="images/wishlist.png" alt=""/>Wishlist</a></li>
+                            <li className="list-inline-item"><a href="/checkout"><img src="images/checkout.png" alt=""/>Checkout</a></li>
+                            <li className="list-inline-item"><a href="/login"><img src="images/login.png" alt=""/>Login</a></li>
+                           
                         </ul>
                     </div>
                 </div>

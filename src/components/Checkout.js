@@ -1,10 +1,8 @@
 import React from 'react';
+import Order_review from './Order_review';
 
 export default function Checkout() {
   return (
-
- 
-
     <section className="checkout">
     <div className="container">
         <div className="row">
