@@ -9,22 +9,17 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
-        fetch("http://144.24.99.210:4545/feature-product")
+        fetch("http://140.238.230.250:4545/feature-product")
         .then((response)=>{
             return response.json();
         }).then((data)=>{
-             console.log(data);
-         
-          
-            setProduct(data)
-
-          
+             console.log(data);        
+            setProduct(data) 
         })
     }
     useEffect(()=>{
-        fetchData();
-    
-    },[product])
+        fetchData();    
+    },[])
 
   return (
     <section className="product-area">
@@ -35,7 +30,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
             <div className="row">
                 <div className="col-md-12 padding-fix-l20">
                     <div className="ftr-product">
-                        <div className="tab-box d-flex justify-content-between" >
+                        <div className="tab-box d-flex justify-content-between">
                             <div className="sec-title">
                                 <h5>Feature Product</h5>
                             </div>
@@ -58,9 +53,10 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
                          <div className="tab-content">
                     
                             <div className="tab-pane fade show active" id="all" role="tabpanel">
+                            <OwlCarousel key={`carousel_${product.length}`}  className="tab-slider owl-carousel"items={3}  nav   loop >
                             {
                                product.map((data) => (
-                            <OwlCarousel   className="tab-slider owl-carousel"items={3}  nav   loop >
+                            
                           
                                     <div className="tab-item">
                                         <div className="tab-heading">
@@ -68,11 +64,11 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
                                                 <li className="list-inline-item"><a href="#"></a></li>
                                                 <li className="list-inline-item"><a href="#">{data.sub_category}</a></li>
                                             </ul>
-                                            <p><a href="">Samsung Smart Led Tv 42"</a></p>
+                                            <p><a href="">{data.product_name}</a></p>
                                         </div>
                                         <div className="tab-img">
-                                            <img className="main-img img-fluid" src="./../../public/images/tab-1.png" alt=""/>
-                                            <img className="sec-img img-fluid" src="./../../public/images/tab-16.png" alt=""/>
+                                            <img className="main-img img-fluid" src={data.image} alt=""/>
+                                            <img className="sec-img img-fluid" src={data.image} alt=""/>
                                             <div className="layer-box">
                                                 <a href="" className="it-comp" data-toggle="tooltip" data-placement="left" title="Compare"><img src="images/it-comp.png" alt=""/></a>
                                                 <a href="" className="it-fav" data-toggle="tooltip" data-placement="left" title="Favourite"><img src="images/it-fav.png" alt=""/></a>
@@ -88,8 +84,8 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
                                                     <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                                 </ul>
                                                 <ul className="list-unstyled list-inline price">
-                                                    <li className="list-inline-item">$120.00</li>
-                                                    <li className="list-inline-item">$150.00</li>
+                                                    <li className="list-inline-item">INR {data.price}</li>
+                                                    <li className="list-inline-item">INR {data.price + data.discounted_price}</li>
                                                 </ul>
                                             </div>
                                             <div>
@@ -98,9 +94,9 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
                                         </div>
                                     </div>
                                  
-                                
+                                    ))}
                                 </OwlCarousel>
-                               ))}
+                               
                             </div>
        
                         </div>

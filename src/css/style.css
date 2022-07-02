@@ -468,7 +468,7 @@ input:focus, textarea:focus {
 .top-bar2 {
   height: 40px;
   padding-top: 5px;
-  background-color: #61b728;
+  background-color: #5677fc;
 }
 
 .top-bar2 .top-left .lang-box {
@@ -478,10 +478,12 @@ input:focus, textarea:focus {
   border-bottom: none;
   padding: 9px 15px;
   padding-left: 0;
+  color: white;
 }
 
 .top-bar2 .top-left .lang-box span {
   cursor: pointer;
+  color: white;
 }
 
 .top-bar2 .top-left .lang-box span img {
@@ -491,6 +493,7 @@ input:focus, textarea:focus {
 
 .top-bar2 .top-left .lang-box span i {
   margin-left: 5px;
+  color: white;
 }
 
 .top-bar2 .top-left .lang-box ul {
@@ -521,6 +524,7 @@ input:focus, textarea:focus {
 .top-bar2 .top-left .lang-box ul li {
   padding: 8px 0 8px 20px;
   cursor: pointer;
+  color: white;
 }
 
 .top-bar2 .top-left .lang-box ul li img {
@@ -533,8 +537,9 @@ input:focus, textarea:focus {
 }
 
 .top-bar2 .top-left .lang-box:hover {
-  color: #444444;
+  color: #6df348;
   font-weight: 600;
+  
 }
 
 .top-bar2 .top-left .lang-box:hover ul {
@@ -558,10 +563,12 @@ input:focus, textarea:focus {
 
 .top-bar2 .top-left .mny-box span {
   cursor: pointer;
+  color: white;
 }
 
 .top-bar2 .top-left .mny-box span i {
   margin-left: 5px;
+  color: white;
 }
 
 .top-bar2 .top-left .mny-box ul {
@@ -592,6 +599,7 @@ input:focus, textarea:focus {
 .top-bar2 .top-left .mny-box ul li {
   padding: 8px 0 8px 20px;
   cursor: pointer;
+  color: white;
 }
 
 .top-bar2 .top-left .mny-box ul li:hover {
@@ -614,6 +622,7 @@ input:focus, textarea:focus {
 .top-bar2 .top-left .mny-box:hover ul li {
   color: #555555;
   font-weight: normal;
+  
 }
 
 .top-bar2 .top-left .call-us {
@@ -622,18 +631,20 @@ input:focus, textarea:focus {
 }
 
 .top-bar2 .top-left .call-us p {
-  color: #444444;
   font-weight: 600;
+  color: white;
 }
 
 .top-bar2 .top-left .call-us p img {
   width: 13px;
   margin-right: 5px;
   margin-top: -3px;
+  background-color: white;
 }
 
 .top-bar2 .top-right ul li {
   margin: 0;
+  color: white;
 }
 
 .top-bar2 .top-right ul li a {
@@ -641,12 +652,14 @@ input:focus, textarea:focus {
   height: 40px;
   display: inline-block;
   padding: 9px 15px;
+  color: white;
 }
 
 .top-bar2 .top-right ul li a img {
   width: 13px;
   margin-right: 5px;
   margin-top: -3px;
+  color: white;
 }
 
 .top-bar2 .top-right ul li a:hover {
@@ -656,6 +669,7 @@ input:focus, textarea:focus {
 
 .top-bar2 .top-right ul li:last-child a {
   padding-right: 0;
+  color: white;
 }
 
 /* =======================================
@@ -2922,7 +2936,7 @@ border: 10px solid red;
   border: 1px solid #e5e5e5;
   padding: 16px 20px;
   margin-bottom: 30px;
-  background-color: #4eb71a;
+  background-color: #ffffff;
 }
 
 .product-area .ftr-product .tab-box {
