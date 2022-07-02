@@ -17,17 +17,17 @@ import StickyMenu from "./StickyMenu";
 import TopBar from "./TopBar";
 import TopPanes from "./TopPanes";
 
-const Home = ()=>{
+const AdminHome = ()=>{
      return (
-        <>           
+        <>  
             <SideBar></SideBar>
             <ContousrolledCarel></ContousrolledCarel>
             <HotDeals></HotDeals>
             <FeatureProduct></FeatureProduct>            
-            {/* <HotOffer></HotOffer> */}            
+            <HotOffer></HotOffer>            
             <Contact></Contact>
         </>
      )
 }
 
-export default Home;
+export default AdminHome;

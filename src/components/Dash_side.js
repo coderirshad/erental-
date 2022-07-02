@@ -5,16 +5,12 @@ export default function Dash_side() {
     
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
-        fetch("http://144.24.99.210:4545/dashboard-sidebar")
+        fetch("http://140.238.230.250:4545/dashboard-sidebar")
         .then((response)=>{
             return response.json();
         }).then((data)=>{
              console.log(data);
-         
-             setProduct(data)
-         
-
-          
+             setProduct(data)          
         })
     }
     useEffect(()=>{

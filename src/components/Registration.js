@@ -42,7 +42,8 @@ export default function Registration() {
                                     </div>
                                     <div>
                                         <input type="checkbox" name="c-box" id="c-box"/>
-                                        <label for="c-box">Subscribe for newsletter</label>
+                                        <label for="c-box">Subscribe for newsletter</label><br></br>
+                                        <a href='/login'>already have account?</a>
                                     </div>
                                 </div>
                                 <div className="col-md-5 text-right">

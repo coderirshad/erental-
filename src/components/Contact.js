@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Contact() {
   return (
-    <div><section className="contact-area">
+    <div id='contact'><section className="contact-area">
     <div id="map"></div>
     <div className="container">
         <div className="row">

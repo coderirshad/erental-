@@ -2,7 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-export default function withdraw() {
+export default function Withdraw() {
   return (
       <div>
       <div className="container-sm py-5">

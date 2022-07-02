@@ -12,7 +12,7 @@ export default function LogoArea() {
                 </div>
                 <div className="col-lg-6 col-md-7 padding-fix">
                     <form action="#" className="search-bar d-flex">
-                        <input type="text" name="search-bar" placeholder="I'm looking for..."/>
+                        <input type="text" name="search-bar" placeholder="I'm not available..."/>
                         <div className="search-cat">
                             <select className="form-control scat-id">
                                 <option>All Categories</option>
@@ -37,7 +37,7 @@ export default function LogoArea() {
                             </a>
                         </div>
                         <div className="cart-box ml-4 modified_cart">
-                            <a href="" data-toggle="tooltip" data-placement="top" title="Shopping Cart" className="cart-btn ">
+                            <a href="/cart" data-toggle="tooltip" data-placement="top" title="Shopping Cart" className="cart-btn ">
                                 <img src="images/cart.png" alt="cart"/>
                                 <span>2</span>
                             </a>

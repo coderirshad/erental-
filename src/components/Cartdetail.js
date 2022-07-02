@@ -1,6 +1,25 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react';
+export default function Cartdetail() {
+    const [cartproduct, setcartproduct] = useState([])
+    const fetchData = () =>{
+        fetch("http://140.238.230.250:4545/cart")
+        .then((response)=>{
+            return response.json();
+        }).then((data)=>{
+             console.log(data);
+             setcartproduct(data)    
+             console.log("------------->>>",cartproduct)      
+        })
+    }
 
-export default function cartdetail() {
+    useEffect(() => {
+        return () => {
+            fetchData()            
+            console.log("-------------",cartproduct) 
+        };
+     }, [cartproduct])
+
+
   return (
     <section className="shopping-cart">
     <div className="container">
@@ -18,73 +37,44 @@ export default function cartdetail() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className="t-pro d-flex">
-                                    <div className="t-img">
-                                        <a href=""><img src="images/sbar-1.png" alt=""/></a>
-                                    </div>
-                                    <div className="t-content">
-                                        <p className="t-heading"><a href="">Samsung Smart Led Tv</a></p>
-                                        <ul className="list-unstyled list-inline rate">
-                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                            <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
-                                        </ul>
-                                        <ul className="list-unstyled col-sz">
-                                            <li><p>Color : <span>Red</span></p></li>
-                                            <li><p>Size : <span>M</span></p></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                                <td className="t-price">$189.00</td>
-                                <td className="t-qty">
-                                    <div className="qty-box">
-                                        <div className="quantity buttons_added">
-                                            <input type="button" value="-" className="minus"/>
-                                            <input type="number" step="1" min="1" max="10" value="1" className="qty text" size="4" readonly/>
-                                            <input type="button" value="+" className="plus"/>
+                            {cartproduct.map(data=>(
+                                <tr>
+                                    <td className="t-pro d-flex">
+                                        <div className="t-img">
+                                            <a href=""><img src="images/sbar-1.png" alt=""/></a>
                                         </div>
-                                    </div>
-                                </td>
-                                <td className="t-total">$189.00</td>
-                                <td className="t-rem"><a href=""><i className="fa fa-trash-o"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td className="t-pro d-flex">
-                                    <div className="t-img">
-                                        <a href=""><img src="images/sbar-3.png" alt=""/></a>
-                                    </div>
-                                    <div className="t-content">
-                                        <p className="t-heading"><a href="">Samsung Smart Led Tv</a></p>
-                                        <ul className="list-unstyled list-inline rate">
-                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                            <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
-                                        </ul>
-                                        <ul className="list-unstyled col-sz">
-                                            <li><p>Color : <span>Green</span></p></li>
-                                            <li><p>Size : <span>L</span></p></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                                <td className="t-price">$129.00</td>
-                                <td className="t-qty">
-                                    <div className="qty-box">
-                                        <div className="quantity buttons_added">
-                                            <input type="button" value="-" className="minus"/>
-                                            <input type="number" step="1" min="1" max="10" value="1" className="qty text" size="4" readonly/>
-                                            <input type="button" value="+" className="plus"/>
+                                        <div className="t-content">
+                                            <p className="t-heading"><a href="">{data.name}</a></p>
+                                            <ul className="list-unstyled list-inline rate">
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
+                                            </ul>
+                                            <ul className="list-unstyled col-sz">
+                                                {data.attribute.map(att=>(
+                                                    <li><p>{att.name} : <span>{att.value}</span></p></li>
+                                                ))}
+                                            </ul>
                                         </div>
-                                    </div>
-                                </td>
-                                <td className="t-total">$129.00</td>
-                                <td className="t-rem"><a href=""><i className="fa fa-trash-o"></i></a></td>
-                            </tr>
+                                    </td>
+                                    <td className="t-price">${data.price}</td>
+                                    <td className="t-qty">
+                                        <div className="qty-box">
+                                            <div className="quantity buttons_added">
+                                                <input type="button" value="-" className="minus"/>
+                                                <input type="number" step="1" min="1" max="10" value={data.quantity} className="qty text" size="4" readonly/>
+                                                <input type="button" value="+" className="plus"/>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="t-total">${data.total}</td>
+                                    <td className="t-rem"><a href=""><i className="fa fa-trash-o"></i></a></td>
+                                </tr>   
+                            ))}
                         </tbody>
+                        
                     </table>
                 </div>
             </div>

@@ -24,6 +24,7 @@ export default function Login() {
                                 </div>
                                 <div className="col-md-5 text-right">
                                     <button type="button" name="button">Submit</button>
+                                    <a href='/register' style={{color: "red",marginLeft:"30px"}}>new account?</a>
                                 </div>
                             </div>
                         </form>

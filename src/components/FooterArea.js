@@ -52,13 +52,13 @@ export default function FooterArea() {
                 <div className="f-link">
                     <h5>Quick Links</h5>
                     <ul className="list-unstyled">
-                        <li><a href=""><i className="fa fa-angle-right"></i>My Account</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Shopping Cart</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>My Wishlist</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Checkout</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Order History</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Log In</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Our Locations</a></li>
+                        <li><a href="/account"><i className="fa fa-angle-right"></i>My Account</a></li>
+                        <li><a href="/cart"><i className="fa fa-angle-right"></i>Shopping Cart</a></li>
+                        <li><a href="/wishlist"><i className="fa fa-angle-right"></i>My Wishlist</a></li>
+                        <li><a href="/checkout"><i className="fa fa-angle-right"></i>Checkout</a></li>
+                        <li><a href="/order/history"><i className="fa fa-angle-right"></i>Order History</a></li>
+                        <li><a href="/login"><i className="fa fa-angle-right"></i>Log In</a></li>
+                        <li><a href="/location"><i className="fa fa-angle-right"></i>Our Locations</a></li>
                     </ul>
                 </div>
             </div>
@@ -66,13 +66,13 @@ export default function FooterArea() {
                 <div className="f-sup">
                     <h5>Support</h5>
                     <ul className="list-unstyled">
-                        <li><a href=""><i className="fa fa-angle-right"></i>Contact Us</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Payment Policy</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Return Policy</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Privacy Policy</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Frequently asked questions</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Terms & Condition</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Delivery Info</a></li>
+                        <li><a href="/contact"><i className="fa fa-angle-right"></i>Contact Us</a></li>
+                        <li><a href="/"><i className="fa fa-angle-right"></i>Payment Policy</a></li>
+                        <li><a href="/"><i className="fa fa-angle-right"></i>Return Policy</a></li>
+                        <li><a href="/"><i className="fa fa-angle-right"></i>Privacy Policy</a></li>
+                        <li><a href="/"><i className="fa fa-angle-right"></i>Frequently asked questions</a></li>
+                        <li><a href="/termsandconditions"><i className="fa fa-angle-right"></i>Terms & Condition</a></li>
+                        <li><a href="/"><i className="fa fa-angle-right"></i>Delivery Info</a></li>
                     </ul>
                 </div>
             </div>

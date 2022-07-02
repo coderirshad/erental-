@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function logo() {
+export default function Logo() {
   return (
    
         <section className="logo-area">

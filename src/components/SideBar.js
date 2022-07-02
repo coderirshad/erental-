@@ -21,7 +21,7 @@ import React,{useEffect,useState} from 'react';
          
             <div className="col-lg-3 col-md-0">
                 <div className="menu-widget">
-                    <p><i className="fa fa-bars"></i>All Categories</p>
+                    {/* <p><i className="fa fa-bars"></i>All Categories</p> */}
                     <ul className="list-unstyled">
                     {
                     product.map(data => (
@@ -31,10 +31,9 @@ import React,{useEffect,useState} from 'react';
                                 <div className="row">
                                     <div className="col-md-4">
                                         <div className="smartphone">
-                                            <h6>{data.subcategory.name}</h6>
+                                            <h6>{data.name}</h6>
                                             {data.subcategory.product_category.map((c) => (
-                                            <a href="">- {c}</a>
-                                           
+                                            <a href={`/${data.id}`}>- {c}</a>                    
                                             ))}
                                         </div>
                                     </div>

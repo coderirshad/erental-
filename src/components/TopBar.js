@@ -36,8 +36,9 @@ export default function TopBar() {
                             <li className="list-inline-item"><a href="/myaccount"><img src="images/user.png" alt=""/>My Account</a></li>
                             <li className="list-inline-item"><a href="wishlist"><img src="images/wishlist.png" alt=""/>Wishlist</a></li>
                             <li className="list-inline-item"><a href="/checkout"><img src="images/checkout.png" alt=""/>Checkout</a></li>
-                            <li className="list-inline-item"><a href="/login"><img src="images/login.png" alt=""/>Login</a></li>
-                           
+                            <li className="list-inline-item"><a href="/login"><img src="images/login.png" alt=""/>Login</a></li> 
+                            <li className="list-inline-item"><a href="/register"><img src="images/login.png" alt=""/>register</a></li>
+                            <li className="list-inline-item"><a href="/cart"><img src="images/cart.png" alt=""/>Cart</a></li>
                         </ul>
                     </div>
                 </div>

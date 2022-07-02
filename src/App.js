@@ -26,21 +26,41 @@ import BreadCrumb from './components/BreadCrumb';
 import Login from './components/Login';
 import FooterArea from './components/FooterArea';
 import Contact from './components/Contact';
+import ContousrolledCarel from './components/ContousrolledCarel';
+import Coupon from './components/Coupon';
+import CategoryBox from './components/CategoryBox';
+import Cart from './components/Cart';
+import CartBody from './components/CartBody';
+import Cartdetail from './components/Cartdetail';
+import AdminHome from './components/AdminHome';
+import Registration from './components/Registration';
+import Withdraw from './components/Withdraw';
+import Wishlist from './components/Wishlist';
 
 
 class App extends React.Component {
 
   render() {
-  
+    
     return(  
       <div className='App'>
+        
         <NavigationBar></NavigationBar>
         <Routes>
           <Route exact path='/' element={<Home/>}></Route>
           <Route exact path='/login' element={<Login/>}></Route>
+          <Route exact path='/register' element={<Registration/>}></Route>
           <Route exact path='/checkout' element={<Checkout/>}></Route>
-          <Route exact path='/wishlist' element={<Checkout/>}></Route>
+          <Route exact path='/wishlist' element={<Wishlist/>}></Route>
           <Route exact path='/myaccount' element={<Checkout/>}></Route>
+          <Route exact path='/coupon' element={<Coupon/>}></Route>
+          <Route exact path='/category' element={<CategoryBox/>}></Route>
+          <Route exact path='/cart' element={<Cartdetail/>}></Route>
+          <Route exact path='/product' element={<AboutProduct/>}></Route>
+
+          <Route exact path='/admin' element={<AdminHome/>}></Route>
+          <Route exact path='/admin/report' element={<Report/>}></Route>
+          <Route exact path='/admin/withdraw' element={<Withdraw/>}></Route>
         </Routes>
         <FooterArea></FooterArea>
         <BreadCrumb></BreadCrumb>
