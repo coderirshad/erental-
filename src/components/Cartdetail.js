@@ -4,20 +4,23 @@ export default function Cartdetail() {
     const fetchData = () =>{
         fetch("http://140.238.230.250:4545/cart")
         .then((response)=>{
+            console.log("----------",response)
             return response.json();
         }).then((data)=>{
-             console.log(data);
+            //  console.log(data);
              setcartproduct(data)    
-             console.log("------------->>>",cartproduct)      
+            //  console.log("------------->>>",cartproduct)      
         })
     }
-
+   console.log(cartproduct)
     useEffect(() => {
-        return () => {
-            fetchData()            
-            console.log("-------------",cartproduct) 
-        };
-     }, [cartproduct])
+        fetchData()            
+        // console.log("-------------",cartproduct)
+        // return () => {
+        //     fetchData()            
+        //     console.log("-------------",cartproduct) 
+        // };
+     }, [])
 
 
   return (
