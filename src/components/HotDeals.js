@@ -37,7 +37,7 @@ export default function HotDeals() {
                                                     <a href="#"><img src="./images/about.jpg" alt=""/></a>
                                                 </div>
                                                 <div className="bt-content">
-                                                    <p><Link to={`/product/${data.name}`}>{data.name}</Link></p>
+                                                    <p><Link to={`/product/${data.product_id}`}>{data.name}</Link></p>
                                                     <ul className="list-unstyled list-inline fav">
                                                         <li className="list-inline-item"><i className="fa fa-star"></i></li>
                                                         <li className="list-inline-item"><i className="fa fa-star"></i></li>

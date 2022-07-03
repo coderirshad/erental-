@@ -6042,7 +6042,7 @@ border: 10px solid red;
 }
 
 .sg-product .sg-content .colo-siz .color ul li input[type="radio"]#color-2 + label span {
-  background-color: #e45151;
+  border: 1px solid green;
 }
 
 .sg-product .sg-content .colo-siz .color ul li input[type="radio"]#color-3 + label span {

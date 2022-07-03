@@ -4,22 +4,30 @@ import { useParams } from "react-router-dom";
 
 export default function AboutProduct() {
   const params = useParams();
-  const id=params.product_id;
+  const id=params.id;
+  console.log("id",id)
   const [product, setproduct] = useState([])
-//   const fetchData = ()=>{
-//     fetch(`http://140.238.230.250:4545/product/`)
-//     .then(response=>{
-//         response.json();
-//     })
-//     .then((data)=>{
-//         console.log("data",data);
-//         setproduct(data);
-//     }
-//     )
-//   }
-//   useEffect(() => {
-//     fetchData()
-//   }, [])
+  const [color, setcolor] = useState([])
+  const [size, setsize] = useState([])
+  
+  const fetchData = ()=>{
+    fetch(`http://140.238.230.250:4545/product/${params.id}`)
+    .then((response)=>{
+        console.log(response)
+        return response.json();
+    })
+    .then((data)=>{       
+        setproduct(data);
+        setcolor(data.attribute.color);
+        setsize(data.attribute.size);
+    }
+    )
+  }
+  console.log("---->",color)
+  console.log("---->",size)
+  useEffect(() => {
+    fetchData()
+  }, [])
   return (
     <section class="sg-product">
             <div class="container">
@@ -31,7 +39,7 @@ export default function AboutProduct() {
                                     {/* <!-- Tab panes --> */}
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="sg1" role="tabpanel">
-                                            <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c2hvZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="" class="img-fluid"/>
+                                            <img src={product.image} alt="" class="img-fluid"/>
                                         </div>
                                         <div class="tab-pane" id="sg2" role="tabpanel">
                                             <img src="images/tab-2.png" alt="" class="img-fluid"/>
@@ -55,12 +63,12 @@ export default function AboutProduct() {
                                 <div class="sg-content">
                                     <div class="pro-tag">
                                         <ul class="list-unstyled list-inline">
-                                            <li class="list-inline-item"><a href="">Home Appliance ,</a></li>
-                                            <li class="list-inline-item"><a href="">Smart Led Tv</a></li>
+                                            <li class="list-inline-item"><a href="">{product.category_id} ,</a></li>
+                                            <li class="list-inline-item"><a href="">{product.name}</a></li>
                                         </ul>
                                     </div>
                                      <div class="pro-name">
-                                         <p>Samsung Smart Led Tv With Speaker</p>
+                                         <p>{product.name}</p>
                                      </div>
                                      <div class="pro-rating">
                                          <ul class="list-unstyled list-inline">
@@ -74,57 +82,40 @@ export default function AboutProduct() {
                                      </div>
                                      <div class="pro-price">
                                          <ul class="list-unstyled list-inline">
-                                             <li class="list-inline-item">129.00</li>
-                                             <li class="list-inline-item">199.00</li>
+                                             <li class="list-inline-item">{product.currency} {product.price}</li>
+                                             <li class="list-inline-item">{product.currency} {product.price+product.discounted_price}</li>
                                          </ul>
-                                         <p>Availability : <span>In Stock</span> <label>(13 Available)</label></p>
+                                         <p>Availability : {product.is_available && ( <><span>In Stock</span> <label>({product.stock} Available)</label></>)}{!product.is_available && <span>OutOff Stock</span> } </p>
                                      </div>
                                      <div class="colo-siz">
                                          <div class="color">
                                              <ul class="list-unstyled list-inline">
-                                                 <li>Color :</li>
-                                                 <li class="list-inline-item">
-                                                     <input type="radio" id="color-1" name="color" value="color-1"/>
-                                                     <label for="color-1"><span><i class="fa fa-check"></i></span></label>
-                                                 </li>
-                                                 <li class="list-inline-item">
-                                                     <input type="radio" id="color-2" name="color" value="color-2"/>
-                                                     <label for="color-2"><span><i class="fa fa-check"></i></span></label>
-                                                 </li>
-                                                 <li class="list-inline-item">
-                                                     <input type="radio" id="color-3" name="color" value="color-3"/>
-                                                     <label for="color-3"><span><i class="fa fa-check"></i></span></label>
-                                                 </li>
-                                                 <li class="list-inline-item">
-                                                     <input type="radio" id="color-4" name="color" value="color-4"/>
-                                                     <label for="color-4"><span><i class="fa fa-check"></i></span></label>
-                                                 </li>
-                                                 <li class="list-inline-item">
-                                                     <input type="radio" id="color-5" name="color" value="color-5"/>
-                                                     <label for="color-5"><span><i class="fa fa-check"></i></span></label>
-                                                 </li>
+                                             <li>Color :</li>
+                                               {color.map((data,id1)=>(                                                
+                                                        <li class="list-inline-item" key={id1}>
+                                                            <input style={{backgroundColor:`${data.color_code}`}} type="radio" id="color-2"  name="color" value=""/>
+                                                            <label for="color-2"><span><i class="fa fa-check"></i></span></label>
+                                                        </li>
+                                               ))}
+                                                
                                              </ul>
                                          </div>
                                          <div class="size">
                                              <ul class="list-unstyled list-inline">
                                                  <li>Size :</li>
-                                                 <li class="list-inline-item">
-                                                     <input type="radio" id="size-1" name="size" value="size-1"/>
-                                                     <label for="size-1">S</label>
-                                                 </li>
-                                                 <li class="list-inline-item">
-                                                     <input type="radio" id="size-2" name="size" value="size-2"/>
-                                                     <label for="size-2">M</label>
-                                                 </li>
-                                                 <li class="list-inline-item">
-                                                     <input type="radio" id="size-3" name="size" value="size-3"/>
-                                                     <label for="size-3">L</label>
-                                                 </li>
+                                                 {size.map((data)=>(                                                
+                                                    <li class="list-inline-item">
+                                                        <input type="radio" id="size-1" name="size" value={data.name}/>
+                                                        {data.Name=="Small" && <label for="size-1">S</label>}
+                                                        {data.Name=="Medium" && <label for="size-1">M</label>}
+                                                        {data.Name=="Large" && <label for="size-1">L</label>}
+                                                    </li>
+                                               ))}
                                              </ul>
                                          </div>
                                          <div class="qty-box">
                                              <ul class="list-unstyled list-inline">
-                                                 <li class="list-inline-item">Qty :</li>
+                                                 <li class="list-inline-item">Qty : 1</li>
                                                  <li class="list-inline-item quantity buttons_added">
                                                      <input type="button" value="-" class="minus"/>
                                                      <input type="number" step="1" min="1" max="10" value="1" class="qty text" size="4" readonly/>
@@ -149,15 +140,7 @@ export default function AboutProduct() {
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="pro-det" role="tabpanel">
                                         
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta consequatur, expedita,
-                                             autem labore eos, totam rem quo similique est et qui quaerat cumque sed ab quae assumenda. Non,
-                                             quas, nihil! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, necessitatibus, 
-                                             dicta iusto in, similique quas<br/><br/> accusamus debitis illum distinctio nemo numquam obcaecati 
-                                             at itaque odio ducimus cupiditate minima labore libero! Lorem ipsum dolor sit amet, consectetur
-                                              adipisicing elit. Soluta consequatur, expedita, autem labore eos, totam rem quo similique est et 
-                                              qui quaerat cumque sed ab quae assumenda. <br/><br/>Non, quas, nihil! Lorem ipsum dolor sit amet, consectetur
-                                               adipisicing elit. Fugiat, necessitatibus, dicta iusto in, similique quas accusamus debitis illum distinctio 
-                                               nemo numquam obcaecati at itaque odio ducimus cupiditate.</p>
+                                            <p>{product.about}</p>
                                         </div>
                                         <div class="tab-pane fade" id="rev" role="tabpanel">
                                             <div class="review-box d-flex">
