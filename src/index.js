@@ -13,9 +13,6 @@ import Withdraw from './components/Withdraw';
 ReactDOM.render(
   <BrowserRouter>
     <App />
-    <Routes>
-      {/* <Route exact path='/cart' element={<Cartdetail/>}></Route> */}
-    </Routes>
   </BrowserRouter>,
   document.getElementById('root')
 );

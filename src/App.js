@@ -56,7 +56,7 @@ class App extends React.Component {
           <Route exact path='/coupon' element={<Coupon/>}></Route>
           <Route exact path='/category' element={<CategoryBox/>}></Route>
           <Route exact path='/cart' element={<Cartdetail/>}></Route>
-          <Route exact path='/product' element={<AboutProduct/>}></Route>
+          <Route exact path='/product/:id' element={<AboutProduct/>}></Route>
 
           <Route exact path='/admin' element={<AdminHome/>}></Route>
           <Route exact path='/admin/report' element={<Report/>}></Route>

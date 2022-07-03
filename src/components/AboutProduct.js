@@ -1,6 +1,9 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 export default function AboutProduct() {
+  const params = useParams();
+  console.log(params);
   return (
     <section class="sg-product">
             <div class="container">

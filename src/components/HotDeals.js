@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { Link } from 'react-router-dom';
 export default function HotDeals() {
     const [product, setproduct] = useState([]);    
     const fetchData = ()=>{
@@ -36,7 +37,7 @@ export default function HotDeals() {
                                                     <a href="#"><img src="./images/about.jpg" alt=""/></a>
                                                 </div>
                                                 <div className="bt-content">
-                                                    <p><a href="/product">{data.name}</a></p>
+                                                    <p><Link to={`/product/${data.name}`}>{data.name}</Link></p>
                                                     <ul className="list-unstyled list-inline fav">
                                                         <li className="list-inline-item"><i className="fa fa-star"></i></li>
                                                         <li className="list-inline-item"><i className="fa fa-star"></i></li>
@@ -49,8 +50,7 @@ export default function HotDeals() {
                                                         <li className="list-inline-item">INR {data.price+data.discounted_price}</li>
                                                     </ul>
                                                 </div>
-                                            </div>
-                                                                             
+                                            </div>                                                                             
                                     ))}    
                                 </div>    
                                 </OwlCarousel>

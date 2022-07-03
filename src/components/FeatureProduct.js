@@ -23,17 +23,26 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
   return (
     <section className="product-area">
-<div className="container">
-    <div className="row">
-       
-        <div className="col-lg-9 col-md-8">
+        <div className="container">
+            <div className="row">
+                <div class="col-md-4">
+                    <div class="sec-title">
+                        <h5>Feature Product</h5>
+                    </div>
+                    <div class="feat-box">
+                        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c2hvZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="" class="img-fluid"/>
+                        <div class="ft-bx-content">
+                            <h5>Feature Product</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
+        <div className="col-md-8">
             <div className="row">
                 <div className="col-md-12 padding-fix-l20">
                     <div className="ftr-product">
                         <div className="tab-box d-flex justify-content-between">
-                            <div className="sec-title">
-                                <h5>Feature Product</h5>
-                            </div>
+                            
                       
                             <ul className="nav nav-tabs" role="tablist">
                                 <li className="nav-item">
@@ -151,9 +160,9 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</section>
+            </div>
+        </div>
+    </section>
   );
 }
 export default FeatureProduct
