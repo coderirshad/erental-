@@ -1,9 +1,25 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function AboutProduct() {
   const params = useParams();
-  console.log(params);
+  const id=params.product_id;
+  const [product, setproduct] = useState([])
+//   const fetchData = ()=>{
+//     fetch(`http://140.238.230.250:4545/product/`)
+//     .then(response=>{
+//         response.json();
+//     })
+//     .then((data)=>{
+//         console.log("data",data);
+//         setproduct(data);
+//     }
+//     )
+//   }
+//   useEffect(() => {
+//     fetchData()
+//   }, [])
   return (
     <section class="sg-product">
             <div class="container">
