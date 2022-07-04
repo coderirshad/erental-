@@ -1,25 +1,37 @@
+import { Alert } from 'bootstrap';
 import React,{useEffect,useState} from 'react';
 export default function Cartdetail() {
     const [cartproduct, setcartproduct] = useState([])
+    const [count,setcount] = useState(0)
+    const UpdateQuantity=(cart_item_id1,finalquantity)=>{
+        fetch("http://140.238.230.250:4545/cart", {
+            method: "PUT",
+            body: {
+                cart_item_id:cart_item_id1,
+                quantity:finalquantity
+            }
+        });
+    }
+    const Increment = (id1,quantity) =>{
+        UpdateQuantity(id1,quantity+1);
+    }
+    const Decrement = (id1,quantity) =>{
+        UpdateQuantity(id1,quantity-1);
+    }
+    
     const fetchData = () =>{
-        fetch("http://140.238.230.250:4545/cart")
+        fetch("http://140.238.230.250:4545/cart",{
+            method:"GET"
+        })
         .then((response)=>{
-            console.log("----------",response)
             return response.json();
         }).then((data)=>{
-            //  console.log(data);
-             setcartproduct(data)    
-            //  console.log("------------->>>",cartproduct)      
+             setcartproduct(data)       
         })
     }
-   console.log(cartproduct)
+
     useEffect(() => {
         fetchData()            
-        // console.log("-------------",cartproduct)
-        // return () => {
-        //     fetchData()            
-        //     console.log("-------------",cartproduct) 
-        // };
      }, [])
 
 
@@ -66,14 +78,14 @@ export default function Cartdetail() {
                                     <td className="t-qty">
                                         <div className="qty-box">
                                             <div className="quantity buttons_added">
-                                                <input type="button" value="-" className="minus"/>
-                                                <input type="number" step="1" min="1" max="10" value={data.quantity} className="qty text" size="4" readonly/>
-                                                <input type="button" value="+" className="plus"/>
+                                                <input onClick={()=>Decrement(data.cart_item_id,data.quantity)} type="button" value="-" className="minus"/>
+                                                <input onChange={()=>UpdateQuantity(data.cart_item_id,this.value)} type="number" step="1" min="1" max="10" value={data.quantity} className="qty text" size="4"/>
+                                                <input onClick={()=>Increment(data.cart_item_id,data.quantity)} type="button" value="+" className="plus"/>
                                             </div>
                                         </div>
                                     </td>
                                     <td className="t-total">${data.total}</td>
-                                    <td className="t-rem"><a href=""><i className="fa fa-trash-o"></i></a></td>
+                                    <td onClick={()=>UpdateQuantity(data.cart_item_id,0)} className="t-rem"><a href=""><i className="fa fa-trash-o"></i></a></td>
                                 </tr>   
                             ))}
                         </tbody>

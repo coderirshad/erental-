@@ -32,9 +32,9 @@ export default function HotDeals() {
                                 <OwlCarousel key={`carousel_${product.length}`} className="bt-body owl-carousel" items={1}  nav   loop  >
                                 <div className="bt-items" >
                                     {product.map((data,id)=>(                                     
-                                            <div className="bt-box d-flex" key={id}>
+                                            <div className="bt-box d-flex" key={id} >
                                                 <div className="bt-img">
-                                                    <a href="#"><img src="./images/about.jpg" alt=""/></a>
+                                                    <Link to={`/product/${data.product_id}`}><img src="./images/about.jpg" alt=""/></Link>
                                                 </div>
                                                 <div className="bt-content">
                                                     <p><Link to={`/product/${data.product_id}`}>{data.name}</Link></p>

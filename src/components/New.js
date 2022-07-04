@@ -9,7 +9,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
-        fetch("http://144.24.99.210:4545/new-product")
+        fetch("http://140.238.230.250:4545/new-product")
         .then((response)=>{
             return response.json();
         }).then((data)=>{
@@ -23,7 +23,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
     }
     useEffect(()=>{
         fetchData();
-    },[product])
+    },[])
 
   return (
     <section className="product-area">
@@ -36,7 +36,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
                         <div className="sec-title">
                             <h5>New Product</h5>
                         </div>
-                        <OwlCarousel   className="new-slider owl-carousel"items={3}    loop   >  
+                        <OwlCarousel key={`carousel_${product.length}`}  className="new-slider owl-carousel" items={3}  nav  loop   >  
                         {
         product.map(data => (
                             <div className="new-item">

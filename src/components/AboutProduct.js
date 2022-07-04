@@ -5,26 +5,48 @@ import { useParams } from "react-router-dom";
 export default function AboutProduct() {
   const params = useParams();
   const id=params.id;
-  console.log("id",id)
   const [product, setproduct] = useState([])
-  const [color, setcolor] = useState([])
-  const [size, setsize] = useState([])
+  const [quantity, setquantity] = useState(1)
+  const [color, setcolor] = useState("")
+  const [size, setsize] = useState("")
+  const [colorList, setcolorList] = useState([])
+  const [sizeList, setsizeList] = useState([])
   
+  const IncrementQuantity=()=>{
+    if(quantity<product.stock)setquantity(quantity+1);
+    else {
+        alert(`Sorry Stock is not available greater than ${product.stock}`)
+    }
+  }
+  const DecrementQuantity=()=>{
+    if(quantity>1)setquantity(quantity-1);
+    else alert("Sorry You can't select less than 0!")
+  }
+
+  const AddToCart = ()=>{
+   
+    fetch("http://140.238.230.250:4545/product",{
+        method:"PUT",
+        body:{
+             product_id:id,
+             quantity:quantity,
+             color:color,
+             size:size
+        }
+    })
+  }
   const fetchData = ()=>{
     fetch(`http://140.238.230.250:4545/product/${params.id}`)
-    .then((response)=>{
-        console.log(response)
+    .then((response)=>{ 
         return response.json();
     })
     .then((data)=>{       
         setproduct(data);
-        setcolor(data.attribute.color);
-        setsize(data.attribute.size);
+        setcolorList(data.attribute.color);
+        setsizeList(data.attribute.size);
     }
     )
   }
-  console.log("---->",color)
-  console.log("---->",size)
   useEffect(() => {
     fetchData()
   }, [])
@@ -91,9 +113,10 @@ export default function AboutProduct() {
                                          <div class="color">
                                              <ul class="list-unstyled list-inline">
                                              <li>Color :</li>
-                                               {color.map((data,id1)=>(                                                
+                                               {colorList.map((data,id1)=>(                                                
                                                         <li class="list-inline-item" key={id1}>
-                                                            <input style={{backgroundColor:`${data.color_code}`}} type="radio" id="color-2"  name="color" value=""/>
+                                                        {data.name}
+                                                            <input onClick={()=>setcolor(data.name)} style={{backgroundColor:`${data.color_code}`}} type="radio" id="color-2"  name="color" value={data.name}/>
                                                             <label for="color-2"><span><i class="fa fa-check"></i></span></label>
                                                         </li>
                                                ))}
@@ -103,9 +126,9 @@ export default function AboutProduct() {
                                          <div class="size">
                                              <ul class="list-unstyled list-inline">
                                                  <li>Size :</li>
-                                                 {size.map((data)=>(                                                
+                                                 {sizeList.map((data)=>(                                                
                                                     <li class="list-inline-item">
-                                                        <input type="radio" id="size-1" name="size" value={data.name}/>
+                                                        <input onClick={()=>setsize(data.Name)}  type="radio" id="size-1" name="size" value={data.Name}/>
                                                         {data.Name=="Small" && <label for="size-1">S</label>}
                                                         {data.Name=="Medium" && <label for="size-1">M</label>}
                                                         {data.Name=="Large" && <label for="size-1">L</label>}
@@ -115,16 +138,16 @@ export default function AboutProduct() {
                                          </div>
                                          <div class="qty-box">
                                              <ul class="list-unstyled list-inline">
-                                                 <li class="list-inline-item">Qty : 1</li>
+                                                 <li class="list-inline-item">Qty : </li>
                                                  <li class="list-inline-item quantity buttons_added">
-                                                     <input type="button" value="-" class="minus"/>
-                                                     <input type="number" step="1" min="1" max="10" value="1" class="qty text" size="4" readonly/>
-                                                     <input type="button" value="+" class="plus"/>
+                                                     <input onClick={()=>DecrementQuantity()} type="button" value="-" class="minus"/>
+                                                     <input onClick={()=>setquantity(this.value)}  type="number" step="1" min="1" max="10" value={quantity} class="qty text" size="4" readonly/>
+                                                     <input onClick={()=>IncrementQuantity()} type="button" value="+" class="plus"/>
                                                  </li>
                                              </ul>
                                          </div>
                                          <div class="pro-btns">
-                                              <a href="" class="cart">Add To Cart</a>
+                                              <a onClick={()=>AddToCart()} href="/cart" class="cart">Add To Cart</a>
                                               <a href="" class="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><img src="images/it-fav.png" alt=""/></a>
                                               <a href="" class="fav-com"  data-toggle="tooltip" data-placement="top" title="Compare"><img src="images/it-comp.png" alt=""/></a>
                                          </div>

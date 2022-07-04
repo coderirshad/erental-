@@ -16,6 +16,10 @@ import SideBar from "./SideBar";
 import StickyMenu from "./StickyMenu";
 import TopBar from "./TopBar";
 import TopPanes from "./TopPanes";
+import New from "./New";
+import FrontBlog from "./FrontBlog";
+import FullBanner from "./FullBanner";
+import BestOffer from "./BestOffer";
 
 const Home = ()=>{
      return (
@@ -23,8 +27,12 @@ const Home = ()=>{
             <SideBar></SideBar>
             <ContousrolledCarel></ContousrolledCarel>
             <HotDeals></HotDeals>
-            <FeatureProduct></FeatureProduct>            
-            {/* <HotOffer></HotOffer> */}            
+            <FeatureProduct></FeatureProduct> 
+            <FullBanner></FullBanner>
+            <BestOffer></BestOffer>
+            <New></New>           
+            {/* <HotOffer></HotOffer> */} 
+            <FrontBlog></FrontBlog>           
             <Contact></Contact>
         </>
      )
