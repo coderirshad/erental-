@@ -13,8 +13,7 @@ import { Link } from 'react-router-dom';
         fetch("http://140.238.230.250:4545/feature-product")
         .then((response)=>{
             return response.json();
-        }).then((data)=>{
-             console.log(data);        
+        }).then((data)=>{       
             setProduct(data) 
         })
     }
@@ -66,7 +65,7 @@ import { Link } from 'react-router-dom';
                          <div className="tab-content">
                     
                             <div className="tab-pane fade show active" id="all" role="tabpanel">
-                            <OwlCarousel key={`carousel_${product.length}`}  className="tab-slider owl-carousel"items={3}  nav   loop >
+                            <OwlCarousel key={`carousel_${product.length}`}  className="tab-slider owl-carousel" items={3}  nav   loop >
                             {
                                product.map((data) => (                      
                                     <div className="tab-item">

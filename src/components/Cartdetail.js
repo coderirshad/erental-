@@ -1,5 +1,7 @@
-import { Alert } from 'bootstrap';
 import React,{useEffect,useState} from 'react';
+import { Link } from 'react-router-dom';
+import CurrencyRupeeTwoToneIcon from '@mui/icons-material/CurrencyRupeeTwoTone';
+import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 export default function Cartdetail() {
     const [cartproduct, setcartproduct] = useState([])
     const [count,setcount] = useState(0)
@@ -74,18 +76,18 @@ export default function Cartdetail() {
                                             </ul>
                                         </div>
                                     </td>
-                                    <td className="t-price">${data.price}</td>
+                                    <td className="t-price"><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>{data.price}</td>
                                     <td className="t-qty">
                                         <div className="qty-box">
                                             <div className="quantity buttons_added">
-                                                <input onClick={()=>Decrement(data.cart_item_id,data.quantity)} type="button" value="-" className="minus"/>
+                                                <input onClick={()=>Decrement(data.cart_item_id,data.quantity)} style={{color:"red",fontSize:"25px"}} type="button" value="-" className="minus"/>
                                                 <input onChange={()=>UpdateQuantity(data.cart_item_id,this.value)} type="number" step="1" min="1" max="10" value={data.quantity} className="qty text" size="4"/>
-                                                <input onClick={()=>Increment(data.cart_item_id,data.quantity)} type="button" value="+" className="plus"/>
+                                                <input onClick={()=>Increment(data.cart_item_id,data.quantity)} style={{color:"green",fontSize:"25px"}} type="button" value="+" className="plus"/>
                                             </div>
                                         </div>
                                     </td>
                                     <td className="t-total">${data.total}</td>
-                                    <td onClick={()=>UpdateQuantity(data.cart_item_id,0)} className="t-rem"><a href=""><i className="fa fa-trash-o"></i></a></td>
+                                    <td onClick={()=>UpdateQuantity(data.cart_item_id,0)} className="t-rem"><Link to="/cart"><DeleteForeverTwoToneIcon style={{color:"red",fontSize:"40px"}}></DeleteForeverTwoToneIcon></Link></td>
                                 </tr>   
                             ))}
                         </tbody>
@@ -142,8 +144,8 @@ export default function Cartdetail() {
                         <li>Grand Total <span>$328.00</span></li>
                     </ul>
                     <div className="cart-btns text-right">
-                        <button type="button" className="up-cart">Update Cart</button>
-                        <button type="button" className="chq-out">Checkout</button>
+                        {/* <button type="button" className="up-cart">Update Cart</button> */}
+                        <button type="button" className="chq-out" ><Link to={'/checkout'}>Checkout</Link></button>
                     </div>
                 </div>
             </div>

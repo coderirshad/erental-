@@ -6841,6 +6841,9 @@ border: 10px solid red;
 .shopping-cart {
   padding: 35px 0;
 }
+.shopping-cart .container .row .col-md-12 .cart-table{
+   width: 100%;
+}
 
 .shopping-cart .cart-table {
   margin-bottom: 40px;

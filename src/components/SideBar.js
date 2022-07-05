@@ -24,16 +24,15 @@ import React,{useEffect,useState} from 'react';
                     {/* <p><i className="fa fa-bars"></i>All Categories</p> */}
                     <ul className="list-unstyled">
                     {
-                    product.map(data => (
-       
+                    product.map((data) => (
                         <li><a href={data.id}><img src="images/m-cloth.png" alt=""/>{data.name}<i className="fa fa-angle-right"></i></a>
                             <div className="mega-menu">
                                 <div className="row">
                                     <div className="col-md-4">
                                         <div className="smartphone">
                                             <h6>{data.name}</h6>
-                                            {data.subcategory.product_category.map((c) => (
-                                            <a href={`/${data.id}`}>- {c}</a>                    
+                                            {data.subcategory.map((c) => (
+                                            <a href={`/${c.id}`}>- {c.name}</a>                    
                                             ))}
                                         </div>
                                     </div>

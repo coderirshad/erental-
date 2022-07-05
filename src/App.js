@@ -36,6 +36,7 @@ import AdminHome from './components/AdminHome';
 import Registration from './components/Registration';
 import Withdraw from './components/Withdraw';
 import Wishlist from './components/Wishlist';
+import Brand from './components/Brand';
 
 
 class App extends React.Component {
@@ -62,10 +63,10 @@ class App extends React.Component {
           <Route exact path='/admin/report' element={<Report/>}></Route>
           <Route exact path='/admin/withdraw' element={<Withdraw/>}></Route>
         </Routes>
+        <Brand></Brand>
         <FooterArea></FooterArea>
         <BreadCrumb></BreadCrumb>
       </div>
-      
       ) 
 
     

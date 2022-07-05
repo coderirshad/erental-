@@ -23,8 +23,7 @@ export default function AboutProduct() {
     else alert("Sorry You can't select less than 0!")
   }
 
-  const AddToCart = ()=>{
-   
+  const AddToCart = ()=>{   
     fetch("http://140.238.230.250:4545/product",{
         method:"PUT",
         body:{

@@ -20,20 +20,21 @@ import New from "./New";
 import FrontBlog from "./FrontBlog";
 import FullBanner from "./FullBanner";
 import BestOffer from "./BestOffer";
+import Service from "./Service";
 
 const Home = ()=>{
      return (
         <>           
-            <SideBar></SideBar>
+            {/* <SideBar></SideBar> */}
             <ContousrolledCarel></ContousrolledCarel>
+            <br></br><br></br><br></br>
             <HotDeals></HotDeals>
+            <Service></Service>            
             <FeatureProduct></FeatureProduct> 
             <FullBanner></FullBanner>
             <BestOffer></BestOffer>
-            <New></New>           
-            {/* <HotOffer></HotOffer> */} 
             <FrontBlog></FrontBlog>           
-            <Contact></Contact>
+            {/* <Contact></Contact> */}
         </>
      )
 }

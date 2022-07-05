@@ -29,7 +29,7 @@ export default function HotDeals() {
                                     <h6>Hot Deals</h6>
                                 </div>
                                
-                                <OwlCarousel key={`carousel_${product.length}`} className="bt-body owl-carousel" items={1}  nav   loop  >
+                                <OwlCarousel key={`carousel_${product.length}`} className="bt-body owl-carousel" items={1} nav loop  >
                                 <div className="bt-items" >
                                     {product.map((data,id)=>(                                     
                                             <div className="bt-box d-flex" key={id} >
