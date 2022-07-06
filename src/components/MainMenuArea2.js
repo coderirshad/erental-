@@ -348,7 +348,7 @@ export default function MainMenuArea2() {
                                         <li><a href="19-blog-details.html">Blog Details</a></li>
                                     </ul>
                                 </li>
-                                <li className="list-inline-item"><a href="#contact">CONTACT</a></li>
+                                <li className="list-inline-item"><a href="/contact">CONTACT</a></li>
                                 <li className="list-inline-item cup-btn"><a href="/coupon">Get Your Coupon</a></li>
                             </ul>
                         </div>

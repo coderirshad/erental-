@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const AboutProduct = () => {
   const params = useParams();
   const id=params.id;
@@ -149,8 +149,8 @@ const AboutProduct = () => {
                                          </div>
                                          <div class="pro-btns">
                                               <a onClick={()=>AddToCart()} href="/cart" class="cart">Add To Cart</a>
-                                              <a href="" class="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><img src="images/it-fav.png" alt=""/></a>
-                                              <a href="" class="fav-com"  data-toggle="tooltip" data-placement="top" title="Compare"><img src="images/it-comp.png" alt=""/></a>
+                                              <a href="" class="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><FavoriteBorderIcon></FavoriteBorderIcon></a>
+                                              <a href="" class="fav-com"  data-toggle="tooltip" data-placement="top" title="Compare"><FavoriteBorderIcon></FavoriteBorderIcon></a>
                                          </div>
                                      </div>
                                 </div>
