@@ -1,8 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React,{useEffect,useState} from 'react';
 import { useParams } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import OwlCarousel from 'react-owl-carousel';  
+import 'owl.carousel/dist/assets/owl.carousel.css';  
+import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 
-export default function AboutProduct() {
+const AboutProduct = () => {
   const params = useParams();
   const id=params.id;
   const [product, setproduct] = useState([])
@@ -51,13 +54,13 @@ export default function AboutProduct() {
   }, [])
   return (
     <section class="sg-product">
+     
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="sg-img">
-                                    {/* <!-- Tab panes --> */}
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="sg1" role="tabpanel">
                                             <img src={product.image} alt="" class="img-fluid"/>
@@ -114,7 +117,6 @@ export default function AboutProduct() {
                                              <li>Color :</li>
                                                {colorList.map((data,id1)=>(                                                
                                                         <li class="list-inline-item" key={id1}>
-                                                        {data.name}
                                                             <input onClick={()=>setcolor(data.name)} style={{backgroundColor:`${data.color_code}`}} type="radio" id="color-2"  name="color" value={data.name}/>
                                                             <label for="color-2"><span><i class="fa fa-check"></i></span></label>
                                                         </li>
@@ -139,9 +141,9 @@ export default function AboutProduct() {
                                              <ul class="list-unstyled list-inline">
                                                  <li class="list-inline-item">Qty : </li>
                                                  <li class="list-inline-item quantity buttons_added">
-                                                     <input onClick={()=>DecrementQuantity()} type="button" value="-" class="minus"/>
+                                                     <input onClick={()=>DecrementQuantity()} style={{color:"red",fontSize:"25px"}} type="button" value="-" class="minus"/>
                                                      <input onClick={()=>setquantity(this.value)}  type="number" step="1" min="1" max="10" value={quantity} class="qty text" size="4" readonly/>
-                                                     <input onClick={()=>IncrementQuantity()} type="button" value="+" class="plus"/>
+                                                     <input onClick={()=>IncrementQuantity()} style={{color:"green",fontSize:"25px"}} type="button" value="+" class="plus"/>
                                                  </li>
                                              </ul>
                                          </div>
@@ -537,10 +539,12 @@ export default function AboutProduct() {
                             <div class="sec-title">
                                 <h6>Hot Offer</h6>
                             </div>
-                            <div class="ht-body owl-carousel">
+                            
+                         
+                            <OwlCarousel class="ht-body owl-carousel" items={1} nav loop >
                                 <div class="ht-item">
                                     <div class="ht-img">
-                                        <a href="#"><img src="images/tab-15.png" alt="" class="img-fluid"/></a>
+                                        <a href="#"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2hvZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="" class="img-fluid"/></a>
                                         <span>- 59%</span>
                                         <ul class="list-unstyled list-inline counter-box">
                                             <li class="list-inline-item">185 <p>Days</p></li>
@@ -566,8 +570,8 @@ export default function AboutProduct() {
                                 </div>
                                 <div class="ht-item">
                                     <div class="ht-img">
-                                        <a href="#"><img src="images/tab-14.png" alt="" class="img-fluid"/></a>
-                                        <span>- 59%</span>
+                                        <a href="#"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2hvZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="" class="img-fluid"/></a>
+                                        <span>- 58%</span>
                                         <ul class="list-unstyled list-inline counter-box">
                                             <li class="list-inline-item">185 <p>Days</p></li>
                                             <li class="list-inline-item">11 <p>Hrs</p></li>
@@ -590,7 +594,7 @@ export default function AboutProduct() {
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </OwlCarousel>
                         </div>
                         <div class="add-box">
                             <a href=""><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2hvZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
@@ -602,3 +606,5 @@ export default function AboutProduct() {
         </section>
   );
 }
+
+export default AboutProduct;

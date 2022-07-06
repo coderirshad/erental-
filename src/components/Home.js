@@ -25,7 +25,6 @@ import Service from "./Service";
 const Home = ()=>{
      return (
         <>           
-            {/* <SideBar></SideBar> */}
             <ContousrolledCarel></ContousrolledCarel>
             <br></br><br></br><br></br>
             <HotDeals></HotDeals>
@@ -33,8 +32,7 @@ const Home = ()=>{
             <FeatureProduct></FeatureProduct> 
             <FullBanner></FullBanner>
             <BestOffer></BestOffer>
-            <FrontBlog></FrontBlog>           
-            {/* <Contact></Contact> */}
+            <FrontBlog></FrontBlog>        
         </>
      )
 }
