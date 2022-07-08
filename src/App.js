@@ -15,10 +15,12 @@ import Coupon from './components/Coupon';
 import CategoryBox from './components/CategoryBox';
 import Cartdetail from './components/Cartdetail';
 import AdminHome from './components/AdminHome';
+
 import Registration from './components/Registration';
 import Withdraw from './components/Withdraw';
 import Wishlist from './components/Wishlist';
 import Brand from './components/Brand';
+import Dash_RightContent from './components/Dash_RightContent';
 import AboutUs from './components/AboutUs';
 import EachCategory from './components/EachCategory';
 import ProductList from './components/ProductList';
@@ -46,6 +48,10 @@ class App extends React.Component {
           <Route exact path='/product/:id' element={<SingalProduct/>}></Route>
           
           <Route exact path='/admin' element={<AdminHome/>}></Route>
+          {/* <Route exact path='/admin/report' element={<Report/>}></Route>
+          <Route exact path='/admin/withdraw' element={<Withdraw/>}></Route> */}
+          <Route exact path='/admin/:id' element={<Dash_RightContent/>}></Route>
+          <Route exact path='/admin/addproduct' element={<AddProduct/>}></Route>
           <Route exact path='/admin/report' element={<Report/>}></Route>
           <Route exact path='/admin/withdraw' element={<Withdraw/>}></Route>
           <Route exact path='/aboutProduct' element={<AboutProduct/>} />
@@ -53,9 +59,9 @@ class App extends React.Component {
           <Route exact path='/eachCategory' element={<EachCategory/>} />
           <Route exact path='/productList' element={<ProductList/>} />
         </Routes>
-        <Brand></Brand>
-        <FooterArea></FooterArea>
-        <BreadCrumb></BreadCrumb>
+       <FooterArea></FooterArea>
+
+       
       </div>
       ) 
   }

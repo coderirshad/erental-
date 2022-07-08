@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-
+import { Link } from 'react-router-dom';
 export default function Dash_side() {
 
     
@@ -27,7 +27,11 @@ export default function Dash_side() {
                     <ul className="list-unstyled">
                     {
                     product.map(data => (
+                        <>
+                        <li><Link to= {`/admin/${data.name}`}> <img src="images/sm.png" alt=""/>{data.name}</Link></li>
+                       
                         <li><a href={data.id}><img src="images/sm.png" alt=""/>{data.name}</a></li>
+                        </>
                         ))} 
                     </ul>
                 </div>
