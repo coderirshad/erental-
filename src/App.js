@@ -33,10 +33,12 @@ import Cart from './components/Cart';
 import CartBody from './components/CartBody';
 import Cartdetail from './components/Cartdetail';
 import AdminHome from './components/AdminHome';
+
 import Registration from './components/Registration';
 import Withdraw from './components/Withdraw';
 import Wishlist from './components/Wishlist';
 import Brand from './components/Brand';
+import Dash_RightContent from './components/Dash_RightContent';
 
 
 class App extends React.Component {
@@ -60,12 +62,14 @@ class App extends React.Component {
           <Route exact path='/product/:id' element={<AboutProduct/>}></Route>
 
           <Route exact path='/admin' element={<AdminHome/>}></Route>
-          <Route exact path='/admin/report' element={<Report/>}></Route>
-          <Route exact path='/admin/withdraw' element={<Withdraw/>}></Route>
+          {/* <Route exact path='/admin/report' element={<Report/>}></Route>
+          <Route exact path='/admin/withdraw' element={<Withdraw/>}></Route> */}
+          <Route exact path='/admin/:id' element={<Dash_RightContent/>}></Route>
+          <Route exact path='/admin/addproduct' element={<AddProduct/>}></Route>
         </Routes>
-        <Brand></Brand>
-        <FooterArea></FooterArea>
-        <BreadCrumb></BreadCrumb>
+       <FooterArea></FooterArea>
+
+       
       </div>
       ) 
 

@@ -7,7 +7,7 @@ export default function AddProduct() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   return (
-        <div className="container ">
+        <div className="container " style={{marginLeft:"30%", position:"absolute", top:"80%"}} >
        <div class="row">
        <div class="col-2">
        <Button className="nextButton" onClick={handleShow}>
