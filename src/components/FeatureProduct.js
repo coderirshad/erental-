@@ -1,31 +1,30 @@
-import React,{useEffect,useState} from 'react';
+import React, {useEffect,useState} from 'react';
 import OwlCarousel from 'react-owl-carousel';  
 
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 
 import 'owl.carousel/dist/assets/owl.theme.default.css';  
 
- function FeatureProduct() {
-
-    const [product, setProduct] =  useState([]);
-    const fetchData =()=>{
-        fetch("http://144.24.99.210:4545/feature-product")
-        .then((response)=>{
-            return response.json();
-        }).then((data)=>{
-             console.log(data);
+const FeatureProduct = () => {
+    let [category, setProduct] = useState({});
          
           
-            setProduct(data)
+    const fetchdata = async () => {
+        const url = 'http://140.238.230.250:4545/feature-product';
 
-          
-        })
+        try {
+            const response = await fetch(url);
+            const json = await response.json();
+            setProduct(json);
+            console.log(json);
+        } catch (error) {
+            console.log("error", error);
     }
-    useEffect(()=>{
-        fetchData();
+    };
     
-    },[product])
-
+    useEffect(() => {
+        fetchdata();
+    }, []);
   return (
     <section className="product-area">
 <div className="container">
@@ -58,17 +57,17 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
                          <div className="tab-content">
                     
                             <div className="tab-pane fade show active" id="all" role="tabpanel">
-                            {
-                               product.map((data) => (
+                                   
                             <OwlCarousel   className="tab-slider owl-carousel"items={3}  nav   loop >
-                          
+                                    {Object.keys(category).map((item, index) => {
+   return (
                                     <div className="tab-item">
                                         <div className="tab-heading">
-                                            <ul className="list-unstyled list-inline" key={data.product_id}>
+                                                    <ul className="list-unstyled list-inline" key={category[index].product_id}>
                                                 <li className="list-inline-item"><a href="#"></a></li>
-                                                <li className="list-inline-item"><a href="#">{data.sub_category}</a></li>
+                                                        <li className="list-inline-item"><a href="#">{category[index].sub_category}</a></li>
                                             </ul>
-                                            <p><a href="">Samsung Smart Led Tv 42"</a></p>
+                                                    <p><a href="">{category[index].name}</a></p>
                                         </div>
                                         <div className="tab-img">
                                             <img className="main-img img-fluid" src="images/tab-1.png" alt=""/>
@@ -88,8 +87,8 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
                                                     <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                                 </ul>
                                                 <ul className="list-unstyled list-inline price">
-                                                    <li className="list-inline-item">$120.00</li>
-                                                    <li className="list-inline-item">$150.00</li>
+                                                            <li className="list-inline-item">{category[index].price}</li>
+                                                            <li className="list-inline-item">{category[index].discounted_price}</li>
                                                 </ul>
                                             </div>
                                             <div>
@@ -98,9 +97,10 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
                                         </div>
                                     </div>
                                  
-                                
+                                         )
+                                        })}
                                 </OwlCarousel>
-                               ))}
+                                      
                             </div>
        
                         </div>
@@ -158,6 +158,8 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
     </div>
 </div>
 </section>
-  );
+
+    )
 }
-export default FeatureProduct
+
+export default FeatureProduct;

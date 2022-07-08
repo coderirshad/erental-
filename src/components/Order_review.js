@@ -1,8 +1,7 @@
 import React,{useEffect,useState} from 'react';
 
 
-function Order() {
-   
+const Order_review=()=>{   
     
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
@@ -26,7 +25,7 @@ function Order() {
 // console.log(product)
 
   return (
-
+    <>
     <section className="checkout">
     <div className="container">
         <div className="row">
@@ -66,6 +65,7 @@ function Order() {
         </div>
             </div>
         </section>
+        </>
   );
 }
-export default Order
+export default Order_review;

@@ -4,7 +4,7 @@ export default function Product_list() {
 
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
-        fetch("http://144.24.99.210:4545/product")
+        fetch("http://140.238.230.250:4545/product")
         .then((response)=>{
             return response.json();
         }).then((data)=>{
