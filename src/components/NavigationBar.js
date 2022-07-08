@@ -11,7 +11,6 @@ const NavigationBar = ()=>{
             <TopBar></TopBar>
             <LogoArea></LogoArea>
             <MainMenuArea2></MainMenuArea2>
-            {/* <MobileMenu></MobileMenu> */}
         </>
      )
 }
