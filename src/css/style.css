@@ -779,7 +779,11 @@ input:focus, textarea:focus {
 }
 
 .logo-area2 .logo a img {
-  margin-top: 18px;
+  width:140px;
+  height: 58px;
+  border:1px solid rgb(0, 110, 255);
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgb(59, 59, 84);
 }
 
 .logo-area2 form.search-bar {

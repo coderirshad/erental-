@@ -16,8 +16,8 @@ export default function Registration() {
     const Submit = (e) =>{
         console.log(data)
             e.preventDefault()
-            fetch("http://140.238.230.250:4545/register",{
-                method:"PUT",
+            fetch("http://localhost:4545/register",{
+                method:"POST",
                 body:data
             })    
            navigate('/login')  

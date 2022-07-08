@@ -27,18 +27,20 @@ const AboutProduct = () => {
   }
 
   const AddToCart = ()=>{   
-    fetch("http://140.238.230.250:4545/product",{
+    fetch("http://localhost:8080/product",{
         method:"PUT",
-        body:{
-             product_id:id,
-             quantity:quantity,
-             color:color,
-             size:size
-        }
+        body:JSON.stringify(
+            {
+                product_id:id,
+                quantity:quantity,
+                color:color,
+                size:size
+           }
+        )
     })
   }
   const fetchData = ()=>{
-    fetch(`http://140.238.230.250:4545/product/${params.id}`)
+    fetch(`http://localhost:8080/product/${params.id}`)
     .then((response)=>{ 
         return response.json();
     })

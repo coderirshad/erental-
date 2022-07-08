@@ -4,6 +4,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
 import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
+import { Link } from 'react-router-dom';
 export default function LogoArea() {
     const [cartproduct, setcartproduct] = useState([])
     const [wishlistproduct, setwishlistproduct] = useState([])
@@ -36,7 +37,7 @@ export default function LogoArea() {
             <div className="row">
                 <div className="col-md-3">
                     <div className="logo">
-                        <a href=""><img src="images/logo.png" alt=""/></a>
+                        <Link to="/"><img  src="images/logo.png" alt=""/></Link>
                     </div>
                 </div>
                 <div className="col-lg-6 col-md-7 padding-fix">
