@@ -28,10 +28,9 @@ import Cluster from "./Cluster.js"
 
 const Home = ()=>{
 
-   const [productList, setProductList] = useState([]);
     
      return (
-        <>           
+        <>  
             <ContousrolledCarel></ContousrolledCarel>
             <br></br><br></br><br></br>
             <HotDeals></HotDeals>
@@ -39,10 +38,7 @@ const Home = ()=>{
             <FeatureProduct></FeatureProduct> 
             <FullBanner></FullBanner>
             <BestOffer></BestOffer>
-            <FrontBlog></FrontBlog>        
-            <Cluster></Cluster>
-            <MainMenuArea2 setProductList = {setProductList}></MainMenuArea2>
-            <EachCategory productList = { productList }/>
+            <FrontBlog></FrontBlog>                 
          
         </>
      )
