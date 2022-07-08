@@ -27,21 +27,11 @@ export default function Dash_side() {
                     <ul className="list-unstyled">
                     {
                     product.map(data => (
+                        <>
                         <li><Link to= {`/admin/${data.name}`}> <img src="images/sm.png" alt=""/>{data.name}</Link></li>
-                        // <li><a href=""><img src="images/com.png" alt=""/>Orders</a></li>
-                        // <li><a href=""><img src="images/tv.png" alt=""/>Coupons</a></li>
-                        // <li><a href=""><img src="images/shoe.png" alt=""/>Reports</a></li>
-                        // <li><a href=""><img src="images/kid.png" alt=""/>Reviews</a></li>
-                        // <li><a href=""><img src="images/watch.png" alt=""/>Withdraw</a></li>
-                        // <li><a href=""><img src="images/health.png" alt=""/>Return Request</a></li>
-                        // <li><a href=""><img src="images/car.png" alt=""/>Staff </a></li>
-                        // <li><a href=""><img src="images/sport.png" alt=""/>Followers</a></li>
-                        // <li><a href=""><img src="images/sport.png" alt=""/>Analytics</a></li>
-                        // <li><a href=""><img src="images/sport.png" alt=""/>Announcment</a></li>
-                        // <li><a href=""><img src="images/sport.png" alt=""/>Tools</a></li>
-                        // <li><a href=""><img src="images/sport.png" alt=""/>Inbox</a></li>
-                        // <li><a href=""><img src="images/sport.png" alt=""/>Support</a></li>
-                        // <li><a href=""><img src="images/sport.png" alt=""/>Settings</a></li>
+                       
+                        <li><a href={data.id}><img src="images/sm.png" alt=""/>{data.name}</a></li>
+                        </>
                         ))} 
                     </ul>
                 </div>

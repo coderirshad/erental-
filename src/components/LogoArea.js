@@ -1,13 +1,43 @@
-import React from 'react'
-
+import {React ,useState, useEffect} from 'react'
+import SearchIcon from '@mui/icons-material/Search';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
+import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
+import { Link } from 'react-router-dom';
 export default function LogoArea() {
+    const [cartproduct, setcartproduct] = useState([])
+    const [wishlistproduct, setwishlistproduct] = useState([])
+    const fetchData = () =>{
+        fetch("http://140.238.230.250:4545/cart",{
+            method:"GET"
+        })
+        .then((response)=>{
+            return response.json();
+        }).then((data)=>{
+             setcartproduct(data)       
+        })
+       
+        fetch("http://140.238.230.250:4545/cart",{
+            method:"GET"
+        })
+        .then((response)=>{
+            return response.json();
+        }).then((data)=>{
+             setwishlistproduct(data)       
+        })
+    }
+
+    useEffect(() => {
+        fetchData()            
+     }, [])
   return (
     <section className="logo-area2">
         <div className="container">
             <div className="row">
                 <div className="col-md-3">
                     <div className="logo">
-                        <a href=""><img src="images/logo.png" alt=""/></a>
+                        <Link to="/"><img  src="images/logo.png" alt=""/></Link>
                     </div>
                 </div>
                 <div className="col-lg-6 col-md-7 padding-fix">
@@ -25,21 +55,27 @@ export default function LogoArea() {
                                 <option>Category Seven</option>
                             </select>
                         </div>
-                        <button type="submit"><i className="fa fa-search"></i></button>
+                        <button type="submit"><SearchIcon style={{fontSize:"30px",color:"green"}}  title="search"></SearchIcon></button>
                     </form>
+                    
                 </div>
                 <div className="col-lg-3 col-md-2">
                     <div className="carts-area d-flex">
                         <div className="wsh-box ml-auto modified_wishlist">
-                            <a href="" data-toggle="tooltip" data-placement="top" title="Wishlist">
-                                <img src="images/heart.png" alt="favorite"/>
-                                <span>0</span>
+                            <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Voice Search">
+                                <SettingsVoiceIcon style={{fontSize:"35px"}}></SettingsVoiceIcon>
+                            </a>
+                        </div>
+                        <div className="wsh-box ml-auto modified_wishlist">
+                            <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
+                                <FavoriteBorderIcon style={{fontSize:"35px"}}></FavoriteBorderIcon>
+                                <span>{wishlistproduct.length}</span>
                             </a>
                         </div>
                         <div className="cart-box ml-4 modified_cart">
                             <a href="/cart" data-toggle="tooltip" data-placement="top" title="Shopping Cart" className="cart-btn ">
-                                <img src="images/cart.png" alt="cart"/>
-                                <span>2</span>
+                                <AddShoppingCartIcon style={{fontSize:"35px"}}></AddShoppingCartIcon>
+                                <span>{cartproduct.length}</span>
                             </a>
                         </div>
                     </div>

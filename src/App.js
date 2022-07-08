@@ -5,32 +5,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/style.css';
 import Checkout from './components/Checkout';
-import FeatureProduct from './components/FeatureProduct';
-import New from './components/New';
-import TopSeller from './components/TopSeller';
-import SideBar from './components/SideBar';
-import AddProduct from './components/AddProduct';
-import Payment from './components/Payment';
 import Report from './components/Report';
-import Product_list from './components/Product_list';
-import Product from './components/Product';
-import Dash_side from './components/Dash_side';
-import Order_review from './components/Order_review';
-import Order_Dash from './components/Order_Dash';
-import AboutProduct from './components/AboutProduct';
-import TopBar from './components/TopBar';
 import Home from './components/Home';
-import StickyMenu from './components/StickyMenu';
 import NavigationBar from './components/NavigationBar';
 import BreadCrumb from './components/BreadCrumb';
 import Login from './components/Login';
 import FooterArea from './components/FooterArea';
-import Contact from './components/Contact';
-import ContousrolledCarel from './components/ContousrolledCarel';
 import Coupon from './components/Coupon';
 import CategoryBox from './components/CategoryBox';
-import Cart from './components/Cart';
-import CartBody from './components/CartBody';
 import Cartdetail from './components/Cartdetail';
 import AdminHome from './components/AdminHome';
 
@@ -39,15 +21,19 @@ import Withdraw from './components/Withdraw';
 import Wishlist from './components/Wishlist';
 import Brand from './components/Brand';
 import Dash_RightContent from './components/Dash_RightContent';
+import AboutUs from './components/AboutUs';
+import EachCategory from './components/EachCategory';
+import ProductList from './components/ProductList';
+import SingalProduct from './components/SingalProduct';
+import AboutProduct from './components/AboutProduct';
 
 
 class App extends React.Component {
-
   render() {
     
     return(  
       <div className='App'>
-        
+      
         <NavigationBar></NavigationBar>
         <Routes>
           <Route exact path='/' element={<Home/>}></Route>
@@ -59,21 +45,25 @@ class App extends React.Component {
           <Route exact path='/coupon' element={<Coupon/>}></Route>
           <Route exact path='/category' element={<CategoryBox/>}></Route>
           <Route exact path='/cart' element={<Cartdetail/>}></Route>
-          <Route exact path='/product/:id' element={<AboutProduct/>}></Route>
-
+          <Route exact path='/product/:id' element={<SingalProduct/>}></Route>
+          
           <Route exact path='/admin' element={<AdminHome/>}></Route>
           {/* <Route exact path='/admin/report' element={<Report/>}></Route>
           <Route exact path='/admin/withdraw' element={<Withdraw/>}></Route> */}
           <Route exact path='/admin/:id' element={<Dash_RightContent/>}></Route>
           <Route exact path='/admin/addproduct' element={<AddProduct/>}></Route>
+          <Route exact path='/admin/report' element={<Report/>}></Route>
+          <Route exact path='/admin/withdraw' element={<Withdraw/>}></Route>
+          <Route exact path='/aboutProduct' element={<AboutProduct/>} />
+          <Route exact path='/aboutUs' element={<AboutUs/>} />
+          <Route exact path='/eachCategory' element={<EachCategory/>} />
+          <Route exact path='/productList' element={<ProductList/>} />
         </Routes>
        <FooterArea></FooterArea>
 
        
       </div>
       ) 
-
-    
   }
 }
 export default App;

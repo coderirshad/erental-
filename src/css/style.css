@@ -779,7 +779,8 @@ input:focus, textarea:focus {
 }
 
 .logo-area2 .logo a img {
-  margin-top: 18px;
+  width:280px;
+  height: 75px;
 }
 
 .logo-area2 form.search-bar {
@@ -862,7 +863,7 @@ input:focus, textarea:focus {
 }
 
 .logo-area2 .carts-area .wsh-box {
-  margin-right: 8px;
+  margin-right: 30px;
   padding-top: 5px;
   position: relative;
 }
@@ -6042,7 +6043,7 @@ border: 10px solid red;
 }
 
 .sg-product .sg-content .colo-siz .color ul li input[type="radio"]#color-2 + label span {
-  border: 1px solid green;
+  background-color: #e45151;
 }
 
 .sg-product .sg-content .colo-siz .color ul li input[type="radio"]#color-3 + label span {

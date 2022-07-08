@@ -29,7 +29,7 @@ export default function Logo() {
                                 </div>
                             </div>
                             <div className="cart-box ml-auto text-center">
-                                <a href="" className="cart-btn">
+                                <a href="/cart" className="cart-btn">
                                     <img src="./images/cart.png" alt="cart"/>
                                     <span>2</span>
                                 </a>

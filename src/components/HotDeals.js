@@ -12,7 +12,6 @@ export default function HotDeals() {
             setproduct(data)
         })
     }
-   
     useEffect(()=>{
         fetchData();
     },[])

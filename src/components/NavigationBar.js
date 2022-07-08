@@ -21,6 +21,7 @@ const NavigationBar = ()=>{
 
         
             {/* <MobileMenu></MobileMenu> */}
+            <MainMenuArea2></MainMenuArea2>
         </>
      )
 }

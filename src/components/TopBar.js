@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 export default function TopBar() {
   return (
        <section className="top-bar2">
@@ -33,12 +37,12 @@ export default function TopBar() {
                 <div className="col-md-6">
                     <div className="top-right text-right">
                         <ul className="list-unstyled list-inline">
-                            <li className="list-inline-item"><a href="/myaccount"><img src="images/user.png" alt=""/>My Account</a></li>
-                            <li className="list-inline-item"><a href="wishlist"><img src="images/wishlist.png" alt=""/>Wishlist</a></li>
-                            <li className="list-inline-item"><a href="/checkout"><img src="images/checkout.png" alt=""/>Checkout</a></li>
-                            <li className="list-inline-item"><a href="/login"><img src="images/login.png" alt=""/>Login</a></li> 
-                            <li className="list-inline-item"><a href="/register"><img src="images/login.png" alt=""/>register</a></li>
-                            <li className="list-inline-item"><a href="/cart"><img src="images/cart.png" alt=""/>Cart</a></li>
+                            <li className="list-inline-item"><Link to="/myaccount"><AccountCircleIcon></AccountCircleIcon>My Account</Link></li>
+                            <li className="list-inline-item"><Link to="wishlist"><FavoriteBorderIcon></FavoriteBorderIcon>Wishlist</Link></li>
+                            <li className="list-inline-item"><Link to="/checkout"><ReplyAllIcon></ReplyAllIcon>Checkout</Link></li>
+                            <li className="list-inline-item"><Link to="/login"><LockOpenIcon></LockOpenIcon>Login</Link></li> 
+                            <li className="list-inline-item"><Link to="/register"><LockOpenIcon></LockOpenIcon>register</Link></li>
+                            <li className="list-inline-item"><Link to="/cart"><AddShoppingCartIcon></AddShoppingCartIcon>Cart</Link></li>
                         </ul>
                     </div>
                 </div>
