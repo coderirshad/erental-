@@ -21,11 +21,7 @@ export default function MainMenuArea2() {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 col-md-0">
-<<<<<<< HEAD
-                       
-=======
                         <div className="dashBoard"><Link to={'/admin'}><h4>DASHBOARD</h4></Link></div>
->>>>>>> dcf84f87bd261c9092a3e5b1da220463167da770
                         <div className="sidemenu">
                             
                             <p>All Categories <i className="fa fa-bars"></i></p>
