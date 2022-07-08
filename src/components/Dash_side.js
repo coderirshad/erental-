@@ -30,7 +30,7 @@ export default function Dash_side() {
                         <>
                         <li><Link to= {`/admin/${data.name}`}> <img src="images/sm.png" alt=""/>{data.name}</Link></li>
                        
-                        <li><a href={data.id}><img src="images/sm.png" alt=""/>{data.name}</a></li>
+                       
                         </>
                         ))} 
                     </ul>

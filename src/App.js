@@ -26,6 +26,8 @@ import EachCategory from './components/EachCategory';
 import ProductList from './components/ProductList';
 import SingalProduct from './components/SingalProduct';
 import AboutProduct from './components/AboutProduct';
+import AddProduct from './components/AddProduct';
+import AdminNav from './components/AdminNav';
 
 
 class App extends React.Component {
@@ -35,6 +37,7 @@ class App extends React.Component {
       <div className='App'>
       
         <NavigationBar></NavigationBar>
+        {/* <AdminNav></AdminNav> */}
         <Routes>
           <Route exact path='/' element={<Home/>}></Route>
           <Route exact path='/login' element={<Login/>}></Route>
@@ -48,10 +51,8 @@ class App extends React.Component {
           <Route exact path='/product/:id' element={<SingalProduct/>}></Route>
           
           <Route exact path='/admin' element={<AdminHome/>}></Route>
-          {/* <Route exact path='/admin/report' element={<Report/>}></Route>
-          <Route exact path='/admin/withdraw' element={<Withdraw/>}></Route> */}
           <Route exact path='/admin/:id' element={<Dash_RightContent/>}></Route>
-          <Route exact path='/admin/addproduct' element={<AddProduct/>}></Route>
+          <Route exact path='/addproduct' element={<AddProduct/>}></Route>
           <Route exact path='/admin/report' element={<Report/>}></Route>
           <Route exact path='/admin/withdraw' element={<Withdraw/>}></Route>
           <Route exact path='/aboutProduct' element={<AboutProduct/>} />

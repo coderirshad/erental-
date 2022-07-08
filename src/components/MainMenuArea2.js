@@ -21,7 +21,7 @@ export default function MainMenuArea2( { setProductList } ) {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 col-md-0">
-                        <div className="dashBoard"><h4>DASHBOARD</h4></div>
+                        <div className="dashBoard"><Link to={'/admin'}><h4>DASHBOARD</h4></Link></div>
                         <div className="sidemenu">
                             
                             <p>All Categories <i className="fa fa-bars"></i></p>
