@@ -1,4 +1,4 @@
-import React from "react";
+import {ReactChild, useState} from "react";
 import HotDeals from "./HotDeals";
 import BreadCrumb from "./BreadCrumb";
 import CategoryBox from "./CategoryBox";
@@ -21,8 +21,15 @@ import FrontBlog from "./FrontBlog";
 import FullBanner from "./FullBanner";
 import BestOffer from "./BestOffer";
 import Service from "./Service";
+import EachCategory from "./EachCategory";
+import MainMenuArea2 from "./MainMenuArea2";
+import Cluster from "./Cluster.js"
+
 
 const Home = ()=>{
+
+   const [productList, setProductList] = useState([]);
+    
      return (
         <>           
             <ContousrolledCarel></ContousrolledCarel>
@@ -33,6 +40,10 @@ const Home = ()=>{
             <FullBanner></FullBanner>
             <BestOffer></BestOffer>
             <FrontBlog></FrontBlog>        
+            <Cluster></Cluster>
+            <MainMenuArea2 setProductList = {setProductList}></MainMenuArea2>
+            <EachCategory productList = { productList }/>
+         
         </>
      )
 }

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function HotDeals() {
     const [product, setproduct] = useState([]);    
     const fetchData = ()=>{
-        fetch("http://localhost:8080/hot-deal").then((response)=>{
+        fetch("http://140.238.230.250:4545/hot-deal").then((response)=>{
             return response.json();
         }).then((data)=>{
             setproduct(data)

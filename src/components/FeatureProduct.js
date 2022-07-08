@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React, {useEffect,useState} from 'react';
 import OwlCarousel from 'react-owl-carousel';  
 
 import 'owl.carousel/dist/assets/owl.carousel.css';  
@@ -111,29 +111,7 @@ import { Link } from 'react-router-dom';
                             </div>
                         </div>
                     </div>
-                </div>
-                {/* <div className="col-md-12 padding-fix-l20">
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="banner">
-                                <a href="#"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8YmFnfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" className="img-fluid"/></a>
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="banner">
-                                <a href="#"><img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmFnfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" className="img-fluid"/></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-             
-                <div className="col-md-12 padding-fix-l20">
-                    <div className="banner-two">
-                        <a href="#"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bWlycm9yfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" className="img-fluid"/></a>
-                    </div>
-                </div> */}
-                
-             
+                </div>             
             </div>
         </div>
         <div className="col-md-12">
@@ -166,4 +144,5 @@ import { Link } from 'react-router-dom';
     </section>
   );
 }
-export default FeatureProduct
+
+export default FeatureProduct;

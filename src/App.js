@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/style.css';
 import Checkout from './components/Checkout';
 import Report from './components/Report';
-import AboutProduct from './components/AboutProduct';
 import Home from './components/Home';
 import NavigationBar from './components/NavigationBar';
 import BreadCrumb from './components/BreadCrumb';
@@ -20,10 +19,14 @@ import Registration from './components/Registration';
 import Withdraw from './components/Withdraw';
 import Wishlist from './components/Wishlist';
 import Brand from './components/Brand';
+import AboutUs from './components/AboutUs';
+import EachCategory from './components/EachCategory';
+import ProductList from './components/ProductList';
+import SingalProduct from './components/SingalProduct';
+import AboutProduct from './components/AboutProduct';
 
 
 class App extends React.Component {
-
   render() {
     
     return(  
@@ -40,19 +43,21 @@ class App extends React.Component {
           <Route exact path='/coupon' element={<Coupon/>}></Route>
           <Route exact path='/category' element={<CategoryBox/>}></Route>
           <Route exact path='/cart' element={<Cartdetail/>}></Route>
-          <Route exact path='/product/:id' element={<AboutProduct/>}></Route>
+          <Route exact path='/product/:id' element={<SingalProduct/>}></Route>
           
           <Route exact path='/admin' element={<AdminHome/>}></Route>
           <Route exact path='/admin/report' element={<Report/>}></Route>
           <Route exact path='/admin/withdraw' element={<Withdraw/>}></Route>
+          <Route exact path='/aboutProduct' element={<AboutProduct/>} />
+          <Route exact path='/aboutUs' element={<AboutUs/>} />
+          <Route exact path='/eachCategory' element={<EachCategory/>} />
+          <Route exact path='/productList' element={<ProductList/>} />
         </Routes>
         <Brand></Brand>
         <FooterArea></FooterArea>
         <BreadCrumb></BreadCrumb>
       </div>
       ) 
-
-    
   }
 }
 export default App;

@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 export default function Cart() {
   return (
     <div>
+        <h1>Cartrghrhrthrthf</h1>
         <div className="cart-body">
             <div className="close-btn">
                 <button className="close-cart"><img src="images/close.png" alt=""/>Close</button>
