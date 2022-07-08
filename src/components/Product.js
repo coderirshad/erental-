@@ -1,22 +1,38 @@
-import React from 'react'
+import React ,{useEffect,useState}from 'react'
+
+import { Link } from 'react-router-dom';
+import { Modal, Button } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import AddProduct from './AddProduct';
 
 export default function Product() {
 
-//   useEffect(() => {
-
-//     const requestOptions = {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ title: 'React Hooks POST Request Example' })
-//     };
-//     fetch('http://144.24.99.210:4545/product', requestOptions)
-//         .then(response => response.json())
-//         .then(data => setPostId(data.id));
 
 
-// }, []);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [product, setProduct] =  useState([]);
+  const fetchData =()=>{
+      fetch("http://140.238.230.250:4545/product")
+      .then((response)=>{
+          return response.json();
+      }).then((data)=>{
+           console.log(data);
+       
+        
+          setProduct(data)
+
+        
+      })
+  }
+  useEffect(()=>{
+      fetchData();
+  },[])
   return (
-    <div className="container ">
+    <div className="container"  style={{marginLeft:"30%", position:"absolute", top:"80%"}} >
       <ul className="nav">
   <li className="nav-item">
     <a className="nav-link active" aria-current="page" href="#">All</a>
@@ -83,11 +99,20 @@ export default function Product() {
   <option value="3">March 2022</option>
 </select>
 <button type="button" className="btn btn-danger">Apply</button>
-</div>
-    </div>
 
+
+</div>
+
+
+    </div>
+    <br></br>
+   <div className='col-4'>
+   <div className="d-flex">
+   <Link  to="/addproduct"><button type="button" className="btn btn-danger">Add Product</button></Link>
+   </div>
+   </div>
 <br></br>
-    {/* <div className="table-responsive" >
+<div className="table-responsive" >
     <table className="table ">
   
   <thead>
@@ -104,21 +129,31 @@ export default function Product() {
     </tr>
   </thead>
   <tbody>
+  {
+                    product.map(data => (
+                     
     <tr>
-      <th scope="row"><img src="images/sbar-6.png" alt=""/></th>
-      <td>Exhibition Hall</td>
-      <td>Online</td>
-      <td>-</td>
-      <th >Instock</th>
-      <td>12000</td>
-      <td>11000</td>
-      <td>-</td>
-      <td>19</td>
-    </tr>
    
-  </tbody>
+      <td scope="row"><img src="images/sbar-6.png" alt=""/></td>
+      <td>{data.name}</td>
+      <td>{data.Status}</td>
+      <td>{data.SKU}</td>
+      <th >{data.Stock}</th>
+      <td>{data.price}</td>
+      <td>{data.Earning}</td>
+      <td>{data.Type}</td>
+      <td>{data.view}</td>
+    
+    </tr>
+                    ))}
+  </tbody>  
 </table>
-</div> */}
 </div>
+
+
+
+
+</div>
+
   )
 }

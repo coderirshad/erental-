@@ -4,7 +4,7 @@ export default function Report() {
   return (
 
 
-    <div class="container">
+    <div class="container" style={{marginLeft:"30%", position:"absolute", top:"80%"}}>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
@@ -25,7 +25,7 @@ export default function Report() {
 </nav>
 
     <div class="row">
-      <div class="col">
+      <div class="col-3">
       <div class="card">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">₹0.00 <br></br>
@@ -46,7 +46,7 @@ worth of coupons used</li>
   </ul>
 </div>
       </div>
-      <div class="col">
+      <div class="col-4">
     <h1>This months sales</h1>
     <div class="card">
   <div class="card-body">

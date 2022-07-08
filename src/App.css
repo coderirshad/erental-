@@ -1,4 +1,5 @@
 
+
 /* =======================================
 11. Slider Area
 ======================================= */
@@ -1467,6 +1468,10 @@
 
 .sliderbar {
   margin-bottom: 30px;
+  width: 80%;
+
+  margin-left: 4%;
+
   
 }
 
@@ -1474,9 +1479,10 @@
   font-size: 15px;
   color: #fff;
   background: rgb(225, 30, 30);
-  padding: 12px 20px;
+  padding: 10px 10px;
   text-transform: uppercase;
   font-weight: 700;
+ 
   
 }
 
@@ -1498,6 +1504,7 @@
   padding: 8px 20px;
   border-bottom: 0.5px solid  #eeeeee;
   color: white;
+   text-align: left;
 }
 
 .sliderbar .menu-widget ul li a:hover {
@@ -1523,6 +1530,50 @@
 }
 
 
+
+#hero {
+  width: 100%;
+  height: 40vh;
+  background: url("https://images.unsplash.com/photo-1616400619175-5beda3a17896?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3R1ZHklMjB0YWJsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60") top center;
+  background-size: cover;
+  position: relative;
+}
+
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#hero .container {
+  position: relative;
+  padding-top: 74px;
+  text-align: center;
+
+}
+
+#hero h1 {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+#hero h1 span {
+  color: #ffc451;
+}
+
+#hero h2 {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 10px 0 0 0;
+  font-size: 24px;
+}
 .dashBoard{
   background-color: red;
   height : 35px ;
