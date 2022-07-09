@@ -14,10 +14,10 @@ const AdminNav = ()=>{
         <>  
         
           <Dash_Topbar></Dash_Topbar>
-        <LogoArea></LogoArea>
+          <LogoArea></LogoArea>
           <Dash_menuarea></Dash_menuarea>
           <Dash_Hero></Dash_Hero> 
-           <Dash_side></Dash_side>
+          <Dash_side></Dash_side>
    
    
           

@@ -16,7 +16,7 @@ export default function Login() {
             e.preventDefault()
             fetch("http://140.238.230.250:4545/login",{
                 method:"PUT",
-                body:data
+                body:JSON.stringify(data)
             }) 
             navigate('/')     
      }

@@ -18,7 +18,7 @@ export default function Registration() {
             e.preventDefault()
             fetch("http://localhost:4545/register",{
                 method:"POST",
-                body:data
+                body:JSON.stringify(data)
             })    
            navigate('/login')  
      }

@@ -8,10 +8,12 @@ export default function Cartdetail() {
     const UpdateQuantity=(cart_item_id1,finalquantity)=>{
         fetch("http://140.238.230.250:4545/cart", {
             method: "PUT",
-            body: {
-                cart_item_id:cart_item_id1,
-                quantity:finalquantity
-            }
+            body: JSON.stringify(
+                {
+                    cart_item_id:cart_item_id1,
+                    quantity:finalquantity
+                }
+            )
         });
     }
     const Increment = (id1,quantity) =>{

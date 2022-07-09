@@ -17,7 +17,7 @@ export default function Checkout() {
     e.preventDefault()
     fetch("http://140.238.230.250:4545/place-order",{
         method:"PUT",
-        body:data
+        body:JSON.stringify(data)
     })
   }
  return (
