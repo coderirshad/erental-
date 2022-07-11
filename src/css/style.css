@@ -2814,7 +2814,7 @@ input:focus, textarea:focus {
 }
 
 .slider{
-  display: block;
+  
   width: 65%;
   height: 60vh;
   position: absolute;

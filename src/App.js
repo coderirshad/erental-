@@ -29,8 +29,8 @@ import AboutProduct from './components/AboutProduct';
 import AddProduct from './components/AddProduct';
 import AdminNav from './components/AdminNav';
 
-
 class App extends React.Component {
+  
   render() {
     
     return(  

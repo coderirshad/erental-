@@ -27,11 +27,11 @@ const SingalProduct = () => {
   }
 
   const AddToCart = ()=>{   
-    fetch("http://140.238.230.250:4545/product",{
-        method:"PUT",
+    fetch("http://localhost:8080/cart",{
+        method:"POST",
         body:JSON.stringify(
             {
-                product_id:id,
+                cart_item_id:id,
                 quantity:quantity,
                 color:color,
                 size:size

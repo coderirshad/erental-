@@ -15,7 +15,7 @@ export default function Checkout() {
  
  const placeOrder = (e) =>{
     e.preventDefault()
-    fetch("http://140.238.230.250:4545/place-order",{
+    fetch("http://localhost:8080/place-order",{
         method:"PUT",
         body:JSON.stringify(data)
     })

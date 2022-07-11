@@ -9,7 +9,7 @@ export default function LogoArea() {
     const [cartproduct, setcartproduct] = useState([])
     const [wishlistproduct, setwishlistproduct] = useState([])
     const fetchData = () =>{
-        fetch("http://140.238.230.250:4545/cart",{
+        fetch("http://localhost:8080/cart",{
             method:"GET"
         })
         .then((response)=>{
@@ -18,7 +18,7 @@ export default function LogoArea() {
              setcartproduct(data)       
         })
        
-        fetch("http://140.238.230.250:4545/cart",{
+        fetch("http://localhost:8080/cart",{
             method:"GET"
         })
         .then((response)=>{
@@ -61,6 +61,18 @@ export default function LogoArea() {
                 </div>
                 <div className="col-lg-3 col-md-2">
                     <div className="carts-area d-flex">
+                        {/* <div className="wsh-box ml-auto modified_wishlist">
+                                <button>Login
+                                <ul>
+                                    <a href='/'><li>Login</li></a>
+                                    <a href='/'><li>Login</li></a>
+                                    <a href='/'><li>Login</li></a>
+                                    <a href='/'><li>Login</li></a>
+                                    <a href='/'><li>Login</li></a>
+                                </ul>
+                                </button>
+                            
+                        </div> */}
                         <div className="wsh-box ml-auto modified_wishlist">
                             <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Voice Search">
                                 <SettingsVoiceIcon style={{fontSize:"35px"}}></SettingsVoiceIcon>

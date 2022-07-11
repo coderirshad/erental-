@@ -1,7 +1,7 @@
 import {React, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 export default function Login() {
-    const [data, setdata] = useState({email:"",password:""})
+    const [data, setdata] = useState({user_id:"",password:""})
     const navigate = useNavigate();
     const setValue = (e) =>{
        setdata((pre)=>{
@@ -11,11 +11,13 @@ export default function Login() {
            }})
       
     }
+    console.log("--->",process.env);
     
     const Submit = (e) =>{
+            console.log("--->",data);
             e.preventDefault()
-            fetch("http://140.238.230.250:4545/login",{
-                method:"PUT",
+            fetch("http://localhost:8080/login",{
+                method:"POST",
                 body:JSON.stringify(data)
             }) 
             navigate('/')     
@@ -31,7 +33,7 @@ export default function Login() {
                             <div className="row">
                                 <div className="col-md-12">
                                     <label>Email Address*</label>
-                                    <input onChange={setValue} type="text" name="email" placeholder="Enter your registered email address"/>
+                                    <input onChange={setValue} type="text" name="user_id" placeholder="Enter your registered email address"/>
                                 </div>
                                 {/* <div className="col-md-12">
                                     <label>Phone Number*</label>

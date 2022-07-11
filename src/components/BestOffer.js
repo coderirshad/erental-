@@ -11,7 +11,7 @@ const BestOffer = ( ) =>{
     const [hotOffer, sethotOffer] = useState([]);
     const [topRated, settopRated] = useState([]);
     const fetchData = ()=>{
-        fetch('http://140.238.230.250:4545/new-product')
+        fetch('http://localhost:8080/new-product')
         .then((response)=>{ 
             return response.json();
         })
@@ -20,7 +20,7 @@ const BestOffer = ( ) =>{
         }
         )
 
-        fetch('http://140.238.230.250:4545/new-product')
+        fetch('http://localhost:8080/new-product')
         .then((response)=>{ 
             return response.json();
         })
@@ -29,7 +29,7 @@ const BestOffer = ( ) =>{
         }
         )
 
-        fetch('http://140.238.230.250:4545/new-product')
+        fetch('http://localhost:8080/new-product')
         .then((response)=>{ 
             return response.json();
         })

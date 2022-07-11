@@ -12,11 +12,8 @@ const NavigationBar = ()=>{
      return (
         <>
          
-<TopBar></TopBar>
-<LogoArea></LogoArea>
-
-        
-            {/* <MobileMenu></MobileMenu> */}
+            <TopBar></TopBar>
+            <LogoArea></LogoArea>
             <MainMenuArea2></MainMenuArea2>
         </>
      )
