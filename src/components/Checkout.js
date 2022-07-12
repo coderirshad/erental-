@@ -15,7 +15,7 @@ export default function Checkout() {
  
  const placeOrder = (e) =>{
     e.preventDefault()
-    fetch("http://localhost:8080/place-order",{
+    fetch(`http://${process.env.REACT_APP_URL}/place-order`,{
         method:"PUT",
         body:JSON.stringify(data)
     })

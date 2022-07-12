@@ -1,6 +1,8 @@
 import {React, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie';
 export default function Login() {
+    const [cookies, setCookie] = useCookies(['user']);
     const [data, setdata] = useState({user_id:"",password:""})
     const navigate = useNavigate();
     const setValue = (e) =>{
@@ -11,15 +13,29 @@ export default function Login() {
            }})
       
     }
-    console.log("--->",process.env);
-    
     const Submit = (e) =>{
-            console.log("--->",data);
+            setCookie('user_id',data.user_id,{path:'/'})
+            setCookie('password',data.password,{path:'/'})
             e.preventDefault()
-            fetch("http://localhost:8080/login",{
-                method:"POST",
-                body:JSON.stringify(data)
-            }) 
+            try{
+                fetch(`http://${process.env.REACT_APP_URL}/login`,{
+                    method:"POST",
+                    credentials: 'same-origin',
+                    body:JSON.stringify(data)
+                }).then((response)=>{
+                }) 
+            }
+            catch(error){
+                if(error.message){
+                    console.log(error.response.data.message)
+                }
+                else if(error.request){
+                    console.log(error.request);
+                }
+                else{
+                    console.log("Error",error.message);
+                }
+            }
             navigate('/')     
      }
   return (
@@ -35,10 +51,6 @@ export default function Login() {
                                     <label>Email Address*</label>
                                     <input onChange={setValue} type="text" name="user_id" placeholder="Enter your registered email address"/>
                                 </div>
-                                {/* <div className="col-md-12">
-                                    <label>Phone Number*</label>
-                                    <input type="text" name="phn" placeholder="Your phone number"/>
-                                </div> */}
                                 <div className="col-md-12">
                                     <label>Password*</label>
                                     <input onChange={setValue} type="text" name="password" placeholder="Enter your password"/>

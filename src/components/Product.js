@@ -16,7 +16,7 @@ export default function Product() {
 
   const [product, setProduct] =  useState([]);
   const fetchData =()=>{
-      fetch("http://localhost:8080/product")
+      fetch(`http://${process.env.REACT_APP_URL}/product`)
       .then((response)=>{
           return response.json();
       }).then((data)=>{

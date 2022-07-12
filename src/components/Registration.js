@@ -16,7 +16,7 @@ export default function Registration() {
     const Submit = (e) =>{
         console.log(data)
             e.preventDefault()
-            fetch("http://localhost:8080/register",{
+            fetch(`http://${process.env.REACT_APP_URL}/register`,{
                 method:"POST",
                 body:JSON.stringify(data)
             })    

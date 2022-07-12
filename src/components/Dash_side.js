@@ -5,7 +5,7 @@ export default function Dash_side() {
     
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
-        fetch("http://localhost:8080/dashboard-sidebar")
+        fetch(`http://${process.env.REACT_APP_URL}/dashboard-sidebar`)
         .then((response)=>{
             return response.json();
         }).then((data)=>{

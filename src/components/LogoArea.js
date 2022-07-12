@@ -9,7 +9,7 @@ export default function LogoArea() {
     const [cartproduct, setcartproduct] = useState([])
     const [wishlistproduct, setwishlistproduct] = useState([])
     const fetchData = () =>{
-        fetch("http://localhost:8080/cart",{
+        fetch(`http://${process.env.REACT_APP_URL}/cart`,{
             method:"GET"
         })
         .then((response)=>{
@@ -18,7 +18,7 @@ export default function LogoArea() {
              setcartproduct(data)       
         })
        
-        fetch("http://localhost:8080/cart",{
+        fetch(`http://${process.env.REACT_APP_URL}/cart`,{
             method:"GET"
         })
         .then((response)=>{

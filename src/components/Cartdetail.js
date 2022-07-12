@@ -6,7 +6,7 @@ export default function Cartdetail() {
     const [cartproduct, setcartproduct] = useState([])
     const [count,setcount] = useState(0)
     const UpdateQuantity=(cart_item_id1,finalquantity)=>{
-        fetch("http://localhost:8080/cart", {
+        fetch(`http://${process.env.REACT_APP_URL}/cart`, {
             method: "PUT",
             body: JSON.stringify(
                 {
@@ -24,7 +24,7 @@ export default function Cartdetail() {
     }
     
     const fetchData = () =>{
-        fetch("http://localhost:8080/cart",{
+        fetch(`http://${process.env.REACT_APP_URL}/cart`,{
             method:"GET"
         })
         .then((response)=>{

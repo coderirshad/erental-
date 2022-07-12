@@ -9,7 +9,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
-        fetch("http://localhost:8080/new-product")
+        fetch(`http://${process.env.REACT_APP_URL}/new-product`)
         .then((response)=>{
             return response.json();
         }).then((data)=>{

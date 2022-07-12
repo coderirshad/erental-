@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
-        fetch("http://localhost:8080/feature-product")
+        fetch(`http://${process.env.REACT_APP_URL}/feature-product`)
         .then((response)=>{
             return response.json();
         }).then((data)=>{       
