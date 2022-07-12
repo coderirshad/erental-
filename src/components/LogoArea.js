@@ -9,23 +9,23 @@ export default function LogoArea() {
     const [cartproduct, setcartproduct] = useState([])
     const [wishlistproduct, setwishlistproduct] = useState([])
     const fetchData = () =>{
-        fetch(`http://${process.env.REACT_APP_URL}/cart`,{
-            method:"GET"
-        })
-        .then((response)=>{
-            return response.json();
-        }).then((data)=>{
-             setcartproduct(data)       
-        })
+        // fetch(`http://${process.env.REACT_APP_URL}/cart`,{
+        //     method:"GET"
+        // })
+        // .then((response)=>{
+        //     return response.json();
+        // }).then((data)=>{
+        //      setcartproduct(data)       
+        // })
        
-        fetch(`http://${process.env.REACT_APP_URL}/cart`,{
-            method:"GET"
-        })
-        .then((response)=>{
-            return response.json();
-        }).then((data)=>{
-             setwishlistproduct(data)       
-        })
+        // fetch(`http://${process.env.REACT_APP_URL}/cart`,{
+        //     method:"GET"
+        // })
+        // .then((response)=>{
+        //     return response.json();
+        // }).then((data)=>{
+        //      setwishlistproduct(data)       
+        // })
     }
 
     useEffect(() => {

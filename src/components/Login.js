@@ -14,16 +14,19 @@ export default function Login() {
       
     }
     const Submit = (e) =>{
-            setCookie('user_id',data.user_id,{path:'/'})
-            setCookie('password',data.password,{path:'/'})
+            
             e.preventDefault()
             try{
                 fetch(`http://${process.env.REACT_APP_URL}/login`,{
                     method:"POST",
-                    credentials: 'same-origin',
                     body:JSON.stringify(data)
                 }).then((response)=>{
-                }) 
+                    return response.json();
+                }).then((cookieData)=>{
+                    console.log(".........",cookieData.authToken);
+                    setCookie('authToken',cookieData.authToken,{path:'/'})
+                    setCookie('refreshToken',cookieData.refreshToken,{path:'/'})
+                })
             }
             catch(error){
                 if(error.message){

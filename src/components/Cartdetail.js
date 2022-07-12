@@ -2,12 +2,17 @@ import React,{useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
 import CurrencyRupeeTwoToneIcon from '@mui/icons-material/CurrencyRupeeTwoTone';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
+import { getCookie } from 'react-use-cookie';
 export default function Cartdetail() {
     const [cartproduct, setcartproduct] = useState([])
     const [count,setcount] = useState(0)
     const UpdateQuantity=(cart_item_id1,finalquantity)=>{
         fetch(`http://${process.env.REACT_APP_URL}/cart`, {
             method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+getCookie('authToken')
+              },
             body: JSON.stringify(
                 {
                     cart_item_id:cart_item_id1,

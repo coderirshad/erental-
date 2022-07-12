@@ -5,6 +5,8 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { getCookie } from 'react-use-cookie';
+import { useNavigate } from 'react-router-dom'
 const SingalProduct = () => {
   const params = useParams();
   const id=params.id;
@@ -15,7 +17,7 @@ const SingalProduct = () => {
   const [imageList, setimageList] = useState([])
   const [colorList, setcolorList] = useState([])
   const [sizeList, setsizeList] = useState([])
-  
+  const navigate = useNavigate();
   const IncrementQuantity=()=>{
     if(quantity<product.stock)setquantity(quantity+1);
     else {
@@ -27,9 +29,14 @@ const SingalProduct = () => {
     else alert("Sorry You can't select less than 0!")
   }
 
-  const AddToCart = ()=>{  
+  const AddToCart = ()=>{ 
+    console.log("-------->",getCookie('authToken')) 
     fetch(`http://${process.env.REACT_APP_URL}/cart`,{
         method:"POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer '+getCookie('authToken')
+        },
         body:JSON.stringify(
             {
                 cart_item_id:id,
@@ -41,6 +48,7 @@ const SingalProduct = () => {
     }).then((response)=>{
         console.log(response);
     })
+    navigate('/');
   }
   const fetchData = ()=>{
     // console.log("----->",params.id);
@@ -159,7 +167,7 @@ const SingalProduct = () => {
                                              </ul>
                                          </div>
                                          <div class="pro-btns">
-                                              <a onClick={()=>AddToCart()} href="/cart" class="cart">Add To Cart</a>
+                                              <a onClick={()=>AddToCart()} class="cart">Add To Cart</a>
                                               <a href="" class="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><FavoriteBorderIcon></FavoriteBorderIcon></a>
                                               <a href="" class="fav-com"  data-toggle="tooltip" data-placement="top" title="Compare"><FavoriteBorderIcon></FavoriteBorderIcon></a>
                                          </div>
