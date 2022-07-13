@@ -1,10 +1,13 @@
 import React from "react";
 import Logo from "./Logo";
 import LogoArea from "./LogoArea";
+
 import MainMenuArea2 from "./MainMenuArea2";
-import MobileMenu from "./MobileMenu";
+
 import TopBar from "./TopBar";
 import Cluster from "./Cluster.js"
+
+
 
 const NavigationBar = ()=>{
      return (
@@ -24,12 +27,3 @@ const NavigationBar = ()=>{
 }
 
 export default NavigationBar;
-
-/*
-
-<div className = 'parent1'>
-            <Cluster className = 'child1'></Cluster>
-            <MainMenuArea2  className = 'child1' ></MainMenuArea2>
-            </div>
-
-            */

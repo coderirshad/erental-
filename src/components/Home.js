@@ -30,7 +30,7 @@ const Home = ()=>{
 
     
      return (
-        <>           
+        <>  
             <ContousrolledCarel></ContousrolledCarel>
             <br></br><br></br><br></br>
             <HotDeals></HotDeals>
@@ -38,7 +38,7 @@ const Home = ()=>{
             <FeatureProduct></FeatureProduct> 
             <FullBanner></FullBanner>
             <BestOffer></BestOffer>
-            <FrontBlog></FrontBlog>        
+            <FrontBlog></FrontBlog>                 
          
         </>
      )

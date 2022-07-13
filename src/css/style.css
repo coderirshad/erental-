@@ -2933,8 +2933,12 @@ border: 10px solid red;
 .product-area .bt-deal .bt-body .owl-nav div.owl-prev {
   margin-right: 25px;
 }
-
+.product-area .ftr-row{
+  width: 100%;
+}
 .product-area .ftr-product {
+  width: 100%;
+  border:1px solid green;
   border: 1px solid #ffffff;
   padding: 16px 20px;
   margin-bottom: 30px;

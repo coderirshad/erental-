@@ -6,7 +6,7 @@ import React,{useEffect,useState} from 'react';
         .then((response)=>{
             return response.json();
         }).then((data)=>{
-            
+            console.warn(data);
              setProductList (data) ;
         })
     }
@@ -15,7 +15,7 @@ import React,{useEffect,useState} from 'react';
     const fetchdata = async() =>{
         const response = await fetch('http://140.238.230.250:4545/category');
         setcategory(await response.json());
-          
+         
     }
     useEffect(() => {
         fetchdata();

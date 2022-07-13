@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function FooterArea() {
   return (
-    <section className="footer-top">
+    <section className="footer-top ">
     <div className="container">
         <div className="row">
             <div className="col-md-3">

@@ -24,48 +24,15 @@ import { Link } from 'react-router-dom';
   return (
     <section className="product-area">
         <div className="container">
-            <div className="row">
-                <div class="col-md-4">
-                    <div class="sec-title">
-                        <h5>Feature Product</h5>
-                    </div>
-                    <div class="feat-box">
-                        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c2hvZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="" class="img-fluid"/>
-                        <div class="ft-bx-content">
-                            <h5>Feature Product</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing 
-                            elit.Lorem ipsum dolor sit amet, consectetur adipisicing 
-                            elit.Lorem ipsum dolor sit amet, consectetur adipisicing 
-                            elit.</p>
-                        </div>
-                    </div>
-                </div>
-        <div className="col-md-8">
-            <div className="row">
-                <div className="col-md-12 padding-fix-l20">
-                    <div className="ftr-product">
-                        <div className="tab-box d-flex justify-content-between">
-                            
-                      
-                            <ul className="nav nav-tabs" role="tablist">
-                                <li className="nav-item">
-                                    <a className="nav-link active" data-toggle="tab" href="#all">All</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" data-toggle="tab" href="#elec">Electronics</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" data-toggle="tab" href="#smart">Smartphones</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" data-toggle="tab" href="#shoe">Shoes</a>
-                                </li>
-                            </ul>
-                        </div>
+            <div className="ftr-row" style={{width:"100%"}}>
+        <div className="col-md-8" style={{width:"100%"}}>
+            <div className="ftr-row" >
+                <div className="col-md-12 padding-fix-l20" >
+                    <div className="ftr-product" >                       
                          <div className="tab-content">
                     
                             <div className="tab-pane fade show active" id="all" role="tabpanel">
-                            <OwlCarousel key={`carousel_${product.length}`}  className="tab-slider owl-carousel" items={3}  nav   loop >
+                            <OwlCarousel key={`carousel_${product.length}`}  className="tab-slider owl-carousel" items={4}  nav   loop >
                             {
                                product.map((data) => (                      
                                     <div className="tab-item">
