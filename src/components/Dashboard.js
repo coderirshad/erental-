@@ -3,7 +3,7 @@ import React from 'react'
 export default function Dashboard() {
   return (
     <div>
-      <div class="container-sm">
+      <div class="container-sm"  style={{marginLeft:"30%", position:"absolute", top:"80%"}} >
   <div class="row">
     <div class="col">
     <div className="card">

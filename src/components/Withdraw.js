@@ -4,67 +4,84 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Withdraw() {
   return (
-      <div>
-      <div className="container-sm py-5">
+
+      <div className="container" style={{marginLeft:"30%", position:"absolute", top:"80%"}}>
+
+<div class="section-title"style={{marginRight:"80%"}} >
+          <h2><strong>Withdraw</strong></h2>
+         
+        </div>
     
-    <div className="card">
-    <div className="card-header">
-   <p><strong> Balance</strong></p>
-    </div>
+    <div className="card" style={{width:"50%"}}>
+   <h5 className='card-header'>Balance</h5>
     <div className="card-body">
-      <div className="row">
+    <div class="row">
+  <div className='col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 '>
       <p className="card-text">Your Balance: ₹0.00</p>
        <p className="card-text">   Minimum Withdraw Amount: ₹5,000.00</p>
          <p className="card-text"> Withdraw Threshold: 0 days</p>
          </div>
-         <div className="float-end">
+
+         <div className='col-lg-6 order-1 order-lg-2'>
          <a href="#" className="btn btn-danger">Request Withdraw</a>
          </div>
          </div>
-  </div>
+         </div>
   </div>
 
-  <div className="container-sm py-5">
-    
-    <div className="card">
-    <div className="card-header">
-   <p><strong> Payment Details</strong></p>
+<br></br>
+<br></br>
+<div class="card" style={{width:"50%"}}>
+  <h5 class="card-header">Payement Details</h5>
+  <div class="card-body">
+  <div class="row">
+  <div className='col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 '>
+  <p class="card-text">Last Payement</p>
+    <p class="card-text">You donot have any withdraw yet</p>
+ </div>
+ <div className='col-lg-6 order-1 order-lg-2'>
+         <a href="#" className="btn btn-danger">View Payemnts</a>
+         </div>
+         </div>
+  </div>
+</div>
+
+
+
+<br></br>
+<br></br>
+<div class="card" style={{width:"50%"}}>
+  <h5 class="card-header">Payement Details</h5>
+  <div class="card-body">
+   
+  <div class="row">
+  <div className='col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 '>
+    <p class="card-text">Paypal</p>
     </div>
-    <div className="card-body">
-      <div className="row">
-      <p className="card-text">Last Payment:</p>
-       <p className="card-text">   You do not have any approved withdraw yet:</p>
-
-         </div>
-         <div className="float-end">
-         <a href="#" className="btn btn-danger">VIEW PAYMENT </a>
-         </div>
-         </div>
-  </div>
-  </div>
-
-  <div className="container-sm py-5">
-    
-    <div className="card">
-    <div className="card-header">
-   <p><strong> Payment Methods</strong></p>
+    <div className='col-lg-6 order-1 order-lg-2'>
+    <a href="#" className="btn btn-danger">Setup</a>
     </div>
-    <div className="card-body">
-      <div className="row">
-      <p className="card-text" ><i class="bi bi-paypal"></i>
-PayPal No information found</p>
-      <hr></hr>
-       <p className="card-text"> <i class="bi bi-bank2"></i> Bank Transfer No information found</p>
-    
-         </div>
-  <div className="float-end">
-         <a href="#" className="btn btn-danger">Request Withdraw</a>
-         </div>
-         </div>
   </div>
+  <br></br>
+  <div class="row">
+  <div className='col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 '>
+    <p class="card-text">Bank Transfer</p>
+    </div>
+    <div className='col-lg-6 order-1 order-lg-2'>
+    <a href="#" className="btn btn-danger">Setup</a>
+    </div>
+  </div>
+ 
+    {/* <div className="float-end">
+         <a href="#" className="btn btn-danger">View Payemnts</a>
+         </div> */}
+  </div>
+</div>
   </div>
 
-  </div>
+ 
+
+
   
   )
 }

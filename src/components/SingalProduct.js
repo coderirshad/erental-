@@ -27,7 +27,7 @@ const SingalProduct = () => {
   }
 
   const AddToCart = ()=>{   
-    fetch("http://localhost:8080/product",{
+    fetch("http://140.238.230.250:4545/product",{
         method:"PUT",
         body:JSON.stringify(
             {
