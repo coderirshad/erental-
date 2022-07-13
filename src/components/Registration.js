@@ -2,7 +2,7 @@ import {React, useState} from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 
 export default function Registration() {
-    const [data, setdata] = useState({fname:"",lname:"",email:"",phone:"",password:"",cpassword:"",isTermsRead:"false",subscribe:"false"})
+    const [data, setdata] = useState({first_name:"",last_name:"",email:"",mobile:"",password:"",confirm_password:"",is_terms_read:"false",subscribe:"false"})
     const navigate = useNavigate();
     const setValue = (e) =>{
        setdata((pre)=>{
@@ -16,9 +16,9 @@ export default function Registration() {
     const Submit = (e) =>{
         console.log(data)
             e.preventDefault()
-            fetch("http://localhost:4545/register",{
+            fetch(`http://${process.env.REACT_APP_URL}/register`,{
                 method:"POST",
-                body:data
+                body:JSON.stringify(data)
             })    
            navigate('/login')  
      }
@@ -35,11 +35,11 @@ export default function Registration() {
                             <div className="row">
                                 <div className="col-md-12">
                                     <label>First Name*</label>
-                                    <input onChange={setValue} type="text" name="fname" placeholder="Your first name"/>
+                                    <input onChange={setValue} type="text" name="first_name" placeholder="Your first name"/>
                                 </div>
                                 <div className="col-md-12">
                                     <label>Last Name*</label>
-                                    <input onChange={setValue} type="text" name="lname" placeholder="Your Last name"/>
+                                    <input onChange={setValue} type="text" name="last_name" placeholder="Your Last name"/>
                                 </div>
                                 <div className="col-md-12">
                                     <label>Email Address*</label>
@@ -47,7 +47,7 @@ export default function Registration() {
                                 </div>
                                 <div className="col-md-12">
                                     <label>Phone Number*</label>
-                                    <input onChange={setValue} type="text" name="phone" placeholder="Your phone number"/>
+                                    <input onChange={setValue} type="text" name="mobile" placeholder="Your phone number"/>
                                 </div>
                                 <div className="col-md-12">
                                     <label>Password*</label>
@@ -55,11 +55,11 @@ export default function Registration() {
                                 </div>
                                 <div className="col-md-12">
                                     <label>Confirm Password*</label>
-                                    <input onChange={setValue} type="text" name="cpassword" placeholder="Confirm your password"/>
+                                    <input onChange={setValue} type="text" name="confirm_password" placeholder="Confirm your password"/>
                                 </div>
                                 <div className="col-md-7">
                                     <div>
-                                        <input onClick={setValue} type="checkbox" name="isTermsRead" id="t-box" value="true"/>
+                                        <input onClick={setValue} type="checkbox" name="is_terms_read" id="t-box" value="true"/>
                                         <label for="t-box">I have read the terms and condition.</label>
                                     </div>
                                     <div>
