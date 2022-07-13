@@ -26,6 +26,7 @@ import SingalProduct from './components/SingalProduct';
 import AboutProduct from './components/AboutProduct';
 import AddProduct from './components/AddProduct';
 import AdminNav from './components/AdminNav';
+import SideBar from './components/SideBar';
 
 class App extends React.Component {
   
@@ -34,8 +35,8 @@ class App extends React.Component {
     return(  
       <div className='App'>
       
-        <NavigationBar></NavigationBar>
-        {/* <AdminNav></AdminNav> */}
+        {/* <NavigationBar></NavigationBar> */}
+        <AdminNav></AdminNav>
         <Routes>
           <Route exact path='/' element={<Home/>}></Route>
           <Route exact path='/login' element={<Login/>}></Route>

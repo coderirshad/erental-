@@ -126,6 +126,8 @@ export default function Product() {
       <th scope="col">Earning</th>
       <th scope="col">Type</th>
       <th scope="col">View</th>
+      
+
     </tr>
   </thead>
   <tbody>
