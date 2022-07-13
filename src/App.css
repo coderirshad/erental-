@@ -1569,6 +1569,7 @@
 #try1{
   
   text-align: left;
+  width : 250px ;
 
 }
 
@@ -1606,10 +1607,35 @@ h6 {
   text-align: left;
 }
 .child {
-  width : 20% ;
   display: inline-block;
   vertical-align: middle;
   
+}
+.parent1 {
+  width : 100% ;
+  margin-top: 10px;
+}
+.child1 {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  
+}
+
+.cluster{
+  position: relative;
+  margin-left: 340px;
+  width : 900px ;
+  padding-bottom: 50px;
+}
+
+.ech{
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  margin-top : 10px ;
+  padding-top: 10px;
 }
 
 .product{
@@ -1632,21 +1658,50 @@ h6 {
   text-align: left;
 }
 
-/*.productContainer{
-  position: relative;
-  width : 1200px ;
-  border: 5px ;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 20px;
-  margin-left: 500px;
-}*/
-
 #exataNav{
   margin-top: 70px;
   margin-left: 450px;
 }
+
+#owl{
+  height : 3000px ;
+  padding-bottom: 5px;
+  background-color: pink;
+}
+
+.tag{
+  color: black;
+  font-size:17px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.tag1{
+  width : 150px ;
+  color: black;
+  background-color: white;
+  margin-top : 10px ;
+}
+
+#setting{
+  width : 1200px ;
+  
+}
+
+#help{
+  margin-top: 0px ;
+}
+
+#categoryShift{
+  margin-top: -115px;
+}
+
+#imageShift{
+  margin-top: 73px;
+}
+
+
+
+
 
 
 
