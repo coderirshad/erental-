@@ -5,7 +5,6 @@ export default function MainMenuArea2() {
     const fetchdata = async() =>{
         const response = await fetch('http://140.238.230.250:4545/category');
         setcategoryList(await response.json());
-          
     }
     useEffect(() => {
         fetchdata();
@@ -17,13 +16,12 @@ export default function MainMenuArea2() {
         navigate('/productList',{state:{id: categoryId }});
     }
     return (
-    <section className="menu-area2">
+    <section className="menu-area2" id = "categoryShift">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 col-md-0">
                         {/* <div className="dashBoard"><Link to={'/admin'}><h4>DASHBOARD</h4></Link></div> */}
                         <div className="sidemenu">
-                            
                             <p>All Categories <i className="fa fa-bars"></i></p>
                             <ul className="list-unstyled gt-menu" id = "try1">
                                 {categoryList.map(( category ) => (
