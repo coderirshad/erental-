@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
 import CurrencyRupeeTwoToneIcon from '@mui/icons-material/CurrencyRupeeTwoTone';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
-import { getCookie } from 'react-use-cookie';
+import GetAuthorization from './GetAuthorization';
 export default function Cartdetail() {
     const [cartproduct, setcartproduct] = useState([])
     const [count,setcount] = useState(0)
@@ -11,7 +11,7 @@ export default function Cartdetail() {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+getCookie('authToken')
+                'Authorization': GetAuthorization()
               },
             body: JSON.stringify(
                 {
@@ -30,12 +30,16 @@ export default function Cartdetail() {
     
     const fetchData = () =>{
         fetch(`http://${process.env.REACT_APP_URL}/cart`,{
-            method:"GET"
-            
+            method:"GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+getCookie('authToken')
+              }          
         })
         .then((response)=>{
             return response.json();
         }).then((data)=>{
+            console.log(data);
              setcartproduct(data)       
         })
     }

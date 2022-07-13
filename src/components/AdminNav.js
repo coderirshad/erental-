@@ -17,7 +17,7 @@ const AdminNav = ()=>{
           <LogoArea></LogoArea>
           <Dash_menuarea></Dash_menuarea>
           <Dash_Hero></Dash_Hero> 
-          <Dash_side></Dash_side>
+          {/* <Dash_side></Dash_side> */}
    
    
           
