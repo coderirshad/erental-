@@ -31,6 +31,7 @@ export default function Cartdetail() {
     const fetchData = () =>{
         fetch(`http://${process.env.REACT_APP_URL}/cart`,{
             method:"GET"
+            
         })
         .then((response)=>{
             return response.json();

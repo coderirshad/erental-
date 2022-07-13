@@ -5,7 +5,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { getCookie } from 'react-use-cookie';
+import GetAuthorization from './GetAuthorization';
 import { useNavigate } from 'react-router-dom'
 const SingalProduct = () => {
   const params = useParams();
@@ -30,12 +30,12 @@ const SingalProduct = () => {
   }
 
   const AddToCart = ()=>{ 
-    console.log("-------->",getCookie('authToken')) 
+    console.log("-------->",GetAuthorization()) 
     fetch(`http://${process.env.REACT_APP_URL}/cart`,{
         method:"POST",
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer '+getCookie('authToken')
+            'Authorization': GetAuthorization()
         },
         body:JSON.stringify(
             {
