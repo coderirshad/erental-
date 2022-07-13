@@ -5,6 +5,8 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import GetAuthorization from './GetAuthorization';
+import { useNavigate } from 'react-router-dom'
 const SingalProduct = () => {
   const params = useParams();
   const id=params.id;
@@ -12,9 +14,10 @@ const SingalProduct = () => {
   const [quantity, setquantity] = useState(1)
   const [color, setcolor] = useState("")
   const [size, setsize] = useState("")
+  const [imageList, setimageList] = useState([])
   const [colorList, setcolorList] = useState([])
   const [sizeList, setsizeList] = useState([])
-  
+  const navigate = useNavigate();
   const IncrementQuantity=()=>{
     if(quantity<product.stock)setquantity(quantity+1);
     else {
@@ -26,28 +29,39 @@ const SingalProduct = () => {
     else alert("Sorry You can't select less than 0!")
   }
 
-  const AddToCart = ()=>{   
-    fetch("http://140.238.230.250:4545/product",{
-        method:"PUT",
+  const AddToCart = ()=>{ 
+    console.log("-------->",GetAuthorization()) 
+    fetch(`http://${process.env.REACT_APP_URL}/cart`,{
+        method:"POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': GetAuthorization()
+        },
         body:JSON.stringify(
             {
-                product_id:id,
+                cart_item_id:id,
                 quantity:quantity,
                 color:color,
                 size:size
            }
         )
+    }).then((response)=>{
+        console.log(response);
     })
+    navigate('/');
   }
   const fetchData = ()=>{
-    fetch(`http://localhost:8080/product/${params.id}`)
+    // console.log("----->",params.id);
+    fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`)
     .then((response)=>{ 
         return response.json();
     })
     .then((data)=>{       
         setproduct(data);
+        setimageList(data.image);
         setcolorList(data.attribute.color);
         setsizeList(data.attribute.size);
+        console.log("------------",imageList)
     }
     )
   }
@@ -64,18 +78,21 @@ const SingalProduct = () => {
                             <div class="col-md-5">
                                 <div class="sg-img">
                                     <div class="tab-content">
-                                        <div class="tab-pane fade show active" id="sg1" role="tabpanel">
-                                            <img src={product.image} alt="" class="img-fluid"/>
+                                    {/* {imageList.map((imagelink,imageid)=>(
+                                         <div key={imageid} class="tab-pane fade show active" id="sg1" role="tabpanel">
+                                            <img src={imagelink} alt="" class="img-fluid"/>
                                         </div>
-                                        <div class="tab-pane" id="sg2" role="tabpanel">
-                                            <img src="images/tab-2.png" alt="" class="img-fluid"/>
+                                    ))} */}
+                                        
+                                        {/* <div class="tab-pane" id="sg2" role="tabpanel">
+                                            <img src={product.image} alt="" class="img-fluid"/>
                                         </div>
                                         <div class="tab-pane" id="sg3" role="tabpanel">
                                             <img src="images/tab-3.png" alt="" class="img-fluid"/>
                                         </div>
                                         <div class="tab-pane" id="sg4" role="tabpanel">
                                             <img src="images/tab-4.png" alt="" class="img-fluid"/>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div class="nav d-flex justify-content-between">
                                         <a class="nav-item nav-link active" data-toggle="tab" href="#sg1"><img src="images/tab-1.png" alt=""/></a>
@@ -150,7 +167,7 @@ const SingalProduct = () => {
                                              </ul>
                                          </div>
                                          <div class="pro-btns">
-                                              <a onClick={()=>AddToCart()} href="/cart" class="cart">Add To Cart</a>
+                                              <a onClick={()=>AddToCart()} class="cart">Add To Cart</a>
                                               <a href="" class="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><FavoriteBorderIcon></FavoriteBorderIcon></a>
                                               <a href="" class="fav-com"  data-toggle="tooltip" data-placement="top" title="Compare"><FavoriteBorderIcon></FavoriteBorderIcon></a>
                                          </div>

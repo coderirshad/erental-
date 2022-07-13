@@ -56,7 +56,7 @@ export default function AddProduct( ) {
   
     console.warn({name,price,Earning,Stock,SKU,Type,Status,view, image,tag,category});
     let data= {name,price,Earning,Stock,SKU,Type,Status,view, image,tag,category}
-    fetch("http://140.238.230.250:4545/product",{
+    fetch(`http://${process.env.REACT_APP_URL}/product`,{
       method:'PUT',
       headers:{
         'Accept':'application/json',

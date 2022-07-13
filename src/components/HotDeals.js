@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function HotDeals() {
     const [product, setproduct] = useState([]);    
     const fetchData = ()=>{
-        fetch("http://140.238.230.250:4545/hot-deal").then((response)=>{
+        fetch(`http://${process.env.REACT_APP_URL}/hot-deal`).then((response)=>{
             return response.json();
         }).then((data)=>{
             setproduct(data)
@@ -33,7 +33,7 @@ export default function HotDeals() {
                                     {product.map((data,id)=>(                                     
                                             <div className="bt-box d-flex" key={id} >
                                                 <div className="bt-img">
-                                                    <Link to={`/product/${data.product_id}`}><img src="./images/about.jpg" alt=""/></Link>
+                                                    <Link to={`/product/${data.product_id}`}><img src={data.image} alt=""/></Link>
                                                 </div>
                                                 <div className="bt-content">
                                                     <p><Link to={`/product/${data.product_id}`}>{data.name}</Link></p>

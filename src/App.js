@@ -8,7 +8,6 @@ import Checkout from './components/Checkout';
 import Report from './components/Report';
 import Home from './components/Home';
 import NavigationBar from './components/NavigationBar';
-import BreadCrumb from './components/BreadCrumb';
 import Login from './components/Login';
 import FooterArea from './components/FooterArea';
 import Coupon from './components/Coupon';
@@ -19,7 +18,6 @@ import AdminHome from './components/AdminHome';
 import Registration from './components/Registration';
 import Withdraw from './components/Withdraw';
 import Wishlist from './components/Wishlist';
-import Brand from './components/Brand';
 import Dash_RightContent from './components/Dash_RightContent';
 import AboutUs from './components/AboutUs';
 import EachCategory from './components/EachCategory';
@@ -30,8 +28,8 @@ import AddProduct from './components/AddProduct';
 import AdminNav from './components/AdminNav';
 import SideBar from './components/SideBar';
 
-
 class App extends React.Component {
+  
   render() {
     
     return(  
