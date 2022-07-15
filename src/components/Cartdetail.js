@@ -33,7 +33,7 @@ export default function Cartdetail() {
             method:"GET",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+getCookie('authToken')
+                'Authorization': GetAuthorization()
               }          
         })
         .then((response)=>{

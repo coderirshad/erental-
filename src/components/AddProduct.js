@@ -1,48 +1,46 @@
 import React, {useState,useEffect} from 'react';
+import GetAuthorization from './GetAuthorization';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
+import FormLabel from '@mui/material/FormLabel';
 export default function AddProduct( ) {
- 
 
-  
-
- 
-
-  // const params = useParams();
 
   const[name,setname] = useState("");
   const[Earning,setearning] = useState("");
   const[price,setprice] = useState("");
-  
-  const[Stock,setstock] = useState("");
+  const[discounted_price,setdiscounted] = useState("");
+  const[stock,setstock] = useState("");
   
   const[Type,setType] = useState("");
   
-  const[SKU,setsku] = useState("");
+  const[sku,setsku] = useState("");
   
   const[view,setview] = useState("");
   
   const[Status, setstatus] = useState("");
   const[image, setimage] =useState("");
-  const[tag, setTag] =useState("");
+  const[tag_list, setTaglist] =useState([]);
  
 
-  
+  const[tag, setTag] =useState("");
   const [category, setcategory] = useState([]);
 
-
+  const [subcategory, setsubcategory] = useState("");
 
   const fetchdata = async() =>{
-      const response = await fetch('http://140.238.230.250:4545/category');
+      const response = await fetch(`http://${process.env.REACT_APP_URL}/category`);
       setcategory(await response.json());
         
   }
@@ -51,16 +49,24 @@ export default function AddProduct( ) {
   }, []);
   
 
-
+  const fetchtag = async() =>{
+    const response = await fetch(`http://${process.env.REACT_APP_URL}/tag`);
+    setTaglist(await response.json());
+      
+}
+useEffect(() => {
+    fetchtag();
+}, []);
   function savepro(){
   
-    console.warn({name,price,Earning,Stock,SKU,Type,Status,view, image,tag,category});
-    let data= {name,price,Earning,Stock,SKU,Type,Status,view, image,tag,category}
-    fetch(`http://${process.env.REACT_APP_URL}/product`,{
+    console.warn({name,price,discounted_price,stock,sku,Status,view, image,tag,subcategory});
+    let data= {name,price,discounted_price,stock,view,tag, image,subcategory}
+    fetch(`http://${process.env.REACT_APP_URL}/admin/product`,{
       method:'PUT',
       headers:{
         'Accept':'application/json',
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'Authorization': GetAuthorization()
       },
       body:JSON.stringify(data)
   
@@ -69,10 +75,6 @@ export default function AddProduct( ) {
       console.warn("result",result)
     })
   }
-
-
-
-
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -110,72 +112,47 @@ export default function AddProduct( ) {
             />
             <TextField
               required
-              id="earning"
-              label="Earning"
-              value={Earning}
-              onChange={(e)=>{setearning(e.target.value)}}
+              id="discounted_price"
+              label="Discounted Price"
+              value={discounted_price}
+              onChange={(e)=>{setdiscounted(e.target.value)}}
               defaultValue="Earning"
             />
           </div>
           <div>
-            <TextField
-              required
-              id="status"
-              label="Status"
-              value={Status}
-              onChange={(e)=>{setstatus(e.target.value)}}
-              defaultValue="status"
-            />
+       
               <TextField
               required
               id="stock"
               label="Stock"
-              value={Stock}
+              value={stock}
               onChange={(e)=>{setstock(e.target.value)}}
               defaultValue="Enter Stock"
             />
-
-<FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel htmlFor="grouped-native-select">Category</InputLabel>
-        <Select native defaultValue="" id="grouped-native-select" label="Category"  >
-          <option aria-label="None" value="" />
-{category.map( eachcategory => (
-          <optgroup label={eachcategory.name}>
-
-            {eachcategory.map( (c) => (
-            <option value={category} onChange={(e)=>{setcategory(e.target.value)}}> {c.name}</option>
-            ))}
-          </optgroup>
-          ))}
-        </Select>
-      </FormControl>
-           </div>
-            <div>
-                  <TextField
+          <TextField
                     required
                     id="sku"
                     label="SKU"
-                    value={SKU}
+                    value={sku}
                     onChange={(e)=>{setsku(e.target.value)}}
                     defaultValue="SKU"
                   />
-                    <TextField
-                    required
-                    id="status"
-                    label="Status"
-                    value={Status}
-                    onChange={(e)=>{setstatus(e.target.value)}}
-                    defaultValue="Status"
-                  />
-                  <TextField
-                    required
-                    id="type"
-                    label="Type"
-                    value={Type} onChange={(e)=>{setType(e.target.value)}}
-                    defaultValue="Type"
-                  />
-                
-            </div>
+            <FormControl sx={{ m: 1, minWidth: 120 }} value={subcategory} onChange={(e)=>{setsubcategory(e.target.value)}} >
+                      <InputLabel htmlFor="grouped-native-select">Category</InputLabel>
+                      <Select native defaultValue="" id="grouped-native-select" label="Category"  >
+                        <option aria-label="None" value="" />
+              {category.map( eachcategory => (
+                        <optgroup label={eachcategory.name}>
+
+                          {eachcategory.subcategory.map( (c) => (
+                          <option value={c.name}  > {c.name}</option>
+                          ))}
+                        </optgroup>
+                        ))}
+                      </Select>
+                  </FormControl>
+           </div>
+           
             <div>
                   <TextField
                     required
@@ -184,14 +161,25 @@ export default function AddProduct( ) {
                     value={view} onChange={(e)=>{setview(e.target.value)}}
                     defaultValue="View"
                   />
-                    <TextField
-                    required
-                    id="tag"
-                    label="Tag"
-                    defaultValue="Tag"
-                    value={tag} onChange={(e)=>{setTag(e.target.value)}}
-                  />
-                
+                  
+
+ <FormControl sx={{ m: 1, minWidth: 120 }}  >
+  <InputLabel id="demo-simple-select-label">Tag</InputLabel>
+  <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    value={tag}
+    label="Tag"
+    onChange={(e)=>{setTag(e.target.value)}}
+  
+  >
+{tag_list.map( t => (
+    <MenuItem value={t.id}>{t.name}</MenuItem>
+))}
+  </Select>
+</FormControl> 
+
+
                     
             </div>
           <br></br>

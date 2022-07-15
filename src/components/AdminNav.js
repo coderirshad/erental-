@@ -7,6 +7,8 @@ import Dash_side from "./Dash_side";
 
 import LogoArea from "./LogoArea";
 
+import Invoice from "./Invoice";
+
 
 
 const AdminNav = ()=>{
@@ -17,9 +19,9 @@ const AdminNav = ()=>{
           <LogoArea></LogoArea>
           <Dash_menuarea></Dash_menuarea>
           <Dash_Hero></Dash_Hero> 
-          {/* <Dash_side></Dash_side> */}
+          <Dash_side></Dash_side>
    
-   
+   <Invoice></Invoice>
           
         </>
      )

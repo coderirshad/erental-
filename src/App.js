@@ -35,8 +35,8 @@ class App extends React.Component {
     return(  
       <div className='App'>
       
-        <NavigationBar></NavigationBar>
-        {/* <AdminNav></AdminNav> */}
+        {/* <NavigationBar></NavigationBar> */}
+        <AdminNav></AdminNav>
         <Routes>
           <Route exact path='/' element={<Home/>}></Route>
           <Route exact path='/login' element={<Login/>}></Route>
