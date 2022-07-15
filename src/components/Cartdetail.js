@@ -5,9 +5,9 @@ import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import GetAuthorization from './GetAuthorization';
 export default function Cartdetail() {
     const [cartproduct, setcartproduct] = useState([])
-    const [count,setcount] = useState(0)
-    const UpdateQuantity=(cart_item_id1,finalquantity)=>{
-        fetch(`http://${process.env.REACT_APP_URL}/cart`, {
+    const [cartsummary, setcartsummary] = useState({})
+    const UpdateQuantity = async (cart_item_id1,finalquantity)=>{
+        await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
@@ -16,10 +16,13 @@ export default function Cartdetail() {
             body: JSON.stringify(
                 {
                     cart_item_id:cart_item_id1,
-                    quantity:finalquantity
+                    quantity:finalquantity,
+                    color:'',
+                    size:''
                 }
             )
         });
+        fetchData();
     }
     const Increment = (id1,quantity) =>{
         UpdateQuantity(id1,quantity+1);
@@ -39,9 +42,21 @@ export default function Cartdetail() {
         .then((response)=>{
             return response.json();
         }).then((data)=>{
-            console.log(data);
              setcartproduct(data)       
         })
+        fetch(`http://${process.env.REACT_APP_URL}/cart-summary`,{
+            method:"GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': GetAuthorization()
+              }          
+        })
+        .then((response)=>{
+            return response.json();
+        }).then((data)=>{
+             setcartsummary(data)       
+        })
+        // console.log(cartsummary)
     }
 
     useEffect(() => {
@@ -151,9 +166,9 @@ export default function Cartdetail() {
                 <div className="crt-sumry">
                     <h5>Cart Summery</h5>
                     <ul className="list-unstyled">
-                        <li>Subtotal <span>$328.00</span></li>
-                        <li>Shipping & Tax <span>$00.00</span></li>
-                        <li>Grand Total <span>$328.00</span></li>
+                        <li>Subtotal <span>${cartsummary.sub_total}</span></li>
+                        <li>Shipping & Tax <span>${cartsummary.tax}</span></li>
+                        <li>Grand Total <span>${cartsummary.grand_total}</span></li>
                     </ul>
                     <div className="cart-btns text-right">
                         {/* <button type="button" className="up-cart">Update Cart</button> */}

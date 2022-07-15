@@ -1,27 +1,40 @@
-import React from "react";
-import Logo from "./Logo";
-import LogoArea from "./LogoArea";
-
-import MainMenuArea2 from "./MainMenuArea2";
-
-import TopBar from "./TopBar";
-import Cluster from "./Cluster.js"
-
-
+import {React,useState,useEffect} from "react";
+import GetAuthorization from "./GetAuthorization";
+import AdminNav from "./AdminNav";
+import UserNav from "./UserNav";
 
 const NavigationBar = ()=>{
-     return (
-        <>
-            <TopBar></TopBar>
-            <LogoArea></LogoArea>
-            <div className = 'parent1'>
-            <div id = 'child1' >
-                <Cluster></Cluster>
-            </div>
-            <div id = 'child1' >
-                <MainMenuArea2></MainMenuArea2>
-            </div>
-            </div>
+    const [user, setuser] = useState({});
+    const [role,setrole] = useState("customer");
+    const [status,setstatus] = useState(200);
+    const fetchData = ( ) =>{
+        fetch(`http://${process.env.REACT_APP_URL}/user`,{
+            method:'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': GetAuthorization()
+            }
+        }).then((response)=>{
+            setstatus(response.status);
+            return response.json(); 
+        }).then((data)=>{  
+            setuser(data);   
+        })
+        for(var i=0;i<user.roles.length;i++){
+            if(user.roles[i]=='admin'){
+                setrole("admin");
+            }
+        }
+    }
+    
+    useEffect(() => {
+        return () => {
+            fetchData();
+        };
+    }, [])
+     return ( 
+        <> 
+            {(role=="customer" || status!=200)?<UserNav></UserNav>:<AdminNav></AdminNav>}
         </>
      )
 }

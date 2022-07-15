@@ -8,10 +8,10 @@ import Service from "./Service";
 
 
 const Home = ()=>{
-
+    
     
      return (
-        <>  
+        <div>  
             <ContousrolledCarel></ContousrolledCarel>
             <br></br><br></br><br></br>
             <HotDeals></HotDeals>
@@ -21,7 +21,7 @@ const Home = ()=>{
             <BestOffer></BestOffer>
             <FrontBlog></FrontBlog>                 
          
-        </>
+        </div>
      )
 }
 

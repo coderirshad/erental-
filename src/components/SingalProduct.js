@@ -29,8 +29,8 @@ const SingalProduct = () => {
     else alert("Sorry You can't select less than 0!")
   }
 
-  const AddToCart = ()=>{ 
-    console.log("-------->",GetAuthorization()) 
+  const AddToCart = ()=>{  
+    console.log(GetAuthorization());
     fetch(`http://${process.env.REACT_APP_URL}/cart`,{
         method:"POST",
         headers: {
@@ -46,12 +46,11 @@ const SingalProduct = () => {
            }
         )
     }).then((response)=>{
-        console.log(response);
+        // console.log("--->",response.status);
     })
     navigate('/');
   }
   const fetchData = ()=>{
-    // console.log("----->",params.id);
     fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`)
     .then((response)=>{ 
         return response.json();
@@ -61,7 +60,6 @@ const SingalProduct = () => {
         setimageList(data.image);
         setcolorList(data.attribute.color);
         setsizeList(data.attribute.size);
-        console.log("------------",imageList)
     }
     )
   }

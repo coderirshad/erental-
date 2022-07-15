@@ -10,7 +10,9 @@ import { Link } from 'react-router-dom';
 
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
-        fetch(`http://${process.env.REACT_APP_URL}/feature-product`)
+        fetch(`http://${process.env.REACT_APP_URL}/feature-product`,{
+            method:"GET"          
+        })
         .then((response)=>{
             return response.json();
         }).then((data)=>{       
@@ -23,19 +25,19 @@ import { Link } from 'react-router-dom';
 
   return (
     <section className="product-area">
-        <div className="container">
+        <div className="container" >
             <div className="ftr-row" style={{width:"100%"}}>
         <div className="col-md-8" style={{width:"100%"}}>
             <div className="ftr-row" >
                 <div className="col-md-12 padding-fix-l20" >
                     <div className="ftr-product" >                       
                          <div className="tab-content">
-                    
+                              <h2>FEATURE PRODUCT</h2>
                             <div className="tab-pane fade show active" id="all" role="tabpanel">
                             <OwlCarousel key={`carousel_${product.length}`}  className="tab-slider owl-carousel" items={4}  nav   loop >
                             {
                                product.map((data) => (                      
-                                    <div className="tab-item">
+                                    <div className="tab-item" style={{margin:"5px"}}>
                                         <div className="tab-heading">
                                             <ul className="list-unstyled list-inline" key={data.product_id}>
                                                 <li className="list-inline-item"><a href="#">{data.category}</a></li>

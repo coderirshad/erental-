@@ -1,11 +1,18 @@
 import React,{useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
+import GetAuthorization from './GetAuthorization';
 export default function Dash_side() {
 
     
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
-        fetch(`http://${process.env.REACT_APP_URL}/dashboard-sidebar`)
+        fetch(`http://${process.env.REACT_APP_URL}/dashboard-sidebar`,{
+            method:"GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': GetAuthorization()
+              }  
+        })
         .then((response)=>{
             return response.json();
         }).then((data)=>{

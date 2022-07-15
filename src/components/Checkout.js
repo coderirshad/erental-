@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import Order_review from './Order_review';
+import GetAuthorization from './GetAuthorization';
 
 export default function Checkout() {
  const [data, setdata] = useState({fname:"",lname:"",email:"",phone:"",companyName:"",address1:"",address2:"",country:"",townCity:"",stateProvince:"",postalZipCode:"",orderNote:"",payment:"Cash On Delivery"})
@@ -17,6 +17,10 @@ export default function Checkout() {
     e.preventDefault()
     fetch(`http://${process.env.REACT_APP_URL}/place-order`,{
         method:"PUT",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': GetAuthorization()
+          },
         body:JSON.stringify(data)
     })
   }

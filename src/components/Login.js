@@ -23,7 +23,6 @@ export default function Login() {
                 }).then((response)=>{
                     return response.json();
                 }).then((cookieData)=>{
-                    console.log(".........",cookieData.authToken);
                     setCookie('authToken',cookieData.authToken,{path:'/'})
                     setCookie('refreshToken',cookieData.refreshToken,{path:'/'})
                 })

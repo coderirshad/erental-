@@ -1,11 +1,17 @@
 import React,{useEffect,useState} from 'react';
-
+import GetAuthorization from './GetAuthorization';
 
 const Order_review=()=>{   
     
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
-        fetch("http://144.24.99.210:4545/order-review")
+        fetch("http://144.24.99.210:4545/order-review",{
+            method:"GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': GetAuthorization()
+              }          
+        })
         .then((response)=>{
             return response.json();
         }).then((data)=>{

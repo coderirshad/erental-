@@ -6,8 +6,7 @@ export default function Cluster() {
     const fetchdata = async() =>{
         const response = await fetch('http://140.238.230.250:4545/category');
         const now = await response.json() ;
-        for ( let i = 0 ; i < 5 ; i ++ ) {
-            console.log ( "Yes" ) ;
+        for ( let i = 0 ; i < 5 ; i ++ ){
             let newElement = now[i] ;
             setcategoryList(oldArray => [...oldArray, newElement]);
         }

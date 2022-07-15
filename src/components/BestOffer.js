@@ -20,7 +20,7 @@ const BestOffer = ( ) =>{
         }
         )
 
-        fetch(`http://${process.env.REACT_APP_URL}/new-product`)
+        fetch(`http://${process.env.REACT_APP_URL}/best-deal`)
         .then((response)=>{ 
             return response.json();
         })
@@ -29,7 +29,7 @@ const BestOffer = ( ) =>{
         }
         )
 
-        fetch(`http://${process.env.REACT_APP_URL}/new-product`)
+        fetch(`http://${process.env.REACT_APP_URL}/top-sold-product`)
         .then((response)=>{ 
             return response.json();
         })
@@ -82,7 +82,7 @@ const BestOffer = ( ) =>{
                     <div class="col-md-4">
                         <div class="bst-slider">
                             <div class="sec-title">
-                                <h6>Hot Offer</h6>
+                                <h6>Best Deal</h6>
                             </div>
                             <OwlCarousel  key={`carousel_${hotOffer.length}`} class="bst-body owl-carousel" items={1} nav  loop>
                         
@@ -116,7 +116,7 @@ const BestOffer = ( ) =>{
                     <div class="col-md-4">
                         <div class="bst-slider">
                             <div class="sec-title">
-                                <h6>Top Rated</h6>
+                                <h6>Top Sold</h6>
                             </div>
                             <OwlCarousel  key={`carousel_${topRated.length}`} class="bst-body owl-carousel" items={1} nav  loop>
             

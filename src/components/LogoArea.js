@@ -4,13 +4,19 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
 import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
+import GetAuthorization from './GetAuthorization';
 import { Link } from 'react-router-dom';
+import CustomizedMenus from './CustomizeMenus';
 export default function LogoArea() {
     const [cartproduct, setcartproduct] = useState([])
     const [wishlistproduct, setwishlistproduct] = useState([])
     const fetchData = () =>{
         // fetch(`http://${process.env.REACT_APP_URL}/cart`,{
-        //     method:"GET"
+        //     method:"GET",
+        //     headers: {
+        //        'Content-Type': 'application/json',
+        //        'Authorization': GetAuthorization()
+        //     }  
         // })
         // .then((response)=>{
         //     return response.json();
@@ -20,6 +26,10 @@ export default function LogoArea() {
        
         // fetch(`http://${process.env.REACT_APP_URL}/cart`,{
         //     method:"GET"
+        //     headers: {
+        //        'Content-Type': 'application/json',
+        //        'Authorization': GetAuthorization()
+        //     }  
         // })
         // .then((response)=>{
         //     return response.json();
@@ -61,34 +71,25 @@ export default function LogoArea() {
                 </div>
                 <div className="col-lg-3 col-md-2">
                     <div className="carts-area d-flex">
-                        {/* <div className="wsh-box ml-auto modified_wishlist">
-                                <button>Login
-                                <ul>
-                                    <a href='/'><li>Login</li></a>
-                                    <a href='/'><li>Login</li></a>
-                                    <a href='/'><li>Login</li></a>
-                                    <a href='/'><li>Login</li></a>
-                                    <a href='/'><li>Login</li></a>
-                                </ul>
-                                </button>
-                            
-                        </div> */}
                         <div className="wsh-box ml-auto modified_wishlist">
                             <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Voice Search">
-                                <SettingsVoiceIcon style={{fontSize:"35px"}}></SettingsVoiceIcon>
+                                <SettingsVoiceIcon style={{fontSize:"30px"}}></SettingsVoiceIcon>
                             </a>
                         </div>
                         <div className="wsh-box ml-auto modified_wishlist">
                             <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
-                                <FavoriteBorderIcon style={{fontSize:"35px"}}></FavoriteBorderIcon>
+                                <FavoriteBorderIcon style={{fontSize:"30px"}}></FavoriteBorderIcon>
                                 <span>{wishlistproduct.length}</span>
                             </a>
                         </div>
                         <div className="cart-box ml-4 modified_cart">
                             <a href="/cart" data-toggle="tooltip" data-placement="top" title="Shopping Cart" className="cart-btn ">
-                                <AddShoppingCartIcon style={{fontSize:"35px"}}></AddShoppingCartIcon>
+                                <AddShoppingCartIcon style={{fontSize:"30px"}}></AddShoppingCartIcon>
                                 <span>{cartproduct.length}</span>
                             </a>
+                        </div>
+                        <div style={{marginLeft:"50px"}} className="wsh-box ml-auto modified_wishlist">
+                                <CustomizedMenus></CustomizedMenus>                            
                         </div>
                     </div>
                 </div>
