@@ -3,7 +3,7 @@ import {Link, useNavigate} from 'react-router-dom';
 export default function MainMenuArea2() {
     const [categoryList, setcategoryList] = useState([]);
     const fetchdata = async() =>{
-        const response = await fetch('http://140.238.230.250:4545/category');
+        const response = await fetch(`http://${process.env.REACT_APP_URL}/category`);
         setcategoryList(await response.json());
     }
     useEffect(() => {
@@ -11,9 +11,15 @@ export default function MainMenuArea2() {
     }, []);
 
     const navigate = useNavigate();
-    const handleClick = async ( categoryId ) =>{
-        console.log ( categoryId ) ;
-        navigate('/productList',{state:{id: categoryId }});
+    const handleClick = async ( subcategoryId ) =>{
+        navigate('/productList',{state:{id: subcategoryId }});
+    }
+    const List = [] ;
+    const handleClick1 = async ( category ) =>{
+        category.subcategory.map ( (subcategory) => (
+            List.push ( subcategory.id )
+        ) ) ;
+        navigate('/allProductList',{state:{ list : List }});
     }
     return (
     <section className="menu-area2" id = "categoryShift">
@@ -22,19 +28,21 @@ export default function MainMenuArea2() {
                     <div className="col-lg-3 col-md-0">
                         {/* <div className="dashBoard"><Link to={'/admin'}><h4>DASHBOARD</h4></Link></div> */}
                         <div className="sidemenu">
-                            <p>All Categories <i className="fa fa-bars"></i></p>
+                            <h4 className='row2'>All Categories <i className="fa fa-bars"></i></h4>
                             <ul className="list-unstyled gt-menu" id = "try1">
                                 {categoryList.map(( category ) => (
                                 <li>
-                                    <a><img src="images/m-cloth.png" alt=""/>{category.name}<i className="fa fa-angle-right"></i></a>
+                                    <a><img src="images/m-cloth.png" alt=""/>
+                                        <button className = "button" onClick= {() => handleClick1( category ) } >
+                                            {category.name}
+                                        </button>
+                                    <i className="fa fa-angle-right"></i></a>
                                     <div className="mega-menu" id = "try" >
                                         <div className="row">
                                             <div className="col-md-4">
                                                 <div className="smartphone">
                                                          <li>
-                                                            <button className = "button">
-                                                            <h4>{category.name}</h4>
-                                                            </button>
+                                                            <strong><h4>{category.name}</h4></strong>
                                                         </li>
                                                     {   
                                                         category.subcategory.map ( (subcategory) => (

@@ -1,8 +1,27 @@
-import React from 'react'
+import React , { useState , useEffect} from 'react'
+import {Link, useNavigate} from 'react-router-dom';
 
 export default function FooterArea() {
+    const [tagList, settagList] = useState([]);
+    const fetchdata = async() =>{
+        const response = await fetch(`http://${process.env.REACT_APP_URL}/tag`);
+        const now = await response.json() ;
+        let sz = now.length ;
+        for ( let i = 0 ; i < sz - 6 ; i ++ ) {
+            now.pop() ;
+        }
+        settagList(now);
+    }
+    useEffect(() => {
+        fetchdata();
+    }, []);
+
+    const navigate = useNavigate();
+    const handleClick = async ( tagIid ) =>{
+        navigate('/tagProductList',{state:{id:  tagIid }});
+    }
   return (
-    <section className="footer-top ">
+    <section className="footer-top" id = 'foot'>
     <div className="container">
         <div className="row">
             <div className="col-md-3">
@@ -10,18 +29,16 @@ export default function FooterArea() {
                     <h5>Contact Info</h5>
                     <div className="f-add">
                         <i className="fa fa-map-marker"></i>
-                        <span>Address :</span>
-                        <p>795 South Park Avenue, New York, NY USA 94107</p>
+                        <span>Address : CITY CENTER MALL, MUMBAI</span>
                     </div>
                     <div className="f-email">
                         <i className="fa fa-envelope"></i>
-                        <span>Email :</span>
-                        <p>enquery@domain.com</p>
+                        <span>Email : Info@erentals.in</span>
                     </div>
                     <div className="f-phn">
                         <i className="fa fa-phone"></i>
-                        <span>Phone :</span>
-                        <p>+1 908 875 7678</p>
+                        <span>Phone : +91 9867348165</span>
+                        
                     </div>
                     <div className="f-social">
                         <ul className="list-unstyled list-inline">
@@ -36,15 +53,16 @@ export default function FooterArea() {
             </div>
             <div className="col-md-3">
                 <div className="f-cat">
-                    <h5>Categories</h5>
+                    <h5>Tags</h5>
                     <ul className="list-unstyled">
-                        <li><a href=""><i className="fa fa-angle-right"></i>Clothing</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Electronics</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Smartphones & Tablets</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Computer & Office</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Home Appliances</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Leather & Shoes</a></li>
-                        <li><a href=""><i className="fa fa-angle-right"></i>Kids & Babies</a></li>
+                    {
+                        tagList.map((tag) => (  
+                        <li>                 
+                        <button className = 'footbutton' onClick= {() => handleClick ( tag.id ) } >
+                            <p><a href=""><i className="fa fa-angle-right"></i><strong>{tag.name}</strong></a></p>
+                        </button>
+                        </li>
+                    ))}
                     </ul>
                 </div>
             </div>

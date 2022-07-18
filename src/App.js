@@ -23,6 +23,8 @@ import ProductList from "./components/ProductList";
 import SingalProduct from "./components/SingalProduct";
 import AboutProduct from "./components/AboutProduct";
 import AddProduct from "./components/AddProduct";
+import TagProductList from "./components/TagProductList";
+import AllProductList from "./components/AllProductList";
 class App extends React.Component {
   render() {
     return (
@@ -55,6 +57,8 @@ class App extends React.Component {
           <Route exact path="/aboutUs" element={<AboutUs />} />
           <Route exact path="/eachCategory" element={<EachCategory />} />
           <Route exact path="/productList" element={<ProductList />} />
+          <Route exact path='/tagProductList' element={<TagProductList/>} />
+          <Route exact path='/allProductList' element={<AllProductList/>} />
         </Routes>
         <FooterArea></FooterArea>
       </div>

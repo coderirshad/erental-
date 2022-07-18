@@ -1,27 +1,27 @@
 import React , {useState , useEffect } from 'react';
 import {useLocation} from 'react-router-dom';
 import AboutProduct from './AboutProduct';
-const ProductList = () => {
+const TagProductList = () => {
 
   const location = useLocation();
 
-  const [productList, setProductList] = useState([]);
+  const [tagproductList, settagProductList] = useState([]);
 
   useEffect(() => {
     fetchdata();
   }, []);
   const fetchdata = async() =>{
-    const response = await fetch(`http://${process.env.REACT_APP_URL}/category/${location.state.id}/product`)
+    const response = await fetch(`http://${process.env.REACT_APP_URL}/product/tag/${location.state.id}`)
         .then((response)=>{
             return response.json();
         }).then((data)=>{
-             setProductList (data) ;
+            settagProductList (data) ;
         })
   }
     return (
-      !productList.length ? <h1></h1> : (
+      !tagproductList.length ? <h1></h1> : (
         <div className = "parent">
-          {productList.map(( product ) => (
+          {tagproductList.map(( product ) => (
             <AboutProduct product = { product } />
           ))}
         </div>
@@ -30,4 +30,4 @@ const ProductList = () => {
   
 };
 
-export default ProductList ;
+export default TagProductList ;

@@ -5,6 +5,7 @@ import FrontBlog from "./FrontBlog";
 import FullBanner from "./FullBanner";
 import BestOffer from "./BestOffer";
 import Service from "./Service";
+import CategorySlider from "./CategorySlider";
 
 
 const Home = ()=>{
@@ -17,6 +18,7 @@ const Home = ()=>{
             <HotDeals></HotDeals>
             <Service></Service>            
             <FeatureProduct></FeatureProduct> 
+            <CategorySlider></CategorySlider>
             <FullBanner></FullBanner>
             <BestOffer></BestOffer>
             <FrontBlog></FrontBlog>                 

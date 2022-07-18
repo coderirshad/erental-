@@ -2,7 +2,7 @@ import React from "react";
 
 const Service = ( ) =>{
     return (
-        <section class="service-area">
+        <section class="service-area" id = "services">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
@@ -11,7 +11,7 @@ const Service = ( ) =>{
                                 <img src="images/service-1.png" alt=""/>
                             </div>
                             <div class="">
-                                <h6>Free Shipping</h6>
+                                <h6>Affordable Transportation</h6>
                                 <p>Ullam et rem cum totam accusantium quos dolorem.</p>
                             </div>
                         </div>

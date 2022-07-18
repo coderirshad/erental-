@@ -12,7 +12,7 @@ export default function AboutProduct( {product} ) {
       
     <button className = "button1" onClick= {() => handleClick( product.id ) } >
           <a>
-          <img class = "productImage"src= {product.image } alt="Italian Trulli"></img>
+          <img class = "productImage"src= {product.images[0] } alt="Italian Trulli"></img>
           <div className="productDetails">
             <h4 >{product.name}</h4>
             <p>Stock : {product.Stock}</p>

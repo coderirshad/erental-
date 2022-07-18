@@ -16,7 +16,7 @@ export default function HotDeals() {
         fetchData();
     },[])
   return (
-    <div className="container">
+    <div className="container" id = "imageShift1">
     <section className="product-area">
         <div className="container">
             <div className="row">

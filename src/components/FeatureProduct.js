@@ -34,7 +34,7 @@ import { Link } from 'react-router-dom';
                          <div className="tab-content">
                               <h2>FEATURE PRODUCT</h2>
                             <div className="tab-pane fade show active" id="all" role="tabpanel">
-                            <OwlCarousel key={`carousel_${product.length}`}  className="tab-slider owl-carousel" items={4}  nav   loop >
+                            <OwlCarousel key={`carousel_${product.length}`}  className="tab-slider owl-carousel"  items={5}  nav   loop >
                             {
                                product.map((data) => (                      
                                     <div className="tab-item" style={{margin:"5px"}}>
