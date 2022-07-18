@@ -22,7 +22,6 @@ const Home = ()=>{
             <FullBanner></FullBanner>
             <BestOffer></BestOffer>
             <FrontBlog></FrontBlog>                 
-         
         </div>
      )
 }

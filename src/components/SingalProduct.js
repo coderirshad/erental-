@@ -30,7 +30,6 @@ const SingalProduct = () => {
   }
 
   const AddToCart = ()=>{  
-    console.log(GetAuthorization());
     fetch(`http://${process.env.REACT_APP_URL}/cart`,{
         method:"POST",
         headers: {
@@ -46,7 +45,6 @@ const SingalProduct = () => {
            }
         )
     }).then((response)=>{
-        // console.log("--->",response.status);
     })
     navigate('/');
   }

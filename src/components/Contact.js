@@ -1,9 +1,13 @@
 import React from 'react'
+import SimpleMap from './SimpleMap';
 
-export default function Contact() {
+export default function Contact() { 
+    
   return (
     <div id='contact'><section className="contact-area">
-    <div id="map"></div>
+    <div id='map'>
+          <SimpleMap></SimpleMap>
+    </div>
     <div className="container">
         <div className="row">
             <div className="col-lg-4 col-md-5">

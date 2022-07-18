@@ -12,16 +12,17 @@ import Invoice from "./Invoice";
 const AdminNav = () => {
   return (
     <>
+
       <Dash_Topbar></Dash_Topbar>
       <LogoArea></LogoArea>
       <Dash_menuarea></Dash_menuarea>
       <Dash_Hero></Dash_Hero>
+          <Dash_side></Dash_side>
 
-      <Dash_side></Dash_side>
+   <Invoice></Invoice>
 
-      {/* <Invoice></Invoice> */}
     </>
-  );
-};
+     )
+}
 
 export default AdminNav;

@@ -7,12 +7,13 @@ const NavigationBar = ()=>{
     const [user, setuser] = useState({});
     const [role,setrole] = useState("customer");
     const [status,setstatus] = useState(200);
-    const fetchData = ( ) =>{
+    const token= GetAuthorization();
+    const fetchData = ( ) =>{        
         fetch(`http://${process.env.REACT_APP_URL}/user`,{
             method:'GET',
             headers:{
                 'Content-Type': 'application/json',
-                'Authorization': GetAuthorization()
+                'Authorization': token
             }
         }).then((response)=>{
             setstatus(response.status);
@@ -23,7 +24,7 @@ const NavigationBar = ()=>{
         for(var i=0;i<user.roles.length;i++){
             if(user.roles[i]=='admin'){
                 setrole("admin");
-            }
+            } 
         }
     }
     
@@ -31,7 +32,7 @@ const NavigationBar = ()=>{
         return () => {
             fetchData();
         };
-    }, [])
+    }, [GetAuthorization])
      return ( 
         <> 
             {(role=="customer" || status!=200)?<UserNav></UserNav>:<AdminNav></AdminNav>}

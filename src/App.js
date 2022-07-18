@@ -23,6 +23,7 @@ import ProductList from "./components/ProductList";
 import SingalProduct from "./components/SingalProduct";
 import AboutProduct from "./components/AboutProduct";
 import AddProduct from "./components/AddProduct";
+import SocialMediaLink from "./components/SocialMediaLink";
 import TagProductList from "./components/TagProductList";
 import AllProductList from "./components/AllProductList";
 class App extends React.Component {
@@ -45,11 +46,7 @@ class App extends React.Component {
           <Route exact path="/product/:id" element={<SingalProduct />}></Route>
 
           <Route exact path="/admin" element={<AdminHome />}></Route>
-          <Route
-            exact
-            path="/admin/:id"
-            element={<Dash_RightContent />}
-          ></Route>
+          <Route exact path="/admin/:id" element={<Dash_RightContent/>}></Route>
           <Route exact path="/addproduct" element={<AddProduct />}></Route>
           <Route exact path="/admin/report" element={<Report />}></Route>
           <Route exact path="/admin/withdraw" element={<Withdraw />}></Route>
@@ -60,6 +57,7 @@ class App extends React.Component {
           <Route exact path='/tagProductList' element={<TagProductList/>} />
           <Route exact path='/allProductList' element={<AllProductList/>} />
         </Routes>
+        <SocialMediaLink></SocialMediaLink>
         <FooterArea></FooterArea>
       </div>
     );
