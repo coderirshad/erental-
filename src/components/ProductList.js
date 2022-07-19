@@ -9,7 +9,7 @@ const ProductList = () => {
 
   useEffect(() => {
     fetchdata();
-  }, []);
+  }, [location.state.id]);
   const fetchdata = async() =>{
     const response = await fetch(`http://${process.env.REACT_APP_URL}/category/${location.state.id}/product`)
         .then((response)=>{

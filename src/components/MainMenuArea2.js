@@ -14,13 +14,6 @@ export default function MainMenuArea2() {
     const handleClick = async ( subcategoryId ) =>{
         navigate('/productList',{state:{id: subcategoryId }});
     }
-    const List = [] ;
-    const handleClick1 = async ( category ) =>{
-        category.subcategory.map ( (subcategory) => (
-            List.push ( subcategory.id )
-        ) ) ;
-        navigate('/allProductList',{state:{ list : List }});
-    }
     return (
     <section className="menu-area2" id = "categoryShift">
             <div className="container">
@@ -33,7 +26,7 @@ export default function MainMenuArea2() {
                                 {categoryList.map(( category ) => (
                                 <li>
                                     <a><img src="images/m-cloth.png" alt=""/>
-                                        <button className = "button" onClick= {() => handleClick1( category ) } >
+                                        <button className = "button" onClick= {() => handleClick( category.id ) } >
                                             {category.name}
                                         </button>
                                     <i className="fa fa-angle-right"></i></a>

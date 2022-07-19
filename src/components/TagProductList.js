@@ -9,7 +9,7 @@ const TagProductList = () => {
 
   useEffect(() => {
     fetchdata();
-  }, []);
+  }, [location.state.id]);
   const fetchdata = async() =>{
     const response = await fetch(`http://${process.env.REACT_APP_URL}/product/tag/${location.state.id}`)
         .then((response)=>{
