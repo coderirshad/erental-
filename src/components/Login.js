@@ -1,9 +1,13 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie';
+import { Alert } from '@mui/material';
 export default function Login() {
     const [cookies, setCookie] = useCookies(['user']);
     const [data, setdata] = useState({user_id:"",password:""})
+    const [message, setmessage] = useState("welcome to erentals login")
+    const [status, setstatus] = useState(0);
+    const [cookieData, setCookieData] = useState({});
     const navigate = useNavigate();
     const setValue = (e) =>{
        setdata((pre)=>{
@@ -13,19 +17,21 @@ export default function Login() {
            }})
       
     }
-    const Submit = (e) =>{
+    const Submit = async (e) =>{
             
             e.preventDefault()
             try{
-                fetch(`http://${process.env.REACT_APP_URL}/login`,{
+                await fetch(`http://${process.env.REACT_APP_URL}/login`,{
                     method:"POST",
                     body:JSON.stringify(data)
                 }).then((response)=>{
+                    setstatus(response.status);               
                     return response.json();
-                }).then((cookieData)=>{
-                    setCookie('authToken',cookieData.authToken,{path:'/'})
-                    setCookie('refreshToken',cookieData.refreshToken,{path:'/'})
+                }).then((cookieData1)=>{
+                    setCookieData(cookieData1)                    
                 })
+
+               
             }
             catch(error){
                 if(error.message){
@@ -37,9 +43,22 @@ export default function Login() {
                 else{
                     console.log("Error",error.message);
                 }
-            }
-            navigate('/')     
+            }       
      }
+     useEffect(() => {
+        console.log(status)
+        if(status==0){
+            setmessage("welcome to erentals login")
+        }
+        else if(status!=200){
+            setmessage(cookieData.message);
+        }
+        else{
+            setCookie('authToken',cookieData?.authToken,{path:'/'})
+            setCookie('refreshToken',cookieData?.refreshToken,{path:'/'})
+            navigate('/') 
+        }
+     }, [cookieData]) 
   return (
     <div>
         <section className="register">
@@ -47,6 +66,7 @@ export default function Login() {
                 <div className="row">
                     <div className="col-md-12">
                         <form action="/">
+                            <Alert style={{fontSize:"20px",color:"red"}}>{message}</Alert>
                             <h5>Login</h5>
                             <div className="row">
                                 <div className="col-md-12">

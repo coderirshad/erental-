@@ -40,15 +40,6 @@ export default function FooterArea() {
                         <span>Phone : +91 9867348165</span>
                         
                     </div>
-                    <div className="f-social">
-                        <ul className="list-unstyled list-inline">
-                            <li className="list-inline-item"><a href=""><i className="fa fa-facebook"></i></a></li>
-                            <li className="list-inline-item"><a href=""><i className="fa fa-twitter"></i></a></li>
-                            <li className="list-inline-item"><a href=""><i className="fa fa-linkedin"></i></a></li>
-                            <li className="list-inline-item"><a href=""><i className="fa fa-google-plus"></i></a></li>
-                            <li className="list-inline-item"><a href=""><i className="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <div className="col-md-3">

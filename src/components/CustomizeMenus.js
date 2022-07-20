@@ -3,11 +3,7 @@ import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
@@ -15,6 +11,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 import { Link } from 'react-router-dom';
+import { CheckAuth } from './CheckAuth';
 const StyledMenu = styled((props) => (
   <Menu
     elevation={0}
@@ -78,7 +75,7 @@ export default function CustomizedMenus() {
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        Login
+        {CheckAuth()==true?"Logout":"Login"}
       </Button>
       <StyledMenu
         id="demo-customized-menu"

@@ -12,6 +12,7 @@ const SingalProduct = () => {
   const id=params.id;
   const [product, setproduct] = useState([])
   const [quantity, setquantity] = useState(1)
+  const [day, setday] = useState(1)
   const [color, setcolor] = useState("")
   const [size, setsize] = useState("")
   const [imageList, setimageList] = useState([])
@@ -28,6 +29,13 @@ const SingalProduct = () => {
     if(quantity>1)setquantity(quantity-1);
     else alert("Sorry You can't select less than 0!")
   }
+  const IncrementDay=()=>{
+    setday(day+1);
+  }
+  const DecrementDay=()=>{
+    if(day>1)setday(day-1);
+    else alert("Sorry You can't select less than 0!")
+  }
 
   const AddToCart = ()=>{  
     fetch(`http://${process.env.REACT_APP_URL}/cart`,{
@@ -41,12 +49,13 @@ const SingalProduct = () => {
                 cart_item_id:id,
                 quantity:quantity,
                 color:color,
-                size:size
+                size:size,
+                day:day
            }
         )
     }).then((response)=>{
     })
-    navigate('/');
+    navigate('/cart');
   }
   const fetchData = ()=>{
     fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`)
@@ -55,12 +64,13 @@ const SingalProduct = () => {
     })
     .then((data)=>{       
         setproduct(data);
-        setimageList(data.image);
+        setimageList(data.images);
         setcolorList(data.attribute.color);
         setsizeList(data.attribute.size);
     }
     )
   }
+  console.log(product)
   useEffect(() => {
     fetchData()
   }, [])
@@ -72,30 +82,14 @@ const SingalProduct = () => {
                     <div class="col-md-9">
                         <div class="row">
                             <div class="col-md-5">
-                                <div class="sg-img">
-                                    <div class="tab-content">
-                                    {/* {imageList.map((imagelink,imageid)=>(
-                                         <div key={imageid} class="tab-pane fade show active" id="sg1" role="tabpanel">
-                                            <img src={imagelink} alt="" class="img-fluid"/>
+                                <div class="sg-img">                                    
+                                    <OwlCarousel key={`carousel_${imageList.length}`} className="tab-content owl-carousel" items={1} nav loop>
+                                    {imageList.map((imagelink,imageid)=>(
+                                         <div key={imageid} className="tab-pane fade show active" id="sg1" role="tabpanel">
+                                            <img src={imagelink} alt="" className="img-fluid"/>
                                         </div>
-                                    ))} */}
-                                        
-                                        {/* <div class="tab-pane" id="sg2" role="tabpanel">
-                                            <img src={product.image} alt="" class="img-fluid"/>
-                                        </div>
-                                        <div class="tab-pane" id="sg3" role="tabpanel">
-                                            <img src="images/tab-3.png" alt="" class="img-fluid"/>
-                                        </div>
-                                        <div class="tab-pane" id="sg4" role="tabpanel">
-                                            <img src="images/tab-4.png" alt="" class="img-fluid"/>
-                                        </div> */}
-                                    </div>
-                                    <div class="nav d-flex justify-content-between">
-                                        <a class="nav-item nav-link active" data-toggle="tab" href="#sg1"><img src="images/tab-1.png" alt=""/></a>
-                                        <a class="nav-item nav-link" data-toggle="tab" href="#sg2"><img src="images/tab-2.png" alt=""/></a>
-                                        <a class="nav-item nav-link" data-toggle="tab" href="#sg3"><img src="images/tab-3.png" alt=""/></a>
-                                        <a class="nav-item nav-link" data-toggle="tab" href="#sg4"><img src="images/tab-4.png" alt=""/></a>
-                                    </div>
+                                    ))}
+                                    </OwlCarousel>                                    
                                 </div>
                             </div>
                             <div class="col-md-7">
@@ -131,9 +125,9 @@ const SingalProduct = () => {
                                              <ul class="list-unstyled list-inline">
                                              <li>Color :</li>
                                                {colorList.map((data,id1)=>(                                                
-                                                        <li class="list-inline-item" key={id1}>
+                                                        <li className="list-inline-item" key={id1}>
                                                             <input onClick={()=>setcolor(data.name)} style={{backgroundColor:`${data.color_code}`}} type="radio" id="color-2"  name="color" value={data.name}/>
-                                                            <label for="color-2"><span><i class="fa fa-check"></i></span></label>
+                                                            <label for="color-2"><span><i className="fa fa-check"></i></span></label>
                                                         </li>
                                                ))}
                                                 
@@ -154,6 +148,16 @@ const SingalProduct = () => {
                                          </div>
                                          <div class="qty-box">
                                              <ul class="list-unstyled list-inline">
+                                                 <li class="list-inline-item">Day : </li>
+                                                 <li class="list-inline-item quantity buttons_added">
+                                                     <input onClick={()=>DecrementDay()} style={{color:"red",fontSize:"25px"}} type="button" value="-" class="minus"/>
+                                                     <input onClick={()=>setday(this.value)}  type="number" step="1" min="1" max="10" value={day} class="qty text" size="4" readonly/>
+                                                     <input onClick={()=>IncrementDay()} style={{color:"green",fontSize:"25px"}} type="button" value="+" class="plus"/>
+                                                 </li>
+                                             </ul>
+                                         </div>
+                                         <div class="qty-box">
+                                             <ul class="list-unstyled list-inline">
                                                  <li class="list-inline-item">Qty : </li>
                                                  <li class="list-inline-item quantity buttons_added">
                                                      <input onClick={()=>DecrementQuantity()} style={{color:"red",fontSize:"25px"}} type="button" value="-" class="minus"/>
@@ -163,7 +167,7 @@ const SingalProduct = () => {
                                              </ul>
                                          </div>
                                          <div class="pro-btns">
-                                              <a onClick={()=>AddToCart()} class="cart">Add To Cart</a>
+                                              <a onClick={()=>AddToCart()} href='/cart' class="cart">Add To Cart</a>
                                               <a href="" class="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><FavoriteBorderIcon></FavoriteBorderIcon></a>
                                               <a href="" class="fav-com"  data-toggle="tooltip" data-placement="top" title="Compare"><FavoriteBorderIcon></FavoriteBorderIcon></a>
                                          </div>

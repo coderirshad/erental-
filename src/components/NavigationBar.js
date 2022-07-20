@@ -2,40 +2,42 @@ import {React,useState,useEffect} from "react";
 import GetAuthorization from "./GetAuthorization";
 import AdminNav from "./AdminNav";
 import UserNav from "./UserNav";
+import { CheckAuth } from "./CheckAuth";
 
 const NavigationBar = ()=>{
     const [user, setuser] = useState({});
     const [role,setrole] = useState("customer");
-    const [status,setstatus] = useState(200);
-    const token= GetAuthorization();
-    const fetchData = ( ) =>{        
-        fetch(`http://${process.env.REACT_APP_URL}/user`,{
-            method:'GET',
-            headers:{
-                'Content-Type': 'application/json',
-                'Authorization': token
-            }
-        }).then((response)=>{
-            setstatus(response.status);
-            return response.json(); 
-        }).then((data)=>{  
-            setuser(data);   
-        })
-        for(var i=0;i<user.roles.length;i++){
-            if(user.roles[i]=='admin'){
-                setrole("admin");
-            } 
+    const [loading,setloading] = useState(true); 
+
+    const fetchData = ( ) =>{ 
+        setloading(true);
+        if(CheckAuth()){              
+            fetch(`http://${process.env.REACT_APP_URL}/user`,{
+                method:'GET',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Authorization': GetAuthorization()
+                }
+            }).then((response)=>{
+                return response.json(); 
+            }).then((data)=>{  
+                setuser(data); 
+                setloading(false)  
+            })                    
         }
     }
-    
     useEffect(() => {
-        return () => {
-            fetchData();
-        };
-    }, [GetAuthorization])
+       fetchData()
+    }, [])
+    useEffect(() => {
+        if(user?.roles?.includes('admin')){
+            setrole("admin")
+        }
+    }, [user])
      return ( 
         <> 
-            {(role=="customer" || status!=200)?<UserNav></UserNav>:<AdminNav></AdminNav>}
+            {/* use loading State for better UI (animation while loading website) */}
+            {(role=="admin")?<AdminNav></AdminNav>:<UserNav></UserNav>}
         </>
      )
 }

@@ -12,7 +12,6 @@ import FooterArea from "./components/FooterArea";
 import Coupon from "./components/Coupon";
 import CategoryBox from "./components/CategoryBox";
 import Cartdetail from "./components/Cartdetail";
-import AdminHome from "./components/AdminHome";
 import Registration from "./components/Registration";
 import Withdraw from "./components/Withdraw";
 import Wishlist from "./components/Wishlist";
@@ -31,8 +30,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <NavigationBar></NavigationBar>
-
-        {/* <AdminNav></AdminNav> */}
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/login" element={<Login />}></Route>
@@ -45,7 +42,6 @@ class App extends React.Component {
           <Route exact path="/cart" element={<Cartdetail />}></Route>
           <Route exact path="/product/:id" element={<SingalProduct />}></Route>
 
-          <Route exact path="/admin" element={<AdminHome />}></Route>
           <Route exact path="/admin/:id" element={<Dash_RightContent/>}></Route>
           <Route exact path="/addproduct" element={<AddProduct />}></Route>
           <Route exact path="/admin/report" element={<Report />}></Route>

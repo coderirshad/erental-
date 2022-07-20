@@ -5,8 +5,7 @@ import Dash_RightContent from "./Dash_RightContent";
 
 const AdminHome = ()=>{
      return (
-        <>  
-          <AdminNav></AdminNav>
+        <> 
           <Dash_RightContent/>          
         </>
      )

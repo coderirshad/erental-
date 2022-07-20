@@ -1,8 +1,10 @@
+import { Alert } from '@mui/material';
 import {React, useState} from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 
 export default function Registration() {
     const [data, setdata] = useState({first_name:"",last_name:"",email:"",mobile:"",password:"",confirm_password:"",is_terms_read:"false",subscribe:"false"})
+    const [message,setmessage] = useState("welcome to erentals registration");
     const navigate = useNavigate();
     const setValue = (e) =>{
        setdata((pre)=>{
@@ -14,13 +16,20 @@ export default function Registration() {
     }
     
     const Submit = (e) =>{
-        console.log(data)
             e.preventDefault()
             fetch(`http://${process.env.REACT_APP_URL}/register`,{
                 method:"POST",
                 body:JSON.stringify(data)
-            })    
-           navigate('/login')  
+            }).then((response)=>{
+                if(response.status==200){
+                    navigate('/login')  
+                }
+                else{
+                    setmessage(response.message);
+                }
+                
+                return response.json();
+            })
      }
 
   return (
@@ -29,8 +38,10 @@ export default function Registration() {
         <section className="register">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12">
-                        <form action="#">
+               
+                    <div className="col-md-12">                      
+                        <form action="#"> 
+                            <Alert style={{fontSize:"20px",color:"red"}}>{message}</Alert>
                             <h5>Registration</h5>
                             <div className="row">
                                 <div className="col-md-12">
@@ -51,11 +62,11 @@ export default function Registration() {
                                 </div>
                                 <div className="col-md-12">
                                     <label>Password*</label>
-                                    <input onChange={setValue} type="text" name="password" placeholder="Password should be more than 6 character"/>
+                                    <input onChange={setValue} type="password" name="password" placeholder="Password should be more than 6 character"/>
                                 </div>
                                 <div className="col-md-12">
                                     <label>Confirm Password*</label>
-                                    <input onChange={setValue} type="text" name="confirm_password" placeholder="Confirm your password"/>
+                                    <input onChange={setValue} type="password" name="confirm_password" placeholder="Confirm your password"/>
                                 </div>
                                 <div className="col-md-7">
                                     <div>

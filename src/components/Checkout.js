@@ -1,9 +1,11 @@
-import React from 'react';
-import { useState } from 'react';
+import {React, useState, useEffect } from 'react';
 import GetAuthorization from './GetAuthorization';
 
 export default function Checkout() {
  const [data, setdata] = useState({fname:"",lname:"",email:"",phone:"",companyName:"",address1:"",address2:"",country:"",townCity:"",stateProvince:"",postalZipCode:"",orderNote:"",payment:"Cash On Delivery"})
+ const [orderReview,setOrderReview]=useState({})
+ const [cart,setcart]=useState([])
+ const [paymentMethod,setPaymentMethod]=useState([])
  const setValue = (e) =>{
     setdata((pre)=>{
         return{
@@ -12,7 +14,32 @@ export default function Checkout() {
         }})
    
  }
- 
+ const fetchData = ( ) =>{
+    fetch(`http://${process.env.REACT_APP_URL}/order-review`,{
+        method:'GET',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': GetAuthorization()
+        }
+    }).then((response)=>{
+        return response.json();
+    }).then((review)=>{
+         setOrderReview(review)
+         setcart(review.cart);
+    })
+    fetch(`http://${process.env.REACT_APP_URL}/payment-method`,{
+        method:'GET',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': GetAuthorization()
+        }
+    }).then((response)=>{
+        return response.json();
+    }).then((pay)=>{
+         setPaymentMethod(pay);
+    })
+ }
+
  const placeOrder = (e) =>{
     e.preventDefault()
     fetch(`http://${process.env.REACT_APP_URL}/place-order`,{
@@ -24,6 +51,9 @@ export default function Checkout() {
         body:JSON.stringify(data)
     })
   }
+  useEffect(() => {
+    fetchData()
+  }, [])
  return (
     <section class="checkout">
     <div class="container">
@@ -100,39 +130,22 @@ export default function Checkout() {
                             <div class="review-box">
                                 <ul class="list-unstyled">
                                     <li>Product <span>Total</span></li>
-                                    <li class="d-flex justify-content-between">
-                                        <div class="pro">
-                                            <img src="images/sbar-1.png" alt=""/>
-                                            <p>Product name here</p>
-                                            <span>1 X $49.00</span>
-                                        </div>
-                                        <div class="prc">
-                                            <p>$49.00</p>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex justify-content-between">
-                                        <div class="pro">
-                                            <img src="images/sbar-2.png" alt=""/>
-                                            <p>Product name here</p>
-                                            <span>1 X $89.00</span>
-                                        </div>
-                                        <div class="prc">
-                                            <p>$89.00</p>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex justify-content-between">
-                                        <div class="pro">
-                                            <img src="images/sbar-3.png" alt=""/>
-                                            <p>Product name here</p>
-                                            <span>1 X $29.00</span>
-                                        </div>
-                                        <div class="prc">
-                                            <p>$29.00</p>
-                                        </div>
-                                    </li>
-                                    <li>Sub Total <span>$167.00</span></li>
-                                    <li>Shipping & Tax <span>$00.00</span></li>
-                                    <li>Grand Total <span>$167.00</span></li>
+                                    {cart.map((singleProduct,id)=>(
+                                        <li key={id} className="d-flex justify-content-between">
+                                            <div className="pro">
+                                                <img src="images/sbar-1.png" alt=""/>
+                                                <p>{singleProduct.name}</p>
+                                                <span>{singleProduct.quantity} X ${singleProduct.price}</span>
+                                            </div>
+                                            <div className="prc">
+                                                <p>${singleProduct.total}</p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                   
+                                    <li>Sub Total <span>${orderReview.subTotal}</span></li>
+                                    <li>Shipping & Tax <span>${orderReview.shiipingTax}</span></li>
+                                    <li>Grand Total <span>${orderReview.grandTotal}</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -142,31 +155,17 @@ export default function Checkout() {
                             <h5>Payment Method</h5>
                             <div class="pay-box">
                                 <ul class="list-unstyled">
-                                    <li>
-                                        <input onClick={setValue} type="radio" id="pay1" name="payment" value="Cash On Delivery" checked/>
-                                        <label for="pay1"><span><i class="fa fa-circle"></i></span>Cash On Delivery</label>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque sint placeat illo animi quis minus accusantium ad doloribus, odit explicabo asperiores quidem.</p>
-                                    </li>
-                                    <li>
-                                        <input onClick={setValue} type="radio" id="pay2" name="payment" value="Direct Bank Transfer"/>
-                                        <label for="pay2"><span><i class="fa fa-circle"></i></span>Direct Bank Transfer</label>
-                                    </li>
-                                    <li>
-                                        <input onClick={setValue} type="radio" id="pay3" name="payment" value="Cheque Payment"/>
-                                        <label for="pay3"><span><i class="fa fa-circle"></i></span>Cheque Payment</label>
-                                    </li>
-                                    <li>
-                                        <input onClick={setValue} type="radio" id="pay4" name="payment" value="Paypal"/>
-                                        <label for="pay4"><span><i class="fa fa-circle"></i></span>Paypal</label>
-                                    </li>
-                                    <li>
-                                        <input onClick={setValue} type="radio" id="pay5" name="payment" value="Payoneer"/>
-                                        <label for="pay5"><span><i class="fa fa-circle"></i></span>Payoneer</label>
-                                    </li>
+                                    {paymentMethod.map((pay,id)=>(
+                                        <li key={id}>
+                                            <input onClick={setValue} type="radio" id="pay1" name="payment" value={pay.name} checked/>
+                                            <label for={pay.id}><span><i className="fa fa-circle"></i></span>{pay.name}</label>
+                                            <p>{pay.details}</p>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>
-                        <button onClick={placeOrder} href="/" type="button" name="button" class="ord-btn">Place Order</button>
+                        <button onClick={placeOrder} href="/" type="button" name="button" className="ord-btn">Place Order</button>
                     </div>
                 </div>
             </div>

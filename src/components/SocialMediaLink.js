@@ -14,11 +14,11 @@ const SocialMediaLink = ( ) =>{
                     <h5 id="subafter">Subscribe for top stories!</h5>
                     <ul>
                         <li className="email"><input type="text" placeholder="Enter Your Email"/><SubscriptionsIcon style={{fontSize:"30px",marginLeft:"12px"}}></SubscriptionsIcon></li>
-                        <li><a href="https://www.facebook.com/erentals.in" ><FacebookIcon></FacebookIcon></a></li>
-                        <li><a href="https://www.youtube.com/channel/UC6zM6tvtMNeBqZ9yLKs36qQ" ><YouTubeIcon></YouTubeIcon></a></li>
-                        <li><a href="https://www.instagram.com/erentalshnd/" ><InstagramIcon></InstagramIcon></a></li>
-                        <li><a href="https://www.linkedin.com/company/erentals/" ><LinkedInIcon></LinkedInIcon></a></li>
-                        <li><a href="https://wa.me/918652348165?text=" ><WhatsAppIcon></WhatsAppIcon></a></li>
+                        <li><a href="https://www.facebook.com/erentals.in" target="_blank" ><FacebookIcon></FacebookIcon></a></li>
+                        <li><a href="https://www.youtube.com/channel/UC6zM6tvtMNeBqZ9yLKs36qQ" target="_blank" ><YouTubeIcon></YouTubeIcon></a></li>
+                        <li><a href="https://www.instagram.com/erentalshnd/" target="_blank" ><InstagramIcon></InstagramIcon></a></li>
+                        <li><a href="https://www.linkedin.com/company/erentals/" target="_blank" ><LinkedInIcon></LinkedInIcon></a></li>
+                        <li><a href="https://wa.me/918652348165?text=" target="_blank" ><WhatsAppIcon></WhatsAppIcon></a></li>
                     </ul>
                 </div>
                 <div className="emailcontainer">

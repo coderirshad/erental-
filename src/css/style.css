@@ -7734,7 +7734,7 @@ border: 10px solid red;
   font-weight: 600;
 }
 
-.register form input[type=text] {
+.register form input {
   border: 1px solid #dddddd;
   width: 100%;
   height: 45px;
@@ -7746,36 +7746,36 @@ border: 10px solid red;
   margin-bottom: 35px;
 }
 
-.register form input[type=text]:focus {
+.register form input:focus {
   border-color: #5677fc;
 }
 
-.register form input[type=text].placeholder {
+.register form input.placeholder {
   font-style: italic;
   color: #666666;
 }
 
-.register form input[type=text]:-moz-placeholder {
+.register form input:-moz-placeholder {
   font-style: italic;
   color: #666666;
 }
 
-.register form input[type=text]::-moz-placeholder {
+.register form input::-moz-placeholder {
   font-style: italic;
   color: #666666;
 }
 
-.register form input[type=text]:-ms-input-placeholder {
+.register form input:-ms-input-placeholder {
   font-style: italic;
   color: #666666;
 }
 
-.register form input[type=text]::-webkit-input-placeholder {
+.register form input::-webkit-input-placeholder {
   font-style: italic;
   color: #666666;
 }
 
-.register form label[for=t-box]:hover, .register form label[for=c-box]:hover {
+.register form label:hover, .register form label[for=c-box]:hover {
   cursor: pointer;
 }
 
