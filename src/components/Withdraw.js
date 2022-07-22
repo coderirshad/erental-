@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Withdraw() {
   return (
 
-      <div className="container" style={{marginLeft:"30%", position:"absolute", top:"80%"}}>
+      <div className="container" style={{marginLeft:"30%", position:"absolute", top:"25%"}}>
 
 <div class="section-title"style={{marginRight:"80%"}} >
           <h2><strong>Withdraw</strong></h2>

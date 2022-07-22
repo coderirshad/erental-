@@ -10,8 +10,8 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
-import { Link } from 'react-router-dom';
-import { CheckAuth } from './CheckAuth';
+import { Link, Navigate } from 'react-router-dom';
+import { LogOut } from './LogOut';
 const StyledMenu = styled((props) => (
   <Menu
     elevation={0}
@@ -53,7 +53,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function CustomizedMenus() {
+export default function CustomizedMenus({role,login,setlogin}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -62,7 +62,6 @@ export default function CustomizedMenus() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   return (
     <div>
       <Button
@@ -75,7 +74,7 @@ export default function CustomizedMenus() {
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        {CheckAuth()==true?"Logout":"Login"}
+       {login?"Logout":"Login"}
       </Button>
       <StyledMenu
         id="demo-customized-menu"
@@ -117,13 +116,21 @@ export default function CustomizedMenus() {
         </MenuItem>
         </Link>
         <Divider sx={{ my: 0.5 }} />
-
+        <a href='/login'>
         <Link to={'/login'}>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={()=>{
+          if(login){
+            LogOut()
+            setlogin(false);
+            if(role=="admin")window.location.reload();
+          }
+          handleClose()
+        }} disableRipple>
           <LockOpenIcon></LockOpenIcon>
-          Login
+          {login?"Logout":"Login"}
         </MenuItem>
         </Link>
+        </a>
         <Divider sx={{ my: 0.5 }} />
         
         <Link to={'/register'}>

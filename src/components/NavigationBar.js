@@ -4,7 +4,7 @@ import AdminNav from "./AdminNav";
 import UserNav from "./UserNav";
 import { CheckAuth } from "./CheckAuth";
 
-const NavigationBar = ()=>{
+const NavigationBar = ({login,setlogin})=>{
     const [user, setuser] = useState({});
     const [role,setrole] = useState("customer");
     const [loading,setloading] = useState(true); 
@@ -37,7 +37,7 @@ const NavigationBar = ()=>{
      return ( 
         <> 
             {/* use loading State for better UI (animation while loading website) */}
-            {(role=="admin")?<AdminNav></AdminNav>:<UserNav></UserNav>}
+            {(role=="admin")?<AdminNav login={login} setlogin={setlogin}></AdminNav>:<UserNav login={login} setlogin={setlogin}></UserNav>}
         </>
      )
 }

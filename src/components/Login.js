@@ -1,11 +1,11 @@
 import {React, useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useCookies } from 'react-cookie';
+import Cookies from 'js-cookie'
 import { Alert } from '@mui/material';
-export default function Login() {
-    const [cookies, setCookie] = useCookies(['user']);
+import { CheckAuth } from './CheckAuth';
+export default function Login({setlogin}) {
     const [data, setdata] = useState({user_id:"",password:""})
-    const [message, setmessage] = useState("welcome to erentals login")
+    const [message, setmessage] = useState("")
     const [status, setstatus] = useState(0);
     const [cookieData, setCookieData] = useState({});
     const navigate = useNavigate();
@@ -15,50 +15,58 @@ export default function Login() {
                ...pre,
                [e.target.name]:e.target.value.trim()
            }})
-      
     }
-    const Submit = async (e) =>{
-            
-            e.preventDefault()
+    const Submit = async () =>{              
             try{
                 await fetch(`http://${process.env.REACT_APP_URL}/login`,{
                     method:"POST",
                     body:JSON.stringify(data)
                 }).then((response)=>{
-                    setstatus(response.status);               
+                    setstatus(response.status); 
+                    if(response.status!=200){
+                       setmessage("some error occure");
+                    }           
                     return response.json();
                 }).then((cookieData1)=>{
                     setCookieData(cookieData1)                    
-                })
-
-               
+                })               
             }
             catch(error){
                 if(error.message){
-                    console.log(error.response.data.message)
+                    setmessage(error.response.data.message)
                 }
                 else if(error.request){
-                    console.log(error.request);
+                    setmessage(error.request);
                 }
                 else{
-                    console.log("Error",error.message);
+                    setmessage("Error",error.message);
                 }
             }       
-     }
-     useEffect(() => {
-        console.log(status)
+    }
+    const navigateAfter = async (e) =>{
+        e.preventDefault()
+        await Submit();
+        setlogin(true);        
+        navigate('/')
+        window.location.reload();
+        CheckAuth()        
+    }
+    const setCookie = () =>{
+        Cookies.set('authToken',cookieData?.authToken,{path:'/'})
+        Cookies.set('refreshToken',cookieData?.refreshToken,{path:'/'})   
+    }
+    useEffect(() => {
         if(status==0){
-            setmessage("welcome to erentals login")
+            setmessage("")
         }
         else if(status!=200){
             setmessage(cookieData.message);
         }
         else{
-            setCookie('authToken',cookieData?.authToken,{path:'/'})
-            setCookie('refreshToken',cookieData?.refreshToken,{path:'/'})
-            navigate('/') 
+            setCookie()    
         }
-     }, [cookieData]) 
+     }, [cookieData])  
+    
   return (
     <div>
         <section className="register">
@@ -66,7 +74,7 @@ export default function Login() {
                 <div className="row">
                     <div className="col-md-12">
                         <form action="/">
-                            <Alert style={{fontSize:"20px",color:"red"}}>{message}</Alert>
+                            {message?<Alert style={{fontSize:"20px",color:"red"}}>{message}</Alert>:""}
                             <h5>Login</h5>
                             <div className="row">
                                 <div className="col-md-12">
@@ -75,10 +83,10 @@ export default function Login() {
                                 </div>
                                 <div className="col-md-12">
                                     <label>Password*</label>
-                                    <input onChange={setValue} type="text" name="password" placeholder="Enter your password"/>
+                                    <input onChange={setValue} type="password" name="password" placeholder="Enter your password"/>
                                 </div>
                                 <div className="col-md-5 text-right">
-                                    <button onClick={Submit} type="button" name="button">Submit</button>
+                                    <button onClick={navigateAfter} type="button" name="button">Submit</button>
                                     <a href='/register' style={{color: "red",marginLeft:"30px"}}>new account?</a>
                                 </div>
                             </div>

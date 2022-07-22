@@ -7,7 +7,7 @@ import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
 import GetAuthorization from './GetAuthorization';
 import { Link } from 'react-router-dom';
 import CustomizedMenus from './CustomizeMenus';
-export default function LogoArea() {
+export default function LogoArea({role,login,setlogin}) {
     const [cartproduct, setcartproduct] = useState([])
     const [wishlistproduct, setwishlistproduct] = useState([])
     const fetchData = () =>{
@@ -89,7 +89,7 @@ export default function LogoArea() {
                             </a>
                         </div>
                         <div style={{marginLeft:"50px"}} className="wsh-box ml-auto modified_wishlist">
-                                <CustomizedMenus></CustomizedMenus>                            
+                                <CustomizedMenus role={role} login={login} setlogin={setlogin}></CustomizedMenus>                            
                         </div>
                     </div>
                 </div>

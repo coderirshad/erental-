@@ -37,8 +37,8 @@ const SingalProduct = () => {
     else alert("Sorry You can't select less than 0!")
   }
 
-  const AddToCart = ()=>{  
-    fetch(`http://${process.env.REACT_APP_URL}/cart`,{
+  const AddToCart = async ()=>{  
+    await fetch(`http://${process.env.REACT_APP_URL}/cart`,{
         method:"POST",
         headers: {
             'Content-Type': 'application/json',

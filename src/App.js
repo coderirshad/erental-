@@ -25,14 +25,15 @@ import AddProduct from "./components/AddProduct";
 import SocialMediaLink from "./components/SocialMediaLink";
 import TagProductList from "./components/TagProductList";
 import AllProductList from "./components/AllProductList";
-class App extends React.Component {
-  render() {
-    return (
+import { CheckAuth } from "./components/CheckAuth";
+const App = () =>{
+    const [login,setlogin]= React.useState(CheckAuth());
+    return (      
       <div className="App">
-        <NavigationBar></NavigationBar>
+        <NavigationBar login={login} setlogin={setlogin}></NavigationBar>
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
-          <Route exact path="/login" element={<Login />}></Route>
+          <Route exact path="/login" element={<Login setlogin={setlogin} />}></Route>
           <Route exact path="/register" element={<Registration />}></Route>
           <Route exact path="/checkout" element={<Checkout />}></Route>
           <Route exact path="/wishlist" element={<Wishlist />}></Route>
@@ -57,6 +58,5 @@ class App extends React.Component {
         <FooterArea></FooterArea>
       </div>
     );
-  }
 }
 export default App;

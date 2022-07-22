@@ -32,7 +32,7 @@ export default function Product() {
       fetchData();
   },[])
   return (
-    <div className="container"  style={{marginLeft:"30%", position:"absolute", top:"80%"}} >
+    <div className="container"  style={{marginLeft:"30%", position:"absolute", top:"25%"}} >
       <ul className="nav">
   <li className="nav-item">
     <a className="nav-link active" aria-current="page" href="#">All</a>

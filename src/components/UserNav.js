@@ -4,10 +4,10 @@ import MainMenuArea2 from "./MainMenuArea2";
 import TopBar from "./TopBar";
 import Cluster from "./Cluster.js"
 
-const UserNav = ()=>{
+const UserNav = ({login,setlogin})=>{
      return ( 
         <> 
-            <LogoArea></LogoArea>
+            <LogoArea role={"customer"} login={login} setlogin={setlogin}></LogoArea>
             <div className = 'parent1'>
             <div id = 'child1' >
                 <Cluster></Cluster>

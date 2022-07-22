@@ -1,10 +1,10 @@
 import { Alert } from '@mui/material';
 import {React, useState} from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
 
 export default function Registration() {
     const [data, setdata] = useState({first_name:"",last_name:"",email:"",mobile:"",password:"",confirm_password:"",is_terms_read:"false",subscribe:"false"})
-    const [message,setmessage] = useState("welcome to erentals registration");
+    const [message,setmessage] = useState("");
     const navigate = useNavigate();
     const setValue = (e) =>{
        setdata((pre)=>{
@@ -12,9 +12,7 @@ export default function Registration() {
                ...pre,
                [e.target.name]:e.target.value.trim()
            }})
-      
-    }
-    
+    }    
     const Submit = (e) =>{
             e.preventDefault()
             fetch(`http://${process.env.REACT_APP_URL}/register`,{
@@ -25,7 +23,7 @@ export default function Registration() {
                     navigate('/login')  
                 }
                 else{
-                    setmessage(response.message);
+                    setmessage("some error occure");
                 }
                 
                 return response.json();
@@ -41,7 +39,7 @@ export default function Registration() {
                
                     <div className="col-md-12">                      
                         <form action="#"> 
-                            <Alert style={{fontSize:"20px",color:"red"}}>{message}</Alert>
+                            {message?<Alert style={{fontSize:"20px",color:"red"}}>{message}</Alert>:""}
                             <h5>Registration</h5>
                             <div className="row">
                                 <div className="col-md-12">

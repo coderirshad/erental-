@@ -9,14 +9,13 @@ import LogoArea from "./LogoArea";
 
 import Invoice from "./Invoice";
 
-const AdminNav = () => {
+const AdminNav = ({login,setlogin}) => {
   return (
     <>
 
       <Dash_Topbar></Dash_Topbar>
-      <LogoArea></LogoArea>
+      <LogoArea role={"admin"} login={login} setlogin={setlogin}></LogoArea>
       <Dash_menuarea></Dash_menuarea>
-      <Dash_Hero></Dash_Hero>
           <Dash_side></Dash_side>
 
    <Invoice></Invoice>

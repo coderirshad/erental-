@@ -4,7 +4,7 @@ export default function Report() {
   return (
 
 
-    <div class="container" style={{marginLeft:"30%", position:"absolute", top:"80%"}}>
+    <div class="container" style={{marginLeft:"30%", position:"absolute", top:"25%"}}>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
