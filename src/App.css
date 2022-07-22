@@ -1798,6 +1798,92 @@ h6 {
   background-color: black;
 }
 
+#DashboardShift{
+  margin-left: 50px;
+  padding-top: 10px;
+  width: 295px;
+}
+
+.accountDetails{
+  margin-top: 0px;
+}
+.c1{
+  background-color: pink;
+}
+
+
+.aboutProduct{
+  width : 100%;
+  margin-top: 10px;
+  border-style: ridge;
+  border-width: 1.5px;
+}
+
+.myProductImage{
+  margin-left: 0px;
+  display: inline-block;
+  vertical-align: middle;
+  width : 150px ;
+  height: 150px;
+}
+
+.myProductDetails{
+  width : 220px ;
+  margin-left: 30px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.buttonMyProduct{
+  border: none;
+  width: 1000px;
+  background-color: white;
+  text-decoration: underline; 
+  text-align: left;
+}
+
+.address{
+  width : 900px;
+  border-style: ridge;
+  border-width: 1.5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  text-align: left;
+}
+
+.spaceBetweenAddressDetails{
+  margin-bottom: 10px;
+}
+
+.AddressInput{
+  width: 800px;
+  height: 40px;
+}
+
+.AddressButton{
+  margin-right: -800px;
+  
+}
+
+.addressAddButton{
+  background-color: #318ce7;
+  width: 60px;
+  height: 40px;
+  margin-left: 800px;
+  margin-top: 10px;
+}
+
+.heading{
+  margin-bottom: 40px;
+}
+
+.spacing1{
+  color: black;
+  font-size:30px;
+  text-transform: uppercase;
+  text-align: center;
+}
 
 
 

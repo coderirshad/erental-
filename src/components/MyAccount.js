@@ -1,13 +1,12 @@
-import React , { useState , useEffect} from 'react'
+import React,{useEffect,useState} from 'react';
+import MyAccountDashSide from './MyAccountDashSide';
+import ShowAccountDetails from './ShowAccountDetails';
 export default function MyAccount() {
-    
+
     return (
-    <h1>vev</h1>
-  )
+        <>
+    <MyAccountDashSide/>
+    <ShowAccountDetails/>     
+    </>     
+  );
 }
-/*
-email: "admin@gmail.com"
-roles: (2) ['customer', 'admin']
-user_id: "2e217a06-0c6d-448a-808a-2379877cdfdf"
-user_name: "testing"
-*/

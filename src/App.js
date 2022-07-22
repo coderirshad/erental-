@@ -25,6 +25,8 @@ import AddProduct from "./components/AddProduct";
 import SocialMediaLink from "./components/SocialMediaLink";
 import TagProductList from "./components/TagProductList";
 import AllProductList from "./components/AllProductList";
+import MyAccount from "./components/MyAccount";
+import ShowAccountDetails from "./components/ShowAccountDetails" ;
 import { CheckAuth } from "./components/CheckAuth";
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
@@ -37,7 +39,8 @@ const App = () =>{
           <Route exact path="/register" element={<Registration />}></Route>
           <Route exact path="/checkout" element={<Checkout />}></Route>
           <Route exact path="/wishlist" element={<Wishlist />}></Route>
-          <Route exact path="/myaccount" element={<Checkout />}></Route>
+          <Route exact path="/myaccount" element={<MyAccount />}></Route>
+          <Route exact path="/myaccount/:id" element={<MyAccount />}></Route>
           <Route exact path="/coupon" element={<Coupon />}></Route>
           <Route exact path="/category" element={<CategoryBox />}></Route>
           <Route exact path="/cart" element={<Cartdetail />}></Route>
