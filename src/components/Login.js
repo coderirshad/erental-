@@ -24,7 +24,13 @@ export default function Login({setlogin}) {
                 }).then((response)=>{
                     setstatus(response.status); 
                     if(response.status!=200){
-                       setmessage("some error occure");
+                       if(response.status==401){
+                        setmessage("invaild password!")
+                       }
+                       else
+                       {
+                        setmessage("some error occure");
+                       }                       
                     }           
                     return response.json();
                 }).then((cookieData1)=>{

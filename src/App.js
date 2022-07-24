@@ -26,13 +26,14 @@ import SocialMediaLink from "./components/SocialMediaLink";
 import TagProductList from "./components/TagProductList";
 import AllProductList from "./components/AllProductList";
 import MyAccount from "./components/MyAccount";
-import ShowAccountDetails from "./components/ShowAccountDetails" ;
 import { CheckAuth } from "./components/CheckAuth";
+import NotFound from "./components/NotFound";
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
+    const [loginrole,setloginrole]= React.useState("customer");
     return (      
       <div className="App">
-        <NavigationBar login={login} setlogin={setlogin}></NavigationBar>
+        <NavigationBar login={login} setlogin={setlogin} setloginrole={setloginrole}></NavigationBar>
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/login" element={<Login setlogin={setlogin} />}></Route>
@@ -46,16 +47,16 @@ const App = () =>{
           <Route exact path="/cart" element={<Cartdetail />}></Route>
           <Route exact path="/product/:id" element={<SingalProduct />}></Route>
 
-          <Route exact path="/admin/:id" element={<Dash_RightContent/>}></Route>
-          <Route exact path="/addproduct" element={<AddProduct />}></Route>
-          <Route exact path="/admin/report" element={<Report />}></Route>
-          <Route exact path="/admin/withdraw" element={<Withdraw />}></Route>
-          <Route exact path="/aboutProduct" element={<AboutProduct />} />
-          <Route exact path="/aboutUs" element={<AboutUs />} />
-          <Route exact path="/eachCategory" element={<EachCategory />} />
-          <Route exact path="/productList" element={<ProductList />} />
-          <Route exact path='/tagProductList' element={<TagProductList/>} />
-          <Route exact path='/allProductList' element={<AllProductList/>} />
+          <Route exact path="/admin/:id" element={loginrole=="admin"?<Dash_RightContent/>:<NotFound/>}></Route>
+          <Route exact path="/addproduct" element={loginrole=="admin"?<AddProduct />:<NotFound/>}></Route>
+          <Route exact path="/admin/report" element={loginrole=="admin"?<Report />:<NotFound/>}></Route>
+          <Route exact path="/admin/withdraw" element={loginrole=="admin"?<Withdraw />:<NotFound/>}></Route>
+          <Route exact path="/aboutProduct" element={loginrole=="admin"?<AboutProduct />:<NotFound/>} />
+          <Route exact path="/aboutUs" element={loginrole=="admin"?<AboutUs />:<NotFound/>} />
+          <Route exact path="/eachCategory" element={loginrole=="admin"?<EachCategory />:<NotFound/>} />
+          <Route exact path="/productList" element={loginrole=="admin"?<ProductList />:<NotFound/>} />
+          <Route exact path='/tagProductList' element={loginrole=="admin"?<TagProductList/>:<NotFound/>} />
+          <Route exact path='/allProductList' element={loginrole=="admin"?<AllProductList/>:<NotFound/>} />
         </Routes>
         <SocialMediaLink></SocialMediaLink>
         <FooterArea></FooterArea>

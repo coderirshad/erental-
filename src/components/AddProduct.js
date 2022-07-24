@@ -14,6 +14,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 import FormLabel from '@mui/material/FormLabel';
+import MultipleSelectChip from './MultipleSelecter';
 export default function AddProduct( ) {
 
 
@@ -33,11 +34,10 @@ export default function AddProduct( ) {
   const[image, setimage] =useState("");
   const[tag_list, setTaglist] =useState([]);
  
-
-  const[tag, setTag] =useState("");
+  
+  const[tagId1, setTagId1] =useState("");
   const [category, setcategory] = useState([]);
-
-  const [subcategory, setsubcategory] = useState("");
+  const [subcategory1,setsubcategory1] = useState("");
 
   const fetchdata = async() =>{
       const response = await fetch(`http://${process.env.REACT_APP_URL}/category`);
@@ -58,9 +58,14 @@ useEffect(() => {
     fetchtag();
 }, []);
   function savepro(){
-  
-    console.warn({name,price,discounted_price,stock,sku,Status,view, image,tag,subcategory});
-    let data= {name,price,discounted_price,stock,view,tag, image,subcategory}
+    var tagId=[];
+    tagId.push(tagId1)
+    var images=[];
+    images.push(image);
+    var subcategory=[];
+    subcategory.push(subcategory1);
+    console.warn({name,price,discounted_price,stock,sku,Status,view, images,tagId,subcategory});
+    let data= {name,price,discounted_price,stock,view,tagId,images,subcategory}
     fetch(`http://${process.env.REACT_APP_URL}/admin/product`,{
       method:'PUT',
       headers:{
@@ -89,7 +94,7 @@ useEffect(() => {
     noValidate
     autoComplete="off"
   >
-     <div className="container " style={{marginLeft:"30%", position:"absolute", top:"80%"}} >
+     <div className="container " style={{marginLeft:"30%", position:"absolute", top:"25%"}} >
       <div class="row">
         <div class="col-8">
          <div>
@@ -129,6 +134,14 @@ useEffect(() => {
               onChange={(e)=>{setstock(e.target.value)}}
               defaultValue="Enter Stock"
             />
+              <TextField
+              required
+              id="image"
+              label="Image link"
+              value={image}
+              onChange={(e)=>{setimage(e.target.value)}}
+              defaultValue="Enter image link"
+            />
           <TextField
                     required
                     id="sku"
@@ -137,7 +150,7 @@ useEffect(() => {
                     onChange={(e)=>{setsku(e.target.value)}}
                     defaultValue="SKU"
                   />
-            <FormControl sx={{ m: 1, minWidth: 120 }} value={subcategory} onChange={(e)=>{setsubcategory(e.target.value)}} >
+            <FormControl sx={{ m: 1, minWidth: 120 }} value={subcategory1.id} onChange={(e)=>{setsubcategory1(e.target.value)}} >
                       <InputLabel htmlFor="grouped-native-select">Category</InputLabel>
                       <Select native defaultValue="" id="grouped-native-select" label="Category"  >
                         <option aria-label="None" value="" />
@@ -145,7 +158,7 @@ useEffect(() => {
                         <optgroup label={eachcategory.name}>
 
                           {eachcategory.subcategory.map( (c) => (
-                          <option value={c.name}  > {c.name}</option>
+                          <option value={c.id}  > {c.name}</option>
                           ))}
                         </optgroup>
                         ))}
@@ -162,16 +175,15 @@ useEffect(() => {
                     defaultValue="View"
                   />
                   
-
+ <MultipleSelectChip></MultipleSelectChip>
  <FormControl sx={{ m: 1, minWidth: 120 }}  >
-  <InputLabel id="demo-simple-select-label">Tag</InputLabel>
+  <InputLabel id="demo-simple-select-label">TagId</InputLabel>
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
-    value={tag}
-    label="Tag"
-    onChange={(e)=>{setTag(e.target.value)}}
-  
+    value={tagId1}
+    label="TagId"
+    onChange={(e)=>{setTagId1(e.target.value)}}
   >
 {tag_list.map( t => (
     <MenuItem value={t.id}>{t.name}</MenuItem>
@@ -197,7 +209,7 @@ useEffect(() => {
                           <br></br>
                           <br></br>
 
-                        <input type="file" value={image} onChange={(e)=>{setimage(e.target.value)}}id="image" class="form-control" />
+                        {/* <input type="file" value={image} onChange={(e)=>{setimage(e.target.value)}}id="image" class="form-control" /> */}
                         </Modal.Body>
                       </Modal>
                       </div>

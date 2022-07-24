@@ -4,11 +4,10 @@ import AdminNav from "./AdminNav";
 import UserNav from "./UserNav";
 import { CheckAuth } from "./CheckAuth";
 
-const NavigationBar = ({login,setlogin})=>{
+const NavigationBar = ({login,setlogin,setloginrole})=>{
     const [user, setuser] = useState({});
     const [role,setrole] = useState("customer");
     const [loading,setloading] = useState(true); 
-
     const fetchData = ( ) =>{ 
         setloading(true);
         if(CheckAuth()){              
@@ -32,6 +31,7 @@ const NavigationBar = ({login,setlogin})=>{
     useEffect(() => {
         if(user?.roles?.includes('admin')){
             setrole("admin")
+            setloginrole("admin")
         }
     }, [user])
      return ( 
