@@ -137,7 +137,7 @@ export default function Product() {
     <tr>
    
       <td scope="row"><img src="images/sbar-6.png" alt=""/></td>
-      <td>{data.name}</td>
+      <td><a href="/addproduct:id">{data.name}</a></td>
       <td>{data.Status}</td>
       <td>{data.SKU}</td>
       <th >{data.Stock}</th>

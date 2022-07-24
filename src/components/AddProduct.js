@@ -15,9 +15,11 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 import FormLabel from '@mui/material/FormLabel';
 import MultipleSelectChip from './MultipleSelecter';
+import { useParams } from 'react-router-dom';
 export default function AddProduct( ) {
-
-
+  const params = useParams();
+  const id=params.id;
+  const [data,setdata]=useState({});
   const[name,setname] = useState("");
   const[Earning,setearning] = useState("");
   const[price,setprice] = useState("");
@@ -42,8 +44,11 @@ export default function AddProduct( ) {
   const fetchdata = async() =>{
       const response = await fetch(`http://${process.env.REACT_APP_URL}/category`);
       setcategory(await response.json());
-        
+      const singleproduct = await fetch(`http://${process.env.REACT_APP_URL}/product/${id}`);
+      setdata(await singleproduct.json());  
+      console.log("----->",singleproduct)           
   }
+   
   useEffect(() => {
       fetchdata();
   }, []);
@@ -64,7 +69,6 @@ useEffect(() => {
     images.push(image);
     var subcategory=[];
     subcategory.push(subcategory1);
-    console.warn({name,price,discounted_price,stock,sku,Status,view, images,tagId,subcategory});
     let data= {name,price,discounted_price,stock,view,tagId,images,subcategory}
     fetch(`http://${process.env.REACT_APP_URL}/admin/product`,{
       method:'PUT',

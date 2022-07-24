@@ -49,14 +49,15 @@ const App = () =>{
 
           <Route exact path="/admin/:id" element={loginrole=="admin"?<Dash_RightContent/>:<NotFound/>}></Route>
           <Route exact path="/addproduct" element={loginrole=="admin"?<AddProduct />:<NotFound/>}></Route>
+          <Route exact path="/addproduct:id" element={loginrole=="admin"?<AddProduct />:<NotFound/>}></Route>
           <Route exact path="/admin/report" element={loginrole=="admin"?<Report />:<NotFound/>}></Route>
           <Route exact path="/admin/withdraw" element={loginrole=="admin"?<Withdraw />:<NotFound/>}></Route>
-          <Route exact path="/aboutProduct" element={loginrole=="admin"?<AboutProduct />:<NotFound/>} />
-          <Route exact path="/aboutUs" element={loginrole=="admin"?<AboutUs />:<NotFound/>} />
-          <Route exact path="/eachCategory" element={loginrole=="admin"?<EachCategory />:<NotFound/>} />
-          <Route exact path="/productList" element={loginrole=="admin"?<ProductList />:<NotFound/>} />
-          <Route exact path='/tagProductList' element={loginrole=="admin"?<TagProductList/>:<NotFound/>} />
-          <Route exact path='/allProductList' element={loginrole=="admin"?<AllProductList/>:<NotFound/>} />
+          <Route exact path="/aboutProduct" element={<AboutProduct />} />
+          <Route exact path="/aboutUs" element={<AboutUs />} />
+          <Route exact path="/eachCategory" element={<EachCategory />} />
+          <Route exact path="/productList" element={<ProductList />} />
+          <Route exact path='/tagProductList' element={<TagProductList/>} />
+          <Route exact path='/allProductList' element={<AllProductList/>} />
         </Routes>
         <SocialMediaLink></SocialMediaLink>
         <FooterArea></FooterArea>
