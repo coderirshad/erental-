@@ -93,7 +93,7 @@ export default function AddProduct( ) {
     })
     navigate('/addproduct')
   }
-  const handleClick = () =>{
+  const addProduct = () =>{
           saveProduct()
   }
     const [show, setShow] = useState(false);
@@ -232,7 +232,7 @@ export default function AddProduct( ) {
                       </Modal>
                       </div>
                       <div className="col-3">
-            <button type="button"  onClick={handleClick()} className="btn btn-danger" >Save Product</button>
+            <button type="button"  onClick={()=>addProduct()} className="btn btn-danger" >Save Product</button>
             </div>
             </div>
             
