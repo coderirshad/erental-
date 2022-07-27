@@ -48,7 +48,7 @@ export default function AddProduct( ) {
   }
   const updateData = async ( ) =>{
     fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`,{
-        method:'PUT',
+        method:'GET',
         headers:{
           'Accept':'application/json',
           'Content-Type':'application/json',
