@@ -7,7 +7,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import GetAuthorization from './GetAuthorization';
 import { useNavigate } from 'react-router-dom'
-const SingalProduct = () => {
+const SingalProduct = ({login}) => {
   const params = useParams();
   const id=params.id;
   const [product, setproduct] = useState([])
@@ -37,25 +37,32 @@ const SingalProduct = () => {
     else alert("Sorry You can't select less than 0!")
   }
 
-  const AddToCart = async ()=>{  
-    await fetch(`http://${process.env.REACT_APP_URL}/cart`,{
-        method:"POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': GetAuthorization()
-        },
-        body:JSON.stringify(
-            {
-                cart_item_id:id,
-                quantity:quantity,
-                color:color,
-                size:size,
-                day:day
-           }
-        )
-    }).then((response)=>{
-    })
-    navigate('/cart');
+  const AddToCart = async ()=>{
+    if(login){
+        await fetch(`http://${process.env.REACT_APP_URL}/cart`,{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': GetAuthorization()
+            },
+            body:JSON.stringify(
+                {
+                    cart_item_id:id,
+                    quantity:quantity,
+                    color:color,
+                    size:size,
+                    day:day
+               }
+            )
+        }).then((response)=>{
+        })
+        navigate('/cart');
+    }
+    else{
+        alert("please login!!")
+        navigate('/login')
+    }
+    
   }
   const fetchData = ()=>{
     fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`)
@@ -70,7 +77,7 @@ const SingalProduct = () => {
     }
     )
   }
-  console.log(product)
+ 
   useEffect(() => {
     fetchData()
   }, [])

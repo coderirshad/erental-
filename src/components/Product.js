@@ -4,12 +4,9 @@ import { Link } from 'react-router-dom';
 import { Modal, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import AddProduct from './AddProduct';
-
+import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
+import GetAuthorization from './GetAuthorization';
 export default function Product() {
-
-
-
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -19,14 +16,22 @@ export default function Product() {
       fetch(`http://${process.env.REACT_APP_URL}/product`)
       .then((response)=>{
           return response.json();
-      }).then((data)=>{
-           console.log(data);
-       
-        
-          setProduct(data)
-
-        
+      }).then((data)=>{    
+        setProduct(data)       
       })
+  }
+  const deleteProduct = async (product_id)=>{
+    await fetch(`http://${process.env.REACT_APP_URL}/product/${product_id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': GetAuthorization()
+              }
+        });
+        fetchData();
+  }
+  const handleDelete = (id) =>{
+    deleteProduct(id);
   }
   useEffect(()=>{
       fetchData();
@@ -124,6 +129,7 @@ export default function Product() {
       <th scope="col">Stock</th>
       <th scope="col">Price</th>
       <th scope="col">Earning</th>
+      <th scope="col">Delete</th>
       <th scope="col">Type</th>
       <th scope="col">View</th>
       
@@ -137,12 +143,13 @@ export default function Product() {
     <tr>
    
       <td scope="row"><img src="images/sbar-6.png" alt=""/></td>
-      <td><a href="/addproduct:id">{data.name}</a></td>
+      <td><Link to={`/addproduct/${data.id}`}>{data.name}</Link></td>
       <td>{data.Status}</td>
       <td>{data.SKU}</td>
       <th >{data.Stock}</th>
       <td>{data.price}</td>
       <td>{data.Earning}</td>
+      <td><Link to="/admin/Product" onClick={()=>handleDelete(data.id)}><DeleteForeverTwoToneIcon style={{color:"red",fontSize:"25px"}}></DeleteForeverTwoToneIcon></Link></td>
       <td>{data.Type}</td>
       <td>{data.view}</td>
     

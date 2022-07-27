@@ -13,9 +13,9 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
-import FormLabel from '@mui/material/FormLabel';
 import MultipleSelectChip from './MultipleSelecter';
 import { useParams } from 'react-router-dom';
+import NestedMultipleSelectChip from './NestedMultipleSelecter';
 export default function AddProduct( ) {
   const params = useParams();
   const id=params.id;
@@ -25,51 +25,60 @@ export default function AddProduct( ) {
   const[price,setprice] = useState("");
   const[discounted_price,setdiscounted] = useState("");
   const[stock,setstock] = useState("");
-  
   const[Type,setType] = useState("");
-  
   const[sku,setsku] = useState("");
-  
   const[view,setview] = useState("");
-  
   const[Status, setstatus] = useState("");
   const[image, setimage] =useState("");
   const[tag_list, setTaglist] =useState([]);
- 
-  
+  const [tag, setTag] = React.useState([]);
   const[tagId1, setTagId1] =useState("");
   const [category, setcategory] = useState([]);
-  const [subcategory1,setsubcategory1] = useState("");
-
+  const [subcategory,setsubcategory] = useState([]);
+  const [isHotDeal,setIsHotDeal] = useState(true);
+  const [isTop,setIsTopSold] = useState(true);
+  const [isNew,setIsNew] = useState(true);
+  const [isEnable,setIsEnable] = useState(true);
+  const [isBestDeal,setIsBestDeal] = useState(true);
+  const [isFeatured,setIsFeatured] = useState(true);
   const fetchdata = async() =>{
       const response = await fetch(`http://${process.env.REACT_APP_URL}/category`);
-      setcategory(await response.json());
-      const singleproduct = await fetch(`http://${process.env.REACT_APP_URL}/product/${id}`);
-      setdata(await singleproduct.json());  
-      console.log("----->",singleproduct)           
+      setcategory(await response.json());                      
   }
-   
-  useEffect(() => {
-      fetchdata();
-  }, []);
-  
-
+  const updateData = async ( ) =>{
+    fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`)
+    .then((response)=>{ 
+        return response.json();
+    })
+    .then((data)=>{       
+      setname(data.name);
+      setprice(data.price);
+      setdiscounted(data.discounted_price);
+      setstock(data.stock);
+      setsku(data.sku);
+      setview(data.view);
+      // setstatus(data.status);
+      setimage(data.images); 
+      setTag(data.tag);
+      setsubcategory(data.category);
+    }
+    )
+     
+  }
   const fetchtag = async() =>{
     const response = await fetch(`http://${process.env.REACT_APP_URL}/tag`);
-    setTaglist(await response.json());
-      
-}
-useEffect(() => {
-    fetchtag();
-}, []);
+    setTaglist(await response.json());  
+ }
+  useEffect(() =>{
+      fetchdata();
+      updateData();
+      fetchtag();;
+  }, []);
+
   function savepro(){
-    var tagId=[];
-    tagId.push(tagId1)
     var images=[];
-    images.push(image);
-    var subcategory=[];
-    subcategory.push(subcategory1);
-    let data= {name,price,discounted_price,stock,view,tagId,images,subcategory}
+    images.push(image);  
+    let data= {name,price,discounted_price,stock,view,tag,images,subcategory,isHotDeal,isTop,isNew,isEnable,isBestDeal,isFeatured}
     fetch(`http://${process.env.REACT_APP_URL}/admin/product`,{
       method:'PUT',
       headers:{
@@ -81,23 +90,24 @@ useEffect(() => {
   
       
     }).then((result)=>{
-      console.warn("result",result)
+      
     })
   }
-
+  
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
   return (
 
-    <Box
-    component="form"
-    sx={{
-      '& .MuiTextField-root': { m: 1, width: '25ch' },
-    }}
-    noValidate
-    autoComplete="off"
-  >
+      <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+      >
      <div className="container " style={{marginLeft:"30%", position:"absolute", top:"25%"}} >
       <div class="row">
         <div class="col-8">
@@ -154,7 +164,7 @@ useEffect(() => {
                     onChange={(e)=>{setsku(e.target.value)}}
                     defaultValue="SKU"
                   />
-            <FormControl sx={{ m: 1, minWidth: 120 }} value={subcategory1.id} onChange={(e)=>{setsubcategory1(e.target.value)}} >
+            {/* <FormControl sx={{ m: 1, minWidth: 120 }} value={subcategory1.id} onChange={(e)=>{setsubcategory1(e.target.value)}} >
                       <InputLabel htmlFor="grouped-native-select">Category</InputLabel>
                       <Select native defaultValue="" id="grouped-native-select" label="Category"  >
                         <option aria-label="None" value="" />
@@ -167,7 +177,7 @@ useEffect(() => {
                         </optgroup>
                         ))}
                       </Select>
-                  </FormControl>
+                  </FormControl> */}
            </div>
            
             <div>
@@ -179,8 +189,10 @@ useEffect(() => {
                     defaultValue="View"
                   />
                   
- <MultipleSelectChip></MultipleSelectChip>
- <FormControl sx={{ m: 1, minWidth: 120 }}  >
+                
+ <NestedMultipleSelectChip boxName={"category"} names={category} personName={subcategory} setPersonName={setsubcategory}></NestedMultipleSelectChip>
+ <MultipleSelectChip boxName={"tag"} names={tag_list} personName={tag} setPersonName={setTag}></MultipleSelectChip>
+ {/* <FormControl sx={{ m: 1, minWidth: 120 }}  >
   <InputLabel id="demo-simple-select-label">TagId</InputLabel>
   <Select
     labelId="demo-simple-select-label"
@@ -193,7 +205,7 @@ useEffect(() => {
     <MenuItem value={t.id}>{t.name}</MenuItem>
 ))}
   </Select>
-</FormControl> 
+</FormControl>  */}
 
 
                     

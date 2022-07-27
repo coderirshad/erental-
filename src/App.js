@@ -46,14 +46,14 @@ const App = () =>{
           <Route exact path="/myaccount/:id" element={<MyAccount />}></Route>
           <Route exact path="/coupon" element={<Coupon />}></Route>
           <Route exact path="/category" element={<CategoryBox />}></Route>
-          <Route exact path="/cart" element={<Cartdetail />}></Route>
-          <Route exact path="/product/:id" element={<SingalProduct />}></Route>
+          <Route exact path="/cart" element={login?<Cartdetail />:<Login/>}></Route>
+          <Route exact path="/product/:id" element={<SingalProduct login={login}/>}></Route>
 
-          <Route exact path="/admin/:id" element={loginrole=="admin"?<Dash_RightContent/>:<NotFound/>}></Route>
-          <Route exact path="/addproduct" element={loginrole=="admin"?<AddProduct />:<NotFound/>}></Route>
-          <Route exact path="/addproduct:id" element={loginrole=="admin"?<AddProduct />:<NotFound/>}></Route>
-          <Route exact path="/admin/report" element={loginrole=="admin"?<Report />:<NotFound/>}></Route>
-          <Route exact path="/admin/withdraw" element={loginrole=="admin"?<Withdraw />:<NotFound/>}></Route>
+          <Route exact path="/admin/:id" element={loginrole==="admin"?<Dash_RightContent/>:<NotFound/>}></Route>
+          <Route exact path="/addproduct" element={loginrole==="admin"?<AddProduct />:<NotFound/>}></Route>
+          <Route exact path="/addproduct/:id" element={loginrole==="admin"?<AddProduct />:<NotFound/>}></Route>
+          <Route exact path="/admin/report" element={loginrole==="admin"?<Report />:<NotFound/>}></Route>
+          <Route exact path="/admin/withdraw" element={loginrole==="admin"?<Withdraw />:<NotFound/>}></Route>
           <Route exact path="/aboutProduct" element={<AboutProduct />} />
           <Route exact path="/aboutUs" element={<AboutUs />} />
           <Route exact path="/eachCategory" element={<EachCategory />} />

@@ -44,6 +44,7 @@ function getStyles(name, personName, theme) {
 export default function MultipleSelectChip({boxName, names, personName, setPersonName}) {
   const theme = useTheme();
   // const [personName, setPersonName] = React.useState([]);
+  
   const handleChange = (event) => {
     const {
       target: { value },

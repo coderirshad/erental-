@@ -16,7 +16,6 @@ export default function Dash_side() {
         .then((response)=>{
             return response.json();
         }).then((data)=>{
-             console.log(data);
              setProduct(data)          
         })
     }

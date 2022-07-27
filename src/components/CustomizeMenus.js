@@ -132,13 +132,15 @@ export default function CustomizedMenus({role,login,setlogin}) {
         </Link>
         </a>
         <Divider sx={{ my: 0.5 }} />
+        {
+          login?"":<Link to={'/register'}>
+                      <MenuItem onClick={handleClose} disableRipple>
+                        <LockOpenIcon></LockOpenIcon>
+                        Register
+                      </MenuItem>
+                    </Link>
+        }
         
-        <Link to={'/register'}>
-        <MenuItem onClick={handleClose} disableRipple>
-          <LockOpenIcon></LockOpenIcon>
-          Register
-        </MenuItem>
-        </Link>
         
       </StyledMenu>
     </div>

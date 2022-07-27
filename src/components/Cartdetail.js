@@ -56,7 +56,7 @@ export default function Cartdetail() {
         }).then((data)=>{
              setcartsummary(data)       
         })
-        // console.log(cartsummary)
+
     }
 
     useEffect(() => {

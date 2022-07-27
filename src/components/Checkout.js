@@ -82,7 +82,8 @@ export default function Checkout() {
                             <label>Company Name</label>
                             <input onChange={setValue} type="text" name="companyName"  placeholder="Your company name (optional)"/>
                         </div>
-                        <div class="col-md-12">
+                        
+                        {/* <div class="col-md-12">
                             <label>Address*</label>
                             <input onChange={setValue} type="text" name="address1"  placeholder="Address line 1"/>
                             <input onChange={setValue} type="text" name="address2"  placeholder="Address line 2"/>
@@ -108,7 +109,7 @@ export default function Checkout() {
                         <div class="col-md-6">
                             <label>Postal/Zip Code*</label>
                             <input onChange={setValue} type="text" name="postalZipCode"  placeholder="Your postal or zip code"/>
-                        </div>
+                        </div> */}
                         <div class="col-md-12">
                             <ul class="list-unstyled">
                                 <li><input type="checkbox" id="samsung" name="createAccount"/><label for="samsung">Create An Account?</label></li>
