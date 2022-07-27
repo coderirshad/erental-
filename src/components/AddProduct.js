@@ -14,11 +14,12 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 import MultipleSelectChip from './MultipleSelecter';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import NestedMultipleSelectChip from './NestedMultipleSelecter';
 export default function AddProduct( ) {
   const params = useParams();
   const id=params.id;
+  const navigate=useNavigate();
   const [data,setdata]=useState({});
   const[name,setname] = useState("");
   const[Earning,setearning] = useState("");
@@ -35,12 +36,12 @@ export default function AddProduct( ) {
   const[tagId1, setTagId1] =useState("");
   const [category, setcategory] = useState([]);
   const [subcategory,setsubcategory] = useState([]);
-  const [isHotDeal,setIsHotDeal] = useState(true);
-  const [isTop,setIsTopSold] = useState(true);
-  const [isNew,setIsNew] = useState(true);
-  const [isEnable,setIsEnable] = useState(true);
-  const [isBestDeal,setIsBestDeal] = useState(true);
-  const [isFeatured,setIsFeatured] = useState(true);
+  const [is_hot_deal,setIsHotDeal] = useState(true);
+  const [is_top_sold,setIsTopSold] = useState(true);
+  const [is_new,setIsNew] = useState(true);
+  const [is_enable,setIsEnable] = useState(true);
+  const [is_best_deal,setIsBestDeal] = useState(true);
+  const [is_featured,setIsFeatured] = useState(true);
   const fetchdata = async() =>{
       const response = await fetch(`http://${process.env.REACT_APP_URL}/category`);
       setcategory(await response.json());                      
@@ -75,25 +76,26 @@ export default function AddProduct( ) {
       fetchtag();;
   }, []);
 
-  function savepro(){
+  const saveProduct = async () =>{
     var images=[];
     images.push(image);  
-    let data= {name,price,discounted_price,stock,view,tag,images,subcategory,isHotDeal,isTop,isNew,isEnable,isBestDeal,isFeatured}
-    fetch(`http://${process.env.REACT_APP_URL}/admin/product`,{
+    let data= {name,price,discounted_price,stock,view,tag,images,subcategory,is_hot_deal,is_new,is_enable,is_best_deal,is_featured,is_top_sold}
+    await fetch(`http://${process.env.REACT_APP_URL}/admin/product`,{
       method:'PUT',
       headers:{
         'Accept':'application/json',
         'Content-Type':'application/json',
         'Authorization': GetAuthorization()
       },
-      body:JSON.stringify(data)
-  
-      
+      body:JSON.stringify(data)      
     }).then((result)=>{
       
     })
+    navigate('/addproduct')
   }
-  
+  const handleClick = () =>{
+          saveProduct()
+  }
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -230,7 +232,7 @@ export default function AddProduct( ) {
                       </Modal>
                       </div>
                       <div className="col-3">
-            <button type="button"  onClick={savepro} className="btn btn-danger" >Save Product</button>
+            <button type="button"  onClick={handleClick()} className="btn btn-danger" >Save Product</button>
             </div>
             </div>
             
