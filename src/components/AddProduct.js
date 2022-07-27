@@ -47,17 +47,7 @@ export default function AddProduct( ) {
       setcategory(await response.json());                      
   }
   const updateData = async ( ) =>{
-    fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`,{
-        method:'GET',
-        headers:{
-          'Accept':'application/json',
-          'Content-Type':'application/json',
-          'Authorization': GetAuthorization()
-        },
-        body:JSON.stringify({
-          id:params.id
-        })
-    })
+    await fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`)
     .then((response)=>{ 
         return response.json();
     })
@@ -81,15 +71,16 @@ export default function AddProduct( ) {
     setTaglist(await response.json());  
  }
   useEffect(() =>{
-      fetchdata();
       updateData();
-      fetchtag();;
+      fetchdata();
+      fetchtag();
   }, []);
 
   const saveProduct = async () =>{
     var images=[];
-    images.push(image);  
-    let data= {name,price,discounted_price,stock,view,tag,images,subcategory,is_hot_deal,is_new,is_enable,is_best_deal,is_featured,is_top_sold}
+    images.push(image);
+    var id=params.id;  
+    let data= {id,name,price,discounted_price,stock,view,tag,images,subcategory,is_hot_deal,is_new,is_enable,is_best_deal,is_featured,is_top_sold}
     await fetch(`http://${process.env.REACT_APP_URL}/admin/product`,{
       method:'PUT',
       headers:{
