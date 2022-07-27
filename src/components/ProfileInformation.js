@@ -31,7 +31,7 @@ export default function ProfileInformation() {
             <h5><strong>E-Mail : {userData.email}</strong></h5>
         </div>
         <div style={{ textAlign : "left" , margin : "25px"}} >
-            <h5><strong>Contact No : +91 996-658-2456</strong></h5>
+            <h5><strong>Contact No : {userData.mobile}</strong></h5>
         </div>
     </div>
   );

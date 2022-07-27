@@ -29,7 +29,6 @@ import MyAccount from "./components/MyAccount";
 import ShowAccountDetails from "./components/ShowAccountDetails" ;
 import { CheckAuth } from "./components/CheckAuth";
 import MyOrderDetails from "./components/MyOrderDetails";
-import { CheckAuth } from "./components/CheckAuth";
 import NotFound from "./components/NotFound";
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
