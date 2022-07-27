@@ -34,7 +34,8 @@ export default function Login({setlogin}) {
                     }           
                     return response.json();
                 }).then((cookieData1)=>{
-                    setCookieData(cookieData1)                    
+                    setCookieData(cookieData1)  
+                    localStorage.setItem('profile', JSON.stringify({ data }));                  
                 })               
             }
             catch(error){

@@ -26,14 +26,15 @@ const Home = ()=>{
             })                    
         }
     }
+    
     useEffect(() => {
-       fetchData()
-    }, [])
+       fetchData() ;
+    }, []) ;
     useEffect(() => {
         if(user?.roles?.includes('admin')){
             setrole("admin")
         }
-    }, [user])
+    }, [user]) ;
      return ( 
         <> 
             {/* use loading State for better UI (animation while loading website) */}

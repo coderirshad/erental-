@@ -4,6 +4,8 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 export default function AboutOrder( {product} ) {
 
   const navigate = useNavigate();
+  const handleClick = async ( product ) =>{
+    navigate('/myOrderDetails',{state:{product : product }});
   const handleClick = async ( id ) =>{
     navigate(`/product/${id}`);
   }
@@ -11,6 +13,17 @@ export default function AboutOrder( {product} ) {
     
     <div className="aboutProduct">
       
+    <button className = "buttonMyProduct" onClick= {() => handleClick( product ) } >
+          <a>
+            <div className="myProductImage">
+              <img class = "myProductImage"src= {product.Cart_item[0].image} alt="Italian Trulli"></img>
+            </div>
+            <div className="myProductDetails">
+              <h4 >{product.name}</h4>
+              <p>Quantity : {product.Cart_item[0].quantity}</p>
+            </div>
+            <div className="myProductDetails">
+            <p>Price : ₹{product.grandtotal} </p>
     <button className = "buttonMyProduct" onClick= {() => handleClick( product.id ) } >
           <a>
             <div className="myProductImage">

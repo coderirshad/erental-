@@ -1885,6 +1885,34 @@ h6 {
   text-align: center;
 }
 
+.addressBar{
+  width : 400px ;
+  margin-left: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  padding: 5px;
+}
+
+.upDiv{
+  border-style: ridge ;
+   border-width : 1px ;
+   margin: 10px;
+}
+
+.downDiv{
+  margin-top: 20px ;
+  border-style: ridge ;
+  border-width : 1px ;
+  margin: 10px;
+}
+
+.avatar{
+  background-color: purple;
+    
+}
+
+
 
 
 

@@ -26,6 +26,9 @@ import SocialMediaLink from "./components/SocialMediaLink";
 import TagProductList from "./components/TagProductList";
 import AllProductList from "./components/AllProductList";
 import MyAccount from "./components/MyAccount";
+import ShowAccountDetails from "./components/ShowAccountDetails" ;
+import { CheckAuth } from "./components/CheckAuth";
+import MyOrderDetails from "./components/MyOrderDetails";
 import { CheckAuth } from "./components/CheckAuth";
 import NotFound from "./components/NotFound";
 const App = () =>{
@@ -58,6 +61,7 @@ const App = () =>{
           <Route exact path="/productList" element={<ProductList />} />
           <Route exact path='/tagProductList' element={<TagProductList/>} />
           <Route exact path='/allProductList' element={<AllProductList/>} />
+          <Route exact path = "/myOrderDetails" element = {<MyOrderDetails/>}></Route>
         </Routes>
         <SocialMediaLink></SocialMediaLink>
         <FooterArea></FooterArea>

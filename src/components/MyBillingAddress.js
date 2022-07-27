@@ -4,23 +4,24 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 
 export default function MyBillingAddress() {
-  const [showFrom, setShowFrom] = useState( false );
-  const [addresses, setAddresses] = useState( [ 'Robert Robertson, 1234 NW Bobcat Lane, St. Robert, MO 65584-5678.' , 'Robert Robertson, 1234 NW Bobcat Lane, St. Robert, MO 65584-5678.'] );
-  const handleClick = () =>{
-    setShowFrom ( ! showFrom ) ;
-  }
-  
-  const [address, setAddress] = useState( '' ) ;
-  const handleSubmit = async (e) => {
-        e.preventDefault();
-        setAddresses (oldArray => [...oldArray, address] ) ;
-        setAddress ( '' ) ; 
-        setShowFrom ( false ) ;
-  };
+  const [addresses, setAddresses] = useState( [ {
+    "name":"Anuj",
+    "phone_number":"7987766022",
+    "locality":"Near Toll plaza Stand",
+    "city":"Damoh",
+    "pincode":"470775"
+    } , 
+    {
+    "name":"Anuj",
+    "phone_number":"7987766022",
+    "locality":"Near Toll plaza Stand",
+    "city":"Damoh",
+    "pincode":"470775"
+    }
+  ] );
 
-  const [userData, setuserData] =  useState([]);
     const fetchData = async() =>{
-      await fetch(`http://${process.env.REACT_APP_URL}/user`,{
+      await fetch(`http://${process.env.REACT_APP_URL}/address`,{
             method:"GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -30,7 +31,9 @@ export default function MyBillingAddress() {
         .then((response)=>{
             return response.json();
         }).then((data)=>{
-             setuserData(data)          
+            for ( let i = 0 ; i < data.lengh ; i ++ ) {
+                setAddresses (oldArray => [...oldArray, data[i] ] ) ;
+            }      
         })
     }
     useEffect(()=>{
@@ -42,30 +45,13 @@ export default function MyBillingAddress() {
         <div className='heading'>
         <h4 id = 'spacing1'><strong>MY ADDRESS</strong></h4>
         </div>
-        <button className = "AddressButton"onClick= {() => handleClick() } >
-        { ( showFrom == true ) ? <CloseIcon></CloseIcon> : 
-        <div>
-            ADD A NEW ADDRESS <AddIcon></AddIcon>
-        </div>
-        }
-        </button>
-        { ( showFrom == true ) ? 
-                <form className='address' onSubmit={handleSubmit} >
-                    <label >
-                        Address : <input className='AddressInput' value={address} onChange={ (e) => setAddress(e.target.value ) } required />
-                    </label>
-                    <div >
-                    <button style={{ border : "none" }} className = " addressAddButton" onClick= {() => handleSubmit } >Add</button>
-                    </div>
-                </form>
-            : 
-        <></>
-        }
         {   
             addresses.map ( ( address ) => (
                 <div className='address' >
-                    <h5 className='spaceBetweenAddressDetails'><strong>Name : {userData.user_name}</strong></h5>
-                    <p>Address : {address}</p>
+                    <p>Locality : {address.locality}</p>
+                    <p>City : {address.city}</p>
+                    <p>pincode : {address.pincode}</p>
+                    <p>Contact Number : {address.phone_number}</p>
                 </div>
             )
             ).reverse()
@@ -75,3 +61,4 @@ export default function MyBillingAddress() {
     
   );
 }
+
