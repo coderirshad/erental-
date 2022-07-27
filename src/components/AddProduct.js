@@ -91,7 +91,7 @@ export default function AddProduct( ) {
     }).then((result)=>{
       
     })
-    navigate('/addproduct')
+    navigate('/admin/Product')
   }
   const addProduct = () =>{
           saveProduct()
