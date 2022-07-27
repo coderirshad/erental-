@@ -47,7 +47,17 @@ export default function AddProduct( ) {
       setcategory(await response.json());                      
   }
   const updateData = async ( ) =>{
-    fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`)
+    fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`,{
+        method:'PUT',
+        headers:{
+          'Accept':'application/json',
+          'Content-Type':'application/json',
+          'Authorization': GetAuthorization()
+        },
+        body:JSON.stringify({
+          id:params.id
+        })
+    })
     .then((response)=>{ 
         return response.json();
     })
