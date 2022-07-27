@@ -13,7 +13,13 @@ export default function Product() {
 
   const [product, setProduct] =  useState([]);
   const fetchData =()=>{
-      fetch(`http://${process.env.REACT_APP_URL}/product`)
+      fetch(`http://${process.env.REACT_APP_URL}/vendor/product`,{
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': GetAuthorization()
+          }
+    })
       .then((response)=>{
           return response.json();
       }).then((data)=>{    

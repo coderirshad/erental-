@@ -59,7 +59,7 @@ export default function AddProduct( ) {
       setsku(data.sku);
       setview(data.view);
       // setstatus(data.status);
-      setimage(data.images); 
+      setimage(data.images[0]); 
       setTag(data.tag);
       setsubcategory(data.category);
     }
