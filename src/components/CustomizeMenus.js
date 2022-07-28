@@ -85,6 +85,9 @@ export default function CustomizedMenus({role,login,setlogin}) {
         open={open}
         onClose={handleClose}
       > 
+      {
+        login ? 
+        <div>
         <Link to={'/myaccount'}>
         <MenuItem onClick={handleClose} disableRipple>
           <AccountCircleIcon></AccountCircleIcon>
@@ -92,7 +95,15 @@ export default function CustomizedMenus({role,login,setlogin}) {
         </MenuItem>
         </Link>
         <Divider sx={{ my: 0.5 }} />
+        </div>
+        :
+        <></>
+      }
 
+
+      {
+        login ? 
+        <div>
         <Link to={'/whishlist'}>
         <MenuItem onClick={handleClose} disableRipple>
           <FavoriteBorderIcon></FavoriteBorderIcon>
@@ -100,22 +111,43 @@ export default function CustomizedMenus({role,login,setlogin}) {
         </MenuItem>
         </Link>
         <Divider sx={{ my: 0.5 }} />
+        </div>
+        :
+        <></>
+      }
 
+
+      {
+        login ? 
+        <div>
         <Link to={'/cart'}>
         <MenuItem onClick={handleClose} disableRipple>
           <AddShoppingCartIcon></AddShoppingCartIcon>
           Cart
         </MenuItem>
         </Link>
+        </div>
+        :
+        <></>
+      }
+
+
+      {
+        login ? 
+        <div>
         <Link to={'/checkout'}>
         <Divider sx={{ my: 0.5 }} />
-
         <MenuItem onClick={handleClose} disableRipple>
           <ReplyAllIcon></ReplyAllIcon>
           Checkout
         </MenuItem>
         </Link>
         <Divider sx={{ my: 0.5 }} />
+        </div>
+        :
+        <></>
+      }
+        
         <a href='/login'>
         <Link to={'/login'}>
         <MenuItem onClick={()=>{

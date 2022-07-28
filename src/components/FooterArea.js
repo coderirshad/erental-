@@ -7,7 +7,7 @@ export default function FooterArea() {
         const response = await fetch(`http://${process.env.REACT_APP_URL}/tag`);
         const now = await response.json() ;
         let sz = now.length ;
-        for ( let i = 0 ; i < sz - 6 ; i ++ ) {
+        for ( let i = 0 ; i < sz - 5 ; i ++ ) {
             now.pop() ;
         }
         settagList(now);
@@ -61,12 +61,10 @@ export default function FooterArea() {
                 <div className="f-link">
                     <h5>Quick Links</h5>
                     <ul className="list-unstyled">
-                        <li><a href="/account"><i className="fa fa-angle-right"></i>My Account</a></li>
+                        <li><a href="/myaccount"><i className="fa fa-angle-right"></i>My Account</a></li>
                         <li><a href="/cart"><i className="fa fa-angle-right"></i>Shopping Cart</a></li>
-                        <li><a href="/wishlist"><i className="fa fa-angle-right"></i>My Wishlist</a></li>
                         <li><a href="/checkout"><i className="fa fa-angle-right"></i>Checkout</a></li>
                         <li><a href="/order/history"><i className="fa fa-angle-right"></i>Order History</a></li>
-                        <li><a href="/login"><i className="fa fa-angle-right"></i>Log In</a></li>
                         <li><a href="/location"><i className="fa fa-angle-right"></i>Our Locations</a></li>
                     </ul>
                 </div>
@@ -79,7 +77,6 @@ export default function FooterArea() {
                         <li><a href="/"><i className="fa fa-angle-right"></i>Payment Policy</a></li>
                         <li><a href="/"><i className="fa fa-angle-right"></i>Return Policy</a></li>
                         <li><a href="/"><i className="fa fa-angle-right"></i>Privacy Policy</a></li>
-                        <li><a href="/"><i className="fa fa-angle-right"></i>Frequently asked questions</a></li>
                         <li><a href="/termsandconditions"><i className="fa fa-angle-right"></i>Terms & Condition</a></li>
                         <li><a href="/"><i className="fa fa-angle-right"></i>Delivery Info</a></li>
                     </ul>

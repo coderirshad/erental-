@@ -96,11 +96,7 @@ export default function Cartdetail() {
                                                 <li className="list-inline-item"><i className="fa fa-star"></i></li>
                                                 <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                             </ul>
-                                            <ul className="list-unstyled col-sz">
-                                                {data.attribute.map(att=>(
-                                                    <li><p>{att.name} : <span>{att.value}</span></p></li>
-                                                ))}
-                                            </ul>
+                                            
                                         </div>
                                     </td>
                                     <td className="t-price"><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>{data.price}</td>
