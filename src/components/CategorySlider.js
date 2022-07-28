@@ -49,7 +49,7 @@ import { Link } from 'react-router-dom';
                                     <div className="tab-item" style={{margin:"5px"}}>
                                         <button className = "button1" onClick= {() => handleClick1 ( data ) } >
                                             <a>
-                                            <img class = "productImage"src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs1szsOcJp_WVjcBprXBaS4xrYXj5h5vs3hfo0gf8T1A&s" alt="Italian Trulli"></img>
+                                            <img class = "productImage"src= {data.image}></img>
                                             <h4>{data.name}</h4>
                                             <i className="fa fa-angle-right"></i></a>                                                      
                                         </button>

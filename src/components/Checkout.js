@@ -1,6 +1,8 @@
 import {React, useState, useEffect } from 'react';
 import GetAuthorization from './GetAuthorization';
-
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import {  Button } from '@material-ui/core/';
 export default function Checkout() {
  const [data, setdata] = useState({fname:"",lname:"",email:"",phone:"",companyName:"",address1:"",address2:"",country:"",townCity:"",stateProvince:"",postalZipCode:"",orderNote:"",payment:"Cash On Delivery"})
  const [orderReview,setOrderReview]=useState({})
@@ -14,6 +16,24 @@ export default function Checkout() {
         }})
    
  }
+
+ const fetchAddress = async() =>{
+    await fetch(`http://${process.env.REACT_APP_URL}/address`,{
+          method:"GET",
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': GetAuthorization()
+            }  
+      })
+      
+      .then((response)=>{
+          return response.json();
+      }).then((data)=>{
+        setAddresses ( data ) ;   
+      })
+  }
+
+
  const fetchData = ( ) =>{
     fetch(`http://${process.env.REACT_APP_URL}/order-review`,{
         method:'GET',
@@ -53,75 +73,60 @@ export default function Checkout() {
   }
   useEffect(() => {
     fetchData()
+    fetchAddress()
   }, [])
+
+ const [addresses, setAddresses] = useState( [] );
+ const [Billingaddress , setBillingAddress] = useState( '' );
+ const [Shippinggaddress , setShippingAddress] = useState( '' );
+
  return (
     <section class="checkout">
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <form   action="/">
-                    <h5>Billing Information</h5>
+                <div >
+                    <h3><strong>Billing Address</strong></h3>
                     <div class="row">
-                        <div class="col-md-6">
-                            <label>First Name*</label>
-                            <input onChange={setValue} type="text" name="fname"  placeholder="Your first name"/>
+
+                    {   
+                        addresses.map ( ( address ) => (
+                        <div className='address' >
+                            <Button onClick={() => setBillingAddress (address.address_id)} style={{ color: 'black' }} size="small">
+                            { ( address.address_id == Billingaddress ) ? <CheckBoxIcon/> : <CheckBoxOutlineBlankIcon/> }
+                            </Button>
+                            <h5 className='spaceBetweenAddressDetails'><strong>Name : {address.name}</strong></h5>
+                            <p>Locality : {address.locality}</p>
+                            <p>City : {address.city}</p>
+                            <p>Pincode : {address.pincode}</p>
+                            <p>Phone Number : {address.phone_number}</p>
                         </div>
-                        <div class="col-md-6">
-                            <label>Last Name*</label>
-                            <input onChange={setValue} type="text" name="lname"  placeholder="Your last name"/>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Email Address*</label>
-                            <input onChange={setValue} type="text" name="email"  placeholder="Your email address"/>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Phone*</label>
-                            <input onChange={setValue} type="text" name="phone"  placeholder="Your phone number"/>
-                        </div>
-                        <div class="col-md-12">
-                            <label>Company Name</label>
-                            <input onChange={setValue} type="text" name="companyName"  placeholder="Your company name (optional)"/>
-                        </div>
-                        
-                        {/* <div class="col-md-12">
-                            <label>Address*</label>
-                            <input onChange={setValue} type="text" name="address1"  placeholder="Address line 1"/>
-                            <input onChange={setValue} type="text" name="address2"  placeholder="Address line 2"/>
-                        </div>
-                        <div class="col-md-6 contry">
-                            <label>Country*</label>
-                            <select onChange={setValue} name="country" class="country">
-                                <option>United State</option>
-                                <option>Canada</option>
-                                <option>United Kingdom</option>
-                                <option>Australia</option>
-                                <option>Germany</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Town/City*</label>
-                            <input onChange={setValue} type="text" name="townCity"  placeholder="Your town or city name"/>
-                        </div>
-                        <div class="col-md-6">
-                            <label>State/Province*</label>
-                            <input onChange={setValue} type="text" name="stateProvince"  placeholder="Your state or province"/>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Postal/Zip Code*</label>
-                            <input onChange={setValue} type="text" name="postalZipCode"  placeholder="Your postal or zip code"/>
-                        </div> */}
-                        <div class="col-md-12">
-                            <ul class="list-unstyled">
-                                <li><input type="checkbox" id="samsung" name="createAccount"/><label for="samsung">Create An Account?</label></li>
-                                <li><input type="checkbox" id="apple" name="shipToSameAddress"/><label for="apple">Ship To Same Address?</label></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-12">
-                            <label>Order Note</label>
-                            <textarea onChange={setValue} name="orderNote" placeholder="Note for your order (optional). Example- special notes for delivery"></textarea>
-                        </div>
+                        )
+                        )
+                    }
                     </div>
-                </form>
+                </div>
+                <div >
+                    <h3><strong>Shipping Address</strong></h3>
+                    <div class="row">
+
+                    {   
+                        addresses.map ( ( address ) => (
+                        <div className='address' >
+                            <Button onClick={() => setShippingAddress (address.address_id)} style={{ color: 'black' }} size="small">
+                                { ( address.address_id == Shippinggaddress ) ? <CheckBoxIcon/> : <CheckBoxOutlineBlankIcon/> }
+                            </Button>
+                            <h5 className='spaceBetweenAddressDetails'><strong>Name : {address.name}</strong></h5>
+                            <p>Locality : {address.locality}</p>
+                            <p>City : {address.city}</p>
+                            <p>Pincode : {address.pincode}</p>
+                            <p>Phone Number : {address.phone_number}</p>
+                        </div>
+                        )
+                        )
+                    }
+                    </div>
+                </div>
             </div>
             <div class="col-md-5">
                 <div class="row">

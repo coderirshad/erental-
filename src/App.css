@@ -1857,8 +1857,13 @@ h6 {
 }
 
 .AddressInput{
-  width: 800px;
+  width: 320px;
   height: 40px;
+  margin: 20px;
+  border-radius: 60px;
+  padding: 5px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .AddressButton{
@@ -1910,6 +1915,10 @@ h6 {
 .avatar{
   background-color: purple;
     
+}
+
+.rowButton{
+  margin-left: 500px;
 }
 
 
