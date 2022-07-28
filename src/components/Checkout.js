@@ -7,19 +7,10 @@ import {  Button } from '@material-ui/core/';
 import MyBillingAddress from './MyBillingAddress';
 export default function Checkout() {
  const navigate = useNavigate();
- const [data, setdata] = useState({fname:"",lname:"",email:"",phone:"",companyName:"",address1:"",address2:"",country:"",townCity:"",stateProvince:"",postalZipCode:"",orderNote:"",payment:"Cash On Delivery"})
+ const [payment, setPayment] = useState("")
  const [orderReview,setOrderReview]=useState({})
  const [cart,setcart]=useState([])
  const [paymentMethod,setPaymentMethod]=useState([])
- const setValue = (e) =>{
-    setdata((pre)=>{
-        return{
-            ...pre,
-            [e.target.name]:e.target.value.trim()
-        }})
-   
- }
-
  const fetchAddress = async() =>{
     await fetch(`http://${process.env.REACT_APP_URL}/address`,{
           method:"GET",
@@ -74,8 +65,9 @@ export default function Checkout() {
             'Authorization': GetAuthorization()
           },
         body:JSON.stringify({
-            billing_address_id:"2c9f5d6d-6ce4-4145-814a-a65bcacd701a",
-            shipping_address_id:"2c9f5d6d-6ce4-4145-814a-a65bcacd701a"
+            payment_method_id:payment,
+            billing_address_id:Billingaddress,
+            shipping_address_id:Shippinggaddress
         })
     })
     navigate('/')
@@ -172,7 +164,7 @@ export default function Checkout() {
                                 <ul class="list-unstyled">
                                     {paymentMethod.map((pay,id)=>(
                                         <li key={id}>
-                                            <input onClick={setValue} type="radio" id="pay1" name="payment" value={pay.name} checked/>
+                                            <input onClick={()=>setPayment(pay.id)} type="checkbox" id="pay1" name="payment" value={pay.name} />
                                             <label for={pay.id}><span><i className="fa fa-circle"></i></span>{pay.name}</label>
                                             <p>{pay.details}</p>
                                         </li>
