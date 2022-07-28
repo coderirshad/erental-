@@ -2864,6 +2864,8 @@ border: 10px solid red;
   border: 1px solid #e5e5e5;
   padding: 20px 20px 0;
   margin-bottom: 30px;
+  height: 510px;
+  overflow:hidden;
 }
 
 .product-area .bt-deal .sec-title h6 {
@@ -2884,8 +2886,9 @@ border: 10px solid red;
 }
 
 .product-area .bt-deal .bt-body .bt-items .bt-box .bt-img a img {
-  max-width: 85px;
-  margin-right: 15px;
+  width:50px;
+  height:50px;
+  margin-right: 5px;
 }
 
 .product-area .bt-deal .bt-body .bt-items .bt-box .bt-content p {
@@ -4554,6 +4557,7 @@ border: 10px solid red;
 ======================================= */
 .best-ofr {
   margin-bottom: 30px;
+
 }
 
 .best-ofr .bst-slider .sec-title h6 {
@@ -4563,9 +4567,12 @@ border: 10px solid red;
   border-bottom: 1px solid #eeeeee;
   padding-bottom: 15px;
   margin-bottom: 18px;
+
 }
 
 .best-ofr .bst-slider .bst-body {
+  max-height: 600px;
+  overflow: hidden;
   position: relative;
 }
 

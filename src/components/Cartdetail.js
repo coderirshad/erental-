@@ -85,7 +85,7 @@ export default function Cartdetail() {
                                 <tr>
                                     <td className="t-pro d-flex">
                                         <div className="t-img">
-                                            <a href=""><img src="images/sbar-1.png" alt=""/></a>
+                                            <a href=""><img src={data.image} style={{height:"80px",width:"80px"}} alt=""/></a>
                                         </div>
                                         <div className="t-content">
                                             <p className="t-heading"><a href="">{data.name}</a></p>

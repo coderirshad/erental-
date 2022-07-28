@@ -43,12 +43,11 @@ import { Link } from 'react-router-dom';
                                                 <li className="list-inline-item"><a href="#">{data.category}</a></li>
                                                 <li className="list-inline-item"><a href="#">{data.sub_category}</a></li>
                                             </ul>
-                                            <p><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></p>
+                                            <div style={{height:"20px",overflow:"hidden"}}><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></div>
                                         </div>
                                         <Link to={`/product/${data.product_id}`}>
                                         <div className="tab-img">
-                                            <img className="main-img img-fluid" src={data.image} alt=""/>
-                                            <img className="sec-img img-fluid" src={data.image} alt=""/>
+                                            <img className="main-img img-fluid" src={data.image} style={{height:"200px",width:"200px"}} alt=""/>
                                             <div className="layer-box">
                                                 <a href="" className="it-comp" data-toggle="tooltip" data-placement="left" title="Compare"><img src="images/it-comp.png" alt=""/></a>
                                                 <a href="" className="it-fav" data-toggle="tooltip" data-placement="left" title="Favourite"><img src="images/it-fav.png" alt=""/></a>

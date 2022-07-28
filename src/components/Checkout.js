@@ -1,9 +1,12 @@
 import {React, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import GetAuthorization from './GetAuthorization';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import {  Button } from '@material-ui/core/';
+import MyBillingAddress from './MyBillingAddress';
 export default function Checkout() {
+ const navigate = useNavigate();
  const [data, setdata] = useState({fname:"",lname:"",email:"",phone:"",companyName:"",address1:"",address2:"",country:"",townCity:"",stateProvince:"",postalZipCode:"",orderNote:"",payment:"Cash On Delivery"})
  const [orderReview,setOrderReview]=useState({})
  const [cart,setcart]=useState([])
@@ -59,17 +62,23 @@ export default function Checkout() {
          setPaymentMethod(pay);
     })
  }
-
- const placeOrder = (e) =>{
+ const handleSubmit = (e) =>{
     e.preventDefault()
-    fetch(`http://${process.env.REACT_APP_URL}/place-order`,{
-        method:"PUT",
+    placeOrder();
+ }
+ const placeOrder = async () =>{
+    await fetch(`http://${process.env.REACT_APP_URL}/checkout`,{
+        method:"POST",
         headers: {
             'Content-Type': 'application/json',
             'Authorization': GetAuthorization()
           },
-        body:JSON.stringify(data)
+        body:JSON.stringify({
+            billing_address_id:"2c9f5d6d-6ce4-4145-814a-a65bcacd701a",
+            shipping_address_id:"2c9f5d6d-6ce4-4145-814a-a65bcacd701a"
+        })
     })
+    navigate('/')
   }
   useEffect(() => {
     fetchData()
@@ -139,7 +148,7 @@ export default function Checkout() {
                                     {cart.map((singleProduct,id)=>(
                                         <li key={id} className="d-flex justify-content-between">
                                             <div className="pro">
-                                                <img src="images/sbar-1.png" alt=""/>
+                                                <img src={singleProduct.image} alt=""/>
                                                 <p>{singleProduct.name}</p>
                                                 <span>{singleProduct.quantity} X ${singleProduct.price}</span>
                                             </div>
@@ -171,7 +180,7 @@ export default function Checkout() {
                                 </ul>
                             </div>
                         </div>
-                        <button onClick={placeOrder} href="/" type="button" name="button" className="ord-btn">Place Order</button>
+                        <button onClick={handleSubmit} href="/" type="button" name="button" className="ord-btn">Place Order</button>
                     </div>
                 </div>
             </div>

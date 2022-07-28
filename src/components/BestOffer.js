@@ -56,7 +56,7 @@ const BestOffer = ( ) =>{
                                 <div class="bst-items" key={id}>
                                     <div class="bst-box d-flex">
                                         <div class="bst-img">
-                                            <Link to={`/product/${data.product_id}`}><img src="images/sbar-9.png" alt="" class="img-fluid"/></Link>
+                                            <Link to={`/product/${data.product_id}`}><img src={data.image} style={{height:"80px",width:"80px"}} alt="" className="img-fluid"/></Link>
                                         </div>
                                         <div class="bst-content">
                                             <p><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></p>
@@ -90,7 +90,7 @@ const BestOffer = ( ) =>{
                                 {hotOffer.map((data)=>(
                                     <div class="bst-box d-flex">
                                         <div class="bst-img">
-                                            <Link to={`/product/${data.product_id}`}><img src="images/sbar-9.png" alt="" class="img-fluid"/></Link>
+                                            <Link to={`/product/${data.product_id}`}><img src={data.image} style={{height:"80px",width:"80px"}} alt="" class="img-fluid"/></Link>
                                         </div>
                                         <div class="bst-content">
                                             <p><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></p>
@@ -124,7 +124,7 @@ const BestOffer = ( ) =>{
                                 {topRated.map((data)=>(
                                     <div class="bst-box d-flex">
                                         <div class="bst-img">
-                                            <Link to={`/product/${data.product_id}`}><img src="images/sbar-7.png" alt="" class="img-fluid"/></Link>
+                                            <Link to={`/product/${data.product_id}`}><img src={data.image} style={{height:"80px",width:"80px"}} alt="" class="img-fluid"/></Link>
                                         </div>
                                         <div class="bst-content">
                                             <p><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></p>
