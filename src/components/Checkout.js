@@ -70,7 +70,7 @@ export default function Checkout() {
             shipping_address_id:Shippinggaddress
         })
     })
-    navigate('myaccount/Orders')
+    navigate('/myaccount/Orders')
   }
   useEffect(() => {
     fetchData()

@@ -1,11 +1,13 @@
 import React,{useEffect,useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CurrencyRupeeTwoToneIcon from '@mui/icons-material/CurrencyRupeeTwoTone';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import GetAuthorization from './GetAuthorization';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 export default function Cartdetail() {
     const [cartproduct, setcartproduct] = useState([])
     const [cartsummary, setcartsummary] = useState({})
+    const navigate = useNavigate();
     const UpdateQuantity = async (cart_item_id1,finalquantity)=>{
         await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
             method: "PUT",
@@ -58,7 +60,14 @@ export default function Cartdetail() {
         })
 
     }
-
+    const placeOrder = () =>{
+        if(cartproduct.length==0){
+            alert("please first you have to add product!!!")
+        }
+        else{
+            navigate('/checkout')
+        }
+    }
     useEffect(() => {
         fetchData()            
      }, [])
@@ -81,7 +90,7 @@ export default function Cartdetail() {
                             </tr>
                         </thead>
                         <tbody>
-                            {cartproduct.map(data=>(
+                            {cartproduct.length==0?<h1 style={{color:"red",margin:"50px",borderBottom:"2px solid red"}}>EMPTY CART<RemoveShoppingCartIcon style={{fontSize:"60px"}}></RemoveShoppingCartIcon></h1>:cartproduct.map(data=>(
                                 <tr>
                                     <td className="t-pro d-flex">
                                         <div className="t-img">
@@ -168,7 +177,7 @@ export default function Cartdetail() {
                     </ul>
                     <div className="cart-btns text-right">
                         {/* <button type="button" className="up-cart">Update Cart</button> */}
-                        <button type="button" className="chq-out" ><Link to={'/checkout'}>Checkout</Link></button>
+                        <button onClick={placeOrder} type="button" className="chq-out" >Checkout</button>
                     </div>
                 </div>
             </div>

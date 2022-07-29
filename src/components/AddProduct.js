@@ -126,7 +126,7 @@ export default function AddProduct( ) {
                           id="eventManagersPrice"
                           label="eventManagersPrice"
                           value={eventManagersPrice}
-                          onChange={(e)=>{setprice(e.target.value)}}
+                          onChange={(e)=>{seteventManagersPrice(e.target.value)}}
                           defaultValue="Enter eventManagersPrice"
                       />
                       <TextField
