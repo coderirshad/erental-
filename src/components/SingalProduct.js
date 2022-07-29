@@ -121,8 +121,8 @@ const SingalProduct = ({login}) => {
                                      </div>
                                      <div class="pro-price">
                                          <ul class="list-unstyled list-inline">
-                                             <li class="list-inline-item">{product.currency} {product.price}</li>
-                                             <li class="list-inline-item">{product.currency} {product.price+product.discounted_price}</li>
+                                             <li class="list-inline-item">INR {product.price}</li>
+                                             <li class="list-inline-item">INR {product.price+product.discounted_price}</li>
                                          </ul>
                                          <p>Availability : {product.is_available && ( <><span>In Stock</span> <label>({product.stock} Available)</label></>)}{!product.is_available && <span>OutOff Stock</span> } </p>
                                      </div>

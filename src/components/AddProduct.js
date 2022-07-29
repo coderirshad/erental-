@@ -20,6 +20,7 @@ export default function AddProduct( ) {
   const params = useParams();
   const navigate=useNavigate();
   const[name,setname] = useState("");
+  const[eventManagersPrice,seteventManagersPrice] = useState("");
   const[price,setprice] = useState("");
   const[discounted_price,setdiscounted] = useState("");
   const[stock,setstock] = useState("");
@@ -27,6 +28,8 @@ export default function AddProduct( ) {
   const[view,setview] = useState("");
   const[image, setimage] =useState("");
   const[tag_list, setTaglist] =useState([]);
+  const[suggestion_list,setSuggestionlist] =useState([]);
+  const[suggestion,setSuggestion] =useState([]);
   const [tag, setTag] = React.useState([]);
   const [category, setcategory] = useState([]);
   const [subcategory,setsubcategory] = useState([]);
@@ -120,6 +123,14 @@ export default function AddProduct( ) {
 
                       <TextField
                           required
+                          id="eventManagersPrice"
+                          label="eventManagersPrice"
+                          value={eventManagersPrice}
+                          onChange={(e)=>{setprice(e.target.value)}}
+                          defaultValue="Enter eventManagersPrice"
+                      />
+                      <TextField
+                          required
                           id="price"
                           label="Price"
                           value={price}
@@ -172,20 +183,23 @@ export default function AddProduct( ) {
                             defaultValue="View"
                           />
                           
-                        
+                        <div style={{display:"flex"}}>
                           <NestedMultipleSelectChip boxName={"category"} names={category} personName={subcategory} setPersonName={setsubcategory}></NestedMultipleSelectChip>
                           <MultipleSelectChip boxName={"tag"} names={tag_list} personName={tag} setPersonName={setTag}></MultipleSelectChip>
+                          <MultipleSelectChip boxName={"suggestion"} names={suggestion_list} personName={suggestion} setPersonName={setSuggestion}></MultipleSelectChip>
+                        </div>
+                         
 
                             
                     </div>
                     <div class="col-md-12">
                             <ul class="list-unstyled" style={{display:"flex",alignItem:"center"}}>
-                                <li><input onChange={(e)=>{setIsHotDeal(is_hot_deal?false:true)}}  type="checkbox" id="is_hot_deal" name="is_hot_deal"/><label for="is_hot_deal">is hot deal</label></li>
-                                <li><input onChange={(e)=>{setIsTopSold(is_top_sold?false:true)}} type="checkbox" id="is_top_sold" name="is_top_sold"/><label for="is_top_sold">is top sold</label></li>
-                                <li><input onChange={(e)=>{setIsNew(is_new?false:true)}} type="checkbox" id="is_new" name="is_new"/><label for="is_new">is new</label></li>
-                                <li><input onChange={(e)=>{setIsEnable(is_enable?false:true)}} type="checkbox" id="is_enable" name="is_enable"/><label for="is_enable">is enable</label></li>
-                                <li><input onChange={(e)=>{setIsBestDeal(is_best_deal?false:true)}} type="checkbox" id="is_best_deal" name="is_best_deal"/><label for="is_best_deal">is best deal</label></li>
-                                <li><input onChange={(e)=>{setIsFeatured(is_featured?false:true)}} type="checkbox" id="is_featured" name="is_featured"/><label for="is_featured">is featured</label></li>
+                                <li style={{marginRight:"15px"}}><input onChange={(e)=>{setIsHotDeal(is_hot_deal?false:true)}}  type="checkbox" id="is_hot_deal" name="is_hot_deal"/><label for="is_hot_deal">is hot deal</label></li>
+                                <li style={{marginRight:"15px"}}><input onChange={(e)=>{setIsTopSold(is_top_sold?false:true)}} type="checkbox" id="is_top_sold" name="is_top_sold"/><label for="is_top_sold">is top sold</label></li>
+                                <li style={{marginRight:"15px"}}><input onChange={(e)=>{setIsNew(is_new?false:true)}} type="checkbox" id="is_new" name="is_new"/><label for="is_new">is new</label></li>
+                                <li style={{marginRight:"15px"}}><input onChange={(e)=>{setIsEnable(is_enable?false:true)}} type="checkbox" id="is_enable" name="is_enable"/><label for="is_enable">is enable</label></li>
+                                <li style={{marginRight:"15px"}}><input onChange={(e)=>{setIsBestDeal(is_best_deal?false:true)}} type="checkbox" id="is_best_deal" name="is_best_deal"/><label for="is_best_deal">is best deal</label></li>
+                                <li style={{marginRight:"15px"}}><input onChange={(e)=>{setIsFeatured(is_featured?false:true)}} type="checkbox" id="is_featured" name="is_featured"/><label for="is_featured">is featured</label></li>
                             </ul>
                         </div>
                     <br></br>

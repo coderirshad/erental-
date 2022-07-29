@@ -7452,7 +7452,7 @@ border: 10px solid red;
 }
 
 .checkout .order-review .review-box ul li div.prc p {
-  font-size: 16px;
+  font-size: 13px;
   color: #666666;
   font-weight: 600;
   padding-top: 18px;
@@ -7462,7 +7462,7 @@ border: 10px solid red;
   padding-bottom: 10px;
 }
 
-.checkout .order-review .review-box ul li:nth-child(5) {
+.checkout .order-review .review-box ul .total {
   font-size: 16px;
   color: #666666;
   border-top: 1px solid #e5e5e5;
@@ -7472,11 +7472,11 @@ border: 10px solid red;
   font-weight: 600;
 }
 
-.checkout .order-review .review-box ul li:nth-child(5) span {
+.checkout .order-review .review-box ul .total span {
   float: right;
 }
 
-.checkout .order-review .review-box ul li:nth-child(6) {
+.checkout .order-review .review-box ul .total {
   font-size: 16px;
   color: #666666;
   border-bottom: 1px solid #dddddd;
@@ -7485,11 +7485,12 @@ border: 10px solid red;
   font-weight: 600;
 }
 
-.checkout .order-review .review-box ul li:nth-child(6) span {
+.checkout .order-review .review-box ul .total span {
   float: right;
+  font-size: 13px;
 }
 
-.checkout .order-review .review-box ul li:last-child {
+.checkout .order-review .review-box ul .total {
   font-size: 18px;
   color: #444444;
   padding: 12px 0;
@@ -7517,11 +7518,11 @@ border: 10px solid red;
   margin-bottom: 10px;
 }
 
-.checkout .pay-meth .pay-box ul li input[type="radio"] {
-  display: none;
+.checkout .pay-meth .pay-box ul li input[type="checkbox"] {
+  margin-right: 10px;
 }
 
-.checkout .pay-meth .pay-box ul li input[type="radio"] + label {
+.checkout .pay-meth .pay-box ul li input[type="checkbox"] + label {
   margin-bottom: 0;
   font-size: 15px;
   color: #666666;

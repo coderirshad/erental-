@@ -1439,7 +1439,12 @@
   color: #969696;
   margin: 8px 30px 10px;
 }
-
+.fliterDown{
+  display: flex;
+}
+.fliterDown div{
+  margin-right: 60px;
+}
 .checkout button.ord-btn {
   font-size: 18px;
   color: #fff;
@@ -1462,14 +1467,15 @@
 }
 
 .table-responsive{
-  width:50%;
+  width:80%;
+  max-height: 490px;
+  overflow: scroll;
 }
 
 
 .sliderbar {
   margin-bottom: 30px;
   width: 80%;
-
   margin-left: 4%;
 
   

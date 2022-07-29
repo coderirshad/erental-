@@ -34,9 +34,7 @@ export default function Dash_side() {
                     {
                     product.map(data => (
                         <>
-                        <li><Link to= {`/admin/${data.name}`}> <img src="images/sm.png" alt=""/>{data.name}</Link></li>
-                       
-                       
+                        <li><Link to= {`/admin/${data.name}`}> <img src="images/sm.png" alt=""/>{data.name}</Link></li>                       
                         </>
                         ))} 
                     </ul>

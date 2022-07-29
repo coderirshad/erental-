@@ -1,8 +1,7 @@
 import {React,useState,useEffect} from "react";
 import LogoArea from "./LogoArea";
 import MainMenuArea2 from "./MainMenuArea2";
-import TopBar from "./TopBar";
-import Cluster from "./Cluster.js"
+import Cluster from "./Cluster.js";
 
 const UserNav = ({login,setlogin})=>{
      return ( 

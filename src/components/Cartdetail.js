@@ -99,7 +99,7 @@ export default function Cartdetail() {
                                             
                                         </div>
                                     </td>
-                                    <td className="t-price"><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>{data.price}</td>
+                                    <td className="t-price"><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>INR {data.price}</td>
                                     <td className="t-qty">
                                         <div className="qty-box">
                                             <div className="quantity buttons_added">
@@ -162,9 +162,9 @@ export default function Cartdetail() {
                 <div className="crt-sumry">
                     <h5>Cart Summery</h5>
                     <ul className="list-unstyled">
-                        <li>Subtotal <span>${cartsummary.sub_total}</span></li>
-                        <li>Shipping & Tax <span>${cartsummary.tax}</span></li>
-                        <li>Grand Total <span>${cartsummary.grand_total}</span></li>
+                        <li>Subtotal <span>INR {cartsummary.sub_total}</span></li>
+                        <li>Shipping & Tax <span>INR {cartsummary.tax}</span></li>
+                        <li>Grand Total <span>INR {cartsummary.grand_total}</span></li>
                     </ul>
                     <div className="cart-btns text-right">
                         {/* <button type="button" className="up-cart">Update Cart</button> */}

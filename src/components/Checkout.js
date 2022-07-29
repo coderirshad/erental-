@@ -70,7 +70,7 @@ export default function Checkout() {
             shipping_address_id:Shippinggaddress
         })
     })
-    navigate('/')
+    navigate('myaccount/Orders')
   }
   useEffect(() => {
     fetchData()
@@ -129,30 +129,30 @@ export default function Checkout() {
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="order-review">
+            <div className="col-md-5">
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="order-review">
                             <h5>Order Review</h5>
-                            <div class="review-box">
-                                <ul class="list-unstyled">
+                            <div className="review-box">
+                                <ul className="list-unstyled">
                                     <li>Product <span>Total</span></li>
                                     {cart.map((singleProduct,id)=>(
                                         <li key={id} className="d-flex justify-content-between">
                                             <div className="pro">
                                                 <img src={singleProduct.image} alt=""/>
                                                 <p>{singleProduct.name}</p>
-                                                <span>{singleProduct.quantity} X ${singleProduct.price}</span>
+                                                <span>{singleProduct.quantity} X {singleProduct.price}</span>
                                             </div>
                                             <div className="prc">
-                                                <p>${singleProduct.total}</p>
+                                                <p>INR {singleProduct.total}</p>
                                             </div>
                                         </li>
                                     ))}
                                    
-                                    <li>Sub Total <span>${orderReview.subTotal}</span></li>
-                                    <li>Shipping & Tax <span>${orderReview.shiipingTax}</span></li>
-                                    <li>Grand Total <span>${orderReview.grandTotal}</span></li>
+                                    <li className="total">Sub Total <span >INR {orderReview.subTotal}</span></li>
+                                    <li className="total">Shipping & Tax <span>INR {orderReview.shiipingTax}</span></li>
+                                    <li className="total">Grand Total <span>INR {orderReview.grandTotal}</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -172,7 +172,7 @@ export default function Checkout() {
                                 </ul>
                             </div>
                         </div>
-                        <button onClick={handleSubmit} href="/" type="button" name="button" className="ord-btn">Place Order</button>
+                        <button onClick={handleSubmit} href="myaccount/Orders" type="button" name="button" className="ord-btn">Place Order</button>
                     </div>
                 </div>
             </div>

@@ -43,7 +43,7 @@ export default function Product() {
       fetchData();
   },[])
   return (
-    <div className="container"  style={{marginLeft:"30%", position:"absolute", top:"25%"}} >
+    <div className="container"  style={{marginLeft:"30%", position:"absolute", top:"18%"}} >
       <ul className="nav">
   <li className="nav-item">
     <a className="nav-link active" aria-current="page" href="#">All</a>
@@ -86,7 +86,7 @@ export default function Product() {
 <br>
 </br>
 
-
+<div className="fliterDown">
   <div className="col-3">
     <div className="d-flex">
     <select className="form-select me-2 " aria-label="Default select example">
@@ -122,23 +122,20 @@ export default function Product() {
    <Link  to="/addproduct"><button type="button" className="btn btn-danger">Add Product</button></Link>
    </div>
    </div>
+   </div>
 <br></br>
 <div className="table-responsive" >
-    <table className="table ">
+    <table className="table">
   
   <thead>
     <tr>
       <th scope="col">Image</th>
       <th scope="col">Name</th>
-      <th scope="col">Status</th>
-      <th scope="col">SKU</th>
       <th scope="col">Stock</th>
       <th scope="col">Price</th>
-      <th scope="col">Earning</th>
-      <th scope="col">Delete</th>
-      <th scope="col">Type</th>
+      <th scope="col">DiscountedPrice</th>
       <th scope="col">View</th>
-      
+      <th scope="col">Delete</th>     
 
     </tr>
   </thead>
@@ -148,16 +145,14 @@ export default function Product() {
                      
     <tr>
    
-      <td scope="row"><img src="images/sbar-6.png" alt=""/></td>
+      <td scope="row"><Link to={`/addproduct/${data.id}`}><img style={{widht:"80px",height:"80px"}} src={data.images[0]} alt=""/></Link></td>
       <td><Link to={`/addproduct/${data.id}`}>{data.name}</Link></td>
-      <td>{data.Status}</td>
-      <td>{data.SKU}</td>
-      <th >{data.Stock}</th>
+      <th >{data.stock}</th>
       <td>{data.price}</td>
-      <td>{data.Earning}</td>
-      <td><Link to="/admin/Product" onClick={()=>handleDelete(data.id)}><DeleteForeverTwoToneIcon style={{color:"red",fontSize:"25px"}}></DeleteForeverTwoToneIcon></Link></td>
-      <td>{data.Type}</td>
+      <td>{data.discounted_price}</td>
       <td>{data.view}</td>
+      <td><Link to="/admin/Product" onClick={()=>handleDelete(data.id)}><DeleteForeverTwoToneIcon style={{color:"red",fontSize:"25px"}}></DeleteForeverTwoToneIcon></Link></td>
+      
     
     </tr>
                     ))}

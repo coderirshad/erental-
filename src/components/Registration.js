@@ -1,12 +1,15 @@
 import { Alert } from '@mui/material';
 import {React, useState} from 'react'
-import {useNavigate } from 'react-router-dom'
+import {Link, useNavigate } from 'react-router-dom'
 
 export default function Registration() {
-    const [data, setdata] = useState({first_name:"",last_name:"",email:"",mobile:"",password:"",confirm_password:"",is_terms_read:"false",subscribe:"false"})
+    const [data, setdata] = useState({first_name:"",last_name:"",email:"",mobile:"",password:"",confirm_password:"",is_terms_read:false,subscribe:false})
     const [message,setmessage] = useState("");
+    const [color,setcolor] = useState("2px 2px 20px 2px white");
     const navigate = useNavigate();
     const setValue = (e) =>{
+        setcolor("2px 2px 20px 2px white");
+        setmessage("");
        setdata((pre)=>{
            return{
                ...pre,
@@ -15,19 +18,50 @@ export default function Registration() {
     }    
     const Submit = (e) =>{
             e.preventDefault()
-            fetch(`http://${process.env.REACT_APP_URL}/register`,{
-                method:"POST",
-                body:JSON.stringify(data)
-            }).then((response)=>{
-                if(response.status==200){
-                    navigate('/login')  
+                 
+                 if(data.first_name===""){
+                    setmessage("please fill first name");
+                    setcolor("2px 2px 20px 2px red");
+                 }
+                 else if(data.last_name===""){
+                    setmessage("please fill last name");
+                    setcolor("2px 2px 20px 2px red");
+                 }
+                 else if(data.email===""){
+                    setmessage("please fill email");
+                    setcolor("2px 2px 20px 2px red");
+                 }
+                 else if(data.mobile===""){
+                    setmessage("please fill mobile number");
+                    setcolor("2px 2px 20px 2px red");
+                 }
+                 else if(data.password===""){
+                    setmessage("please fill password");
+                    setcolor("2px 2px 20px 2px red");
+                 }
+                 else if(data.confirm_password===""){
+                    setmessage("please fill confirm password");
+                    setcolor("2px 2px 20px 2px red");
+                 }
+                 else if(data.is_terms_read===false){
+                    setmessage("please select terms and condition");
+                    setcolor("2px 2px 20px 2px red");
                 }
                 else{
-                    setmessage("some error occure");
-                }
-                
-                return response.json();
-            })
+                    fetch(`http://${process.env.REACT_APP_URL}/register`,{
+                        method:"POST",
+                        body:JSON.stringify(data)
+                    }).then((response)=>{
+                        if(response.status==200){
+                            navigate('/login')  
+                        }
+                        else{
+                            setmessage("some error occure");
+                        }
+                        
+                        return response.json();
+                    })
+            }
      }
 
   return (
@@ -36,9 +70,8 @@ export default function Registration() {
         <section className="register">
             <div className="container">
                 <div className="row">
-               
                     <div className="col-md-12">                      
-                        <form action="#"> 
+                        <form action="#" style={{boxShadow:color}}> 
                             {message?<Alert style={{fontSize:"20px",color:"red"}}>{message}</Alert>:""}
                             <h5>Registration</h5>
                             <div className="row">
@@ -69,7 +102,7 @@ export default function Registration() {
                                 <div className="col-md-7">
                                     <div>
                                         <input onClick={setValue} type="checkbox" name="is_terms_read" id="t-box" value="true"/>
-                                        <label for="t-box">I have read the terms and condition.</label>
+                                        <label for="t-box">I have read the terms and condition.<Link to={'/terms&conditions'} style={{color:"blue"}}>Read</Link></label>
                                     </div>
                                     <div>
                                         <input onClick={setValue} type="checkbox" name="subscribe" id="c-box" value="true"/>
