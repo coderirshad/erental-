@@ -5,24 +5,22 @@ export default function Contact() {
     
   return (
     <div id='contact'><section className="contact-area">
-    <div id='map'>
-          <SimpleMap></SimpleMap>
-    </div>
-    <div className="container">
+    <div className="container" style = {{ marginTop : "50px"}}>
         <div className="row">
             <div className="col-lg-4 col-md-5">
                 <div className="contact-box-tp">
                     <h4>Contact Info</h4>
                 </div>
                 <div className="row">
+                    
                     <div className="col-md-12">
                         <div className="contact-box d-flex">
                             <div className="contact-icon">
-                                <i className="fa fa-map-marker"></i>
+                                <i className="fa fa-envelope"></i>
                             </div>
                             <div className="contact-content">
-                                <h6>Our Location</h6>
-                                <p>795 South Park Avenue, Long Island, Newyork, NY 94107.</p>
+                                <h6>Email Address</h6> <br></br>
+                                <p>Info@erentals.in <br/> <br></br>Info@erentals.in</p>
                             </div>
                         </div>
                     </div>
@@ -32,8 +30,8 @@ export default function Contact() {
                                 <i className="fa fa-envelope"></i>
                             </div>
                             <div className="contact-content">
-                                <h6>Email Address</h6>
-                                <p>enquery@domain.com <br/>help@yourdomain.com</p>
+                                <h6>Our Location</h6> <br></br>
+                                <p>CITY CENTER MALL , <br/> <br></br>MUMBAI</p>
                             </div>
                         </div>
                     </div>
@@ -43,8 +41,8 @@ export default function Contact() {
                                 <i className="fa fa-phone"></i>
                             </div>
                             <div className="contact-content">
-                                <h6>Phone Number</h6>
-                                <p>+1 908 875 7678 <br/>+1 908 875 7637</p>
+                                <h6>Phone Number</h6> <br></br>
+                                <p>+91 9867348165 <br/> <br></br>+91 9867348165</p>
                             </div>
                         </div>
                     </div>
@@ -64,17 +62,12 @@ export default function Contact() {
                     <h4>Get In Touch</h4>
                     <form action="/">
                         <div className="row">
-                            <div className="col-md-6">
-                                <p>Full Name:-<input type="text" id="name" name="name" placeholder="Full Name" required=""/></p>
-                             </div>
-                            <div className="col-md-6">
-                                <p>Email:-<input type="text" id="email" name="email" placeholder="Email" required=""/></p>
+                            
+                            <div className="col-md-12">
+                                <p><input type="text" id="subject" name="subject" placeholder="Subject"/></p>
                             </div>
                             <div className="col-md-12">
-                                <p>Subject:-<input type="text" id="subject" name="subject" placeholder="Subject"/></p>
-                            </div>
-                            <div className="col-md-12">
-                                <p>Message:-<textarea name="message" id="message" placeholder="Message" required=""/></p>
+                                <p><textarea name="message" id="message" placeholder="Message" required="true"/></p>
                             </div>
                             <div className="col-md-12">
                                 <button type="submit">Send Message</button>
@@ -85,6 +78,9 @@ export default function Contact() {
                 </div>
             </div>
         </div>
+    </div>
+    <div id='map' style = {{ marginTop : "20px" , marginBottom : "150px" , marginLeft : "250px" , width : "1000px"}}>
+          <SimpleMap></SimpleMap>
     </div>
 </section>
 </div>

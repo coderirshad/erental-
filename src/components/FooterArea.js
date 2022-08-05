@@ -7,7 +7,7 @@ export default function FooterArea() {
         const response = await fetch(`http://${process.env.REACT_APP_URL}/tag`);
         const now = await response.json() ;
         let sz = now.length ;
-        for ( let i = 0 ; i < sz - 5 ; i ++ ) {
+        for ( let i = 0 ; i < sz - 4 ; i ++ ) {
             now.pop() ;
         }
         settagList(now);
@@ -64,8 +64,8 @@ export default function FooterArea() {
                         <li><a href="/myaccount"><i className="fa fa-angle-right"></i>My Account</a></li>
                         <li><a href="/cart"><i className="fa fa-angle-right"></i>Shopping Cart</a></li>
                         <li><a href="/checkout"><i className="fa fa-angle-right"></i>Checkout</a></li>
-                        <li><a href="/order/history"><i className="fa fa-angle-right"></i>Order History</a></li>
-                        <li><a href="/location"><i className="fa fa-angle-right"></i>Our Locations</a></li>
+                        <li><a href="/myaccount/Orders"><i className="fa fa-angle-right"></i>Order History</a></li>
+                        <li><a href="/contact"><i className="fa fa-angle-right"></i>Our Locations</a></li>
                     </ul>
                 </div>
             </div>
@@ -74,11 +74,11 @@ export default function FooterArea() {
                     <h5>Support</h5>
                     <ul className="list-unstyled">
                         <li><a href="/contact"><i className="fa fa-angle-right"></i>Contact Us</a></li>
-                        <li><a href="/"><i className="fa fa-angle-right"></i>Payment Policy</a></li>
-                        <li><a href="/"><i className="fa fa-angle-right"></i>Return Policy</a></li>
-                        <li><a href="/"><i className="fa fa-angle-right"></i>Privacy Policy</a></li>
-                        <li><a href="/termsandconditions"><i className="fa fa-angle-right"></i>Terms & Condition</a></li>
-                        <li><a href="/"><i className="fa fa-angle-right"></i>Delivery Info</a></li>
+                        <li><a href="/returnPolicy"><i className="fa fa-angle-right"></i>Return Policy</a></li>
+                        <li><a href="/privacyPolicy"><i className="fa fa-angle-right"></i>Privacy Policy</a></li>
+                        <li><a href="/termsAndConditions"><i className="fa fa-angle-right"></i>Terms & Condition</a></li>
+                        <li><a href="/paymentPolicy"><i className="fa fa-angle-right"></i>Payment Policy</a></li>
+                        <li><a href="/aboutUs"><i className="fa fa-angle-right"></i>About Us</a></li>
                     </ul>
                 </div>
             </div>

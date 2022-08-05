@@ -51,7 +51,13 @@ export default function AboutUs() {
                             <div class="col-md-6">
                                 <div class="history">
                                     <h5>Our Mission</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ut iure doloribus ratione quia nam ducimus nemo, culpa vero eveniet magni fugit non nemo quas dolorum nisi ducimus laboriosam.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fa fa-check"></i>Numquam nesciunt, ex obcaecati libero asperiores</li>
+                                        <li><i class="fa fa-check"></i>Ipsa ut iure doloribus ratione quia nam ducimus</li>
+                                        <li><i class="fa fa-check"></i>Reprehenderit ratione minus commodi magni</li>
+                                        <li><i class="fa fa-check"></i>Porro et laudantium, atque similique</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -67,30 +73,25 @@ export default function AboutUs() {
                             <h4>Meet Our Team</h4>
                         </div>
                         <div >
-                            <div class="team-box">
+                            <div class="team-box" id = 'lst'>
                                 <img src="images/team-1.jpg" alt="" class="img-fluid"/>
                                 <h5>Kevin Smith</h5>
                                 <p>Founder</p>
                             </div>
-                            <div class="team-box">
+                            <div class="team-box" id = 'lst'>
                                 <img src="images/team-2.jpg" alt="" class="img-fluid"/>
                                 <h5>Alisha Doe</h5>
                                 <p>Chief Officer</p>
                             </div>
-                            <div class="team-box">
+                            <div class="team-box" id = 'lst' >
                                 <img src="images/team-3.jpg" alt="" class="img-fluid"/>
                                 <h5>Kevin Smith</h5>
                                 <p>Exicutive</p>
                             </div>
-                            <div class="team-box">
+                            <div class="team-box" id = 'lst' >
                                 <img src="images/team-4.jpg" alt="" class="img-fluid"/>
                                 <h5>Angel Kim</h5>
                                 <p>Director</p>
-                            </div>
-                            <div class="team-box">
-                                <img src="images/team-1.jpg" alt="" class="img-fluid"/>
-                                <h5>Kevin Smith</h5>
-                                <p>Founder</p>
                             </div>
                         </div>
                     </div>

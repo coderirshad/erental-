@@ -18,7 +18,7 @@ export default function MyOrderDetails () {
       
         <div className='upDiv'>
             
-            <div className = "addressBar" style = {{ marginLeft : "-80px" , width : "400px" }}>
+            <div className = "addressBar" style = {{ marginLeft : "-10px" , width : "350px"}}>
               <h5 style = {{marginBottom : "10px"}} >Shipping Address</h5>
               <p><strong>{product?.shipping_address?.name}</strong></p>
               <p>{product?.shipping_address?.locality}</p>
@@ -28,7 +28,7 @@ export default function MyOrderDetails () {
               <p>{product?.shipping_address?.phone_number}</p>
             </div>          
 
-            <div className = "addressBar" style = {{ width : "400px" , marginLeft : "0px"}}>
+            <div className = "addressBar" style = {{ width : "350px" , marginLeft : "0px" }}>
               <h5 style = {{marginBottom : "10px" }} >Billing Address</h5>
               <p><strong>{product?.billing_address?.name}</strong></p>
               <p>{product?.billing_address?.locality}</p>
@@ -36,7 +36,12 @@ export default function MyOrderDetails () {
 
               <p><strong>Phone Number</strong></p>
               <p>{product?.billing_address?.phone_number}</p>
-            </div>                                    
+            </div>   
+
+            <div className = "addressBar" style = {{ width : "200px" , marginLeft : "0px" }}>
+              <button><strong>Download Invoice</strong></button>
+            </div>   
+
         </div>
 
         <div className='downDiv'>

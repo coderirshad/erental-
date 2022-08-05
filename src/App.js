@@ -30,6 +30,11 @@ import ShowAccountDetails from "./components/ShowAccountDetails" ;
 import { CheckAuth } from "./components/CheckAuth";
 import MyOrderDetails from "./components/MyOrderDetails";
 import NotFound from "./components/NotFound";
+import Contact from "./components/Contact";
+import TermsAndConditions from "./components/TermsAndConditions";
+import ReturnPolicy from "./components/ReturnPolicy";
+import PaymentPolicy from "./components/PaymentPolicy";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
     const [loginrole,setloginrole]= React.useState("customer");
@@ -61,6 +66,11 @@ const App = () =>{
           <Route exact path='/tagProductList' element={<TagProductList/>} />
           <Route exact path='/allProductList' element={<AllProductList/>} />
           <Route exact path = "/myOrderDetails" element = {<MyOrderDetails/>}></Route>
+          <Route exact path = "/contact" element = {<Contact/>}></Route>
+          <Route exact path = "/termsAndConditions" element = {<TermsAndConditions/>}></Route>
+          <Route exact path = "/returnPolicy" element = {<ReturnPolicy/>}></Route>
+          <Route exact path = "/paymentPolicy" element = {<PaymentPolicy/>}></Route>
+          <Route exact path = "/privacyPolicy" element = {<PrivacyPolicy/>}></Route>
         </Routes>
         <SocialMediaLink></SocialMediaLink>
         <FooterArea></FooterArea>

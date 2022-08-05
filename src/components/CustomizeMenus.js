@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useState, useEffect} from 'react'
+
 import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -62,6 +64,10 @@ export default function CustomizedMenus({role,login,setlogin}) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+ const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+     useEffect(() => {
+        setUser ( JSON.parse(localStorage.getItem('profile')) ) ;
+  }, [localStorage.getItem('profile')] );
   return (
     <div>
       <Button
@@ -74,7 +80,7 @@ export default function CustomizedMenus({role,login,setlogin}) {
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
-       {login?"Logout":"Login"}
+       {login?<p>{user?.data?.user_id.charAt(0)}{user?.data?.user_id.charAt(1)}{user?.data?.user_id.charAt(2)}</p>:"Login"}
       </Button>
       <StyledMenu
         id="demo-customized-menu"

@@ -118,7 +118,7 @@ export default function Cartdetail() {
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="t-total">${data.total}</td>
+                                    <td className="t-total"><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>{data.total}</td>
                                     <td onClick={()=>UpdateQuantity(data.cart_item_id,0)} className="t-rem"><Link to="/cart"><DeleteForeverTwoToneIcon style={{color:"red",fontSize:"40px"}}></DeleteForeverTwoToneIcon></Link></td>
                                 </tr>   
                             ))}
@@ -171,9 +171,11 @@ export default function Cartdetail() {
                 <div className="crt-sumry">
                     <h5>Cart Summery</h5>
                     <ul className="list-unstyled">
-                        <li>Subtotal <span>INR {cartsummary.sub_total}</span></li>
-                        <li>Shipping & Tax <span>INR {cartsummary.tax}</span></li>
-                        <li>Grand Total <span>INR {cartsummary.grand_total}</span></li>
+
+                        <li>Subtotal <span><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>{cartsummary.sub_total}</span></li>
+                        <li>Shipping & Tax <span><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>{cartsummary.tax}</span></li>
+                        <li>Grand Total <span><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>{cartsummary.grand_total}</span></li>
+                        
                     </ul>
                     <div className="cart-btns text-right">
                         {/* <button type="button" className="up-cart">Update Cart</button> */}

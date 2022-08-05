@@ -43,10 +43,6 @@ export default function LogoArea({role,login,setlogin}) {
         fetchData()            
      }, []) ;
 
-     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-     useEffect(() => {
-        setUser ( JSON.parse(localStorage.getItem('profile')) ) ;
-      }, [localStorage.getItem('profile')] );
   return (
     <section className="logo-area2">
         <div className="container">
@@ -95,7 +91,7 @@ export default function LogoArea({role,login,setlogin}) {
                             </a>
                         </div>
                         <div style={{marginRight:"20px" , marginLeft : "20px"}} className="wsh-box ml-auto modified_wishlist"> 
-                           { (user == null ) ?  <></> : <Avatar style ={{ color: "blue" }}>{user?.data?.user_id.charAt(0)}</Avatar> }
+                           
                         </div>
                         <div style={{marginLeft:"0px"}} className="wsh-box ml-auto modified_wishlist">
                                 <CustomizedMenus role={role} login={login} setlogin={setlogin}></CustomizedMenus>                            

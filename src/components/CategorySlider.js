@@ -23,7 +23,6 @@ import { Link } from 'react-router-dom';
     useEffect(()=>{
         fetchData();    
     },[])
-
     const List = [] ;
     const handleClick1 = async ( category ) =>{
         category.subcategory.map ( (subcategory) => (
