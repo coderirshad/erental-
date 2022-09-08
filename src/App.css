@@ -1934,7 +1934,130 @@ h6 {
 
 
 
+/* downloading the invoice */
 
 
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDMincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
 
+
+.invoice-container{
+  padding: 50px;
+  margin-top: 20px;
+}
+
+.invoice-heading{
+
+  font-family: 'Amarante', cursive;
+  color: #054271;
+  font-size: 900%;
+  margin: 0;
+}
+
+.toppest{
+  align-items: center;
+  background: linear-gradient(to right, white, #0d5293);
+}
+
+.invoice-logo{
+  float: left;
+  margin-left: 7%;
+  margin-right: 18%;
+  width: 8%;
+  height: 5%;
+}
+
+.invoice-toppest{
+  background: linear-gradient(to right,white,#0d5293) ;
+}
+
+.invoice-date{
+  margin-left: 74%;
+  font-size: larger;
+}
+
+.invoice-starting{
+  text-align: justify;
+  margin-left: 50px;
+}
+
+.invoice-center{
+  text-align: justify;
+  margin-left: 50px;
+}
+
+.invoice-table{
+  background: linear-gradient(to right,white,#0d5293);
+}
+
+.invoice-top{
+  color: black;
+  padding: 0.7%;
+}
+
+.invoice-content{
+  font-size: larger !important;
+}
+
+.invoice-h2{
+  text-align: justify;
+  margin-top: 60px;
+  color: black;
+  margin-bottom: 40px;
+}
+
+.invoice-li{
+  text-align: left;
+  padding-left: 5px;
+  font-size: large;
+  margin: 10px;
+}
+
+.invoice-last{
+  text-align: left;
+  font-size: large;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+
+@media only screen and (max-width: 600px){
+  .invoice-top{
+    font-size: 45%;
+    padding: 2%;
+  }
+  .invoice-heading{
+    font-size: 400%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin: 0;
+    padding: 0;
+  }
+  .invoice-date{
+    margin-left: 70%;
+    font-size: small;
+  }
+  .invoice-para{
+    font-size: small !important;
+  }
+  table{
+    margin: 0% !important;
+    width: 100%;
+  }
+  tr{
+    font-size: 8px;
+  }
+  .invoice-toppest{
+    width: 100% !important;
+  }
+  .invoice-li{
+    font-size: x-small;
+  }
+  .invoice-ul{
+    font-size: x-small;
+  }
+  .last{
+    font-size: small;
+  }
+}
 
