@@ -12,10 +12,6 @@ export default function MyOrderDetails () {
     //navigate(`/product/${id}`);
   }
 
-  const downloadInvoice = () => {
-    navigate("/DownloadInvoice",{state:{product : product }});
-  };
-
   return (
     <div style = {{height : "400px" , marginTop : "40px" , width : "1000px" ,
      borderStyle: "ridge" , borderWidth : "1.5px" , marginLeft : "240px" , padding : "20px" , marginBottom : "40px" }} >
@@ -43,7 +39,7 @@ export default function MyOrderDetails () {
             </div>   
 
             <div className = "addressBar" style = {{ width : "200px" , marginLeft : "0px" }}>
-              <button onClick={downloadInvoice} ><strong>Download Invoice</strong></button>
+              <button><strong>Download Invoice</strong></button>
             </div>   
 
         </div>

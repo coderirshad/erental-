@@ -35,7 +35,6 @@ import TermsAndConditions from "./components/TermsAndConditions";
 import ReturnPolicy from "./components/ReturnPolicy";
 import PaymentPolicy from "./components/PaymentPolicy";
 import PrivacyPolicy from "./components/PrivacyPolicy";
-import DownloadInvoice from "./components/DownloadInvoice";
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
     const [loginrole,setloginrole]= React.useState("customer");
@@ -72,7 +71,6 @@ const App = () =>{
           <Route exact path = "/returnPolicy" element = {<ReturnPolicy/>}></Route>
           <Route exact path = "/paymentPolicy" element = {<PaymentPolicy/>}></Route>
           <Route exact path = "/privacyPolicy" element = {<PrivacyPolicy/>}></Route>
-          <Route exact path = "/DownloadInvoice" element = {<DownloadInvoice/>}></Route>
         </Routes>
         <SocialMediaLink></SocialMediaLink>
         <FooterArea></FooterArea>
