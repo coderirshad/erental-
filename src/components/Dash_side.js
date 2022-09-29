@@ -24,17 +24,17 @@ export default function Dash_side() {
     },[])
   return (
     
-    <section className="sliderbar">
-    <div className="container">
+    <section className="sliderbar" >
+    <div className="container-fluid">
         <div className="row">
-            <div className="col-lg-3 col-md-0">
+            <div className="col-lg-2">
                 <div className="menu-widget">
-                <p><i className="fa fa-bars"></i>Dashboard</p>
+                <p style={{textAlign:"left"}}><i className="fa fa-bars"></i>Dashboard</p>
                     <ul className="list-unstyled">
                     {
                     product.map(data => (
                         <>
-                        <li><Link to= {`/admin/${data.name}`}> <img src="images/sm.png" alt=""/>{data.name}</Link></li>                       
+                        <li><Link className='border' style={{textAlign:"left"}} to= {`/admin/${data.name}`}> <img src="images/sm.png" alt=""/>{data.name}</Link></li>                       
                         </>
                         ))} 
                     </ul>

@@ -2,35 +2,43 @@ import React,{useEffect,useState} from 'react';
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-export default function HotDeals() {
-    const [product, setproduct] = useState([]);    
-    const fetchData = ()=>{
-        fetch(`http://${process.env.REACT_APP_URL}/hot-deal`).then((response)=>{
-            return response.json();
-        }).then((data)=>{
-            setproduct(data)
-        })
+export default function SuggestProduct(){
+    const [suggestProduct, setSuggestproduct] = useState([]) 
+    const params = useParams(); 
+    const suggestProductapi = async ()=>{
+    await fetch(`http://${process.env.REACT_APP_URL}/suggest/product/${params.id}
+    `)
+    .then((response)=>{ 
+        return response.json();
+    })
+    .then((data)=>{      
+       setSuggestproduct(data);
     }
-    useEffect(()=>{
-        fetchData();
-    },[])
+    )
+  }
+
+  useEffect(() => {
+   suggestProductapi();
+  }, [suggestProduct])
+
   return (
-    <div className="container" id = "imageShift1">
+    <div className="col-md-3">
     <section className="product-area">
         <div className="container">
             <div className="row">
-                <div className="col-lg-3 col-md-4">
+                <div className="col-lg-12 col-md-12">
                     <div className="row">
                         <div className="col-md-12">
                             <div className="bt-deal">
                                 <div className="sec-title">
-                                    <h6>Hot Deals</h6>
+                                    <h6>Suggest Product</h6>
                                 </div>
                                
-                                <OwlCarousel key={`carousel_${product.length}`} className="bt-body owl-carousel" items={1} nav loop  >
+                                <OwlCarousel key={`carousel_${suggestProduct.length}`} className="bt-body owl-carousel" items={1} nav loop  >
                                 <div className="bt-items" >
-                                    {product.map((data,id)=>(                                     
+                                    {suggestProduct.map((data,id)=>(                                     
                                             <div className="bt-box d-flex" key={id} >
                                                 <div className="bt-img">
                                                     <Link to={`/product/${data.product_id}`}><img src={data.image} alt=""/></Link>

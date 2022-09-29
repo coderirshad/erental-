@@ -64,8 +64,8 @@ import { Link } from 'react-router-dom';
                                                     <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                                 </ul>
                                                 <ul className="list-unstyled list-inline price">
+                                                    <li className="list-inline-item">INR {data.discounted_price}</li>
                                                     <li className="list-inline-item">INR {data.price}</li>
-                                                    <li className="list-inline-item">INR {data.price + data.discounted_price}</li>
                                                 </ul>
                                             </div>
                                             <div>

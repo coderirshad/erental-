@@ -50,6 +50,7 @@ CSS INDEX
 39. Contact
 40. Footer Area
 41. Invoice
+42. Description single product 
 
 ==============================================*/
 /* ====================
@@ -6865,7 +6866,26 @@ border: 10px solid red;
   visibility: visible;
   left: 100%;
 }
-
+/* here is add my css sarfraj */
+.ProductDescript-sgprduct{
+  margin-top: 20px;
+  width: 100%;
+  border: 2px solid red;
+  padding: 20px;
+  text-align: left;
+  color: #0077b5 !important; 
+}
+.ProductDescript-sgprduct button{
+  outline: none;
+  border: none;
+  color: #1ab744 !important;
+  font-size: 20px;
+  background: none;
+  font-style: underline;
+}
+.ProductDescript-sgprduct button :hover{
+  color: #e45151;
+}
 /* =======================================
 29. shopping Cart
 ======================================= */
@@ -9779,7 +9799,6 @@ color: red;
 .note ul li{
   width: 80%;
   display: inline-block;
-  color: black;
-          
+  color: black;        
   }
         

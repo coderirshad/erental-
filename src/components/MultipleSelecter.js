@@ -77,7 +77,7 @@ export default function MultipleSelectChip({boxName, names, personName, setPerso
           {names.map((name) => (
             <MenuItem
               key={name.id}
-              value={name.id}
+              value={name.name}
               style={getStyles(name, personName, theme)}
             >
               {name.name}

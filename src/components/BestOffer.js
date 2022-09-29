@@ -17,6 +17,7 @@ const BestOffer = ( ) =>{
         })
         .then((data)=>{       
             setnewProduct(data);
+            console.log("datanewproduct", data);
         }
         )
 
@@ -68,8 +69,8 @@ const BestOffer = ( ) =>{
                                                 <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
                                             </ul>
                                             <ul class="list-unstyled list-inline price">
+                                                <li class="list-inline-item">INR {data.discounted_price}</li>
                                                 <li class="list-inline-item">INR {data.price}</li>
-                                                <li class="list-inline-item">INR {data.price + data.discounted_price}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -102,8 +103,8 @@ const BestOffer = ( ) =>{
                                                 <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
                                             </ul>
                                             <ul class="list-unstyled list-inline price">
+                                                <li class="list-inline-item">INR {data.discounted_price}</li>
                                                 <li class="list-inline-item">INR {data.price}</li>
-                                                <li class="list-inline-item">INR {data.price + data.discounted_price}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -136,8 +137,8 @@ const BestOffer = ( ) =>{
                                                 <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
                                             </ul>
                                             <ul class="list-unstyled list-inline price">
+                                                <li class="list-inline-item">INR {data.discounted_price}</li>
                                                 <li class="list-inline-item">INR {data.price}</li>
-                                                <li class="list-inline-item">INR {data.price + data.discounted_price}</li>
                                             </ul>
                                         </div>
                                     </div>

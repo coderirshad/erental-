@@ -16,8 +16,7 @@ export default function AboutProduct( {product} ) {
           <div className="productDetails">
             <h4 >{product.name}</h4>
             <p>Stock : {product.Stock}</p>
-            <p>Price : ₹{product.price}  ₹<del>{product.price+product.discounted_price}</del></p>
-            <h7>Discount : ₹{ product.discounted_price } <span class='special-word'>( {product.discounted_percent}%off )</span></h7>
+            <p>Price : ₹{product.discounted_price}  ₹<del>{product.price}</del></p>
          </div>
          
          <i className="fa fa-angle-right"></i></a>                                                      

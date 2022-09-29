@@ -35,6 +35,12 @@ import TermsAndConditions from "./components/TermsAndConditions";
 import ReturnPolicy from "./components/ReturnPolicy";
 import PaymentPolicy from "./components/PaymentPolicy";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import DescriptionData from "./components/DescriptionData";
+import DescriptionReview from "./components/DescriptionReview";
+import DescriptionShippingDelivery from "./components/DescriptionShippingDelivery";
+import DescriptionProductEnquiry from "./components/DescriptionProductEnquiry";
+import DescriptionQuestionAns from "./components/DescriptionQuestionAns";
+import DescriptionTermCon from "./components/DescriptionTermCon";
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
     const [loginrole,setloginrole]= React.useState("customer");
@@ -52,7 +58,15 @@ const App = () =>{
           <Route exact path="/coupon" element={<Coupon />}></Route>
           <Route exact path="/category" element={<CategoryBox />}></Route>
           <Route exact path="/cart" element={login?<Cartdetail />:<Login/>}></Route>
-          <Route exact path="/product/:id" element={<SingalProduct login={login}/>}></Route>
+          <Route exact path="/product/:id" element={<SingalProduct login={login}/>}>
+              <Route index element={<DescriptionData />} />
+              <Route exact path="Discription"  element={<DescriptionData />}></Route>
+              <Route exact path="Reviews"  element={<DescriptionReview />} />
+              <Route exact path="Shipping"  element={<DescriptionQuestionAns />} />
+              <Route exact path="Delivery"  element={<DescriptionShippingDelivery />} />
+              <Route exact path="ProductEnquiry"  element={<DescriptionProductEnquiry />} />
+              <Route exact path="termandcondition" element={<DescriptionTermCon />} />
+          </Route>
 
           <Route exact path="/admin/:id" element={loginrole==="admin"?<Dash_RightContent/>:<NotFound/>}></Route>
           <Route exact path="/addproduct" element={loginrole==="admin"?<AddProduct />:<NotFound/>}></Route>

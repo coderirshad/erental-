@@ -16,11 +16,10 @@ import { Link } from 'react-router-dom';
         .then((response)=>{
             return response.json();
         }).then((data)=>{     
-          
             setProduct(data) 
         })
     }
-    console.log(product)
+   
     useEffect(()=>{
         fetchData();    
     },[category])
@@ -45,11 +44,11 @@ import { Link } from 'react-router-dom';
                                                 <li className="list-inline-item"><a href="#">{data.category}</a></li>
                                                 <li className="list-inline-item"><a href="#">{data.sub_category}</a></li>
                                             </ul>
-                                            <div style={{height:"20px",overflow:"hidden"}}><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></div>
+                                            <div style={{height:"20px",overflow:"hidden"}}><Link to={`/product/${data.id}`}>{data.name}</Link></div>
                                         </div>
-                                        <Link to={`/product/${data.product_id}`}>
+                                        <Link to={`/product/${data.id}`}>
                                         <div className="tab-img">
-                                            <img className="main-img img-fluid" src={data.images[0]} style={{height:"200px",width:"200px"}} alt=""/>
+                                            <img className="main-img img-fluid" src={data.images[0]} style={{height:"200px",width:"100%"}} alt=""/>
                                             <div className="layer-box">
                                                 <a href="" className="it-comp" data-toggle="tooltip" data-placement="left" title="Compare"><img src="images/it-comp.png" alt=""/></a>
                                                 <a href="" className="it-fav" data-toggle="tooltip" data-placement="left" title="Favourite"><img src="images/it-fav.png" alt=""/></a>
@@ -66,12 +65,12 @@ import { Link } from 'react-router-dom';
                                                     <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                                 </ul>
                                                 <ul className="list-unstyled list-inline price">
+                                                    <li className="list-inline-item">INR {data.discounted_price}</li>
                                                     <li className="list-inline-item">INR {data.price}</li>
-                                                    <li className="list-inline-item">INR {data.price + data.discounted_price}</li>
                                                 </ul>
                                             </div>
                                             <div>
-                                                <Link to={`/product/${data.product_id}`} data-toggle="tooltip" data-placement="top" title="Add to Cart"><img src="images/it-cart.png" alt=""/></Link>
+                                                <Link to={`/product/${data.id}`} data-toggle="tooltip" data-placement="top" title="Add to Cart"><img src="images/it-cart.png" alt=""/></Link>
                                             </div>
                                         </div>
                                     </div>
