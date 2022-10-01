@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
+import GetAuthorization from './GetAuthorization';
 
 function DescriptionData(){
    const params = useParams();
@@ -7,22 +8,24 @@ function DescriptionData(){
    const id = params.id;
 
 
-   const fetchData = async () => {
-    try {
-        const response = await fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`);
-        if (!response.ok) throw new Error('soemthing went wrong in api')
-        const data = await response.json();
-        setDescription(data.description)
-       
-    } catch (error) {
-        alert('something went wrong');
+   const fetchData = () => {
+        fetch(`http://${process.env.REACT_APP_URL}/product/${id}`,{
+          method:"GET",
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': GetAuthorization() 
     }
+        }).then((response) =>{
+          return response.json();
+        }).then((data) =>{
+           setDescription(data.description);
+        })
 
 }
 
 useEffect(() => {
     fetchData()
-}, [description])
+}, [])
 
 
   return (

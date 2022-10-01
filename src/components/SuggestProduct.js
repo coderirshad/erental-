@@ -21,7 +21,7 @@ export default function SuggestProduct(){
 
   useEffect(() => {
    suggestProductapi();
-  }, [suggestProduct])
+  }, [])
 
   return (
     <div className="col-md-3">

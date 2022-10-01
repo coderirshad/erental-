@@ -9,6 +9,7 @@ export default function Cartdetail() {
     const [cartsummary, setcartsummary] = useState({})
     const navigate = useNavigate();
     const UpdateQuantity = async (cart_item_id1,finalquantity)=>{
+        console.log("finalquantity",finalquantity)
         await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
             method: "PUT",
             headers: {
@@ -20,7 +21,8 @@ export default function Cartdetail() {
                     cart_item_id:cart_item_id1,
                     quantity:finalquantity,
                     color:'',
-                    size:''
+                    size:'',
+                    day:''
                 }
             )
         });
@@ -44,19 +46,9 @@ export default function Cartdetail() {
         .then((response)=>{
             return response.json();
         }).then((data)=>{
-             setcartproduct(data)       
-        })
-        fetch(`http://${process.env.REACT_APP_URL}/cart-summary`,{
-            method:"GET",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': GetAuthorization()
-              }          
-        })
-        .then((response)=>{
-            return response.json();
-        }).then((data)=>{
-             setcartsummary(data)       
+            console.log("data of cart",data);
+             setcartproduct(data.cart)
+             setcartsummary(data);       
         })
 
     }
@@ -108,7 +100,7 @@ export default function Cartdetail() {
                                             
                                         </div>
                                     </td>
-                                    <td className="t-price"><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>INR {data.price}</td>
+                                    <td className="t-price">INR  {data.price}</td>
                                     <td className="t-qty">
                                         <div className="qty-box">
                                             <div className="quantity buttons_added">
@@ -118,7 +110,7 @@ export default function Cartdetail() {
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="t-total"><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>{data.total}</td>
+                                    <td className="t-total">INR {data.total}</td>
                                     <td onClick={()=>UpdateQuantity(data.cart_item_id,0)} className="t-rem"><Link to="/cart"><DeleteForeverTwoToneIcon style={{color:"red",fontSize:"40px"}}></DeleteForeverTwoToneIcon></Link></td>
                                 </tr>   
                             ))}
@@ -172,9 +164,11 @@ export default function Cartdetail() {
                     <h5>Cart Summery</h5>
                     <ul className="list-unstyled">
 
-                        <li>Subtotal <span><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>{cartsummary.sub_total}</span></li>
-                        <li>Shipping & Tax <span><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>{cartsummary.tax}</span></li>
-                        <li>Grand Total <span><CurrencyRupeeTwoToneIcon></CurrencyRupeeTwoToneIcon>{cartsummary.grand_total}</span></li>
+                        <li>Subtotal :<span>INR {cartsummary.sub_total}</span></li>
+                        <li>Transportation Charge :<span>INR {cartsummary.transportation_charge}</span></li>
+                        <li>Cgst :<span>INR {cartsummary.cgst}</span></li>
+                        <li>sgst :<span>INR {cartsummary.sgst}</span></li>
+                        <li>Grand Total : <span>INR {cartsummary.total}</span></li>
                         
                     </ul>
                     <div className="cart-btns text-right">

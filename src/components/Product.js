@@ -22,7 +22,8 @@ export default function Product() {
     })
       .then((response)=>{
           return response.json();
-      }).then((data)=>{    
+      }).then((data)=>{ 
+        console.log("eventprice", data);   
         setProduct(data)       
       })
   }
@@ -132,6 +133,7 @@ export default function Product() {
       <th scope="col">Image</th>
       <th scope="col">Name</th>
       <th scope="col">Stock</th>
+      <th scope="col">EventManagerPrice</th>
       <th scope="col">Price</th>
       <th scope="col">DiscountedPrice</th>
       <th scope="col">View</th>
@@ -148,6 +150,7 @@ export default function Product() {
       <td scope="row"><Link to={`/addproduct/${data.product_id}`}><img style={{widht:"80px",height:"80px"}} src={data.images[0]} alt=""/></Link></td>
       <td><Link to={`/addproduct/${data.product_id}`}>{data.product_name}</Link></td>
       <th >{data.stock}</th>
+      <td>{data.event_manager_price}</td>
       <td>{data.price}</td>
       <td>{data.discounted_price}</td>
       <td>{data.view}</td>
@@ -155,7 +158,7 @@ export default function Product() {
       
     
     </tr>
-                    ))}
+            ))}
   </tbody>  
 </table>
 </div>

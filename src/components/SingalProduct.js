@@ -27,10 +27,7 @@ const SingalProduct = ({ login }) => {
     const navigate = useNavigate();
     const IncrementQuantity = () => {
         console.log('quntity', product);
-        if (quantity < product.stock) setquantity(quantity + 1);
-        else {
-            alert(`Sorry Stock is not available greater than ${product.stock}`)
-        }
+        setquantity(quantity + 1);
     }
     const DecrementQuantity = () => {
         if (quantity > 1) setquantity(quantity - 1);
@@ -49,7 +46,7 @@ const SingalProduct = ({ login }) => {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': GetAuthorization()
+                    'Authorization': GetAuthorization(),
                 },
                 body: JSON.stringify(
                     {
@@ -73,19 +70,20 @@ const SingalProduct = ({ login }) => {
 
     }
 
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`);
-            // if (!response.ok) throw new Error('soemthing went wrong in api')
-            const data = await response.json();
-            console.log('stock', data);
-            setproduct(data);
-            setimageList(data.images);
-            setCategoryList(data.category);
-        } catch (error) {
-            alert('something went wrong');
-        }
-
+    const fetchData = () => {
+             fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`, {
+                method:"GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': GetAuthorization()
+                  }  
+            }).then((response)=>{
+                return response.json();
+            }).then((data)=>{
+                 setproduct(data);
+                 setimageList(data.images);
+                 setCategoryList(data.category);          
+            })
     }
 
     const serviceapi = async() =>{
@@ -95,7 +93,13 @@ const SingalProduct = ({ login }) => {
     }
 
     const dayandprice = async() =>{
-        const response = await fetch(`http://${process.env.REACT_APP_URL}/product/price?product_id=${id}&day=${day}&quantity=${quantity}&service=${service_id}`)
+        const response = await fetch(`http://${process.env.REACT_APP_URL}/product/price?product_id=${id}&day=${day}&quantity=${quantity}&service=${service_id}`,{
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': GetAuthorization()
+              }
+        })
         const data = await response.json();
         console.log("console",data,id,day,quantity,service_id)
         setDayPrice(data);
@@ -112,7 +116,7 @@ const SingalProduct = ({ login }) => {
     useEffect(() => {
         fetchData();
         serviceapi();
-    }, [id])
+    }, [])
 
     return (
         <section class="sg-product">

@@ -38,6 +38,7 @@ export default function Checkout() {
     }).then((response)=>{
         return response.json();
     }).then((review)=>{
+        console.log("cartdata", review)
          setOrderReview(review)
          setcart(review.cart);
     })

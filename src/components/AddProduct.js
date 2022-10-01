@@ -41,8 +41,15 @@ export default function AddProduct() {
   const [is_enable, setIsEnable] = useState(false);
   const [is_best_deal, setIsBestDeal] = useState(false);
   const [is_featured, setIsFeatured] = useState(false);
+  const [service, setService] = useState('');
   const fetchdata = async () => {
-    const response = await fetch(`http://${process.env.REACT_APP_URL}/category`); 
+    const response = await fetch(`http://${process.env.REACT_APP_URL}/category`,{
+      method:"GET",
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': GetAuthorization()
+        }  
+  }); 
     setcategory(await response.json());
     
   }
@@ -74,7 +81,14 @@ export default function AddProduct() {
 
   }
   const fetchtag = async () => {
-    const response = await fetch(`http://${process.env.REACT_APP_URL}/tag`);
+    const response = await fetch(`http://${process.env.REACT_APP_URL}/tag`
+    ,{
+      method:"GET",
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': GetAuthorization()
+        }  
+  });
     setTaglist(await response.json());
   }
   // suggest list api call
@@ -106,7 +120,7 @@ export default function AddProduct() {
     var images = [];
     images.push(image);
     var id = params.id;
-    let data = { id, name, price,termscondition,description,discounted_price, stock, view, tag, suggestion,images, subcategory, is_hot_deal, is_new, is_enable, is_best_deal, is_featured, is_top_sold }
+    let data = { id, name, price,termscondition,service,description,discounted_price, stock, view, tag, suggestion,images, subcategory, is_hot_deal, is_new, is_enable, is_best_deal, is_featured, is_top_sold }
     await fetch(`http://${process.env.REACT_APP_URL}/admin/product`, {
       method: 'PUT',
       headers: {
@@ -199,6 +213,14 @@ export default function AddProduct() {
                 label="SKU"
                 value={sku}
                 onChange={(e) => { setsku(e.target.value) }}
+                defaultValue="SKU"
+              />
+              <TextField
+                required
+                id="Service"
+                label="Service"
+                value={service}
+                onChange={(e) => { setService(e.target.value) }}
                 defaultValue="SKU"
               />
             </div>
