@@ -54,9 +54,9 @@ export default function MyBillingAddress() {
     };
 
   return (
-    <div style={{marginLeft:"30%", marginTop:"-18%" , marginBottom : "3%" }} >
+    <div style={{marginLeft:"23%", marginTop:"-42%" , marginBottom : "10%" }} >
         <div className='heading'>
-        <h4 id = 'spacing1'><strong>MY ADDRESSES</strong></h4>
+        <h4 id = 'spacing1' className='shadow-sm text-dark p-3 mb-4'><strong>MY ADDRESSES</strong></h4>
         </div>
         <button className = "AddressButton"onClick= {() => handleClick() } >
         { ( showFrom == true ) ? <CloseIcon></CloseIcon> : 
@@ -91,7 +91,7 @@ export default function MyBillingAddress() {
         }
         {   
             addresses.map ( ( address ) => (
-                <div className='address' >
+                <div className='address mb-2' >
                     <h5 className='spaceBetweenAddressDetails'><strong>Name : {address.name}</strong></h5>
                     <p>Locality : {address.locality}</p>
                     <p>City : {address.city}</p>
