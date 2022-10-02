@@ -11,6 +11,7 @@ export default function Checkout() {
  const [orderReview,setOrderReview]=useState({})
  const [cart,setcart]=useState([])
  const [paymentMethod,setPaymentMethod]=useState([])
+ const [cartsummary, setcartsummary] = useState({})
  const fetchAddress = async() =>{
     await fetch(`http://${process.env.REACT_APP_URL}/address`,{
           method:"GET",
@@ -27,21 +28,26 @@ export default function Checkout() {
       })
   }
 
-
- const fetchData = ( ) =>{
-    fetch(`http://${process.env.REACT_APP_URL}/order-review`,{
-        method:'GET',
-        headers:{
+  const fetchDataCart = () =>{
+    fetch(`http://${process.env.REACT_APP_URL}/cart`,{
+        method:"GET",
+        headers: {
             'Content-Type': 'application/json',
             'Authorization': GetAuthorization()
-        }
-    }).then((response)=>{
-        return response.json();
-    }).then((review)=>{
-        console.log("cartdata", review)
-         setOrderReview(review)
-         setcart(review.cart);
+          }          
     })
+    .then((response)=>{
+        return response.json();
+    }).then((data)=>{
+         setcartsummary(data);
+         setOrderReview(data)
+         setcart(data.cart);      
+    })
+
+}
+
+
+ const fetchData = ( ) =>{
     fetch(`http://${process.env.REACT_APP_URL}/payment-method`,{
         method:'GET',
         headers:{
@@ -76,6 +82,7 @@ export default function Checkout() {
   useEffect(() => {
     fetchData()
     fetchAddress()
+    fetchDataCart();
   }, [])
 
  const [addresses, setAddresses] = useState( [] );
@@ -151,9 +158,11 @@ export default function Checkout() {
                                         </li>
                                     ))}
                                    
-                                    <li className="total">Sub Total <span >INR {orderReview.subTotal}</span></li>
-                                    <li className="total">Shipping & Tax <span>INR {orderReview.shiipingTax}</span></li>
-                                    <li className="total">Grand Total <span>INR {orderReview.grandTotal}</span></li>
+                                    <li className="total">Subtotal :<span>INR {cartsummary.sub_total}</span></li>
+                                    <li className="total">Transportation Charge :<span>INR {cartsummary.transportation_charge}</span></li>
+                                    <li className="total">Cgst :<span>INR {cartsummary.cgst}</span></li>
+                                    <li className='total'>sgst :<span>INR {cartsummary.sgst}</span></li>
+                                    <li className='total'>Grand Total : <span>INR {cartsummary.total}</span></li>
                                 </ul>
                             </div>
                         </div>

@@ -70,7 +70,7 @@ export default function AddProduct() {
         // setstatus(data.status);
         setimage(data.images[0]);
         setTag(data.tag);
-
+        setService(data.service)
         // data upadate
         setDiscription(data.description)
         setTermscontion(data.termscondition)
@@ -221,7 +221,7 @@ export default function AddProduct() {
                 label="Service"
                 value={service}
                 onChange={(e) => { setService(e.target.value) }}
-                defaultValue="SKU"
+                defaultValue="Service"
               />
             </div>
 

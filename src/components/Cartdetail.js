@@ -8,9 +8,8 @@ export default function Cartdetail() {
     const [cartproduct, setcartproduct] = useState([])
     const [cartsummary, setcartsummary] = useState({})
     const navigate = useNavigate();
-    const UpdateQuantity = async (cart_item_id1,finalquantity)=>{
-        console.log("finalquantity",finalquantity)
-        await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
+    const UpdateQuantity = async (cart_item_id1,finalquantity,Day)=>{
+           const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
@@ -22,18 +21,25 @@ export default function Cartdetail() {
                     quantity:finalquantity,
                     color:'',
                     size:'',
-                    day:''
+                    day:Day,
                 }
             )
         });
-        fetchData();
+        const data = await response.json();
+        setcartproduct(data.cart)
+        setcartsummary(data); 
     }
-    const Increment = (id1,quantity) =>{
-        UpdateQuantity(id1,quantity+1);
+    const Increment = (id1,quantity,day,type) =>{
+        if(type) day = day + 1;
+        else quantity = quantity + 1;
+        UpdateQuantity(id1,quantity,day);
     }
-    const Decrement = (id1,quantity) =>{
-        UpdateQuantity(id1,quantity-1);
+    const Decrement = (id1,quantity,day,type) =>{
+        if(type) day = day - 1;
+        else quantity = quantity - 1;
+        UpdateQuantity(id1,quantity,day);
     }
+
     
     const fetchData = () =>{
         fetch(`http://${process.env.REACT_APP_URL}/cart`,{
@@ -76,6 +82,7 @@ export default function Cartdetail() {
                             <tr>
                                 <th className="t-pro">Product</th>
                                 <th className="t-price">Price</th>
+                                <th className="t-price">Day</th>
                                 <th className="t-qty">Quantity</th>
                                 <th className="t-total">Total</th>
                                 <th className="t-rem"></th>
@@ -104,9 +111,18 @@ export default function Cartdetail() {
                                     <td className="t-qty">
                                         <div className="qty-box">
                                             <div className="quantity buttons_added">
-                                                <input onClick={()=>Decrement(data.cart_item_id,data.quantity)} style={{color:"red",fontSize:"25px"}} type="button" value="-" className="minus"/>
-                                                <input onChange={()=>UpdateQuantity(data.cart_item_id,this.value)} type="number" step="1" min="1" max="10" value={data.quantity} className="qty text" size="4"/>
-                                                <input onClick={()=>Increment(data.cart_item_id,data.quantity)} style={{color:"green",fontSize:"25px"}} type="button" value="+" className="plus"/>
+                                                <input onClick={()=>Decrement(data.cart_item_id,data.quantity,data.day,true)} style={{color:"red",fontSize:"25px"}} type="button" value="-" className="minus"/>
+                                                <input type="number" step="1" min="1" max="10" value={data.day} className="qty text" size="4" disabled/>
+                                                <input onClick={()=>Increment(data.cart_item_id,data.quantity,data.day,true)} style={{color:"green",fontSize:"25px"}} type="button" value="+" className="plus"/>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="t-qty">
+                                        <div className="qty-box">
+                                            <div className="quantity buttons_added">
+                                                <input onClick={()=>Decrement(data.cart_item_id,data.quantity,data.day)} style={{color:"red",fontSize:"25px"}} type="button" value="-" className="minus"/>
+                                                <input type="number" step="1" min="1" max="10" value={data.quantity} className="qty text" size="4" disabled/>
+                                                <input onClick={()=>Increment(data.cart_item_id,data.quantity,data.day)} style={{color:"green",fontSize:"25px"}} type="button" value="+" className="plus"/>
                                             </div>
                                         </div>
                                     </td>

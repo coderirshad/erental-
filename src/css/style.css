@@ -7485,8 +7485,6 @@ border: 10px solid red;
 .checkout .order-review .review-box ul .total {
   font-size: 16px;
   color: #666666;
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
   padding: 12px 0;
   margin-bottom: 0;
   font-weight: 600;
@@ -7499,7 +7497,6 @@ border: 10px solid red;
 .checkout .order-review .review-box ul .total {
   font-size: 16px;
   color: #666666;
-  border-bottom: 1px solid #dddddd;
   padding: 12px 0;
   margin-bottom: 0;
   font-weight: 600;
