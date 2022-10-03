@@ -119,15 +119,15 @@ const SingalProduct = ({ login }) => {
     }, [])
 
     return (
-        <section class="sg-product">
+        <section className="sg-product">
 
-            <div class="container">
-                <div class="row">
+            <div className="container">
+                <div className="row">
 
-                    <div class="col-md-9">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="sg-img">
+                    <div className="col-md-9">
+                        <div className="row">
+                            <div className="col-md-5">
+                                <div className="sg-img">
                                     <OwlCarousel key={`carousel_${imageList.length}`} className="tab-content owl-carousel" items={1} nav loop>
                                         {imageList.map((imagelink, imageid) => (
                                             <div key={imageid} className="tab-pane fade show active" id="sg1" role="tabpanel">
@@ -137,60 +137,60 @@ const SingalProduct = ({ login }) => {
                                     </OwlCarousel>
                                 </div>
                             </div>
-                            <div class="col-md-7">
-                                <div class="sg-content">
-                                    <div class="pro-tag">
-                                        <ul class="list-unstyled list-inline">
-                                            <li class="list-inline-item"><a href="">{product.category_id} ,</a></li>
-                                            <li class="list-inline-item"><a href="">{product.product_name}</a></li>
+                            <div className="col-md-7">
+                                <div className="sg-content">
+                                    <div className="pro-tag">
+                                        <ul className="list-unstyled list-inline">
+                                            <li className="list-inline-item"><a href="">{product.category_id} ,</a></li>
+                                            <li className="list-inline-item"><a href="">{product.product_name}</a></li>
                                         </ul>
                                     </div>
-                                    <div class="pro-name">
+                                    <div className="pro-name">
                                         <p>{product.product_name}</p>
                                     </div>
-                                    <div class="pro-rating">
-                                        <ul class="list-unstyled list-inline">
-                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                            <li class="list-inline-item"><a href="">( 09 Review )</a></li>
+                                    <div className="pro-rating">
+                                        <ul className="list-unstyled list-inline">
+                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                            <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                            <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
+                                            <li className="list-inline-item"><a href="">( 09 Review )</a></li>
                                         </ul>
                                     </div>
-                                    <div class="pro-price">
-                                        <ul class="list-unstyled list-inline">
-                                            <li class="list-inline-item">INR {dayprice.final_price}</li>
-                                            <li class="list-inline-item">INR {dayprice.price}</li>
+                                    <div className="pro-price">
+                                        <ul className="list-unstyled list-inline">
+                                            <li className="list-inline-item">INR {dayprice.final_price}</li>
+                                            <li className="list-inline-item">INR {dayprice.price}</li>
                                         </ul>
                                         <p>Availability : {product.is_available && (<><span>In Stock</span> <label>({product.stock} Available)</label></>)}{!product.is_available && <span>OutOff Stock</span>} </p>
                                         
                                     </div>
-                                    <div class="colo-siz">
+                                    <div className="colo-siz">
 
 
-                                        <div class="qty-box">
-                                            <ul class="list-unstyled list-inline">
-                                                <li class="list-inline-item">Day : </li>
-                                                <li class="list-inline-item quantity buttons_added">
-                                                    <input onClick={() => DecrementDay()} style={{ color: "red", fontSize: "25px" }} type="button" value="-" class="minus" />
-                                                    <input onClick={() => setday(this.value)} type="number" step="1" min="1" max="10" value={day} class="qty text" size="4" readonly />
-                                                    <input onClick={() => IncrementDay()} style={{ color: "green", fontSize: "25px" }} type="button" value="+" class="plus" />
+                                        <div className="qty-box">
+                                            <ul className="list-unstyled list-inline">
+                                                <li className="list-inline-item">Day : </li>
+                                                <li className="list-inline-item quantity buttons_added">
+                                                    <input onClick={() => DecrementDay()} style={{ color: "red", fontSize: "25px" }} type="button" value="-" className="minus" />
+                                                    <input onClick={() => setday(this.value)} type="number" step="1" min="1" max="10" value={day} className="qty text" size="4" readonly />
+                                                    <input onClick={() => IncrementDay()} style={{ color: "green", fontSize: "25px" }} type="button" value="+" className="plus" />
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="qty-box">
-                                            <ul class="list-unstyled list-inline">
-                                                <li class="list-inline-item">Qty : </li>
-                                                <li class="list-inline-item quantity buttons_added">
-                                                    <input onClick={() => DecrementQuantity()} style={{ color: "red", fontSize: "25px" }} type="button" value="-" class="minus" />
-                                                    <input onClick={() => setquantity(this.value)} type="number" step="1" min="1" max="10" value={quantity} class="qty text" size="4" readonly />
-                                                    <input onClick={() => IncrementQuantity()} style={{ color: "green", fontSize: "25px" }} type="button" value="+" class="plus" />
+                                        <div className="qty-box">
+                                            <ul className="list-unstyled list-inline">
+                                                <li className="list-inline-item">Qty : </li>
+                                                <li className="list-inline-item quantity buttons_added">
+                                                    <input onClick={() => DecrementQuantity()} style={{ color: "red", fontSize: "25px" }} type="button" value="-" className="minus" />
+                                                    <input onClick={() => setquantity(this.value)} type="number" step="1" min="1" max="10" value={quantity} className="qty text" size="4" readonly />
+                                                    <input onClick={() => IncrementQuantity()} style={{ color: "green", fontSize: "25px" }} type="button" value="+" className="plus" />
                                                 </li>
                                             </ul>
                                         </div>
                                         <div>
-                                            <select onChange={handlechnage} style={{marginLeft:"40%", marginBottom:"30px", fontsiz:"20px"}} class="form-select form-select-sm w-25" aria-label=".form-select-sm example">
+                                            <select onChange={handlechnage} style={{marginLeft:"40%", marginBottom:"30px", fontsiz:"20px"}} className="form-select form-select-sm w-25" aria-label=".form-select-sm example">
                                                 {service.map((option) =>{
                                                     return(
                                                         <option value={option.id}>{option.name}</option>
@@ -199,10 +199,10 @@ const SingalProduct = ({ login }) => {
                                                 })}
                                             </select>
                                         </div>
-                                        <div class="pro-btns">
-                                            <a onClick={() => AddToCart()} href='/cart' class="cart">Add To Cart</a>
-                                            <a href="" class="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><FavoriteBorderIcon></FavoriteBorderIcon></a>
-                                            <a href="" class="fav-com" data-toggle="tooltip" data-placement="top" title="Compare"><FavoriteBorderIcon></FavoriteBorderIcon></a>
+                                        <div className="pro-btns">
+                                            <a onClick={() => AddToCart()} href='/cart' className="cart">Add To Cart</a>
+                                            <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><FavoriteBorderIcon></FavoriteBorderIcon></a>
+                                            <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Compare"><FavoriteBorderIcon></FavoriteBorderIcon></a>
                                         </div>
                                     </div>
                                 </div>

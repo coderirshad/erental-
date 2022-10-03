@@ -9,7 +9,7 @@ export default function AboutProduct( {product} ) {
   }
   return (
     
-    <div class="child">
+    <div className="child">
       
     <button className = "button1" onClick= {() => handleClick()} >
           <a>

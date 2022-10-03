@@ -16,9 +16,9 @@ function DescriptionShippingDelivery() {
                  </div>
              </div>
              <div className='col-5' style={{"margin-left" :"2rem"}}>
-                  <h5 class="p-3 text-left" style={{"font-size":"25px","font-weight":"600"}}>MAECENAS IACULIS</h5>
+                  <h5 className="p-3 text-left" style={{"font-size":"25px","font-weight":"600"}}>MAECENAS IACULIS</h5>
                   <p className='p-3 text-left h4'>Vestibulum curae torquent diam diam commodo parturient penatibus nunc dui adipiscing convallis bulum parturient suspendisse parturient a.Parturient in parturient scelerisque nibh lectus quam a natoque adipiscing a vestibulum hendrerit et pharetra fames nunc natoque dui.</p>
-                  <h5 class="p-3 text-left" style={{"font-size":"25px","font-weight":"600"}}>ADIPISCING CONVALLIS BULUM</h5>
+                  <h5 className="p-3 text-left" style={{"font-size":"25px","font-weight":"600"}}>ADIPISCING CONVALLIS BULUM</h5>
                   <ul>
                         <li className='px-3 text-left h5' style={{"list-style" :"none"}}>Vestibulum penatibus nunc dui adipiscing convallis bulum parturient suspendisse.</li>
                         <li className='px-3 text-left h5' style={{"list-style" :"none"}}>Abitur parturient praesent lectus quam a natoque adipiscing a vestibulum hendre.</li>

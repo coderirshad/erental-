@@ -21,26 +21,26 @@ const FrontBlog = ( ) => {
     },[])
 
      return(
-        <section class="f-blog">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="sec-title">
+        <section className="f-blog">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="sec-title">
                             <h5>Latest Service</h5>
                         </div>
                         {!loader && 
                         <OwlCarousel className="fb-slider owl-carousel" items={4} nav loop>                       
                         {data.map((data) =>{
                             return(
-                            <div class="blog-item">
-                                <div class="blog-img">
-                                    <a href={data.video_url} target={"_blank"}><img src={data.thumbnail} alt="" class="img-fluid"/></a>
+                            <div className="blog-item">
+                                <div className="blog-img">
+                                    <a href={data.video_url} target={"_blank"}><img src={data.thumbnail} alt="" className="img-fluid"/></a>
                                 </div>
-                                <div class="blog-content">
+                                <div className="blog-content">
                                     <h5><a href={data.video_url} target={"_blank"}>{data.title}</a></h5>
-                                    <ul class="list-unstyled list-inline">
-                                        <li class="list-inline-item"><i class="fa fa-user-o"></i><a href="">John</a></li>
-                                        <li class="list-inline-item"><i class="fa fa-calendar"></i>{data.date}</li>
+                                    <ul className="list-unstyled list-inline">
+                                        <li className="list-inline-item"><i className="fa fa-user-o"></i><a href="">John</a></li>
+                                        <li className="list-inline-item"><i className="fa fa-calendar"></i>{data.date}</li>
                                     </ul>
                                     <p>{data.description}</p>
                                 </div>

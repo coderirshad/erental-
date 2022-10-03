@@ -12,7 +12,7 @@ export default function Invoice() {
    <section className='invoice'>
     <div className='container'>
 
-        <div class="section-title">
+        <div className="section-title">
           <h1>HOPE & DREAM</h1>
         </div>
 
@@ -165,7 +165,7 @@ Hughes Road, Mumbai400007</p>
 </div>
 <br>
 </br>
-<div class="terms">
+<div className="terms">
           <h3>Terms & Conditions :</h3>
 
 <br></br>
@@ -295,7 +295,7 @@ proofs would work.</li>
 <br></br>
 
 
-<div class="note">
+<div className="note">
           <h3>Note :</h3>
 
 <br></br>

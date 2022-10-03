@@ -3,9 +3,9 @@ import React from 'react'
 export default function Dashboard() {
   return (
     <div>
-      <div class="container-sm"  style={{marginLeft:"30%", position:"absolute", top:"80%"}} >
-  <div class="row">
-    <div class="col">
+      <div className="container-sm"  style={{marginLeft:"30%", position:"absolute", top:"80%"}} >
+  <div className="row">
+    <div className="col">
     <div className="card">
   <ul className="list-group list-group-flush">
     <li className="list-group-item">Sales <br></br>₹0.00</li>
@@ -14,8 +14,8 @@ export default function Dashboard() {
     <li className="list-group-item">Order<br></br>₹0.00</li>
   </ul>
 </div>
-<div class="card">
-  <div class="card-header">
+<div className="card">
+  <div className="card-header">
    <h5>ORDERS</h5>
   </div>
   <ul>
@@ -27,8 +27,8 @@ export default function Dashboard() {
     <li >HOLD</li>
   </ul>
 </div>
-<div class="card">
-  <div class="card-header">
+<div className="card">
+  <div className="card-header">
   <h5>REVIEWS</h5>
   </div>
   <ul>
@@ -38,8 +38,8 @@ export default function Dashboard() {
     <li >Trash<span>0</span></li>
   </ul>
 </div>
-<div class="card">
-  <div class="card-header">
+<div className="card">
+  <div className="card-header">
   <h6>PRODUCT+ADD NEW PRODUCT</h6>
   </div>
   <ul >
@@ -50,13 +50,13 @@ export default function Dashboard() {
   </ul>
 </div>
     </div>
-    <div class="col">
-    <div class="card">
-  <div class="card-header">
+    <div className="col">
+    <div className="card">
+  <div className="card-header">
 <h5>Latest Annoucement</h5>
   </div>
-  <div class="card-body">
-    <h5 class="card-title">No Annoucement Found</h5>
+  <div className="card-body">
+    <h5 className="card-title">No Annoucement Found</h5>
   </div>
 </div>
     </div>

@@ -100,16 +100,16 @@ export default function Checkout() {
  }
 
  return (
-    <section class="checkout">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
+    <section className="checkout">
+    <div className="container">
+        <div className="row">
+            <div className="col-md-7">
                 {addresses.length === 0 ? (<button onClick={()=>toAddressBlock()} className="btn border-dark bg-primary" style={{marginTop:"17rem"}}><strong>Add New Address</strong></button>):(
                     <>
                 <div>
                 <button onClick={()=>toAddressBlock()} className="btn border-dark bg-primary" style={{marginRight:"43rem"}}><strong>Add New Address</strong></button>
                     <h3><strong>Billing Address</strong></h3>
-                    <div class="row">
+                    <div className="row">
 
                     {   
                         addresses.map ( ( address ) => (
@@ -130,7 +130,7 @@ export default function Checkout() {
                 </div>
                 <div >
                     <h3><strong>Shipping Address</strong></h3>
-                    <div class="row">
+                    <div className="row">
 
                     {   
                         addresses.map ( ( address ) => (
@@ -181,11 +181,11 @@ export default function Checkout() {
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="pay-meth">
+                    <div className="col-md-12">
+                        <div className="pay-meth">
                             <h5>Payment Method</h5>
-                            <div class="pay-box">
-                                <ul class="list-unstyled">
+                            <div className="pay-box">
+                                <ul className="list-unstyled">
                                     {paymentMethod.map((pay,id)=>(
                                         <li key={id}>
                                             <input onClick={()=>setPayment(pay.id)} type="checkbox" id="pay1" name="payment" value={pay.name} />

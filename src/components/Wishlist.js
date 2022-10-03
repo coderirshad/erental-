@@ -2,121 +2,121 @@ import React from "react";
 
 const Wishlist = ()=>{
     return (
-        <section class="shopping-cart">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="cart-table wsh-list table-responsive">
-                        <table class="table">
+        <section className="shopping-cart">
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="cart-table wsh-list table-responsive">
+                        <table className="table">
                             <thead>
                                 <tr>
-                                    <th class="t-pro">Product</th>
-                                    <th class="t-price">Price</th>
-                                    <th class="t-qty">Stock</th>
-                                    <th class="t-total">Add To Cart</th>
-                                    <th class="t-rem"></th>
+                                    <th className="t-pro">Product</th>
+                                    <th className="t-price">Price</th>
+                                    <th className="t-qty">Stock</th>
+                                    <th className="t-total">Add To Cart</th>
+                                    <th className="t-rem"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="t-pro d-flex">
-                                        <div class="t-img">
+                                    <td className="t-pro d-flex">
+                                        <div className="t-img">
                                             <a href=""><img src="images/sbar-1.png" alt=""/></a>
                                         </div>
-                                        <div class="t-content">
-                                            <p class="t-heading"><a href="">Samsung Smart Led Tv</a></p>
-                                            <ul class="list-unstyled list-inline rate">
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                        <div className="t-content">
+                                            <p className="t-heading"><a href="">Samsung Smart Led Tv</a></p>
+                                            <ul className="list-unstyled list-inline rate">
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                             </ul>
-                                            <ul class="list-unstyled col-sz">
+                                            <ul className="list-unstyled col-sz">
                                                 <li><p>Color : <span>Red</span></p></li>
                                                 <li><p>Size : <span>M</span></p></li>
                                             </ul>
                                         </div>
                                     </td>
-                                    <td class="t-price">$189.00</td>
-                                    <td class="t-stk">In Stock</td>
-                                    <td class="t-add"><button type="button" name="button">Add to Cart</button></td>
-                                    <td class="t-rem"><a href=""><i class="fa fa-trash-o"></i></a></td>
+                                    <td className="t-price">$189.00</td>
+                                    <td className="t-stk">In Stock</td>
+                                    <td className="t-add"><button type="button" name="button">Add to Cart</button></td>
+                                    <td className="t-rem"><a href=""><i className="fa fa-trash-o"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td class="t-pro d-flex">
-                                        <div class="t-img">
+                                    <td className="t-pro d-flex">
+                                        <div className="t-img">
                                             <a href=""><img src="images/sbar-3.png" alt=""/></a>
                                         </div>
-                                        <div class="t-content">
-                                            <p class="t-heading"><a href="">Samsung Smart Led Tv</a></p>
-                                            <ul class="list-unstyled list-inline rate">
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                        <div className="t-content">
+                                            <p className="t-heading"><a href="">Samsung Smart Led Tv</a></p>
+                                            <ul className="list-unstyled list-inline rate">
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                             </ul>
-                                            <ul class="list-unstyled col-sz">
+                                            <ul className="list-unstyled col-sz">
                                                 <li><p>Color : <span>Green</span></p></li>
                                                 <li><p>Size : <span>M</span></p></li>
                                             </ul>
                                         </div>
                                     </td>
-                                    <td class="t-price">$129.00</td>
-                                    <td class="t-stk">In Stock</td>
-                                    <td class="t-add"><button type="button" name="button">Add to Cart</button></td>
-                                    <td class="t-rem"><a href=""><i class="fa fa-trash-o"></i></a></td>
+                                    <td className="t-price">$129.00</td>
+                                    <td className="t-stk">In Stock</td>
+                                    <td className="t-add"><button type="button" name="button">Add to Cart</button></td>
+                                    <td className="t-rem"><a href=""><i className="fa fa-trash-o"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td class="t-pro d-flex">
-                                        <div class="t-img">
+                                    <td className="t-pro d-flex">
+                                        <div className="t-img">
                                             <a href=""><img src="images/sbar-4.png" alt=""/></a>
                                         </div>
-                                        <div class="t-content">
-                                            <p class="t-heading"><a href="">Samsung Smart Led Tv</a></p>
-                                            <ul class="list-unstyled list-inline rate">
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                        <div className="t-content">
+                                            <p className="t-heading"><a href="">Samsung Smart Led Tv</a></p>
+                                            <ul className="list-unstyled list-inline rate">
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                             </ul>
-                                            <ul class="list-unstyled col-sz">
+                                            <ul className="list-unstyled col-sz">
                                                 <li><p>Color : <span>Grey</span></p></li>
                                                 <li><p>Size : <span>M</span></p></li>
                                             </ul>
                                         </div>
                                     </td>
-                                    <td class="t-price">$239.00</td>
-                                    <td class="t-stk">In Stock</td>
-                                    <td class="t-add"><button type="button" name="button">Add to Cart</button></td>
-                                    <td class="t-rem"><a href=""><i class="fa fa-trash-o"></i></a></td>
+                                    <td className="t-price">$239.00</td>
+                                    <td className="t-stk">In Stock</td>
+                                    <td className="t-add"><button type="button" name="button">Add to Cart</button></td>
+                                    <td className="t-rem"><a href=""><i className="fa fa-trash-o"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td class="t-pro d-flex">
-                                        <div class="t-img">
+                                    <td className="t-pro d-flex">
+                                        <div className="t-img">
                                             <a href=""><img src="images/sbar-5.png" alt=""/></a>
                                         </div>
-                                        <div class="t-content">
-                                            <p class="t-heading"><a href="">Samsung Smart Led Tv</a></p>
-                                            <ul class="list-unstyled list-inline rate">
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                        <div className="t-content">
+                                            <p className="t-heading"><a href="">Samsung Smart Led Tv</a></p>
+                                            <ul className="list-unstyled list-inline rate">
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                             </ul>
-                                            <ul class="list-unstyled col-sz">
+                                            <ul className="list-unstyled col-sz">
                                                 <li><p>Color : <span>Blue</span></p></li>
                                                 <li><p>Size : <span>M</span></p></li>
                                             </ul>
                                         </div>
                                     </td>
-                                    <td class="t-price">$149.00</td>
-                                    <td class="t-stk">In Stock</td>
-                                    <td class="t-add"><button type="button" name="button">Add to Cart</button></td>
-                                    <td class="t-rem"><a href=""><i class="fa fa-trash-o"></i></a></td>
+                                    <td className="t-price">$149.00</td>
+                                    <td className="t-stk">In Stock</td>
+                                    <td className="t-add"><button type="button" name="button">Add to Cart</button></td>
+                                    <td className="t-rem"><a href=""><i className="fa fa-trash-o"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -6,41 +6,41 @@ export default function TermsAndConditions() {
     
   return (
     <div>
-        <section class="about-us">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="wc-box">
+        <section className="about-us">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="wc-box">
                             
                             <h4>Welcome to <span>XeMart</span></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.!</p>
                             <a href="">Read More</a>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="wc-img">
-                            <img src="images/about.jpg" alt="" class="img-fluid"/>
+                    <div className="col-md-6">
+                        <div className="wc-img">
+                            <img src="images/about.jpg" alt="" className="img-fluid"/>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="row his-mis">
-                            <div class="col-md-4">
-                                <div class="about-bnr">
-                                    <a href="#"><img src="images/banner-1.png" alt="" class="img-fluid"/></a>
+                    <div className="col-md-12">
+                        <div className="row his-mis">
+                            <div className="col-md-4">
+                                <div className="about-bnr">
+                                    <a href="#"><img src="images/banner-1.png" alt="" className="img-fluid"/></a>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="about-bnr">
-                                    <a href="#"><img src="images/banner-2.png" alt="" class="img-fluid"/></a>
+                            <div className="col-md-4">
+                                <div className="about-bnr">
+                                    <a href="#"><img src="images/banner-2.png" alt="" className="img-fluid"/></a>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="about-bnr">
-                                    <a href="#"><img src="images/banner-3-1.png" alt="" class="img-fluid"/></a>
+                            <div className="col-md-4">
+                                <div className="about-bnr">
+                                    <a href="#"><img src="images/banner-3-1.png" alt="" className="img-fluid"/></a>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="history">
+                            <div className="col-md-6">
+                                <div className="history">
                                     <h5>Our Mission</h5>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                 </div>

@@ -43,34 +43,34 @@ const BestOffer = ( ) =>{
       fetchData();    
     }, [])
     return (
-        <section class="best-ofr">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="bst-slider">
-                            <div class="sec-title">
+        <section className="best-ofr">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-4">
+                        <div className="bst-slider">
+                            <div className="sec-title">
                                 <h6>New Product</h6>
                             </div>
-                            <OwlCarousel key={`carousel_${newProduct.length}`} class="bst-body owl-carousel" items={1} nav  loop>
-                            <div class="bst-items">
+                            <OwlCarousel key={`carousel_${newProduct.length}`} className="bst-body owl-carousel" items={1} nav  loop>
+                            <div className="bst-items">
                             {newProduct.map((data,id)=>(                           
-                                <div class="bst-items" key={id}>
-                                    <div class="bst-box d-flex">
-                                        <div class="bst-img">
+                                <div className="bst-items" key={id}>
+                                    <div className="bst-box d-flex">
+                                        <div className="bst-img">
                                             <Link to={`/product/${data.product_id}`}><img src={data.image} style={{height:"80px",width:"80px"}} alt="" className="img-fluid"/></Link>
                                         </div>
-                                        <div class="bst-content">
+                                        <div className="bst-content">
                                             <p><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></p>
-                                            <ul class="list-unstyled list-inline fav">
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                            <ul className="list-unstyled list-inline fav">
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                             </ul>
-                                            <ul class="list-unstyled list-inline price">
-                                                <li class="list-inline-item">INR {data.discounted_price}</li>
-                                                <li class="list-inline-item">INR {data.price}</li>
+                                            <ul className="list-unstyled list-inline price">
+                                                <li className="list-inline-item">INR {data.discounted_price}</li>
+                                                <li className="list-inline-item">INR {data.price}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -80,31 +80,31 @@ const BestOffer = ( ) =>{
                             </OwlCarousel>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="bst-slider">
-                            <div class="sec-title">
+                    <div className="col-md-4">
+                        <div className="bst-slider">
+                            <div className="sec-title">
                                 <h6>Best Deal</h6>
                             </div>
-                            <OwlCarousel  key={`carousel_${hotOffer.length}`} class="bst-body owl-carousel" items={1} nav  loop>
+                            <OwlCarousel  key={`carousel_${hotOffer.length}`} className="bst-body owl-carousel" items={1} nav  loop>
                         
-                                <div class="bst-items">
+                                <div className="bst-items">
                                 {hotOffer.map((data)=>(
-                                    <div class="bst-box d-flex">
-                                        <div class="bst-img">
-                                            <Link to={`/product/${data.product_id}`}><img src={data.image} style={{height:"80px",width:"80px"}} alt="" class="img-fluid"/></Link>
+                                    <div className="bst-box d-flex">
+                                        <div className="bst-img">
+                                            <Link to={`/product/${data.product_id}`}><img src={data.image} style={{height:"80px",width:"80px"}} alt="" className="img-fluid"/></Link>
                                         </div>
-                                        <div class="bst-content">
+                                        <div className="bst-content">
                                             <p><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></p>
-                                            <ul class="list-unstyled list-inline fav">
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                            <ul className="list-unstyled list-inline fav">
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                             </ul>
-                                            <ul class="list-unstyled list-inline price">
-                                                <li class="list-inline-item">INR {data.discounted_price}</li>
-                                                <li class="list-inline-item">INR {data.price}</li>
+                                            <ul className="list-unstyled list-inline price">
+                                                <li className="list-inline-item">INR {data.discounted_price}</li>
+                                                <li className="list-inline-item">INR {data.price}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -114,31 +114,31 @@ const BestOffer = ( ) =>{
                             </OwlCarousel>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="bst-slider">
-                            <div class="sec-title">
+                    <div className="col-md-4">
+                        <div className="bst-slider">
+                            <div className="sec-title">
                                 <h6>Top Sold</h6>
                             </div>
-                            <OwlCarousel  key={`carousel_${topRated.length}`} class="bst-body owl-carousel" items={1} nav  loop>
+                            <OwlCarousel  key={`carousel_${topRated.length}`} className="bst-body owl-carousel" items={1} nav  loop>
             
-                                <div class="bst-items">
+                                <div className="bst-items">
                                 {topRated.map((data)=>(
-                                    <div class="bst-box d-flex">
-                                        <div class="bst-img">
-                                            <Link to={`/product/${data.product_id}`}><img src={data.image} style={{height:"80px",width:"80px"}} alt="" class="img-fluid"/></Link>
+                                    <div className="bst-box d-flex">
+                                        <div className="bst-img">
+                                            <Link to={`/product/${data.product_id}`}><img src={data.image} style={{height:"80px",width:"80px"}} alt="" className="img-fluid"/></Link>
                                         </div>
-                                        <div class="bst-content">
+                                        <div className="bst-content">
                                             <p><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></p>
-                                            <ul class="list-unstyled list-inline fav">
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                            <ul className="list-unstyled list-inline fav">
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star"></i></li>
+                                                <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
                                             </ul>
-                                            <ul class="list-unstyled list-inline price">
-                                                <li class="list-inline-item">INR {data.discounted_price}</li>
-                                                <li class="list-inline-item">INR {data.price}</li>
+                                            <ul className="list-unstyled list-inline price">
+                                                <li className="list-inline-item">INR {data.discounted_price}</li>
+                                                <li className="list-inline-item">INR {data.price}</li>
                                             </ul>
                                         </div>
                                     </div>

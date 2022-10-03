@@ -3,7 +3,7 @@ export default function PrivacyPolicy() {
     
   return (
     <div>
-        <section class="about-us" style = {{ width : "1000px" , marginLeft : "250px" , textAlign : "left"}}>
+        <section className="about-us" style = {{ width : "1000px" , marginLeft : "250px" , textAlign : "left"}}>
         <h3 style = {{  marginLeft : "400px" ,marginBottom : "30px"}}><strong>Privacy Policy</strong></h3>
         <p>We value the trust you place in us and recognize the importance of secure transactions and information privacy. This Privacy Policy describes how eRentals Internet Private Limited and its affiliates (collectively “eRentals, we, our, us”) collect, use, share or otherwise process your personal information 
             through eRentals website www.erentalshop.com, its mobile application, and m-site (hereinafter referred to as the “Platform”).

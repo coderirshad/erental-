@@ -6,7 +6,7 @@ export default function ReturnPolicy() {
     
   return (
     <div>
-        <section class="about-us" style = {{ width : "1000px" , marginLeft : "250px" , textAlign : "left"}}>
+        <section className="about-us" style = {{ width : "1000px" , marginLeft : "250px" , textAlign : "left"}}>
             <h3 style = {{  marginLeft : "400px" ,marginBottom : "30px"}}><strong>Return Policy</strong></h3>
             <p>Returns is a scheme provided by respective sellers directly under this policy in terms of which the option of exchange,
                  replacement and/ or refund is offered by the respective sellers to you. All products listed under a particular category

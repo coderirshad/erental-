@@ -78,9 +78,9 @@ export default function AddProduct() {
         setService(data.service);
 
         // data upadate
-        setDiscription(data.description)
-        setTermscontion(data.termscondition)
-        setSuggestion(data.suggested_product_id)
+        setDiscription(data.description);
+        setTermscontion(data.termscondition);
+        setSuggestion(data.suggested_product_id);
         setsubcategory(data.category);
 
       }

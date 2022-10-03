@@ -2,57 +2,57 @@ import React from "react";
 
 export default function CartBody() {
   return (
-    <div class="cart-body">
-      <div class="close-btn">
-        <button class="close-cart">
+    <div className="cart-body">
+      <div className="close-btn">
+        <button className="close-cart">
           <img src="images/close.png" alt="" />
           Close
         </button>
       </div>
-      <div class="crt-bd-box">
-        <div class="cart-heading text-center">
+      <div className="crt-bd-box">
+        <div className="cart-heading text-center">
           <h5>Shopping Cart</h5>
         </div>
-        <div class="cart-content">
-          <div class="content-item d-flex justify-content-between">
-            <div class="cart-img">
+        <div className="cart-content">
+          <div className="content-item d-flex justify-content-between">
+            <div className="cart-img">
               <a href="">
                 <img src="images/cart1.png" alt="" />
               </a>
             </div>
-            <div class="cart-disc">
+            <div className="cart-disc">
               <p>
                 <a href="">SMART LED TV</a>
               </p>
               <span>1 x $199.00</span>
             </div>
-            <div class="delete-btn">
+            <div className="delete-btn">
               <a href="">
-                <i class="fa fa-trash-o"></i>
+                <i className="fa fa-trash-o"></i>
               </a>
             </div>
           </div>
-          <div class="content-item d-flex justify-content-between">
-            <div class="cart-img">
+          <div className="content-item d-flex justify-content-between">
+            <div className="cart-img">
               <a href="">
                 <img src="images/cart2.png" alt="" />
               </a>
             </div>
-            <div class="cart-disc">
+            <div className="cart-disc">
               <p>
                 <a href="">SMART LED TV</a>
               </p>
               <span>1 x $199.00</span>
             </div>
-            <div class="delete-btn">
+            <div className="delete-btn">
               <a href="">
-                <i class="fa fa-trash-o"></i>
+                <i className="fa fa-trash-o"></i>
               </a>
             </div>
           </div>
         </div>
-        <div class="cart-btm">
-          <p class="text-right">
+        <div className="cart-btm">
+          <p className="text-right">
             Sub Total: <span>$398.00</span>
           </p>
           <a href="#">Checkout</a>

@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function Dash_Review() {
   return (
-    <div class="container" style={{marginLeft:"30%", position:"absolute", top:"25%"}}>
-<div class="section-title"style={{marginRight:"80%"}} >
+    <div className="container" style={{marginLeft:"30%", position:"absolute", top:"25%"}}>
+<div className="section-title"style={{marginRight:"80%"}} >
           <h2><strong>Reviews</strong></h2>
          
         </div>

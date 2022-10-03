@@ -23,7 +23,6 @@ export default function Product() {
       .then((response)=>{
           return response.json();
       }).then((data)=>{ 
-        console.log("eventprice", data);   
         setProduct(data)       
       })
   }

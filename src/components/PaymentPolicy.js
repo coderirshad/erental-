@@ -6,7 +6,7 @@ export default function PaymentPolicy() {
     
   return (
     <div>
-        <section class="about-us" style = {{ width : "1000px" , marginLeft : "250px" , textAlign : "left"}}>
+        <section className="about-us" style = {{ width : "1000px" , marginLeft : "250px" , textAlign : "left"}}>
         <h3 style = {{  marginLeft : "400px" ,marginBottom : "30px"}}><strong>Payment Policy</strong></h3>
         <p>
         eRentals payments come into the seller bank account registered with the online portal through NEFT.<br></br>
