@@ -54,11 +54,11 @@ export default function MyBillingAddress() {
     };
 
   return (
-    <div style={{marginLeft:"23%", marginTop:"-42%" , marginBottom : "10%" }} >
+    <div style={{marginLeft:"25%", marginTop:"-35%" , marginBottom : "18%" }} >
         <div className='heading'>
-        <h4 id = 'spacing1' className='shadow-sm text-dark p-3 mb-4'><strong>MY ADDRESSES</strong></h4>
+        <h4 id = 'spacing1' style={{color:"black"}}><strong>MY ADDRESSES</strong></h4>
         </div>
-        <button className = "AddressButton"onClick= {() => handleClick() } >
+        <button className = "AddressButton"onClick= {() => handleClick() } style={{marginRight:"auto", marginBottom:"4%"}}>
         { ( showFrom == true ) ? <CloseIcon></CloseIcon> : 
         <div>
             ADD A NEW ADDRESS <AddIcon></AddIcon>

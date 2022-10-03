@@ -4,7 +4,6 @@ import GetAuthorization from './GetAuthorization';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import {  Button } from '@material-ui/core/';
-import MyBillingAddress from './MyBillingAddress';
 export default function Checkout() {
  const navigate = useNavigate();
  const [payment, setPayment] = useState("")
@@ -61,8 +60,14 @@ export default function Checkout() {
     })
  }
  const handleSubmit = (e) =>{
-    e.preventDefault()
-    placeOrder();
+    if(addresses.length === 0){
+        navigate("/myaccount/Adresses");
+        alert("Please Add Address First");
+    }
+    else{
+        e.preventDefault()
+        placeOrder();
+    }
  }
  const placeOrder = async () =>{
     await fetch(`http://${process.env.REACT_APP_URL}/checkout`,{
@@ -77,7 +82,8 @@ export default function Checkout() {
             shipping_address_id:Shippinggaddress
         })
     })
-    navigate('/myaccount/Orders')
+    
+    navigate('/myaccount/Orders');
   }
   useEffect(() => {
     fetchData()
@@ -89,12 +95,19 @@ export default function Checkout() {
  const [Billingaddress , setBillingAddress] = useState( '' );
  const [Shippinggaddress , setShippingAddress] = useState( '' );
 
+ const toAddressBlock = ()=>{
+    navigate("/myaccount/Adresses");
+ }
+
  return (
     <section class="checkout">
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <div >
+                {addresses.length === 0 ? (<button onClick={()=>toAddressBlock()} className="btn border-dark bg-primary" style={{marginTop:"17rem"}}><strong>Add New Address</strong></button>):(
+                    <>
+                <div>
+                <button onClick={()=>toAddressBlock()} className="btn border-dark bg-primary" style={{marginRight:"43rem"}}><strong>Add New Address</strong></button>
                     <h3><strong>Billing Address</strong></h3>
                     <div class="row">
 
@@ -102,7 +115,7 @@ export default function Checkout() {
                         addresses.map ( ( address ) => (
                         <div className='address' >
                             <Button onClick={() => setBillingAddress (address.address_id)} style={{ color: 'black' }} size="small">
-                            { ( address.address_id == Billingaddress ) ? <CheckBoxIcon/> : <CheckBoxOutlineBlankIcon/> }
+                            { ( address.address_id === Billingaddress ) ? <CheckBoxIcon/> : <CheckBoxOutlineBlankIcon/> }
                             </Button>
                             <h5 className='spaceBetweenAddressDetails'><strong>Name : {address.name}</strong></h5>
                             <p>Locality : {address.locality}</p>
@@ -123,7 +136,7 @@ export default function Checkout() {
                         addresses.map ( ( address ) => (
                         <div className='address' >
                             <Button onClick={() => setShippingAddress (address.address_id)} style={{ color: 'black' }} size="small">
-                                { ( address.address_id == Shippinggaddress ) ? <CheckBoxIcon/> : <CheckBoxOutlineBlankIcon/> }
+                                { ( address.address_id === Shippinggaddress ) ? <CheckBoxIcon/> : <CheckBoxOutlineBlankIcon/> }
                             </Button>
                             <h5 className='spaceBetweenAddressDetails'><strong>Name : {address.name}</strong></h5>
                             <p>Locality : {address.locality}</p>
@@ -136,6 +149,7 @@ export default function Checkout() {
                     }
                     </div>
                 </div>
+                </>)}
             </div>
             <div className="col-md-5">
                 <div className="row">

@@ -20,7 +20,7 @@ export default function AddProduct() {
   const params = useParams();
   const navigate = useNavigate();
   const [name, setname] = useState("");
-  const [eventManagersPrice, seteventManagersPrice] = useState("");
+  const [event_manager_price, setevent_manager_price] = useState("");
   const [price, setprice] = useState("");
   const [discounted_price, setdiscounted] = useState("");
   const [stock, setstock] = useState("");
@@ -51,17 +51,16 @@ export default function AddProduct() {
         }  
   }); 
     setcategory(await response.json());
-    
   }
+  
   const updateData = async () => {
     await fetch(`http://${process.env.REACT_APP_URL}/product/${params.id}`)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        console.clear();
-        console.log(data);
-        setname(data.name);
+        setname(data.product_name);
+        setevent_manager_price(data.event_manager_price);
         setprice(data.price);
         setdiscounted(data.discounted_price);
         setstock(data.stock);
@@ -70,17 +69,26 @@ export default function AddProduct() {
         // setstatus(data.status);
         setimage(data.images[0]);
         setTag(data.tag);
-        setService(data.service)
+        setIsFeatured(data.is_featured);
+        setIsHotDeal(data.is_hot_deal);
+        setIsNew(data.is_new);
+        setIsTopSold(data.is_top_sold);
+        setIsBestDeal(data.ise_best_deal);
+        setIsEnable(data.is_enable);
+        setService(data.service);
+
         // data upadate
         setDiscription(data.description)
         setTermscontion(data.termscondition)
         setSuggestion(data.suggested_product_id)
         setsubcategory(data.category);
+
       }
       )
+      
+    }
 
-  }
-  const fetchtag = async () => {
+    const fetchtag = async () => {
     const response = await fetch(`http://${process.env.REACT_APP_URL}/tag`
     ,{
       method:"GET",
@@ -120,7 +128,7 @@ export default function AddProduct() {
     var images = [];
     images.push(image);
     var id = params.id;
-    let data = { id, name, price,termscondition,service,description,discounted_price, stock, view, tag, suggestion,images, subcategory, is_hot_deal, is_new, is_enable, is_best_deal, is_featured, is_top_sold }
+    let data = { id, name,event_manager_price,sku, price,termscondition,description,discounted_price,service, stock, view, tag, suggestion,images, subcategory, is_hot_deal, is_new, is_enable, is_best_deal, is_featured, is_top_sold }
     await fetch(`http://${process.env.REACT_APP_URL}/admin/product`, {
       method: 'PUT',
       headers: {
@@ -152,8 +160,8 @@ export default function AddProduct() {
       autoComplete="off"
     >
       <div className="container " style={{ marginLeft: "30%", position: "absolute", top: "25%" }} >
-        <div class="row">
-          <div class="col-8">
+        <div className="row">
+          <div className="col-8">
             <div>
               <TextField
                 required
@@ -166,11 +174,11 @@ export default function AddProduct() {
 
               <TextField
                 required
-                id="eventManagersPrice"
-                label="eventManagersPrice"
-                value={eventManagersPrice}
-                onChange={(e) => { seteventManagersPrice(e.target.value) }}
-                defaultValue="Enter eventManagersPrice"
+                id="event_manager_price"
+                label="event manager price"
+                value={event_manager_price}
+                onChange={(e) => { setevent_manager_price(e.target.value) }}
+                defaultValue="Enter Event Manager Price"
               />
               <TextField
                 required
@@ -259,16 +267,17 @@ export default function AddProduct() {
 
 
             </div>
-            <div class="col-md-12">
-              <ul class="list-unstyled" style={{ display: "flex", alignItem: "center" }}>
-                <li style={{ marginRight: "15px" }}><input onChange={(e) => { setIsHotDeal(is_hot_deal ? false : true) }} type="checkbox" id="is_hot_deal" name="is_hot_deal" /><label for="is_hot_deal">is hot deal</label></li>
-                <li style={{ marginRight: "15px" }}><input onChange={(e) => { setIsTopSold(is_top_sold ? false : true) }} type="checkbox" id="is_top_sold" name="is_top_sold" /><label for="is_top_sold">is top sold</label></li>
-                <li style={{ marginRight: "15px" }}><input onChange={(e) => { setIsNew(is_new ? false : true) }} type="checkbox" id="is_new" name="is_new" /><label for="is_new">is new</label></li>
-                <li style={{ marginRight: "15px" }}><input onChange={(e) => { setIsEnable(is_enable ? false : true) }} type="checkbox" id="is_enable" name="is_enable" /><label for="is_enable">is enable</label></li>
-                <li style={{ marginRight: "15px" }}><input onChange={(e) => { setIsBestDeal(is_best_deal ? false : true) }} type="checkbox" id="is_best_deal" name="is_best_deal" /><label for="is_best_deal">is best deal</label></li>
-                <li style={{ marginRight: "15px" }}><input onChange={(e) => { setIsFeatured(is_featured ? false : true) }} type="checkbox" id="is_featured" name="is_featured" /><label for="is_featured">is featured</label></li>
+            <div className="col-md-12">
+              <ul className="list-unstyled" style={{ display: "flex", alignItem: "center" }}>
+                <li style={{ marginRight: "1em" }} className="form-check"><input className="form-check-input" onChange={(e) => { setIsHotDeal(e.target.checked) }} checked={is_hot_deal} type="checkbox" id="is_hot_deal" name="is_hot_deal" /><label className="form-check-label" htmlhtmlFor='is_hot_deal'>is hot deal</label></li>
+                <li style={{ marginRight: "1em" }} className="form-check"><input className="form-check-input" onChange={(e) => { setIsTopSold(e.target.checked) }} checked={is_top_sold} type="checkbox" id="is_top_sold" name="is_top_sold" /><label className="form-check-label" htmlFor="is_top_sold">is top sold</label></li>
+                <li style={{ marginRight: "1em" }} className="form-check"><input className="form-check-input" onChange={(e) => { setIsNew(e.target.checked) }} checked={is_new} type="checkbox" id="is_new" name="is_new" /><label className="form-check-label" htmlFor="is_new">is new</label></li>
+                <li style={{ marginRight: "1em" }} className="form-check"><input className="form-check-input" onChange={(e) => { setIsEnable(e.target.checked) }} checked={is_enable} type="checkbox" id="is_enable" name="is_enable" /><label className="form-check-label" htmlFor="is_enable">is enable</label></li>
+                <li style={{ marginRight: "1em" }} className="form-check"><input className="form-check-input" onChange={(e) => { setIsBestDeal(e.target.checked) }} checked={is_best_deal} type="checkbox" id="is_best_deal" name="is_best_deal" /><label className="form-check-label" htmlFor="is_best_deal">is best deal</label></li>
+                <li style={{ marginRight: "1em" }} className="form-check"><input className="form-check-input" onChange={(e) => { setIsFeatured(e.target.checked) }} checked={is_featured} type="checkbox" id="is_featured" name="is_featured" /><label className="form-check-label" htmlFor="is_featured">is featured</label></li>
               </ul>
             </div>
+
             <br></br>
             <div className="row justify-content ">
               <div className="col-6">
