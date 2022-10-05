@@ -1,11 +1,11 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useRef} from "react";
 import { useLocation } from "react-router-dom";
 import GetAuthorization from './GetAuthorization';
-
+import {useReactToPrint} from "react-to-print";
 
 
 export default function DownloadInvoice(){
-
+  const componentRef = useRef();
   const location = useLocation();
   const [InvoiceDetails, setInvoiceDetails] = useState([]);
 
@@ -28,9 +28,14 @@ export default function DownloadInvoice(){
     
 
   let date = new Date();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: "eRental Invoice",
+    pageStyle: "print"
+  });
   return (
     <>
-    <div className="invoice-body" >
+    <div className="invoice-body" ref={componentRef}>
       <div className="d-flex justify-content-center bg-white m-0 text-dark row invoice-toppest">
         <div className="col-3 invoice-top">ERENTALS HND PVT LTD</div>
         <div className="col-3 invoice-top">PAN: AAGCE8977P</div>
@@ -179,7 +184,14 @@ export default function DownloadInvoice(){
         <div className="col-3 invoice-top">www.erentals.in</div>
         <div className="col-3 invoice-top">+91 8652348165</div>
       </div>
-    </div>  
+    </div>
+
+    <div>
+    <button className="btn border-dark bg-danger p-2 my-5" onClick={handlePrint} style={{color:"black", fontWeight:"bolder"}}><span className="p-3">Download Invoice</span><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="black" className="bi bi-download" viewBox="0 0 16 16">
+  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+</svg></button> 
+    </div>
     </>
   );
 }
