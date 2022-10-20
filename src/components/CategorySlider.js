@@ -33,7 +33,7 @@ import { Link } from 'react-router-dom';
 
   return (
     <section className="product-area">
-        <div className="container" >
+        <div className="container-xxl" >
             <div className="ftr-row" style={{width:"100%"}}>
         <div className="col-md-8" style={{width:"100%"}}>
             <div className="ftr-row" >
@@ -42,7 +42,28 @@ import { Link } from 'react-router-dom';
                          <div className="tab-content">
                               <h2>MORE CATEGORIES</h2>
                             <div className="tab-pane fade show active" id="all" role="tabpanel">
-                            <OwlCarousel key={`carousel_${product.length}`}  className="tab-slider owl-carousel"  items={5}  nav   loop >
+                            <OwlCarousel key={`carousel_${product.length}`} 
+                             className="tab-slider owl-carousel"  
+                             items={5}  
+                             nav
+                             responsive={{
+                                0: {
+                                    items: 1,
+                                },
+                                400: {
+                                    items: 2,
+                                },
+                                600: {
+                                    items: 3,
+                                },
+                                700: {
+                                    items: 4,
+                                },
+                                1000: {
+                                    items: 5,
+
+                                }}}   
+                             loop >
                             {
                                product.map((data) => (                      
                                     <div className="tab-item" style={{margin:"5px"}}>

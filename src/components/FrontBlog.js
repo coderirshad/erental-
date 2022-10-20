@@ -22,14 +22,35 @@ const FrontBlog = ( ) => {
 
      return(
         <section className="f-blog">
-            <div className="container">
+            <div className="container-xxl">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="sec-title">
                             <h5>Latest Service</h5>
                         </div>
                         {!loader && 
-                        <OwlCarousel className="fb-slider owl-carousel" items={4} nav loop>                       
+                        <OwlCarousel className="fb-slider owl-carousel"
+                         items={4} 
+                         nav
+                         margin={30}
+                         responsive={{
+                            0: {
+                                items: 1,
+                            },
+                            400: {
+                                items: 2,
+                            },
+                            600: {
+                                items: 3,
+                            },
+                            700: {
+                                items: 4,
+                            },
+                            1000: {
+                                items: 5,
+
+                            }}}  
+                         loop>                       
                         {data.map((data) =>{
                             return(
                             <div className="blog-item">

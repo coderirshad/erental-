@@ -127,7 +127,7 @@ export default function Cartdetail() {
                                         </div>
                                     </td>
                                     <td className="t-total">INR {data.total}</td>
-                                    <td onClick={()=>UpdateQuantity(data.cart_item_id,0)} className="t-rem"><Link to="/cart"><DeleteForeverTwoToneIcon style={{color:"red",fontSize:"40px"}}></DeleteForeverTwoToneIcon></Link></td>
+                                    <td onClick={()=>UpdateQuantity(data.cart_item_id)}className="t-rem"><Link to="/cart"><DeleteForeverTwoToneIcon style={{color:"red",fontSize:"40px"}}></DeleteForeverTwoToneIcon></Link></td>
                                 </tr>   
                             ))}
                         </tbody>

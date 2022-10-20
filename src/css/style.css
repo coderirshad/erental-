@@ -60,6 +60,7 @@ html {
   color: #222222;
   font-size: 14px;
   line-height: 1.4;
+  overflow-x: hidden;
 }
 
 ::-moz-selection {
@@ -774,7 +775,7 @@ input:focus, textarea:focus {
 /* =======================================
 05. Logo Area 2
 ======================================= */
-.logo-area2 {
+/* .logo-area2 {
   height: 70px;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -917,7 +918,106 @@ input:focus, textarea:focus {
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%;
+} */
+
+.img-logo{
+  width: 180px;
+  height: 70px;
 }
+#flex-nav{
+  width: 90% !important;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+#input-width{
+  width: 50%;
+  padding: 5px 0;
+}
+.navbar-collapse {
+  flex-grow: 0;
+}
+
+#input{
+  background: rgba(212, 200, 200, 0.089);
+  font-size: 1.5rem;
+}
+#input::placeholder{
+  color: silver;
+}
+#inputbtn{
+  position: relative;
+  right: 60px;
+  z-index: 2;
+  outline: none;
+  border: 0;
+  border-radius: 0;
+}
+
+@media only screen and (max-width: 1024px){
+  .mainmenu-dispaly{
+    display: none;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .img-logo{
+    width: 87px;
+    height: 55px;
+    margin-right: 20px;
+  }
+  #input-width {
+    width: 58%;
+    padding: 12px 0;
+    margin-left: -5px;
+  }
+
+
+  /* cluster */
+
+  #spacing{
+    margin-left: 4px;
+    margin-right: 4px;
+    color: black;
+    font-size:9px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .overflowHidden{
+    overflow-x: scroll;
+  }
+  .overflowHidden::-webkit-scrollbar{
+    display: none;
+  }
+
+  .mainmenu-dispaly{
+    display: none;
+  }
+
+}
+
+@media only screen and (max-width: 425px) {
+  .img-logo {
+    width: 71px;
+    height: 40px;
+   }
+  #input-width {
+    width: 37%;
+    padding: 4px 0px;
+    margin-left: -11px;
+   }
+  #inputbtn {
+   display: none;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  #inputbtn {
+    display: none;
+   }
+}
+
 
 /* =======================================
 06. Cart Body
@@ -1726,8 +1826,8 @@ input:focus, textarea:focus {
   background: #5677fc;
   font-weight: 700;
   text-transform: uppercase;
-  height: 50px;
-  padding: 13px 22px;
+  height: 30px;
+  padding: 13px 18px;
 }
 
 .menu-area2 .sidemenu p i {
@@ -2168,9 +2268,10 @@ input:focus, textarea:focus {
 }
 
 @media (max-width: 767px) {
-  .top-bar, .top-bar2, .logo-area, .logo-area2, .cart-body, .cart-overlay, .menu-area, .menu-area2 {
+  .top-bar, .top-bar2, .logo-area,.logo-area2, .cart-body, .cart-overlay, .menu-area, .menu-area2 {
     display: none;
   }
+
 }
 
 .mean-container .mean-bar {
@@ -2828,17 +2929,13 @@ border: 10px solid red;
 /* =======================================
 13. Service Area
 ======================================= */
-.service-area {
-  margin-bottom: 50px;
-}
 
-.service-area .service-box {
-  border: 1px solid #e5e5e5;
+.service-box {
   padding: 20px;
 }
 
-.service-area .service-box .sr-img {
-  background: #5677fc;
+.sr-img {
+  background: #4861c7;
   padding: 18px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -2847,14 +2944,14 @@ border: 10px solid red;
   margin-right: 12px;
 }
 
-.service-area .service-box h6 {
+.serviceheading {
   color: #444444;
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 8px;
 }
 
-.service-area .service-box p {
+.service-box p {
   color: #969696;
 }
 
@@ -2865,7 +2962,7 @@ border: 10px solid red;
   border: 1px solid #e5e5e5;
   padding: 20px 20px 0;
   margin-bottom: 30px;
-  height: 510px;
+  height: 560px;
   overflow:hidden;
 }
 

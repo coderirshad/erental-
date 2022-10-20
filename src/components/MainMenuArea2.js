@@ -15,12 +15,9 @@ export default function MainMenuArea2() {
         navigate('/productList',{state:{id: subcategoryId }});
     }
     return (
-    <section className="menu-area2" id = "categoryShift">
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-3 col-md-0">
+                    <div className="menu-area2">
                         {/* <div className="dashBoard"><Link to={'/admin'}><h4>DASHBOARD</h4></Link></div> */}
-                        <div className="sidemenu">
+                        <div className="sidemenu py-2">
                             <h4 className='row2'>All Categories <i className="fa fa-bars"></i></h4>
                             <ul className="list-unstyled gt-menu" id = "try1">
                                 {categoryList.map(( category ) => (
@@ -56,8 +53,5 @@ export default function MainMenuArea2() {
                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
   )
 }

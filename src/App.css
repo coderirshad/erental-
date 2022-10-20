@@ -223,7 +223,6 @@
 
 .product-area .ftr-product {
   border: 1px solid #e5e5e5;
-  padding: 16px 20px;
   margin-bottom: 30px;
 }
 
@@ -1676,21 +1675,18 @@ h6 {
   vertical-align: middle;
   
 }
-.parent1 {
-  width : 100% ;
-  margin-top: -10px;
-}
-.child1 {
+
+/* .child1 {
   display: inline-block;
   vertical-align: middle;
-}
+} */
 
-.cluster{
+/* .cluster{
   margin-left: 350px;
   padding-bottom: 50px;
   margin-top: 20px;
   height: 15px;
-}
+} */
 
 .ech{
   display: inline-block;
@@ -1753,11 +1749,12 @@ h6 {
   margin-top: 0px ;
 }
 
-#categoryShift{
+/* #categoryShift{
   margin-top: -60px;
   margin-left: -230px;
   width : 2000px ;
-}
+} */
+
 
 #imageShift{
   margin-top: -10px;

@@ -44,62 +44,45 @@ export default function LogoArea({role,login,setlogin}) {
      }, []) ;
 
   return (
-    <section className="logo-area2">
-        <div className="container">
-            <div className="row">
-                <div className="col-md-3">
-                    <div className="logo">
-                        <Link to="/"><img  src="images/logo.png" alt=""/></Link>
-                    </div>
-                </div>
-                <div className="col-lg-6 col-md-7 padding-fix">
-                    <form action="#" className="search-bar d-flex">
-                        <input type="text" name="search-bar" placeholder="I'm not available..."/>
-                        <div className="search-cat">
-                            <select className="form-control scat-id">
-                                <option>All Categories</option>
-                                <option>Category One</option>
-                                <option>Category Two</option>
-                                <option>Category Three</option>
-                                <option>Category Four</option>
-                                <option>Category Five</option>
-                                <option>Category Six</option>
-                                <option>Category Seven</option>
-                            </select>
-                        </div>
-                        <button type="submit"><SearchIcon style={{fontSize:"30px",color:"green"}}  title="search"></SearchIcon></button>
-                    </form>
-                    
-                </div>
-                <div className="col-lg-3 col-md-2">
-                    <div className="carts-area d-flex">
-                        <div className="wsh-box ml-auto modified_wishlist">
+    <header>
+        <nav className='navbar navbar-expand-lg navbar-light bg-light py-2'>
+            <div className='container-md' id='flex-nav'>
+                <Link to="/"><img  src="images/logo.png"  alt="" className='img-logo'/></Link>
+                <form class="d-flex" id='input-width'>
+                  <input class="form-control me-2" id='input' type="search" placeholder="Search, event, items..." aria-label="Search" />
+                  <button class="btn btn-outline-success" id='inputbtn' type="submit"><SearchIcon style={{fontSize:"30px",color:"green"}}  title="search"></SearchIcon></button>
+                </form>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div className="wsh-box ml-auto modified_wishlist" style={{marginRight:"10px" }}>
                             <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Voice Search">
                                 <SettingsVoiceIcon style={{fontSize:"30px"}}></SettingsVoiceIcon>
                             </a>
                         </div>
-                        <div className="wsh-box ml-auto modified_wishlist">
+                        <div className="wsh-box ml-auto modified_wishlist" style={{marginRight:"15px" }}>
                             <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
                                 <FavoriteBorderIcon style={{fontSize:"30px"}}></FavoriteBorderIcon>
                                 <span>{wishlistproduct.length}</span>
                             </a>
                         </div>
-                        <div className="cart-box ml-4 modified_cart">
+                        <div className="cart-box ml-4 modified_cart" style={{marginRight:"15px" }}>
                             <a href="/cart" data-toggle="tooltip" data-placement="top" title="Shopping Cart" className="cart-btn ">
                                 <AddShoppingCartIcon style={{fontSize:"30px"}}></AddShoppingCartIcon>
                                 <span>{cartproduct.length}</span>
                             </a>
                         </div>
-                        <div style={{marginRight:"20px" , marginLeft : "20px"}} className="wsh-box ml-auto modified_wishlist"> 
+                        <div style={{marginRight:"10px" , marginLeft : "20px"}} className="wsh-box ml-auto modified_wishlist"> 
                            
                         </div>
-                        <div style={{marginLeft:"0px"}} className="wsh-box ml-auto modified_wishlist">
-                                <CustomizedMenus role={role} login={login} setlogin={setlogin}></CustomizedMenus>                            
+                        <div className="wsh-box ml-auto modified_wishlist">
+                            <CustomizedMenus role={role} login={login} setlogin={setlogin}></CustomizedMenus>                            
                         </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </nav>
+    </header>              
   )
 }
+                    

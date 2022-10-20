@@ -119,12 +119,12 @@ const SingalProduct = ({ login }) => {
     }, [])
 
     return (
-        <section className="sg-product">
+        <section className="sg-product mb-5">
 
             <div className="container">
                 <div className="row">
 
-                    <div className="col-md-9">
+                    <div className="col-md-9 mb-3">
                         <div className="row">
                             <div className="col-md-5">
                                 <div className="sg-img">

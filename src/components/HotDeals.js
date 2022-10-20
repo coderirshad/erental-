@@ -16,50 +16,31 @@ export default function HotDeals() {
         fetchData();
     },[])
   return (
-    <div className="container" id = "imageShift1">
-    <section className="product-area">
-        <div className="container">
-            <div className="row">
-                <div className="col-lg-3 col-md-4">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="bt-deal">
-                                <div className="sec-title">
-                                    <h6>Hot Deals</h6>
-                                </div>
-                               
-                                <OwlCarousel key={`carousel_${product.length}`} className="bt-body owl-carousel" items={1} nav loop  >
-                                <div className="bt-items" >
-                                    {product.map((data,id)=>(                                     
-                                            <div className="bt-box d-flex" key={id} >
-                                                <div className="bt-img">
-                                                    <Link to={`/product/${data.product_id}`}><img src={data.image} alt=""/></Link>
-                                                </div>
-                                                <div className="bt-content">
-                                                    <p><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></p>
-                                                    <ul className="list-unstyled list-inline fav">
-                                                        <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                                        <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                                        <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                                        <li className="list-inline-item"><i className="fa fa-star"></i></li>
-                                                        <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
-                                                    </ul>
-                                                    <ul className="list-unstyled list-inline price">
-                                                        <li className="list-inline-item">INR {data.discounted_price}</li>
-                                                        <li className="list-inline-item">INR {data.price}</li>
-                                                    </ul>
-                                                </div>
-                                            </div>                                                                             
-                                    ))}    
-                                </div>    
-                                </OwlCarousel>
-                            </div>
-                        </div>
+    <div className="container-fluid bg-light pt-5 pb-3">
+        <h1 className='text-center text-decoration-underline mb-5'>Hot Deals</h1>
+         <div class="row mb-4 d-flex justify-content-center ">
+            {product.map((data, id) =>{
+                return(
+                    <div class="col-lg-2 col-md-6 mb-4 mb-lg-0" style={{cursor:"pointer"}}>
+                    <div class="card rounded shadow-sm border-0">
+                      <div class="card-body p-4"><Link to={`/product/${data.product_id}`}><img src={data.image} alt="" class="img-fluid d-block mx-auto mb-3" width={200} height={300} /></Link>
+                         <h5> <Link to={`/product/${data.product_id}`} className="text-dark">{data.product_name}</Link></h5>
+                         <p class="item-price"><strike>INR {data.discounted_price}</strike>   <b>INR {data.price}</b></p>
+                         <p class=" text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <ul class="list-inline small">
+                          <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                          <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                          <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                          <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                          <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
+                        </ul>
+                      </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+                    </div>
+                )
+
+            })}
+       </div>
+    </div>
   )
 }

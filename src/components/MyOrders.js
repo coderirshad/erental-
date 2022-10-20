@@ -28,10 +28,10 @@ export default function MyOrders() {
   
   return (
     !productList.length ? 
-    <div style={{marginLeft:"30%", marginTop:"-26%" , marginBottom : "3%" , height : "300px"}} >
+    <div style={{marginLeft:"30%", marginTop:"-20%" , marginBottom : "3%" , height : "300px"}} >
         <h4>No Orders Were Placed!</h4>
     </div> : (
-        <div className = "myOrder" style={{marginLeft:"22%", marginTop:"-42%" , marginBottom : "3%"}} >
+        <div className = "myOrder" style={{marginLeft:"22%", marginTop:"-26%" , marginBottom : "3%"}} >
             <div>
             <h2 id = 'spacing1' className='shadow-sm text-dark p-3 mb-4'>MY ORDERS</h2>
             </div>

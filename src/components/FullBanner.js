@@ -5,12 +5,12 @@ const FullBanner = () =>{
         <section className="f-banner">
         <div className="container">
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-6 my-2">
                     <div className="f-bnr-img">
                         <a href="#"><img src="images/f-banner-1.jpg" alt="" className="img-fluid"/></a>
                     </div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 my-2">
                     <div className="f-bnr-img">
                         <a href="#"><img src="images/f-banner-2.jpg" alt="" className="img-fluid"/></a>
                     </div>

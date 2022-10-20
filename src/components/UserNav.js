@@ -7,13 +7,17 @@ const UserNav = ({login,setlogin})=>{
      return ( 
         <> 
             <LogoArea role={"customer"} login={login} setlogin={setlogin}></LogoArea>
-            <div className = 'parent1'>
-            <div id = 'child1' >
-                <Cluster></Cluster>
-            </div>
-            <div id = 'child1' >
-                <MainMenuArea2></MainMenuArea2>
-            </div>
+            <div className="container-fluid border shadow-sm d-flex align-item-center">
+                <div className="container-lg">
+                    <div className="row">
+                        <div className="col-3 mainmenu-dispaly">
+                            <MainMenuArea2 />
+                        </div>
+                        <div className="col-lg-9 col-12">
+                            <Cluster />
+                        </div>   
+                    </div>
+                </div>
             </div>
         </>
      )

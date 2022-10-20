@@ -25,16 +25,36 @@ import { Link } from 'react-router-dom';
 
   return (
     <section className="product-area">
-        <div className="container" >
+        <div className="container-xxl" >
             <div className="ftr-row" style={{width:"100%"}}>
         <div className="col-md-8" style={{width:"100%"}}>
             <div className="ftr-row" >
                 <div className="col-md-12 padding-fix-l20" >
                     <div className="ftr-product" >                       
                          <div className="tab-content">
-                              <h2>FEATURE PRODUCT</h2>
+                              <h2 className='my-5'>FEATURE PRODUCT</h2>
                             <div className="tab-pane fade show active" id="all" role="tabpanel">
-                            <OwlCarousel key={`carousel_${product.length}`}  className="tab-slider owl-carousel"  items={5}  nav   loop >
+                            <OwlCarousel key={`carousel_${product.length}`}
+                                        className="tab-slider owl-carousel" 
+                                        responsive={{
+                                        0: {
+                                            items: 1,
+                                        },
+                                        400: {
+                                            items: 2,
+                                        },
+                                        600: {
+                                            items: 3,
+                                        },
+                                        700: {
+                                            items: 4,
+                                        },
+                                        1000: {
+                                            items: 5,
+
+                                        }}}  nav 
+                                        margin={5} 
+                                        loop={true} >
                             {
                                product.map((data) => (                      
                                     <div className="tab-item" style={{margin:"5px"}}>

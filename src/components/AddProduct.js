@@ -76,7 +76,6 @@ export default function AddProduct() {
         setIsBestDeal(data.ise_best_deal);
         setIsEnable(data.is_enable);
         setService(data.service);
-
         // data upadate
         setDiscription(data.description);
         setTermscontion(data.termscondition);
