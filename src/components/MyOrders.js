@@ -27,20 +27,24 @@ export default function MyOrders() {
 
   
   return (
-    !productList.length ? 
-    <div style={{marginLeft:"30%", marginTop:"-20%" , marginBottom : "3%" , height : "300px"}} >
+    <div className='d-flex justify-content-center overflow-auto' style={{minHeight:"60vh"}}>
+    {!productList.length ? 
+    <div className='align-self-center'>
         <h4>No Orders Were Placed!</h4>
     </div> : (
-        <div className = "myOrder" style={{marginLeft:"22%", marginTop:"-26%" , marginBottom : "3%"}} >
+        <div>
             <div>
             <h2 id = 'spacing1' className='shadow-sm text-dark p-3 mb-4'>MY ORDERS</h2>
             </div>
+            <div className='d-flex flex-column' style={{minHeight: "40vh", overflow:"auto"}}>
             <div className='shadow-sm'>
           {productList.map(( product ) => (
             <AboutOrder product = { product } />
           ))}
           </div>
+          </div>
         </div>
-      )
+      )}
+      </div>
       );
 }

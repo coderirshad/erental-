@@ -4,15 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button } from "react-bootstrap";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-
 import MultipleSelectChip from './MultipleSelecter';
 import { useNavigate, useParams } from 'react-router-dom';
 import NestedMultipleSelectChip from './NestedMultipleSelecter';
@@ -121,6 +112,7 @@ export default function AddProduct() {
     fetchdata();
     fetchtag();
     SuggestList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const saveProduct = async () => {

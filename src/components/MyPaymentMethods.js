@@ -4,12 +4,12 @@ import React from "react";
 const MyPaymentMethods = ()=>{
   
      return (
-        <div className='shadow-sm 'style={{marginLeft:"23%", marginTop:"-42%" , marginBottom : "20%" , height : "300px" , borderStyle: "ridge" , borderWidth: "1.5px" }} >
-          <div className = "aboutProduct" style={{ textAlign : "left" , margin : "15px" , marginBottom : "60px"}}>
-                <h4><strong>TOTAL ONLINE PAYMENTS</strong> : ₹ 29868 </h4>
+        <div className='shadow-sm d-flex flex-column justify-content-center mx-4' style={{minHeight:"60vh"}}>
+          <div className = "aboutProduct m-2">
+                <h4 className="h4"><strong>TOTAL ONLINE PAYMENTS</strong> : ₹ 29868 </h4>
           </div>
-          <div className = "aboutProduct" style={{ textAlign : "left" , margin : "15px"}}>
-                <h4><strong>OTHER PAYMENTS MODE'S</strong> : ₹ 15286 </h4>
+          <div className = "aboutProduct m-2">
+                <h4 className="h4"><strong>OTHER PAYMENTS MODE'S</strong> : ₹ 15286 </h4>
           </div>
         </div>
 

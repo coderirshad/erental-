@@ -34,16 +34,16 @@ export default function DownloadInvoice(){
     pageStyle: "print"
   });
   return (
-    <>
+    <div>
     <div className="invoice-body" ref={componentRef}>
-      <div className="d-flex justify-content-center bg-white m-0 text-dark row invoice-toppest">
+      <div className="d-flex justify-content-center bg-light m-0 text-dark row">
         <div className="col-3 invoice-top">ERENTALS HND PVT LTD</div>
-        <div className="col-3 invoice-top">PAN: AAGCE8977P</div>
+        <div className="col-3 invoice-top">GSTN: 27AAGCE8977P1ZJ</div>
         <div className="col-3 invoice-top">CIN: U72900MH2022PTC376733</div>
       </div>
       <div className="d-flex text-white toppest">
         <img className="invoice-logo" src="images/logo192(edited).png" alt=""/>
-        <h1 className="invoice-heading">eRenTals</h1>
+        <h1 className="invoice-heading">eRentals</h1>
       </div>
 
       <main className="invoice-container">
@@ -53,7 +53,7 @@ export default function DownloadInvoice(){
         <hr></hr>
         <div className="invoice-starting">
           <p className="invoice-content invoice-para">
-            To, <br></br>
+            To,
             {data.length === 0? (<></>):(
             <>
             <br></br> Decibel Plus Event Solutions, <br></br> GSTN-{data.gstn}{" "}
@@ -65,20 +65,20 @@ export default function DownloadInvoice(){
           <br></br>
         </div>
         <div className="invoice-center">
-          <p className="invoice-content invoice-para">
+          <p className="invoice-content invoice-para" style={{color:"900"}}>
             As discussed with you and Abdul Ali, we are sharing a quotation for
             your requirement. Please find the quotation of the discussed items.
           </p>
         </div>
         <table className="table mt-5">
           <thead className="thead-dark invoice-table text-dark">
-            <tr>
-              <th scope="col">Code</th>
-              <th scope="col">PARTICULARS</th>
-              <th scope="col">UNIT RATE/DAY/PC</th>
-              <th scope="col">QUANTITY</th>
-              <th scope="col">DAYS</th>
-              <th scope="col">TOTAL</th>
+            <tr style={{backgroundColor:"#002060"}}>
+              <th className="Table-th" scope="col">Code</th>
+              <th className="Table-th" scope="col">PARTICULARS</th>
+              <th className="Table-th" scope="col">UNIT RATE/DAY/PC</th>
+              <th className="Table-th" scope="col">QUANTITY</th>
+              <th className="Table-th" scope="col">DAYS</th>
+              <th className="Table-th" scope="col">TOTAL</th>
             </tr>
           </thead>
           <tbody>
@@ -99,15 +99,15 @@ export default function DownloadInvoice(){
             
             <tr>
               <th scope="row"></th>
-              <td>TRANSPORTATION (PICKUP & DELIVERY)</td>
+              <td>Transportation and installation</td>
               <td></td>
               <td></td>
               <td></td>
               <td>{data.delivery_charges}</td>
             </tr>
-            <tr>
+            <tr className="fw-bold">
               <th scope="row"></th>
-              <td>SUB TOTAL</td>
+              <td>Sub total</td>
               <td></td>
               <td></td>
               <td></td>
@@ -115,24 +115,48 @@ export default function DownloadInvoice(){
             </tr>
             <tr>
               <th scope="row"></th>
+              <td>Discount</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>0</td>
+            </tr>
+            <tr className="fw-bold">
+              <th scope="row"></th>
+              <td>Total Payable before taxes</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td className="fw-bold">{data.sub_total + 0}</td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
               <td>GST @18%</td>
               <td></td>
               <td></td>
               <td></td>
-              <td>{data.gst}</td>
+              <td>{data.sgst+data.cgst}</td>
+            </tr>
+            <tr className="fw-bold" style={{backgroundColor:"#002060"}}>
+              <th scope="row"></th>
+              <td className="Table-th">Total payable with tax</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td className="Table-th">{data.total_payable}</td>
             </tr>
             <tr>
               <th scope="row"></th>
-              <td>TOTAL PAYABLE</td>
+              <td>Advance payment @25%</td>
               <td></td>
               <td></td>
               <td></td>
-              <td>{data.total_payable}</td>
+              <td>{(25*data.total_payable)/100}</td>
             </tr>
           </tbody>
         </table>
-        <h2 className="invoice-h2">Terms & Conditions:</h2>
-        <ul className="invoice-ul">
+        <h4 className="invoice-h2">Terms & Conditions:</h4>
+        <ol className="invoice-ul">
           <li className="invoice-li">
           50% of the bill amount needs to be paid for order confirmation. 50% payment to be made at the time 
           of delivery of the items at your place.
@@ -156,7 +180,7 @@ export default function DownloadInvoice(){
           </li>
           <li className="invoice-li">
           If a confirmed order is cancelled due to some reasons the paid amount will be refunded in the following ways -
-            <ul className="invoice-ul">
+            <ol className="invoice-ul fs-5">
               <li className="invoice-li">
                 If cancellation is 24 hours prior to the event, 100% refund will
                 be done.
@@ -169,20 +193,36 @@ export default function DownloadInvoice(){
                 If cancellation is less than 12 hours prior to the event, 10%
                 refund will be done.
               </li>
-            </ul>
+            </ol>
           </li>
-        </ul>
+        </ol>
         <br></br>
         <br></br>
-        <p className="invoice-last">
+
+        <div className="invoice-starting">
+        <h4 className="invoice-h2">Note:</h4>
+          <p className="text-dark fs-5">
+            Bank Details:
+            <br></br> Bank Name: Axis Bank
+            <br></br> Account Name: ERENTALS HND PVT LTD
+            <br></br> Type of Account: CURRENT 
+            <br></br> Branch Name: Hiranandani gardens, Powai, Mumbai, 400076
+            <br></br> IFSC Code: UTIB0000246
+            <br></br> Account No. 922020013377806
+          </p>
+          <br></br>
+          <br></br>
+        </div>
+            
+        <p className="invoice-last text-dark">
           Thanks and regards, <br></br> eRentals
         </p>
       </main>
 
-      <div className="d-flex justify-content-center bg-white m-0 text-dark row invoice-toppest">
-        <div className="col-3 invoice-top">info@erentals.in</div>
-        <div className="col-3 invoice-top">www.erentals.in</div>
-        <div className="col-3 invoice-top">+91 8652348165</div>
+      <div className="d-flex justify-content-around m-0 text-dark col invoice-lowest">
+        <div className=" invoice-top text-dark">info@erentals.in</div>
+        <div className=" invoice-top text-dark">www.erentals.in</div>
+        <div className=" invoice-top text-dark">+91 8652348165</div>
       </div>
     </div>
 
@@ -192,6 +232,6 @@ export default function DownloadInvoice(){
   <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
 </svg></button> 
     </div>
-    </>
+    </div>
   );
 }

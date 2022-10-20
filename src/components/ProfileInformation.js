@@ -1,5 +1,4 @@
 import React,{useEffect,useState} from 'react';
-import { Button } from 'react-bootstrap';
 import GetAuthorization from './GetAuthorization';
 export default function ProfileInformation() {
 
@@ -20,29 +19,31 @@ export default function ProfileInformation() {
     }
     useEffect(()=>{
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]) ;
   return (
 
-    <div style={{marginLeft:"17%", marginTop:"-28%", padding:"20px", minHeight:"70vh"}}>  
-          <div className='container-fluid shadow' style={{width:"90%", textAlign:"left"}}>
-               <div className='row shadow-sm mb-5 px-5 py-4'>
-                  <div className='col-9 text-left'>
-                       <h5 className='h3'>Name : {userData.user_name}</h5>
-                       <p className='h5'>E-Mail : {userData.email}</p>
+    <div>  
+          <div className='container-fluid shadow text-start m-2'>
+               <div className='d-flex flex-row shadow-sm mb-5 p-2'>
+                  <div className='text-left me-auto'>
+                       <h5 className='h'>Name : {userData.user_name}</h5>
+                       <p className='h-p'>E-Mail : {userData.email}</p>
                   </div>
-                  <div className='col-3'>
-                       <p className='h3'>Contact No : {userData.mobile}</p>
+                  <div className=''>
+                       <p className='h ms-auto text-right'>Contact No : {userData.mobile}</p>
                   </div>
                </div>
                <div className='row pb-3 shadow-sm px-5'>
-                  <h3 style={{color:"tomato"}}>Profile Verification</h3>
+                  <h3 className="profile" style={{color:"tomato"}}>Profile Verification</h3>
                   <p className='px-3 pt-2'>here you can add the request and you can edit  your profile</p>
                </div>
+               <div>
                <div className='row shadow-sm px-5 py-5'>
                     <div className='d-flex justify-content-between align-item-center'>
                     <div className='d-flex justify-content-between align-item-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="m23.95 42-14.5-7.95v-12L2 18 23.95 6 46 18v15.85h-3v-14.1l-4.55 2.3v12Zm0-15.4L39.7 18 23.95 9.55 8.3 18Zm0 12 11.5-6.35v-8.4L23.95 30l-11.5-6.25v8.5Zm.05-12Zm-.05 3.7Zm0 0Z"/></svg>
-                        <h3 className='h4 position-relative' style={{top:"15px", marginLeft:"20px"}}>Student</h3>
+                        <h3 className='h4 position-relative m-2'>Student</h3>
                     </div>
                     <div>
                         <button className='btn btn-lg btn-primary'>Edit</button>
@@ -96,8 +97,6 @@ export default function ProfileInformation() {
                </div>
           </div>
     </div>
-        
-               
-            
+    </div>       
   );
 }

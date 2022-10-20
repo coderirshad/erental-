@@ -1,8 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
 import GetAuthorization from './GetAuthorization';
-import ProfileInformation from './ProfileInformation';
-import ShowAccountDetails from './ShowAccountDetails';
 export default function MyAccountDashSide() {
 
     const [userData, setuserData] =  useState([]);
@@ -22,27 +20,45 @@ export default function MyAccountDashSide() {
     }
     useEffect(()=>{
         fetchData();
+        InitialActiveLink();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]) ;
-    const [options, setOptions] =  useState(['ProfileInformation' ,'Quotes' , 'Orders' , 'Downloads' , 'PaymentMethod' , 'Adresses']);
-  return (
-    <section>
-    <div className="container-fluid sliderbar my-5">
-        <div className="row">
-            <div className="col-3 shadow h-100" style={{width:"20%"}}>
-                <div className="menu-widget" style={{textAlign:"left"}}>
-                <p><i className="fa fa-bars"></i>Hello {userData.user_name}</p>
-                    <ul className="list-unstyled">
-                    {
+    const options = ['ProfileInformation' ,'Quotes' , 'Orders' , 'Downloads' , 'PaymentMethod' , 'Adresses']
+    const [state, setState] =  useState({active:""});
+    
+    const InitialActiveLink = ()=>{
+        const url = window.location.href;
+        const arr = url.split("/");
+        setState({active: arr[arr.length-1]});
+    }
+    const handleClick = (option)=>{
+        setState({ active: option });
+    }
+    return (
+        <nav className="navbar navbar-dark bg-dark fixed shadow p-3 my-3 container">
+        <div className="container-fluid">
+        <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span className="navbar-toggler-icon"></span>
+        </button>
+        <a className="navbar-brand fw-bold fs-3">Hello {userData.user_name}</a>
+    <div className="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div className="offcanvas-header">
+        <h5 className="offcanvas-title fw-bold fs-3" id="offcanvasNavbarLabel">Hello {userData.user_name}</h5>
+        <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div className="offcanvas-body">
+        <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+          {
                     options.map( option  => (
                         <>
-                        <li><Link to= {`/myaccount/${option}`}> <img src="images/sm.png" alt=""/>My {option}</Link></li>
+                        <li className="nav-item" style={{color:"black"}} data-bs-dismiss="offcanvas"><Link to= {`/myaccount/${option}`} className={`nav-link ${state.active === option ? "active shadow bg-dark text-light" : "text-dark"}`} onClick={()=>handleClick(option)} > <img src="images/sm.png" alt=""/>My {option === "ProfileInformation" ? "Profile" : option}</Link></li>
                         </>
                         ))} 
-                    </ul>
-                </div>
-            </div>
-        </div>
+        </ul>
+      </div>
     </div>
-</section>
+  </div>
+</nav>
+
   );
 }

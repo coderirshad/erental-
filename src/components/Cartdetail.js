@@ -9,7 +9,7 @@ export default function Cartdetail() {
     const [cartsummary, setcartsummary] = useState({})
     const navigate = useNavigate();
     const UpdateQuantity = async (cart_item_id1,finalquantity,Day)=>{
-           const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
+        const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',

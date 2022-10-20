@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Product from "./Product";
 import MyOrders from "./MyOrders";
 import ProfileInformation from "./ProfileInformation";
 import Address from "./Adresses";
@@ -14,12 +13,12 @@ const ShowAccountDetails = ()=>{
   
      return (
         <div className="accountDetails"> 
-            {id=='ProfileInformation' && <ProfileInformation/>}
-            {id=='Quotes' && <AboutUs/>}
-            {id=='Orders' && <MyOrders/>}
-            {id=='Downloads' && <AboutUs/>}
-            {id=='Adresses' && <Address/>}
-            {id=='PaymentMethod' && <MyPaymentMethods/>}
+            {id==='ProfileInformation' && <ProfileInformation/>}
+            {id==='Quotes' && <AboutUs/>}
+            {id==='Orders' && <MyOrders/>}
+            {id==='Downloads' && <AboutUs/>}
+            {id==='Adresses' && <Address/>}
+            {id==='PaymentMethod' && <MyPaymentMethods/>}
         </div>
      )
 }

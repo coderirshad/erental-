@@ -22,11 +22,9 @@ import ProductList from "./components/ProductList";
 import SingalProduct from "./components/SingalProduct";
 import AboutProduct from "./components/AboutProduct";
 import AddProduct from "./components/AddProduct";
-import SocialMediaLink from "./components/SocialMediaLink";
 import TagProductList from "./components/TagProductList";
 import AllProductList from "./components/AllProductList";
 import MyAccount from "./components/MyAccount";
-import ShowAccountDetails from "./components/ShowAccountDetails" ;
 import { CheckAuth } from "./components/CheckAuth";
 import MyOrderDetails from "./components/MyOrderDetails";
 import NotFound from "./components/NotFound";
@@ -88,7 +86,6 @@ const App = () =>{
           <Route exact path = "/privacyPolicy" element = {<PrivacyPolicy/>}></Route>
           <Route exact path = "/DownloadInvoice" element = {<DownloadInvoice/>}></Route>
         </Routes>
-        <SocialMediaLink></SocialMediaLink>
         <FooterArea></FooterArea>
       </div>
     );

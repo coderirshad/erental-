@@ -8,27 +8,15 @@ export default function AboutOrder( {product} ) {
     navigate('/myOrderDetails',{state:{product : product }});
   }
   return (
-    
-    <div className="aboutProduct">
-      
-    <button className = "buttonMyProduct" onClick= {() => handleClick( product ) } >
-          <a>
-            <div className="myProductImage">
-              <img class = "myProductImage"src= {product.Cart_item[0].image} alt="Italian Trulli"></img>
-            </div>
-            <div className="myProductDetails">
-              <h4 >{product.name}</h4>
-              <p>Quantity : {product.Cart_item[0].quantity}</p>
-            </div>
-            <div className="myProductDetails">
-            <p>Price : ₹{product.grandtotal} </p>
-            </div>
-            <div className="myProductDetails">
+  <div className = "card p-3" style={{width: "18rem"}}>
+              <img class = "card-img-top"src= {product.Cart_item[0].image} alt="Italian Trulli"></img>
+            <div className="card-body">
+              <h5 className="card-title">{product.name}</h5>
+              <p className="card-text">Quantity : {product.Cart_item[0].quantity}</p>
+              <p className="card-text">Price : ₹{product.grandtotal} </p>
               <p1><CheckCircleOutlineIcon style={{ color : "green" , marginRight:"5px"}}></CheckCircleOutlineIcon>Delivered On July 16 , 2022</p1>
             </div>
-         
-         <i className="fa fa-angle-right"></i></a>                                                      
-    </button>
-    </div>      
+            <a class="btn btn-primary" onClick= {() => handleClick( product ) }>View Order Details</a>                                               
+    </div> 
   );
 }
