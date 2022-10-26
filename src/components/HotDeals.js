@@ -25,13 +25,13 @@ export default function HotDeals() {
                     <div class="card rounded shadow-sm border-0">
                       <div class="card-body p-4"><Link to={`/product/${data.product_id}`}><img src={data.image} alt="" class="img-fluid d-block mx-auto mb-3" width={200} height={300} /></Link>
                          <h5> <Link to={`/product/${data.product_id}`} className="text-dark">{data.product_name}</Link></h5>
-                         <p class="item-price"><strike>INR {data.discounted_price}</strike>   <b>INR {data.price}</b></p>
+                         <p class="item-price"><b>INR {data.price} <strike>INR {data.discounted_price}</strike></b></p>
                          <p class=" text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         <ul class="list-inline small">
-                          <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                          <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                          <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                          <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                          <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
+                          <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
+                          <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
+                          <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
                           <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
                         </ul>
                       </div>

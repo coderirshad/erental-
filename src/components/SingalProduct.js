@@ -106,17 +106,17 @@ const SingalProduct = ({ login }) => {
     }
      const handlechnage = (e) =>{
         setServiceid(e.target.value)
-        console.log('serviceid',e.target.value)
      }
-
-     useEffect(() =>{
-        dayandprice();
-     }, [day, quantity, service_id])
-
+     useEffect(()=>{
+        fetchData();
+        setday(1);
+        setquantity(1);
+     },[id])
     useEffect(() => {
         fetchData();
         serviceapi();
-    }, [])
+        dayandprice();
+    }, [id,day, quantity, service_id])
 
     return (
         <section className="sg-product mb-5">

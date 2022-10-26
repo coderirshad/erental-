@@ -35,7 +35,27 @@ import { Link } from 'react-router-dom';
                          <div className="tab-content">
                               <h2>Similar Products</h2>
                             <div className="tab-pane fade show active" id="all" role="tabpanel">
-                            <OwlCarousel key={`carousel_${product.length}`}  className="tab-slider owl-carousel"  items={4}  nav   loop >
+                            <OwlCarousel key={`carousel_${product.length}`} 
+                             className="tab-slider owl-carousel"  
+                             responsive={{
+                                0: {
+                                    items: 1,
+                                },
+                                400: {
+                                    items: 2,
+                                },
+                                600: {
+                                    items: 3,
+                                },
+                                700: {
+                                    items: 4,
+                                },
+                                1000: {
+                                    items: 5,
+
+                                }}}  nav 
+                                margin={5} 
+                                loop={true} >
                             {
                                product.map((data) => (                      
                                     <div className="tab-item" style={{margin:"5px"}}>
@@ -44,9 +64,9 @@ import { Link } from 'react-router-dom';
                                                 <li className="list-inline-item"><a href="#">{data.category}</a></li>
                                                 <li className="list-inline-item"><a href="#">{data.sub_category}</a></li>
                                             </ul>
-                                            <div style={{height:"20px",overflow:"hidden"}}><Link to={`/product/${data.id}`}>{data.name}</Link></div>
+                                            <div style={{height:"20px",overflow:"hidden"}}><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></div>
                                         </div>
-                                        <Link to={`/product/${data.id}`}>
+                                        <Link to={`/product/${data.product_id}`}>
                                         <div className="tab-img">
                                             <img className="main-img img-fluid" src={data.images[0]} style={{height:"200px",width:"100%"}} alt=""/>
                                             <div className="layer-box">
@@ -70,7 +90,7 @@ import { Link } from 'react-router-dom';
                                                 </ul>
                                             </div>
                                             <div>
-                                                <Link to={`/product/${data.id}`} data-toggle="tooltip" data-placement="top" title="Add to Cart"><img src="images/it-cart.png" alt=""/></Link>
+                                                <Link to={`/product/${data.product_id}`} data-toggle="tooltip" data-placement="top" title="Add to Cart"><img src="images/it-cart.png" alt=""/></Link>
                                             </div>
                                         </div>
                                     </div>

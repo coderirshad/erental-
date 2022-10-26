@@ -66,7 +66,7 @@ import { Link } from 'react-router-dom';
                                             <div style={{height:"20px",overflow:"hidden"}}><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></div>
                                         </div>
                                         <Link to={`/product/${data.product_id}`}>
-                                        <div className="tab-img">
+                                        <div className="tab-img d-flex justify-content-center">
                                             <img className="main-img img-fluid" src={data.image} style={{height:"200px",width:"200px"}} alt=""/>
                                             <div className="layer-box">
                                                 <a href="" className="it-comp" data-toggle="tooltip" data-placement="left" title="Compare"><img src="images/it-comp.png" alt=""/></a>
