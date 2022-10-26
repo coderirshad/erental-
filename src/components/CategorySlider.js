@@ -71,7 +71,7 @@ import { Link } from 'react-router-dom';
                                             <a>
                                             <img class = "productImage"src= {data.image}></img>
                                             <h4>{data.name}</h4>
-                                            <i className="fa fa-angle-right"></i></a>                                                      
+                                            </a>                                                      
                                         </button>
                                     </div>
                                     ))}

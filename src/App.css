@@ -2211,3 +2211,65 @@ h6 {
       font-size: 1.6rem;
     }
   }
+
+  @media (min-width:1024px) {
+    .accountDetails{
+      min-width: 72vw;
+    }
+    #myaccount{
+      flex-direction: row;
+    }
+  }
+  
+  @media (max-width:1023px) {
+    #myaccount{
+      flex-direction: column;
+    }
+  }
+
+  /* =======================================
+              Quotation Printing
+======================================= */
+
+  @media print {
+    #print-btn {
+      display: none;
+    }
+    #navbar{
+      display: none;
+    }    
+    #footer{
+      display: none;
+    }
+
+    .invoice-heading{
+
+      font-family: 'Amarante', cursive;
+      color: #002060;
+      font-size: 900%;
+      margin: 0;
+    }
+    
+    .toppest{
+      align-items: center;
+      background: linear-gradient(90deg, white, #175b99 );
+    }
+    
+    .invoice-logo{
+      float: left;
+      margin-left: 12%;
+      margin-right: 3%;
+      width: 8%;
+      height: 5%;
+    }
+
+    .invoice-top{
+      color: #103E66;
+      padding: 0%;
+      font-weight: bolder;
+      font-size: small;
+    }
+    .Table-th{
+      color: white;
+    }
+  }

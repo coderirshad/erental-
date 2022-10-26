@@ -5,7 +5,7 @@ import Cluster from "./Cluster.js";
 
 const UserNav = ({login,setlogin})=>{
      return ( 
-        <> 
+        <div id="navbar"> 
             <LogoArea role={"customer"} login={login} setlogin={setlogin}></LogoArea>
             <div className="container-fluid border shadow-sm d-flex align-item-center">
                 <div className="container-lg">
@@ -19,7 +19,7 @@ const UserNav = ({login,setlogin})=>{
                     </div>
                 </div>
             </div>
-        </>
+        </div>
      )
 }
 

@@ -1,11 +1,8 @@
-import React,{useState,useEffect,useRef} from "react";
+import React,{useState,useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import GetAuthorization from './GetAuthorization';
-import {useReactToPrint} from "react-to-print";
-
 
 export default function DownloadInvoice(){
-  const componentRef = useRef();
   const location = useLocation();
   const [InvoiceDetails, setInvoiceDetails] = useState([]);
 
@@ -28,18 +25,16 @@ export default function DownloadInvoice(){
     
 
   let date = new Date();
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-    documentTitle: "eRental Invoice",
-    pageStyle: "print"
-  });
+  const handlePrint = ()=>{
+    window.print();
+  }
   return (
     <div>
-    <div className="invoice-body" ref={componentRef}>
+    <div className="invoice-body" id='print'>
       <div className="d-flex justify-content-center bg-light m-0 text-dark row">
-        <div className="col-3 invoice-top">ERENTALS HND PVT LTD</div>
-        <div className="col-3 invoice-top">GSTN: 27AAGCE8977P1ZJ</div>
-        <div className="col-3 invoice-top">CIN: U72900MH2022PTC376733</div>
+        <div className="col invoice-top">ERENTALS HND PVT LTD</div>
+        <div className="col invoice-top">GSTN: 27AAGCE8977P1ZJ</div>
+        <div className="col invoice-top">CIN: U72900MH2022PTC376733</div>
       </div>
       <div className="d-flex text-white toppest">
         <img className="invoice-logo" src="images/logo192(edited).png" alt=""/>
@@ -227,7 +222,7 @@ export default function DownloadInvoice(){
     </div>
 
     <div>
-    <button className="btn border-dark bg-danger p-2 my-5" onClick={handlePrint} style={{color:"black", fontWeight:"bolder"}}><span className="p-3">Download Invoice</span><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="black" className="bi bi-download" viewBox="0 0 16 16">
+    <button className="btn border-dark bg-danger p-2 my-5" id="print-btn" onClick={handlePrint} style={{color:"black", fontWeight:"bolder"}}><span className="p-3">Download Invoice</span><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="black" className="bi bi-download" viewBox="0 0 16 16">
   <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
   <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
 </svg></button> 

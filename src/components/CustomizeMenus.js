@@ -94,7 +94,7 @@ export default function CustomizedMenus({role,login,setlogin}) {
       {
         login ? 
         <div>
-        <Link to={'/myaccount'}>
+        <Link to={'/myaccount/ProfileInformation'}>
         <MenuItem onClick={handleClose} disableRipple>
           <AccountCircleIcon></AccountCircleIcon>
           My Account

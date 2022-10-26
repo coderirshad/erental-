@@ -22,7 +22,7 @@ export default function Cluster() {
                 <ul className="list-unstyled list-inline d-flex justify-conter-between align-item-center">
                     {tagList.map(( tag ) => (
                         <li className = "py-3 px-2" onClick= {() => handleClick( tag.id ) } >
-                            <a id = 'spacing'><strong>{tag.name}</strong><i className="fa fa-angle-right"></i></a>
+                            <a id = 'spacing'><strong>{tag.name}</strong></a>
                         </li>
                     ))}
                 </ul>

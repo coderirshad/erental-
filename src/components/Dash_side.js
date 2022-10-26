@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import GetAuthorization from './GetAuthorization';
 export default function Dash_side() {
 
-    
     const [product, setProduct] =  useState([]);
     const fetchData =()=>{
         fetch(`http://${process.env.REACT_APP_URL}/dashboard-sidebar`,{
