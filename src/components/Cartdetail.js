@@ -158,7 +158,7 @@ export default function Cartdetail() {
                                 <option>State 4</option>
                             </select>
                         </div>
-                        <div className="post-box">
+                        <div className="post-box mb-3">
                             <input type="text" name="zip" value="" placeholder="Zip/Postal Code"/>
                             <button type="button">Get Estimate</button>
                         </div>
@@ -166,7 +166,7 @@ export default function Cartdetail() {
                 </div>
             </div>
             <div className="col-md-4">
-                <div className="coupon">
+                <div className="coupon mt-lg-0 my-3">
                     <h6>Discount Coupon</h6>
                     <p>Enter your coupon code if you have one</p>
                     <form action="#">
@@ -177,13 +177,13 @@ export default function Cartdetail() {
             </div>
             <div className="col-md-4">
                 <div className="crt-sumry">
-                    <h5>Cart Summery</h5>
+                    <h5>Cart Summary</h5>
                     <ul className="list-unstyled">
 
                         <li>Subtotal :<span>INR {cartsummary.sub_total}</span></li>
                         <li>Transportation Charge :<span>INR {cartsummary.transportation_charge}</span></li>
-                        <li>Cgst :<span>INR {cartsummary.cgst}</span></li>
-                        <li>sgst :<span>INR {cartsummary.sgst}</span></li>
+                        <li>CGST (9%) :<span>INR {cartsummary.cgst}</span></li>
+                        <li>SGST (9%) :<span>INR {cartsummary.sgst}</span></li>
                         <li>Grand Total : <span>INR {cartsummary.total}</span></li>
                         
                     </ul>

@@ -2966,6 +2966,16 @@ border: 10px solid red;
   height: 560px;
   overflow:hidden;
 }
+@media (min-width: 360px) and (max-width: 896px){
+  .product-area .bt-deal {
+    border: 1px solid #e5e5e5;
+    padding: 20px 20px 0;
+    margin-bottom: -37px;
+    height: 560px;
+    overflow:hidden;
+  }
+  }
+
 
 .product-area .bt-deal .sec-title h6 {
   color: #444444;
@@ -3064,6 +3074,15 @@ border: 10px solid red;
   margin-bottom: 30px;
   background-color: #ffffff;
 }
+
+@media (min-width: 360px) and (max-width: 896px){
+  .product-area .ftr-product {
+    width: 100%;
+    border: 1px solid #ffffff;
+    margin-bottom: 0px;
+    background-color: #ffffff;
+}
+  }
 
 .product-area .ftr-product .tab-box {
   border-bottom: 1px solid #eeeeee;
@@ -4825,7 +4844,9 @@ border: 10px solid red;
 }
 
 .f-blog .fb-slider .blog-item .blog-content {
-  padding: 20px;
+  padding: 0px; 
+  overflow-wrap: break-word;
+
 }
 
 .f-blog .fb-slider .blog-item .blog-content h5 {
@@ -6990,6 +7011,12 @@ border: 10px solid red;
 .shopping-cart {
   padding: 35px 0;
 }
+
+@media (min-width: 360px) and (max-width: 896px){
+  .shopping-cart{    padding: 9px 0;
+  }
+  }
+
 .shopping-cart .container .row .col-md-12 .cart-table{
    width: 100%;
 }
@@ -7023,6 +7050,17 @@ border: 10px solid red;
   vertical-align: middle;
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+}
+
+@media (min-width: 360px) and (max-width: 896px){
+.shopping-cart .cart-table .table tbody tr td {
+ 
+    border: aliceblue;
+    padding: 20px 33px;
+    vertical-align: baseline;
+    text-align: center;
+    border-bottom: 0px solid #e5e5e5;
+}
 }
 
 .shopping-cart .cart-table .table tbody tr td:last-child {
@@ -7171,6 +7209,15 @@ border: 10px solid red;
   margin-bottom: 2px;
 }
 
+@media (min-width: 360px) and (max-width: 896px){
+.shopping-cart .shipping h6{
+     color: #444444;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+}
+
 .shopping-cart .shipping p {
   color: #969696;
   margin-bottom: 25px;
@@ -7249,6 +7296,14 @@ border: 10px solid red;
   margin-bottom: 2px;
 }
 
+@media (min-width: 360px) and (max-width: 896px){
+.shopping-cart .coupon h6 {
+  color: #444444;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+}
+
 .shopping-cart .coupon p {
   color: #969696;
   margin-bottom: 25px;
@@ -7291,6 +7346,7 @@ border: 10px solid red;
 .shopping-cart .crt-sumry {
   background: #f1f1f1;
   padding: 23px 30px 30px;
+ 
 }
 
 .shopping-cart .crt-sumry h5 {
@@ -7308,6 +7364,7 @@ border: 10px solid red;
   color: #666666;
   font-weight: 600;
   margin-bottom: 5px;
+  text-align: left;
 }
 
 .shopping-cart .crt-sumry ul li span {
@@ -7704,6 +7761,7 @@ border: 10px solid red;
 .checkout button.ord-btn:hover {
   background: #5677fc;
 }
+
 
 /* =======================================
 31. Log In

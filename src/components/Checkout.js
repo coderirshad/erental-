@@ -113,7 +113,7 @@ export default function Checkout() {
 
                     {   
                         addresses.map ( ( address ) => (
-                        <div className='address' >
+                        <div className='address'>
                             <Button onClick={() => setBillingAddress (address.address_id)} style={{ color: 'black' }} size="small">
                             { ( address.address_id === Billingaddress ) ? <CheckBoxIcon/> : <CheckBoxOutlineBlankIcon/> }
                             </Button>

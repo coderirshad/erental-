@@ -1937,11 +1937,24 @@ h6 {
   width: 100%;
 }
 .Ds-div-container{
-  width: 90%;
+  width: -1%;
   margin: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+
+@media (min-width: 360px) and (max-width: 896px) {
+  .Ds-div-container {
+    width: 84%;
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: initial;
+}
 }
 
 .Ds_div ul{
@@ -1959,6 +1972,9 @@ h6 {
   text-decoration: none;
   text-transform: uppercase;
   opacity: .8;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .Ds_div ul li a:hover{
   opacity: 1;
@@ -1966,17 +1982,35 @@ h6 {
 
 .Ds_div ul li .active{
   border-top: 5px solid tomato;
-  padding-top: 2.2rem;
+  padding-top: 2.3rem;
   position: relative;
   color: inherit;
   transition: none;
   height: 4px;
   opacity: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
+@media (min-width: 360px) and (max-width: 896px) {
+  .Ds_div ul li .active {
+    border-top: 5px solid tomato;
+    padding-top: 2.3rem;
+    position: relative;
+    color: inherit;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
+    height: 0px;
+    opacity: 1;
+}
+}
+
 
 .Ds_div ul li .nonactive{
   border: none;
 }
+
+
 
 /* downloading the invoice */
 

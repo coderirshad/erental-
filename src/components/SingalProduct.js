@@ -119,7 +119,7 @@ const SingalProduct = ({ login }) => {
     }, [id,day, quantity, service_id])
 
     return (
-        <section className="sg-product mb-5">
+        <section className="sg-product mb-sm-0">
 
             <div className="container">
                 <div className="row">

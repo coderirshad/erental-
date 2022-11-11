@@ -18,7 +18,7 @@ export default function HotDeals() {
   return (
     <div className="container-fluid bg-light pt-5 pb-3">
         <h1 className='text-center text-decoration-underline mb-5'>Hot Deals</h1>
-         <div class="row mb-4 d-flex justify-content-center ">
+         <div class="row mb-4 d-flex justify-content-center">
             {product.map((data, id) =>{
                 return(
                     <div class="col-lg-2 col-md-6 mb-4 mb-lg-0" style={{cursor:"pointer"}}>
