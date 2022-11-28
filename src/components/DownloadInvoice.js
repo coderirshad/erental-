@@ -1,13 +1,33 @@
 import React,{useState,useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import GetAuthorization from './GetAuthorization';
+import ErentalHeaderAndFooter from "./ErentalHeaderAndFooter";
 
 export default function DownloadInvoice(){
   const location = useLocation();
   const [InvoiceDetails, setInvoiceDetails] = useState([]);
+  const [quoteproduct, setquoteproduct] = useState([]);
+  const [quotesummary, setquotesummary] = useState({});
 
+  const fetchData = () =>{
+    fetch(`http://${process.env.REACT_APP_URL}/quote`,{
+        method:"GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': GetAuthorization()
+          }          
+    })
+    .then((response)=>{
+        return response.json();
+    }).then((data)=>{
+        setquoteproduct(data.items);
+        setquotesummary(data);       
+    })
+
+}
+  
   const fetchdata = async() =>{
-    const response = await fetch(`http://${process.env.REACT_APP_URL}/invoice/${location.state.product.Order_id}`,{
+    const response = await fetch(`http://${process.env.REACT_APP_URL}/cart?type=quote`,{
         method:"GET",
         headers: {
             'Content-Type': 'application/json',
@@ -20,54 +40,45 @@ export default function DownloadInvoice(){
     
     useEffect(() => {
         fetchdata();
+        fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
 
   let date = new Date();
   const handlePrint = ()=>{
-    window.print();
+    window.print();                                                                                                                                                                                                                                                                                                                                                                                                                                           
   }
   return (
-    <div>
-    <div className="invoice-body" id='print'>
-      <div className="d-flex justify-content-center bg-light m-0 text-dark row">
-        <div className="col invoice-top">ERENTALS HND PVT LTD</div>
-        <div className="col invoice-top">GSTN: 27AAGCE8977P1ZJ</div>
-        <div className="col invoice-top">CIN: U72900MH2022PTC376733</div>
-      </div>
-      <div className="d-flex text-white toppest">
-        <img className="invoice-logo" src="images/logo192(edited).png" alt=""/>
-        <h1 className="invoice-heading">eRentals</h1>
-      </div>
-
-      <main className="invoice-container">
+    <div className="" id="Quotation-body">
+    <table className="invoice-body w-100" id='print'>
+        <thead>
+        <ErentalHeaderAndFooter image={"Erental Quotation Header"}/>
+        </thead>
+      <main className="invoice-container container">
         <p className="invoice-date">
           Date: {date.getDate()}-{date.getMonth()}-{date.getFullYear()}{" "}
         </p>
         <hr></hr>
-        <div className="invoice-starting">
-          <p className="invoice-content invoice-para">
+        <div className="text-start">
+          <p className="invoice-content invoice-para text-start">
             To,
-            {data.length === 0? (<></>):(
+            {quotesummary.length === 0? (<></>):(
             <>
-            <br></br> Decibel Plus Event Solutions, <br></br> GSTN-{data.gstn}{" "}
-            <br></br> {data.address.address1}, {data.address.city},{" "}
-            {data.address.district}, {data.address.state} - {data.address.pin_code}
+            <br></br> {quotesummary.name}, <br></br> {quotesummary.org_name}
+            <br></br> ph-{quotesummary.mobile}
             </>)}
           </p>
-          <br></br>
-          <br></br>
         </div>
-        <div className="invoice-center">
-          <p className="invoice-content invoice-para" style={{color:"900"}}>
+        <div className="">
+          <p className="invoice-content invoice-para text-start" style={{color:"900"}}>
             As discussed with you and Abdul Ali, we are sharing a quotation for
             your requirement. Please find the quotation of the discussed items.
           </p>
         </div>
-        <table className="table mt-5">
+        <table className="table mt-5 text-start">
           <thead className="thead-dark invoice-table text-dark">
-            <tr style={{backgroundColor:"#002060"}}>
+            <tr className="align-baseline" style={{backgroundColor:"#002060"}}>
               <th className="Table-th" scope="col">Code</th>
               <th className="Table-th" scope="col">PARTICULARS</th>
               <th className="Table-th" scope="col">UNIT RATE/DAY/PC</th>
@@ -77,12 +88,12 @@ export default function DownloadInvoice(){
             </tr>
           </thead>
           <tbody>
-            {data.length === 0 ? (<></>):( data.items.map((element,key) => {
+            {quoteproduct.length === 0 ? (<></>):( quoteproduct.map((element,key) => {
               return (
                 <tr key={key} >
                   <th>{element.item_code}</th>
                   <td>{element.item_name}</td>
-                  <td>{element.unit_price}</td>
+                  <td>{element.unit_price}</td>                                     
                   <td>{element.quantity}</td>
                   <td>{element.days}</td>
                   <td>{element.total}</td>
@@ -98,7 +109,7 @@ export default function DownloadInvoice(){
               <td></td>
               <td></td>
               <td></td>
-              <td>{data.delivery_charges}</td>
+              <td>{data.transportation_charge}</td>
             </tr>
             <tr className="fw-bold">
               <th scope="row"></th>
@@ -138,7 +149,7 @@ export default function DownloadInvoice(){
               <td></td>
               <td></td>
               <td></td>
-              <td className="Table-th">{data.total_payable}</td>
+              <td className="Table-th">{data.total}</td>
             </tr>
             <tr>
               <th scope="row"></th>
@@ -146,7 +157,7 @@ export default function DownloadInvoice(){
               <td></td>
               <td></td>
               <td></td>
-              <td>{(25*data.total_payable)/100}</td>
+              <td>{(25*data.total)/100}</td>
             </tr>
           </tbody>
         </table>
@@ -176,7 +187,7 @@ export default function DownloadInvoice(){
           <li className="invoice-li">
           If a confirmed order is cancelled due to some reasons the paid amount will be refunded in the following ways -
             <ol className="invoice-ul fs-5">
-              <li className="invoice-li">
+              <li className="invoice-li TC-points">
                 If cancellation is 24 hours prior to the event, 100% refund will
                 be done.
               </li>
@@ -191,10 +202,8 @@ export default function DownloadInvoice(){
             </ol>
           </li>
         </ol>
-        <br></br>
-        <br></br>
 
-        <div className="invoice-starting">
+        <div className="text-start">
         <h4 className="invoice-h2">Note:</h4>
           <p className="text-dark fs-5">
             Bank Details:
@@ -209,20 +218,17 @@ export default function DownloadInvoice(){
           <br></br>
         </div>
             
-        <p className="invoice-last text-dark">
+        <p className="text-start fw-bold fs-large text-dark">
           Thanks and regards, <br></br> eRentals
         </p>
       </main>
-
-      <div className="d-flex justify-content-around m-0 text-dark col invoice-lowest">
-        <div className=" invoice-top text-dark">info@erentals.in</div>
-        <div className=" invoice-top text-dark">www.erentals.in</div>
-        <div className=" invoice-top text-dark">+91 8652348165</div>
-      </div>
-    </div>
+      <tfoot className="Erental-footer-image mt-5">
+      <ErentalHeaderAndFooter image={"Erental Footer"}/>
+      </tfoot>
+    </table>
 
     <div>
-    <button className="btn border-dark bg-danger p-2 my-5" id="print-btn" onClick={handlePrint} style={{color:"black", fontWeight:"bolder"}}><span className="p-3">Download Invoice</span><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="black" className="bi bi-download" viewBox="0 0 16 16">
+    <button className="btn border-dark bg-danger p-2 my-5" id="print-btn" onClick={handlePrint} style={{color:"black", fontWeight:"bolder"}}><span className="p-3">Download Quotation</span><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="black" className="bi bi-download" viewBox="0 0 16 16">
   <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
   <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
 </svg></button> 

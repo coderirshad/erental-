@@ -52,7 +52,6 @@ export default function Cartdetail() {
         .then((response)=>{
             return response.json();
         }).then((data)=>{
-            console.log("data of cart",data);
              setcartproduct(data.cart)
              setcartsummary(data);       
         })

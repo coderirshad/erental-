@@ -26,7 +26,6 @@ const SingalProduct = ({ login }) => {
     const [dayprice, setDayPrice] = useState([])
     const navigate = useNavigate();
     const IncrementQuantity = () => {
-        console.log('quntity', product);
         setquantity(quantity + 1);
     }
     const DecrementQuantity = () => {
@@ -56,12 +55,44 @@ const SingalProduct = ({ login }) => {
                         size: size,
                         day: day,
                         service_id:service_id,
+                        type:"cart"
             
                     }
                 )
             }).then((response) => {
             })
             navigate('/cart');
+        }
+        else {
+            alert("please login!!")
+            navigate('/login')
+        }
+
+    }
+
+    const AddToQuote = async () => {
+        if (login) {
+            await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': GetAuthorization(),
+                },
+                body: JSON.stringify(
+                    {
+                        cart_item_id: id,
+                        quantity: quantity,
+                        color: color,
+                        size: size,
+                        day: day,
+                        service_id:service_id,
+                        type:"quote"
+            
+                    }
+                )
+            }).then((response) => {
+            })
+            navigate('/myaccount/Quotes');
         }
         else {
             alert("please login!!")
@@ -101,7 +132,6 @@ const SingalProduct = ({ login }) => {
               }
         })
         const data = await response.json();
-        console.log("console",data,id,day,quantity,service_id)
         setDayPrice(data);
     }
      const handlechnage = (e) =>{
@@ -201,8 +231,9 @@ const SingalProduct = ({ login }) => {
                                         </div>
                                         <div className="pro-btns">
                                             <a onClick={() => AddToCart()} href='/cart' className="cart">Add To Cart</a>
-                                            <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><FavoriteBorderIcon></FavoriteBorderIcon></a>
-                                            <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Compare"><FavoriteBorderIcon></FavoriteBorderIcon></a>
+                                            <a onClick={() => AddToQuote()} href='/myaccount/Quotes' className="cart bg-primary">Add To Quote</a>
+                                            {/* <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><FavoriteBorderIcon></FavoriteBorderIcon></a>
+                                            <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Compare"><FavoriteBorderIcon></FavoriteBorderIcon></a> */}
                                         </div>
                                     </div>
                                 </div>

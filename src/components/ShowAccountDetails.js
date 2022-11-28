@@ -5,6 +5,7 @@ import ProfileInformation from "./ProfileInformation";
 import Address from "./Adresses";
 import MyPaymentMethods from "./MyPaymentMethods";
 import AboutUs from "./AboutUs";
+import MyQuotes from "./MyQuotes";
 
 const ShowAccountDetails = ()=>{
 
@@ -14,7 +15,7 @@ const ShowAccountDetails = ()=>{
      return (
         <div className="accountDetails"> 
             {id==='ProfileInformation' && <ProfileInformation/>}
-            {id==='Quotes' && <AboutUs/>}
+            {id==='Quotes' && <MyQuotes/>}
             {id==='Orders' && <MyOrders/>}
             {id==='Downloads' && <AboutUs/>}
             {id==='Adresses' && <Address/>}

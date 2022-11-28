@@ -1,10 +1,9 @@
 import React from "react";
-import { Link, useNavigate , useLocation  ,useHistory  } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export default function AboutProduct( {product} ) {
    
   const navigate = useNavigate();
   const handleClick = async () =>{
-    console.log(product)
     navigate(`/product/${product.product_id}`);
   }
   return (

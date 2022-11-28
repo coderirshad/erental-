@@ -40,6 +40,7 @@ import DescriptionProductEnquiry from "./components/DescriptionProductEnquiry";
 import DescriptionQuestionAns from "./components/DescriptionQuestionAns";
 import DescriptionTermCon from "./components/DescriptionTermCon";
 import DownloadInvoice from "./components/DownloadInvoice";
+import Invoice from "./components/Invoice";
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
     const [loginrole,setloginrole]= React.useState("customer");
@@ -84,7 +85,8 @@ const App = () =>{
           <Route exact path = "/returnPolicy" element = {<ReturnPolicy/>}></Route>
           <Route exact path = "/paymentPolicy" element = {<PaymentPolicy/>}></Route>
           <Route exact path = "/privacyPolicy" element = {<PrivacyPolicy/>}></Route>
-          <Route exact path = "/DownloadInvoice" element = {<DownloadInvoice/>}></Route>
+          <Route exact path = "/Quotation" element = {<DownloadInvoice/>}></Route>
+          <Route exact path = "/Invoice" element = {<Invoice/>}></Route>
         </Routes>
         <FooterArea></FooterArea>
       </div>

@@ -1,4 +1,4 @@
-import React , {useState , useEffect } from 'react';
+import React , {useState } from 'react';
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -10,12 +10,11 @@ export default function MyOrderDetails () {
   const [cart_items, setCart_items] = useState( product.Cart_item );
   const navigate = useNavigate();
   const downloadInvoice = () => {
-    navigate("/DownloadInvoice",{state:{product : product }});
+    navigate("/Invoice",{state:{product : product }});
   };
 
   return (
     <div>
-        
         <div className="container text-center my-4 shadow">
           <div className="row border border-primary p-3 shadow">
             <div className="col">

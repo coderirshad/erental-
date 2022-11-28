@@ -8,7 +8,7 @@ export default function AboutOrder( {product} ) {
     navigate('/myOrderDetails',{state:{product : product }});
   }
   return (
-  <div className = "card p-3" style={{width: "18rem"}}>
+  <div className = "card p-3 col-3 row" style={{width: "18rem"}}>
               <img class = "card-img-top"src= {product.Cart_item[0].image} alt="Italian Trulli"></img>
             <div className="card-body">
               <h5 className="card-title">{product.name}</h5>
@@ -18,5 +18,15 @@ export default function AboutOrder( {product} ) {
             </div>
             <a class="btn btn-primary" onClick= {() => handleClick( product ) }>View Order Details</a>                                               
     </div> 
+  // <div className = "card p-3" style={{width: "18rem"}}>
+  //             <img class = "card-img-top"src= {product.Cart_item[0].image} alt="Italian Trulli"></img>
+  //           <div className="card-body">
+  //             <h5 className="card-title">{product.name}</h5>
+  //             <p className="card-text">Quantity : {product.Cart_item[0].quantity}</p>
+  //             <p className="card-text">Price : ₹{product.grandtotal} </p>
+  //             <p1><CheckCircleOutlineIcon style={{ color : "green" , marginRight:"5px"}}></CheckCircleOutlineIcon>Delivered On July 16 , 2022</p1>
+  //           </div>
+  //           <a class="btn btn-primary" onClick= {() => handleClick( product ) }>View Order Details</a>                                               
+  //   </div> 
   );
 }

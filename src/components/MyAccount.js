@@ -4,7 +4,7 @@ import ShowAccountDetails from './ShowAccountDetails';
 export default function MyAccount() {
 
     return (
-      <div className='container d-flex min-vh-40 my-5' id='myaccount'>
+      <div className='container d-flex min-vh-40 mb-5 mt-3' id='myaccount'>
     <MyAccountDashSide/>
     <ShowAccountDetails/>     
     </div>     

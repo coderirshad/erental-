@@ -78,8 +78,8 @@ export default function MyAccountDashSide() {
     </div>
   </div>
 </nav>):
-(<div className='shadow my-2'>
-  <div className='col fs-2 fw-bold my-2 border border-secondary shadow border-2' style={{minWidth:"19.3vw"}}>
+(<div className='shadow my-2' style={{minWidth:"23%"}}>
+  <div className='col fs-2 fw-bold my-2 border border-secondary shadow border-2'>
     Hello {userData.user_name}
   </div>
   <div className='col text-start'>
