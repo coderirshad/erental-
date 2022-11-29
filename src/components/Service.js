@@ -15,12 +15,12 @@ const Service = () =>{
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4">
-                        <div className="service-box d-flex">
+                    <div className="col-md-4 shadow-sm">
+                        <div className="p-4 d-flex">
                             <div className="sr-img">
                                 <img src="images/service-2.png" alt=""/>
                             </div>
-                            <div className="">
+                            <div>
                                 <h6 className="serviceheading">Money Back Guarantee</h6>
                                 <p>Ullam et rem cum totam accusantium quos dolorem.</p>
                             </div>

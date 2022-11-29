@@ -8,7 +8,7 @@ export default function AboutProduct( {product} ) {
   }
   return (
     
-    <div className="child">
+    <div className="child my-2 mx-2">
       
     <button className = "button1" onClick= {() => handleClick()} >
           <a>
@@ -18,7 +18,7 @@ export default function AboutProduct( {product} ) {
             <p>Price : ₹{product.discounted_price}  ₹<del>{product.price}</del></p>
          </div>
          
-         <i className="fa fa-angle-right"></i></a>                                                      
+         </a>                                                      
     </button>
     </div>      
   );

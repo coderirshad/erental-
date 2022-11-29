@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import OwlCarousel from 'react-owl-carousel';
@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom'
 import SimilarProducts from './SimilarProducts';
 import SuggestProduct from './SuggestProduct';
 import Description from './Description ';
-import DescriptionData from './DescriptionData';
 const SingalProduct = ({ login }) => {
     const params = useParams();
     const id = params.id;
@@ -18,6 +17,7 @@ const SingalProduct = ({ login }) => {
     const [quantity, setquantity] = useState(1)
     const [day, setday] = useState(1)
     const [color, setcolor] = useState("")
+    const [loader, setLoader] = useState(false);
     const [size, setsize] = useState("")
     const [categoryList, setCategoryList] = useState([])
     const [imageList, setimageList] = useState([])
@@ -133,6 +133,7 @@ const SingalProduct = ({ login }) => {
         })
         const data = await response.json();
         setDayPrice(data);
+        setLoader('f')
     }
      const handlechnage = (e) =>{
         setServiceid(e.target.value)
@@ -143,10 +144,13 @@ const SingalProduct = ({ login }) => {
         setquantity(1);
      },[id])
     useEffect(() => {
-        fetchData();
         serviceapi();
+    }, [service_id])
+
+    useEffect(() => {
+        setLoader(true)
         dayandprice();
-    }, [id,day, quantity, service_id])
+    }, [day, quantity, service_id])
 
     return (
         <section className="sg-product mb-sm-0">
@@ -244,7 +248,7 @@ const SingalProduct = ({ login }) => {
                 </div>
             </div>
             <Description />
-            <SimilarProducts category={categoryList}></SimilarProducts>
+            {useMemo(() => <SimilarProducts category={categoryList} />, [categoryList])}
         </section>
 
     );

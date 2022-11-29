@@ -32,7 +32,7 @@ export default function HotDeals() {
                           <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
                           <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
                           <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
-                          <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
+                          <li class="list-inline-item m-0"><i class="fa fa-star-o text-warning"></i></li>
                         </ul>
                       </div>
                     </div>

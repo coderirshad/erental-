@@ -54,7 +54,12 @@ const App = () =>{
           <Route exact path="/checkout" element={<Checkout />}></Route>
           <Route exact path="/wishlist" element={<Wishlist />}></Route>
           <Route exact path="/myaccount" element={<MyAccount />}></Route>
-          <Route exact path="/myaccount/:id" element={<MyAccount />}></Route>
+          <Route exact path="/myaccount/:id" element={<MyAccount />}>
+             <Route index element={<StudentProfile />} />
+             <Route exact path="StudentProfile"  element={<StudentProfile />}></Route>
+             <Route exact path="eventmangerprofile"  element={<EventManagerProfile />}></Route>
+             <Route exact path="employeeprofile"  element={<EmployeeProfile />}></Route>
+          </Route>
           <Route exact path="/coupon" element={<Coupon />}></Route>
           <Route exact path="/category" element={<CategoryBox />}></Route>
           <Route exact path="/cart" element={login?<Cartdetail />:<Login/>}></Route>
