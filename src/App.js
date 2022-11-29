@@ -40,6 +40,9 @@ import DescriptionProductEnquiry from "./components/DescriptionProductEnquiry";
 import DescriptionQuestionAns from "./components/DescriptionQuestionAns";
 import DescriptionTermCon from "./components/DescriptionTermCon";
 import DownloadInvoice from "./components/DownloadInvoice";
+import StudentProfile from "./components/StudentProfile";
+import EventManagerProfile from "./components/EventMangerProfile";
+import EmployeeProfile from "./components/EmployeeProfile";
 import Invoice from "./components/Invoice";
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
