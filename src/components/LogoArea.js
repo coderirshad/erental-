@@ -47,7 +47,7 @@ export default function LogoArea({role,login,setlogin}) {
     <header>
         <nav className='navbar navbar-expand-lg navbar-light bg-light py-2'>
             <div className='container-md' id='flex-nav'>
-                <Link to="/"><img  src="images/logo.png"  alt="" className='img-logo'/></Link>
+                <Link to="/"><img  src="images/logo3.png"  alt="" className='img-logo'/></Link>
                 <form class="d-flex" id='input-width'>
                   <input class="form-control me-2" id='input' type="search" placeholder="Search, event, items..." aria-label="Search" />
                   <button class="btn btn-outline-success" id='inputbtn' type="submit"><SearchIcon style={{fontSize:"30px",color:"green"}}  title="search"></SearchIcon></button>

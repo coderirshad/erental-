@@ -9,37 +9,62 @@ export default function HotDeals() {
         fetch(`http://${process.env.REACT_APP_URL}/hot-deal`).then((response)=>{
             return response.json();
         }).then((data)=>{
-            setproduct(data)
+            setproduct(data);
         })
     }
     useEffect(()=>{
         fetchData();
     },[])
   return (
-    <div className="container-fluid bg-light pt-5 pb-3">
+    <div className="container-fluid bg-light pt-5 pb-1">
         <h1 className='text-center text-decoration-underline mb-5'>Hot Deals</h1>
-         <div class="row mb-4 d-flex justify-content-center">
+         <div class="row mb-2 d-flex justify-content-center">
+         <OwlCarousel key={`carousel_${product.length}`} 
+                             className="tab-slider owl-carousel"  
+                             responsive={{
+                                0: {
+                                    items: 2,
+                                },
+                                400: {
+                                    items: 2,
+                                },
+                                600: {
+                                    items: 3,
+                                },
+                                700: {
+                                    items: 4,
+                                },
+                                1000: {
+                                    items: 5,
+
+                                }}}  nav 
+                                margin={5} 
+                                loop
+                                autoPlay
+                                autoplayTimeout={1000}
+                                 >
             {product.map((data, id) =>{
                 return(
-                    <div class="col-lg-2 col-md-6 mb-4 mb-lg-0" style={{cursor:"pointer"}}>
-                    <div class="card rounded shadow-sm border-0">
-                      <div class="card-body p-4"><Link to={`/product/${data.product_id}`}><img src={data.image} alt="" class="img-fluid d-block mx-auto mb-3" width={200} height={300} /></Link>
-                         <h5> <Link to={`/product/${data.product_id}`} className="text-dark">{data.product_name}</Link></h5>
-                         <p class="item-price"><b>INR {data.price} <strike>INR {data.discounted_price}</strike></b></p>
-                         <p class=" text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <ul class="list-inline small">
-                          <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
-                          <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
-                          <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
-                          <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
-                          <li class="list-inline-item m-0"><i class="fa fa-star-o text-warning"></i></li>
-                        </ul>
-                      </div>
+                  <div class="card">
+                     <Link to={`/product/${data.product_id}`}><img class="card-img-top" src={data.image} alt="Card image cap" /></Link>
+                    <div style={{fontWeight:"700"}} className='text-dark'><Link to={`/product/${data.product_id}`}>{data.product_name}</Link>
+                        <ul className="list-unstyled list-inline fav">
+                            <li className="list-inline-item"><i className="fa fa-star text-warning"></i></li>
+                            <li className="list-inline-item"><i className="fa fa-star text-warning"></i></li>
+                            <li className="list-inline-item"><i className="fa fa-star text-warning"></i></li>
+                            <li className="list-inline-item"><i className="fa fa-star text-warning"></i></li>
+                            <li className="list-inline-item"><i className="fa fa-star-o text-warning"></i></li>
+                        </ul>  
                     </div>
+                    <div className='mt-2 d-flex justify-content-between align-itmes-center px-3 mb-2 text-dark'>
+                      <div ><del>INR {data.price}</del></div>
+                      <div style={{fontWeight:"700"}}> INR{data.discounted_price}</div>
                     </div>
+                </div>
                 )
 
             })}
+            </OwlCarousel>
        </div>
     </div>
   )

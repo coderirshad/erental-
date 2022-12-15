@@ -197,7 +197,7 @@ const SingalProduct = ({ login }) => {
                                             <li className="list-inline-item">INR {dayprice.final_price}</li>
                                             <li className="list-inline-item">INR {dayprice.price}</li>
                                         </ul>
-                                        <p>Availability : {product.is_available && (<><span>In Stock</span> <label>({product.stock} Available)</label></>)}{!product.is_available && <span>OutOff Stock</span>} </p>
+                                        <p>Availability : {product.stock > 1 ? <label>({product.stock}) available</label> : <lable>Out Of Stock</lable> } </p>
                                         
                                     </div>
                                     <div className="colo-siz">
@@ -235,7 +235,7 @@ const SingalProduct = ({ login }) => {
                                         </div>
                                         <div className="pro-btns">
                                             <a onClick={() => AddToCart()} href='/cart' className="cart">Add To Cart</a>
-                                            <a onClick={() => AddToQuote()} href='/myaccount/Quotes' className="cart bg-primary">Add To Quote</a>
+                                            <a onClick={() => AddToQuote()} className="cart bg-primary">Add To Quote</a>
                                             {/* <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><FavoriteBorderIcon></FavoriteBorderIcon></a>
                                             <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Compare"><FavoriteBorderIcon></FavoriteBorderIcon></a> */}
                                         </div>

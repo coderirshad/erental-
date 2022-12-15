@@ -2081,7 +2081,7 @@ h6 {
   color: #103E66;
   padding: 0.7%;
   font-weight: bolder;
-  font-size: large
+  font-size: large;
 }
 .invoice-body{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -2091,12 +2091,11 @@ h6 {
 }
 .invoice-para{
   color: black;
-  font-weight: bold;
 }
 
 .invoice-h2{
   text-align: justify;
-  color: red;
+  color: black;
   font-weight: bold;
 }
 
@@ -2104,7 +2103,7 @@ h6 {
   text-align: left;
   padding-left: 1vw;
   font-size: large;
-  margin: 10px;
+  margin: 5px;
   color: black;
 }
 

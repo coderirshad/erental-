@@ -57,29 +57,28 @@ export default function DownloadInvoice(){
         </thead>
       <main className="invoice-container container">
         <p className="invoice-date">
-          Date: {date.getDate()}-{date.getMonth()}-{date.getFullYear()}{" "}
+          Date: {date.getDate()}-{date.getMonth() + 1}-{date.getFullYear()}{" "}
         </p>
-        <hr></hr>
         <div className="text-start">
           <p className="invoice-content invoice-para text-start">
             To,
             {quotesummary.length === 0? (<></>):(
             <>
             <br></br> {quotesummary.name}, <br></br> {quotesummary.org_name}
-            <br></br> ph-{quotesummary.mobile}
+            <br></br> Ph-{quotesummary.mobile}
             </>)}
           </p>
         </div>
         <div className="">
           <p className="invoice-content invoice-para text-start" style={{color:"900"}}>
-            As discussed with you and Abdul Ali, we are sharing a quotation for
-            your requirement. Please find the quotation of the discussed items.
+          As per your request to eRentals, We have successfully generated the quotation of the required items,  
+          please find the quotation and detail as follows:
           </p>
         </div>
-        <table className="table mt-5 text-start">
+        <table className="table mt-3 text-start">
           <thead className="thead-dark invoice-table text-dark">
             <tr className="align-baseline" style={{backgroundColor:"#002060"}}>
-              <th className="Table-th" scope="col">Code</th>
+              <th className="Table-th" scope="col">CODE</th>
               <th className="Table-th" scope="col">PARTICULARS</th>
               <th className="Table-th" scope="col">UNIT RATE/DAY/PC</th>
               <th className="Table-th" scope="col">QUANTITY</th>
@@ -113,7 +112,7 @@ export default function DownloadInvoice(){
             </tr>
             <tr className="fw-bold">
               <th scope="row"></th>
-              <td>Sub total</td>
+              <td>Sub Total</td>
               <td></td>
               <td></td>
               <td></td>
@@ -129,7 +128,7 @@ export default function DownloadInvoice(){
             </tr>
             <tr className="fw-bold">
               <th scope="row"></th>
-              <td>Total Payable before taxes</td>
+              <td>Total Payable Before Taxes</td>
               <td></td>
               <td></td>
               <td></td>
@@ -145,7 +144,7 @@ export default function DownloadInvoice(){
             </tr>
             <tr className="fw-bold" style={{backgroundColor:"#002060"}}>
               <th scope="row"></th>
-              <td className="Table-th">Total payable with tax</td>
+              <td className="Table-th">Total Payable With Tax</td>
               <td></td>
               <td></td>
               <td></td>
@@ -153,7 +152,7 @@ export default function DownloadInvoice(){
             </tr>
             <tr>
               <th scope="row"></th>
-              <td>Advance payment @25%</td>
+              <td>Advance Payment @25%</td>
               <td></td>
               <td></td>
               <td></td>
@@ -210,7 +209,7 @@ export default function DownloadInvoice(){
             <br></br> Bank Name: Axis Bank
             <br></br> Account Name: ERENTALS HND PVT LTD
             <br></br> Type of Account: CURRENT 
-            <br></br> Branch Name: Hiranandani gardens, Powai, Mumbai, 400076
+            <br></br> Branch Name: Hiranandani Gardens, Powai, Mumbai, 400076
             <br></br> IFSC Code: UTIB0000246
             <br></br> Account No. 922020013377806
           </p>
@@ -219,7 +218,7 @@ export default function DownloadInvoice(){
         </div>
             
         <p className="text-start fw-bold fs-large text-dark">
-          Thanks and regards, <br></br> eRentals
+          Thanks & Regards, <br></br> eRentals
         </p>
       </main>
       <tfoot className="Erental-footer-image mt-5">

@@ -334,7 +334,7 @@ proofs would work.</li>
 
 
 <div className="text-start text-dark" id="page-break-avoid">
-          <h5 className="textColor fw-bold m-2" id="invoice-head">Note:</h5>
+          <h5 className="textColor fw-bold" id="invoice-head">Note:</h5>
           <ul className="list-unstyled">
             <li>Bank Details</li>
             <li>Bank Name: Axis Bank </li>

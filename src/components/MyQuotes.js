@@ -17,7 +17,7 @@ const MyQuotes = () => {
     const [message, setMessage] = useState("");
     
     const toMyQuotation = async ()=>{
-        if(name === "" || org_name === "" || email === "" || mobile === "" || receive_date === "" || return_date === ""){
+        if(name === "" || org_name === "" || email === "" || mobile === "" || receive_date === ""){
             alert("Please fill all fields marked with *");
         }
         else{
@@ -156,15 +156,11 @@ const MyQuotes = () => {
                 </div>
                 <div className="input-group flex-nowrap p-4">
                     <span className="input-group-text p-3" id="addon-wrapping">Phone Number<span className='text-danger fs-4'>*</span></span>
-                    <input type="text" className="form-control p-3" aria-label="phnumber" aria-describedby="addon-wrapping" value={mobile} onChange={(e)=>{setMobile(e.target.value)}}/>
+                    <input type="number" className="form-control p-3" aria-label="phnumber" aria-describedby="addon-wrapping" value={mobile} onChange={(e)=>{setMobile(e.target.value)}}/>
                 </div>
                 <div className="input-group flex-nowrap p-4">
                     <span className="input-group-text p-3" id="addon-wrapping">Received Date<span className='text-danger fs-4'>*</span></span>
-                    <input type="text" className="form-control p-3" aria-label="phnumber" aria-describedby="addon-wrapping" value={receive_date} onChange={(e)=>{setreceive_date(e.target.value)}}/>
-                </div>
-                <div className="input-group flex-nowrap p-4">
-                    <span className="input-group-text p-3" id="addon-wrapping">Return Date<span className='text-danger fs-4'>*</span></span>
-                    <input type="text" className="form-control p-3" aria-label="phnumber" aria-describedby="addon-wrapping" value={return_date} onChange={(e)=>{setreturn_date(e.target.value)}}/>
+                    <input type="date" className="form-control p-3" aria-label="phnumber" aria-describedby="addon-wrapping" value={receive_date} onChange={(e)=>{setreceive_date(e.target.value)}}/>
                 </div>
                 <div className="input-group flex-nowrap p-4">
                     <span className="input-group-text p-3" id="addon-wrapping">Message</span>

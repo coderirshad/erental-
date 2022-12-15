@@ -102,7 +102,7 @@ export default function Registration() {
                                 <div className="col-md-7">
                                     <div>
                                         <input onClick={setValue} type="checkbox" name="is_terms_read" id="t-box" value="true"/>
-                                        <label for="t-box">I have read the terms and condition.<Link to={'/terms&conditions'} style={{color:"blue"}}>Read</Link></label>
+                                        <label for="t-box">I have read the <Link to={'/terms&conditions'} style={{color:"black"}}>Terms and Condition.</Link></label>
                                     </div>
                                     <div>
                                         <input onClick={setValue} type="checkbox" name="subscribe" id="c-box" value="true"/>
