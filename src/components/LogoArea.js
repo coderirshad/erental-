@@ -64,13 +64,13 @@ export default function LogoArea({role,login,setlogin}) {
                         <div className="wsh-box ml-auto modified_wishlist" style={{marginRight:"15px" }}>
                             <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
                                 <FavoriteBorderIcon style={{fontSize:"30px"}}></FavoriteBorderIcon>
-                                <span>{wishlistproduct.length}</span>
+                                {/* <span>{wishlistproduct.length}</span> */}
                             </a>
                         </div>
                         <div className="cart-box ml-4 modified_cart" style={{marginRight:"15px" }}>
                             <a href="/cart" data-toggle="tooltip" data-placement="top" title="Shopping Cart" className="cart-btn ">
                                 <AddShoppingCartIcon style={{fontSize:"30px"}}></AddShoppingCartIcon>
-                                <span>{cartproduct.length}</span>
+                                {/* <span>{cartproduct.length}</span> */}
                             </a>
                         </div>
                         <div style={{marginRight:"10px" , marginLeft : "20px"}} className="wsh-box ml-auto modified_wishlist"> 

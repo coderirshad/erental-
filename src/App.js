@@ -44,12 +44,14 @@ import StudentProfile from "./components/StudentProfile";
 import EventManagerProfile from "./components/EventMangerProfile";
 import EmployeeProfile from "./components/EmployeeProfile";
 import Invoice from "./components/Invoice";
+import ScrollToTop from "./components/ScrollToTop";
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
     const [loginrole,setloginrole]= React.useState("customer");
     return (      
       <div className="App">
         <NavigationBar login={login} setlogin={setlogin} setloginrole={setloginrole}></NavigationBar>
+        <ScrollToTop />
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/login" element={<Login setlogin={setlogin} />}></Route>

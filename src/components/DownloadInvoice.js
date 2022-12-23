@@ -61,7 +61,7 @@ export default function DownloadInvoice(){
         </p>
         <div className="text-start">
           <p className="invoice-content invoice-para text-start">
-            To,
+           <span style={{fontWeight:600}}>To,</span>
             {quotesummary.length === 0? (<></>):(
             <>
             <br></br> {quotesummary.name}, <br></br> {quotesummary.org_name}
@@ -75,6 +75,7 @@ export default function DownloadInvoice(){
           please find the quotation and detail as follows:
           </p>
         </div>
+          <div style={{backgroundColor:"rgb(0, 32, 96)", height:"2px"}} className="mt-3 mb-5"></div>
         <table className="table mt-3 text-start">
           <thead className="thead-dark invoice-table text-dark">
             <tr className="align-baseline" style={{backgroundColor:"#002060"}}>
@@ -83,13 +84,13 @@ export default function DownloadInvoice(){
               <th className="Table-th" scope="col">UNIT RATE/DAY/PC</th>
               <th className="Table-th" scope="col">QUANTITY</th>
               <th className="Table-th" scope="col">DAYS</th>
-              <th className="Table-th" scope="col">TOTAL</th>
+              <th className="Table-th" scope="col">TOTAL(INR)</th>
             </tr>
           </thead>
           <tbody>
             {quoteproduct.length === 0 ? (<></>):( quoteproduct.map((element,key) => {
               return (
-                <tr key={key} >
+                <tr key={key}>
                   <th>{element.item_code}</th>
                   <td>{element.item_name}</td>
                   <td>{element.unit_price}</td>                                     
@@ -204,7 +205,7 @@ export default function DownloadInvoice(){
 
         <div className="text-start">
         <h4 className="invoice-h2">Note:</h4>
-          <p className="text-dark fs-5">
+          <p className="text-dark" style={{fontsize:"14px"}}>
             Bank Details:
             <br></br> Bank Name: Axis Bank
             <br></br> Account Name: ERENTALS HND PVT LTD
@@ -217,7 +218,7 @@ export default function DownloadInvoice(){
           <br></br>
         </div>
             
-        <p className="text-start fw-bold fs-large text-dark">
+        <p className="text-start fw-bold fs-large text-dark" style={{fontsize:"14px"}}>
           Thanks & Regards, <br></br> eRentals
         </p>
       </main>

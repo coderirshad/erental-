@@ -109,7 +109,7 @@ export default function Invoice() {
 
                     <div className="b-phn d-flex flex-column m-0">
                         <div className='text-dark fs-6'>GSTN - {data.billing_address.gstn}</div>
-                        <div className='text-dark fs-6'>Date- {data.billing_address.date}</div>
+                        <div className='text-dark fs-6'>Billing Date- {data.billing_address.date}</div>
                     </div>
                 </div>
             </div>
@@ -132,27 +132,27 @@ export default function Invoice() {
                               <i className="textColor fa fa-phone pe-3 pt-1"></i>
                             <div className="s-phn d-flex flex-column">
                               <div className='text-dark fs-6'>{data.shipping_address.mobile}</div>
-                              <div className='text-dark fs-6'>Date- {data.shipping_address.date}</div>
+                              <div className='text-dark fs-6'>Shipping Date- {data.shipping_address.date}</div>
                             </div>
                             </div>
                         
                         </div>
   </div>     
         </div>
-        <div className='bg-danger w-100' style={{height:"0.2rem"}}/>
+        <div className='w-100' style={{height:"0.2rem",backgroundColor:"rgb(0, 32, 96)"}}/>
 
   <table className="table mt-5 invoice-main-table fs-5 text-start border-top border-bottom border-dark" >
-            <thead className="textColor">
-              <tr className="invoice-main-table-head align-baseline">
-                <th scope="col">Sr. No</th>
-                <th scope="col">Particulars</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Days</th>
-                <th scope="col">{"Unit rate(INR)"}</th>
-                <th scope="col">{"Amount(INR)"}</th>
+            <thead className="text-light">
+              <tr className="invoice-main-table-head align-baseline" style={{fontSize:"14px",backgroundColor:"rgb(0, 32, 96)"}}>
+                <th scope="col">CODE</th>
+                <th scope="col">PARTICULARS</th>
+                <th scope="col">UNIT RATE/DAY/PC</th>
+                <th scope="col">QUANTITY</th>
+                <th scope="col">DAYS</th>
+                <th scope="col">TOTAL (INR)</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style={{fontSize:"14px"}}>
               {data.length === 0 ? (<></>):(
                 data.items.map((element,key) => {
                   counter_product++;
@@ -160,9 +160,9 @@ export default function Invoice() {
                   <tr key={key} >
                     <th>{counter_product}</th>
                     <td>{element.item_name}</td>
+                    <td>{element.unit_price}</td>
                     <td>{element.quantity}</td>
                     <td>{element.days}</td>
-                    <td>{element.unit_price}</td>
                     <td>{element.total}</td>
                   </tr>
                 );
@@ -172,7 +172,7 @@ export default function Invoice() {
             
             <tr>
               <th scope="row"></th>
-              <td>Sub total</td>
+              <td style={{fontWeight:"bold"}}>Sub Total</td>
               <td></td>
               <td></td>
               <td></td>
@@ -196,7 +196,7 @@ export default function Invoice() {
             </tr>
             <tr>
               <th scope="row"></th>
-              <td>Total Payable before taxes</td>
+              <td style={{fontWeight:"bold"}}>Total Payable Before Taxes</td>
               <td></td>
               <td></td>
               <td></td>
@@ -218,9 +218,9 @@ export default function Invoice() {
               <td></td>
               <td>{data.sgst}</td>
             </tr>
-            <tr>
+            <tr style={{backgroundColor:"rgb(0, 32, 96)"}} className="text-light">
               <th scope="row"></th>
-              <td>Total payable with taxes</td>
+              <td style={{fontWeight:"bold"}}>Total Payable With Taxes</td>
               <td></td>
               <td></td>
               <td></td>
@@ -228,7 +228,7 @@ export default function Invoice() {
             </tr>
             <tr>
               <th scope="row"></th>
-              <td>Advance paid</td>
+              <td>Advance Paid</td>
               <td></td>
               <td></td>
               <td></td>
@@ -236,7 +236,7 @@ export default function Invoice() {
             </tr>
             <tr>
               <th scope="row"></th>
-              <td>Total payable amount at the time of delivery</td>
+              <td>Total Payable Amount at the Time of Delivery</td>
               <td></td>
               <td></td>
               <td></td>
@@ -262,19 +262,19 @@ proofs would work.</li>
         </div>
 <br></br>
 <div className="text-start text-dark">
-    <h4 className="textColor fw-bold mb-3" id="invoice-head">Check List of Items</h4>
+    <h4 className="textColor fw-bold mb-3" id="invoice-head" style={{fontsize:"24px"}}>Check List of Items</h4>
     <table className="table fs-5 text-start border-top border-bottom border-dark">
-            <thead className="textColor">
-              <tr className="align-baseline">
-                <th scope="col">Serial No</th>
-                <th scope="col">Particulars</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Person at warehouse</th>
-                <th scope="col">Customer at delivery</th>
-                <th scope="col">Customer at return</th>
+            <thead className="text-light">
+              <tr className="align-baseline" style={{backgroundColor:"rgb(0, 32, 96)", fontSize:"14px"}}>
+                <th scope="col">CODE</th>
+                <th scope="col">PARTICULARS</th>
+                <th scope="col">QUANTITY</th>
+                <th scope="col">PERSON AT WAREHOUSE</th>
+                <th scope="col">CUSTOMER AT DELIVERY</th>
+                <th scope="col">CUSTOMER AT RETURN</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style={{fontSize:"14px"}}>
               {data.length === 0 ? (<></>):(
                 data.items.map((element,key) => {
                   counter_other++;
@@ -294,35 +294,40 @@ proofs would work.</li>
 </div>
 <br></br>
 
-<div className='text-start text-dark'>
-    <h4 className="textColor fw-bold mb-3" id="invoice-head">Persons involved in the deal</h4>
-    <table className="table fs-5 text-start border-top border-bottom border-dark">
-            <thead className="textColor">
+<div className='text-start text-dark' style={{fontsize:"14px"}}>
+    <h4 className="textColor fw-bold mb-3" id="invoice-head" style={{fontsize:"24px"}}>Persons involved in the deal</h4>
+    <table className="table text-start border-top border-bottom border-dark" style={{fontsize:"14px"}}>
+            <thead className="textColor" >
               <tr>
-                <th scope="col">Person</th>
+                <th scope="col">Designation</th>
                 <th scope="col">Name</th>
+                <th scope="col">Mobile Number</th>
                 <th scope="col">Signature</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style={{fontsize:"14px"}}>
                   <tr>
                     <td>Manager</td>
                     <td>Fatima Khatoon</td>
                     <td></td>
-                  </tr>
-                  <tr>
-                    <td>Delivery person</td>
-                    <td>Sushil (1044)</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Person at warehouse</td>
+                    <td>Delivery Person</td>
+                    <td>Sushil (1044)</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Person at Warehouse</td>
                     <td>Ramakant (1044)</td>
+                    <td></td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>Customer</td>
                     <td>{data.shipping_address.name}</td>
+                    <td></td>
                     <td></td>
                   </tr>
           </tbody>
@@ -339,12 +344,15 @@ proofs would work.</li>
             <li>Bank Details</li>
             <li>Bank Name: Axis Bank </li>
             <li>Company Name: ERENTALS HND PVT LTD</li>
-            <li>Branch Name: Hiranandani gardens, Powai, Mumbai 400076</li>
+            <li>Branch Name: Hiranandani Gardens, Powai, Mumbai 400076</li>
             <li>IFSC Code: UTIB0000246</li>
             <li>Account No. 922020013377806</li>
             <li>Gpay Number: 8652348165</li>
           </ul>
-        </div>                                                    
+        </div> 
+        <p className="text-start fw-bold fs-large text-dark mt-3 mb-2">
+          Thanks & Regards, <br></br> eRentals
+        </p>                                                   
         </div>
         <tfoot className="Erental-footer-image mt-5">
         <ErentalHeaderAndFooter image={"Erental Footer"}/>

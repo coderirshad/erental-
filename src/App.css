@@ -2097,6 +2097,7 @@ h6 {
   text-align: justify;
   color: black;
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .invoice-li{
@@ -2105,6 +2106,7 @@ h6 {
   font-size: large;
   margin: 5px;
   color: black;
+  font-size: 14px;
 }
 
 .invoice-last{
@@ -2244,7 +2246,8 @@ h6 {
   }
 
   .textColor{
-    color: #c00003;
+    /* color: #c00003; */
+    color:black;
   }
 
   @media (max-width: 769px) {
@@ -2369,3 +2372,10 @@ h6 {
     print-color-adjust: exact !important;
     
   }
+
+  /* My quote */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

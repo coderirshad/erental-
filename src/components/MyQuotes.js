@@ -51,7 +51,8 @@ const MyQuotes = () => {
                     quantity:finalquantity,
                     color:'',
                     size:'',
-                    day:Day
+                    day:Day,
+                    type:"quote"
                 }
             )
         });
@@ -159,7 +160,7 @@ const MyQuotes = () => {
                     <input type="number" className="form-control p-3" aria-label="phnumber" aria-describedby="addon-wrapping" value={mobile} onChange={(e)=>{setMobile(e.target.value)}}/>
                 </div>
                 <div className="input-group flex-nowrap p-4">
-                    <span className="input-group-text p-3" id="addon-wrapping">Received Date<span className='text-danger fs-4'>*</span></span>
+                    <span className="input-group-text p-3" id="addon-wrapping">Delivery Date<span className='text-danger fs-4'>*</span></span>
                     <input type="date" className="form-control p-3" aria-label="phnumber" aria-describedby="addon-wrapping" value={receive_date} onChange={(e)=>{setreceive_date(e.target.value)}}/>
                 </div>
                 <div className="input-group flex-nowrap p-4">

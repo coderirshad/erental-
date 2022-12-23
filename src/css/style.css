@@ -6314,6 +6314,7 @@ border: 10px solid red;
   border-radius: 30px;
   font-weight: 600;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .sg-product .sg-content .colo-siz .pro-btns a.cart:hover {
