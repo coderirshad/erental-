@@ -14,8 +14,8 @@ const UserHome = ()=>{
      return (
         <div>  
             <ContousrolledCarel></ContousrolledCarel>
-            <HotDeals></HotDeals>
             <Service></Service>            
+            <HotDeals></HotDeals>
             <FeatureProduct></FeatureProduct> 
             <CategorySlider></CategorySlider>
             <FullBanner></FullBanner>

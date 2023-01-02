@@ -49,33 +49,35 @@ export default function LogoArea({role,login,setlogin}) {
             <div className='container-md' id='flex-nav'>
                 <Link to="/"><img  src="images/logo3.png"  alt="" className='img-logo'/></Link>
                 <form class="d-flex" id='input-width'>
-                  <input class="form-control me-2" id='input' type="search" placeholder="Search, event, items..." aria-label="Search" />
-                  <button class="btn btn-outline-success" id='inputbtn' type="submit"><SearchIcon style={{fontSize:"30px",color:"green"}}  title="search"></SearchIcon></button>
+                  <input class="form-control" id='input' type="search" placeholder="Search, Product, Categories..." aria-label="Search" />
+                  <button class="btn btn-outline-success" id='inputbtn' type="submit"><SearchIcon style={{fontSize:"30px",color:"white"}}  title="search"></SearchIcon></button>
                 </form>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div className="wsh-box ml-auto modified_wishlist" style={{marginRight:"10px" }}>
+                        {/* <div className="wsh-box ml-auto modified_wishlist" style={{marginRight:"10px" }}>
                             <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Voice Search">
                                 <SettingsVoiceIcon style={{fontSize:"30px"}}></SettingsVoiceIcon>
                             </a>
-                        </div>
+                        </div> */}
                         <div className="wsh-box ml-auto modified_wishlist" style={{marginRight:"15px" }}>
-                            <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
-                                <FavoriteBorderIcon style={{fontSize:"30px"}}></FavoriteBorderIcon>
+                            <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Quotelist">
+                                {/* <FavoriteBorderIcon style={{fontSize:"30px"}}></FavoriteBorderIcon> */}
                                 {/* <span>{wishlistproduct.length}</span> */}
+                                <img style={{height:"30px", width:"30px"}} src='images/2.png'/>
                             </a>
                         </div>
                         <div className="cart-box ml-4 modified_cart" style={{marginRight:"15px" }}>
                             <a href="/cart" data-toggle="tooltip" data-placement="top" title="Shopping Cart" className="cart-btn ">
-                                <AddShoppingCartIcon style={{fontSize:"30px"}}></AddShoppingCartIcon>
+                                {/* <AddShoppingCartIcon style={{fontSize:"30px"}}></AddShoppingCartIcon> */}
                                 {/* <span>{cartproduct.length}</span> */}
+                                <img style={{height:"30px", width:"30px"}} src='images/1.png'/>
                             </a>
                         </div>
-                        <div style={{marginRight:"10px" , marginLeft : "20px"}} className="wsh-box ml-auto modified_wishlist"> 
+                        {/* <div style={{marginRight:"10px" , marginLeft : "20px"}} className="wsh-box ml-auto modified_wishlist"> 
                            
-                        </div>
+                        </div> */}
                         <div className="wsh-box ml-auto modified_wishlist">
                             <CustomizedMenus role={role} login={login} setlogin={setlogin}></CustomizedMenus>                            
                         </div>

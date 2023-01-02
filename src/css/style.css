@@ -465,6 +465,9 @@ input:focus, textarea:focus {
 .top-bar .top-right ul li:first-child a {
   border-left: 1px solid #e5e5e5;
 }
+.navbar{
+  padding: 0 !important;
+}
 
 /* =======================================
 03. Top Bar 2
@@ -932,7 +935,7 @@ input:focus, textarea:focus {
    align-items: center;
 }
 #input-width{
-  width: 50%;
+  width: 63%;
   padding: 5px 0;
 }
 .navbar-collapse {
@@ -942,17 +945,22 @@ input:focus, textarea:focus {
 #input{
   background: rgba(212, 200, 200, 0.089);
   font-size: 1.5rem;
+  border: 1px solid #144169;
+  border-right: none;
+  
 }
 #input::placeholder{
   color: silver;
 }
 #inputbtn{
   position: relative;
-  right: 60px;
-  z-index: 2;
+  right: 5px;
+  /* z-index: 2; */
   outline: none;
-  border: 0;
-  border-radius: 0;
+  border-left: none;
+  /* border: #144169; */
+  color:white;
+  background: #144169;
 }
 
 @media only screen and (max-width: 1024px){
@@ -1010,6 +1018,9 @@ input:focus, textarea:focus {
    }
   #inputbtn {
    display: none;
+  }
+  #input{
+    border: 1px solid #144169;
   }
 }
 
@@ -1824,7 +1835,7 @@ input:focus, textarea:focus {
 .menu-area2 .sidemenu p {
   font-size: 16px;
   color: #fff;
-  background: #5677fc;
+  background: #144169;
   font-weight: 700;
   text-transform: uppercase;
   height: 30px;
@@ -2936,24 +2947,27 @@ border: 10px solid red;
 }
 
 .sr-img {
-  background: #4861c7;
-  padding: 18px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
+  background: white;
+  padding: 10px;
   border-radius: 50%;
-  margin-right: 12px;
 }
 
-.serviceheading {
-  color: #444444;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 8px;
+.servicebox {
+  max-width: 300px;
+  max-width: 350px;
 }
 
 .service-box p {
   color: #969696;
+}
+
+@media (min-width: 360px) and (max-width: 776px){
+    .servicebox h5{
+      font-size: 11px;
+    }
+    .servicebox p{
+      font-size: 9px;
+    }
 }
 
 /* =======================================

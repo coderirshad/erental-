@@ -17,7 +17,7 @@ export default function Cluster() {
         navigate('/tagProductList',{state:{id:  tagIid }});
     }
     return (
-        <div className='py-sm-2 py-md-2 overflowHidden'>
+        <div className='py-md-2 overflowHidden'>
             <div>
                 <ul className="list-unstyled list-inline d-flex justify-conter-between align-item-center">
                     {tagList.map(( tag ) => (

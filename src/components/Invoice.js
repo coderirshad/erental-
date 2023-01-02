@@ -24,6 +24,8 @@ export default function Invoice() {
     setInvoiceDetails(await response.json());
 }
     const data = InvoiceDetails;
+    console.clear();
+    console.log(data)
     
     useEffect(() => {
         fetchdata();
