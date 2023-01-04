@@ -1615,16 +1615,16 @@
   width : 400px ;
 }
 .row2{
-  background-color: #144169;
-  width : 295px ;
-  height : 70px ;
-  text-align: center;
-  padding-top: 13px;
-  color: white;
-  font-size:17px;
-  text-transform: uppercase;
-  margin-left: 0px;
-  cursor: pointer;
+    background-color: #144169;
+    width: 295px;
+    height: 67px;
+    text-align: center;
+    padding-top: 18px;
+    color: white;
+    font-size: 25px;
+    text-transform: uppercase;
+    margin-left: 0px;
+    cursor: pointer;
 }
 
 #try{

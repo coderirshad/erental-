@@ -62,7 +62,7 @@ export default function LogoArea({role,login,setlogin}) {
                             </a>
                         </div> */}
                         <div className="wsh-box ml-auto modified_wishlist" style={{marginRight:"15px" }}>
-                            <a href="/wishlist" data-toggle="tooltip" data-placement="top" title="Quotelist">
+                            <a href="/myaccount/Quotes" data-toggle="tooltip" data-placement="top" title="Quotelist">
                                 {/* <FavoriteBorderIcon style={{fontSize:"30px"}}></FavoriteBorderIcon> */}
                                 {/* <span>{wishlistproduct.length}</span> */}
                                 <img style={{height:"30px", width:"30px"}} src='images/2.png'/>

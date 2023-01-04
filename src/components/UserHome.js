@@ -16,8 +16,8 @@ const UserHome = ()=>{
             <ContousrolledCarel></ContousrolledCarel>
             <Service></Service>            
             <HotDeals></HotDeals>
-            <FeatureProduct></FeatureProduct> 
             <CategorySlider></CategorySlider>
+            <FeatureProduct></FeatureProduct> 
             <FullBanner></FullBanner>
             <BestOffer></BestOffer>
             <FrontBlog></FrontBlog>                 

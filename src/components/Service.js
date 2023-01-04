@@ -2,7 +2,7 @@ import React from "react";
 
 const Service = () =>{
     return (
-            <div className="container-xxl bg-light pt-5">
+            <div className="container-fluid bg-light pt-5">
                 <div className="container">
                         <div className="d-flex justify-content-between align-items-center">
                             <div className="d-flex p-3 flex-column mx-2 bg-white shadow-sm mt-lg-0 mb-2 servicebox">

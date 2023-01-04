@@ -26,7 +26,7 @@ const FrontBlog = ( ) => {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="sec-title">
-                            <h5>Latest Service</h5>
+                        <h2 className='py-md-5' style={{color:"#144169", fontWeight:"bold"}}>RECENT SERVICES</h2>
                         </div>
                         {!loader && 
                         <OwlCarousel className="fb-slider owl-carousel"
@@ -63,7 +63,7 @@ const FrontBlog = ( ) => {
                                         <li className="list-inline-item"><i className="fa fa-user-o"></i><a href="">John</a></li>
                                         <li className="list-inline-item"><i className="fa fa-calendar"></i>{data.date}</li>
                                     </ul>
-                                    <p>{data.description}</p>
+                                    {/* <p>{data.description}</p> */}
                                 </div>
                             </div>
                         )})}

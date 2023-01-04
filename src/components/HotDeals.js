@@ -17,7 +17,7 @@ export default function HotDeals() {
     },[])
   return (
     <div className="container-fluid bg-light pt-5 pb-1">
-        <h1 className='text-center text-decoration-underline mb-5'>Hot Deals</h1>
+        <h2 className='text-center mb-5' style={{color:"#144169",fontWeight:"700"}}>HOT DEALS</h2>
          <div class="row mb-2 d-flex justify-content-center">
          <OwlCarousel key={`carousel_${product.length}`} 
                              className="tab-slider owl-carousel"  

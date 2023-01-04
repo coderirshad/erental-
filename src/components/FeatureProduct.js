@@ -32,7 +32,7 @@ import { Link } from 'react-router-dom';
                 <div className="col-md-12 padding-fix-l20" >
                     <div className="ftr-product" >                       
                          <div className="tab-content">
-                              <h2 className='my-5'>FEATURE PRODUCT</h2>
+                              <h2 className='my-5' style={{color:"#144169", fontWeight:"700"}}>FEATURE PRODUCTS</h2>
                             <div className="tab-pane fade show active" id="all" role="tabpanel">
                             <OwlCarousel key={`carousel_${product.length}`}
                                         className="tab-slider owl-carousel" 

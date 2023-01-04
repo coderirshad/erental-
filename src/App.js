@@ -59,7 +59,7 @@ const App = () =>{
           <Route exact path="/checkout" element={<Checkout />}></Route>
           <Route exact path="/wishlist" element={<Wishlist />}></Route>
           <Route exact path="/myaccount" element={<MyAccount />}></Route>
-          <Route exact path="/myaccount/:id" element={<MyAccount />}>
+          <Route exact path="/myaccount/:id" element={login ? <MyAccount /> : <Login />}>
              <Route index element={<StudentProfile />} />
              <Route exact path="StudentProfile"  element={<StudentProfile />}></Route>
              <Route exact path="eventmangerprofile"  element={<EventManagerProfile />}></Route>
