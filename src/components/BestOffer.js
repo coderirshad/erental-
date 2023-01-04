@@ -44,7 +44,7 @@ const BestOffer = ( ) =>{
     }, [])
     return (
         <section className="best-ofr">
-            <div className="container">
+            <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-4">
                         <div className="bst-slider">

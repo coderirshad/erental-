@@ -22,7 +22,7 @@ const FrontBlog = ( ) => {
 
      return(
         <section className="f-blog">
-            <div className="container-xxl">
+            <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="sec-title">

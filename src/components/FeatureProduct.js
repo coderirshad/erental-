@@ -25,7 +25,7 @@ import { Link } from 'react-router-dom';
 
   return (
     <section className="product-area">
-        <div className="container-xxl" >
+        <div className="container-fluid" >
             <div className="ftr-row" style={{width:"100%"}}>
         <div className="col-md-8" style={{width:"100%"}}>
             <div className="ftr-row" >
