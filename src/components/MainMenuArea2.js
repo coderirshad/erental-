@@ -1,14 +1,16 @@
-import React , { useState , useEffect} from 'react'
-import {Link, useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 export default function MainMenuArea2() {
-    const [categoryList, setcategoryList] = useState([]);
-    const fetchdata = async() =>{
-        const response = await fetch(`http://${process.env.REACT_APP_URL}/category`);
-        setcategoryList(await response.json());
-    }
-    useEffect(() => {
-        fetchdata();
-    }, []);
+  const [categoryList, setcategoryList] = useState([]);
+  const fetchdata = async () => {
+    const response = await fetch(
+      `http://${process.env.REACT_APP_URL}/category`
+    );
+    setcategoryList(await response.json());
+  };
+  useEffect(() => {
+    fetchdata();
+  }, []);
 
     const navigate = useNavigate();
     const handleClick = async ( subcategoryId ) =>{

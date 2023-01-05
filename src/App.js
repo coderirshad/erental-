@@ -19,6 +19,7 @@ import Dash_RightContent from "./components/Dash_RightContent";
 import AboutUs from "./components/AboutUs";
 import EachCategory from "./components/EachCategory";
 import ProductList from "./components/ProductList";
+import ProductSearch from "./components/ProductSearch";
 import SingalProduct from "./components/SingalProduct";
 import AboutProduct from "./components/AboutProduct";
 import AddProduct from "./components/AddProduct";
@@ -78,28 +79,57 @@ const App = () =>{
               <Route exact path="termandcondition" element={<DescriptionTermCon />} />
           </Route>
 
-          <Route exact path="/admin/:id" element={loginrole==="admin"?<Dash_RightContent/>:<NotFound/>}></Route>
-          <Route exact path="/addproduct" element={loginrole==="admin"?<AddProduct />:<NotFound/>}></Route>
-          <Route exact path="/addproduct/:id" element={loginrole==="admin"?<AddProduct />:<NotFound/>}></Route>
-          <Route exact path="/admin/report" element={loginrole==="admin"?<Report />:<NotFound/>}></Route>
-          <Route exact path="/admin/withdraw" element={loginrole==="admin"?<Withdraw />:<NotFound/>}></Route>
-          <Route exact path="/aboutProduct" element={<AboutProduct />} />
-          <Route exact path="/aboutUs" element={<AboutUs />} />
-          <Route exact path="/eachCategory" element={<EachCategory />} />
-          <Route exact path="/productList" element={<ProductList />} />
-          <Route exact path='/tagProductList' element={<TagProductList/>} />
-          <Route exact path='/allProductList' element={<AllProductList/>} />
-          <Route exact path = "/myOrderDetails" element = {<MyOrderDetails/>}></Route>
-          <Route exact path = "/contact" element = {<Contact/>}></Route>
-          <Route exact path = "/termsAndConditions" element = {<TermsAndConditions/>}></Route>
-          <Route exact path = "/returnPolicy" element = {<ReturnPolicy/>}></Route>
-          <Route exact path = "/paymentPolicy" element = {<PaymentPolicy/>}></Route>
-          <Route exact path = "/privacyPolicy" element = {<PrivacyPolicy/>}></Route>
-          <Route exact path = "/Quotation" element = {<DownloadInvoice/>}></Route>
-          <Route exact path = "/Invoice" element = {<Invoice/>}></Route>
-        </Routes>
-        <FooterArea></FooterArea>
-      </div>
-    );
-}
+        <Route
+          exact
+          path="/admin/:id"
+          element={loginrole === "admin" ? <Dash_RightContent /> : <NotFound />}
+        ></Route>
+        <Route
+          exact
+          path="/addproduct"
+          element={loginrole === "admin" ? <AddProduct /> : <NotFound />}
+        ></Route>
+        <Route
+          exact
+          path="/addproduct/:id"
+          element={loginrole === "admin" ? <AddProduct /> : <NotFound />}
+        ></Route>
+        <Route
+          exact
+          path="/admin/report"
+          element={loginrole === "admin" ? <Report /> : <NotFound />}
+        ></Route>
+        <Route
+          exact
+          path="/admin/withdraw"
+          element={loginrole === "admin" ? <Withdraw /> : <NotFound />}
+        ></Route>
+        <Route exact path="/aboutProduct" element={<AboutProduct />} />
+        <Route exact path="/aboutUs" element={<AboutUs />} />
+        <Route exact path="/eachCategory" element={<EachCategory />} />
+        <Route exact path="/productList" element={<ProductList />} />
+        <Route exact path="/productSearch" element={<ProductSearch />} />
+        <Route exact path="/tagProductList" element={<TagProductList />} />
+        <Route exact path="/allProductList" element={<AllProductList />} />
+        <Route
+          exact
+          path="/myOrderDetails"
+          element={<MyOrderDetails />}
+        ></Route>
+        <Route exact path="/contact" element={<Contact />}></Route>
+        <Route
+          exact
+          path="/termsAndConditions"
+          element={<TermsAndConditions />}
+        ></Route>
+        <Route exact path="/returnPolicy" element={<ReturnPolicy />}></Route>
+        <Route exact path="/paymentPolicy" element={<PaymentPolicy />}></Route>
+        <Route exact path="/privacyPolicy" element={<PrivacyPolicy />}></Route>
+        <Route exact path="/Quotation" element={<DownloadInvoice />}></Route>
+        <Route exact path="/Invoice" element={<Invoice />}></Route>
+      </Routes>
+      <FooterArea></FooterArea>
+    </div>
+  );
+};
 export default App;
