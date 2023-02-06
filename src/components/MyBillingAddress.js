@@ -3,7 +3,7 @@ import GetAuthorization from './GetAuthorization';
 
 export default function MyBillingAddress() {
   const [addresses, setAddresses] = useState( [] );
-  const [address , setAddress] = useState( { name : '', phone_number : '', locality : '', city : '' , pincode : '' } );
+  const [address , setAddress] = useState( { name : '', phone_number : '', locality : '', city : '' , pincode : '', gstn: '', ship_date:'', street_add:'' } );
 
   const ref = useRef(null);
   const refClose = useRef(null);
@@ -41,7 +41,7 @@ export default function MyBillingAddress() {
     const handleClick = (e)=>{
       e.preventDefault();
       setData(address);
-      setAddress ( { name : '', phone_number : '', locality : '', city : '' , pincode : '' } );
+      setAddress ( { name : '', phone_number : '', locality : '', city : '' , pincode : '', gstn:'', ship_date:'', street_add:'' } );
     }
 
     const onChange = (e) => {
@@ -82,7 +82,21 @@ export default function MyBillingAddress() {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">
-                    Locality
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="street_add"
+                    name="street_add"
+                    aria-describedby="emailHelp"
+                    onChange={onChange}
+                    value={address.street_add}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="title" className="form-label">
+                    Landmark
                   </label>
                   <input
                     type="text"
@@ -135,6 +149,34 @@ export default function MyBillingAddress() {
                     onChange={onChange}
                     value={address.phone_number}
                   />
+                  </div>
+                  <div className="mb-3">
+                  <label htmlFor="title" className="form-label">
+                    GST Number
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="gstn"
+                    name="gstn"
+                    aria-describedby="emailHelp"
+                    onChange={onChange}
+                    value={address.gstn}
+                  />
+                  <div className="mb-3">
+                  <label htmlFor="title" className="form-label">
+                    Date
+                  </label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="ship_date"
+                    name="ship_date"
+                    aria-describedby="emailHelp"
+                    onChange={onChange}
+                    value={address.ship_date}
+                  />
+                  </div>
                 </div>
                 </form>
               </div>
@@ -152,10 +194,13 @@ export default function MyBillingAddress() {
                 <div className="card p-2" style={{width: "18rem"}}>
                 <div className="card-body">
                   <h5 className="card-title">Name : {address.name}</h5>
-                  <p className="card-text">Locality : {address.locality}</p>
+                  <p className="card-text">Address : {address.street_add}</p>
+                  <p className="card-text">Landmark : {address.locality}</p>
                   <p className="card-text">City : {address.city}</p>
                   <p className="card-text">Pincode : {address.pincode}</p>
                   <p className="card-text">Phone Number : {address.phone_number}</p>
+                  <p className="card-text">GST Number : {address.gstn}</p>
+                  <p className="card-text">Shipping Date : {address.ship_date}</p>
                 </div>
               </div>
             )

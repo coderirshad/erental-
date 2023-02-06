@@ -118,10 +118,13 @@ export default function Checkout() {
                             { ( address.address_id === Billingaddress ) ? <CheckBoxIcon/> : <CheckBoxOutlineBlankIcon/> }
                             </Button>
                             <h5 className='spaceBetweenAddressDetails'><strong>Name : {address.name}</strong></h5>
-                            <p>Locality : {address.locality}</p>
+                            <p>Address : {address.street_add}</p>
+                            <p>Landmark : {address.locality}</p>
                             <p>City : {address.city}</p>
                             <p>Pincode : {address.pincode}</p>
                             <p>Phone Number : {address.phone_number}</p>
+                            <p>GST Number : {address.gstn}</p>
+                            <p>Billing Date : {address.ship_date}</p>
                         </div>
                         )
                         )
@@ -139,10 +142,13 @@ export default function Checkout() {
                                 { ( address.address_id === Shippinggaddress ) ? <CheckBoxIcon/> : <CheckBoxOutlineBlankIcon/> }
                             </Button>
                             <h5 className='spaceBetweenAddressDetails'><strong>Name : {address.name}</strong></h5>
-                            <p>Locality : {address.locality}</p>
+                            <p>Address : {address.street_add}</p>
+                            <p>Landmark : {address.locality}</p>
                             <p>City : {address.city}</p>
                             <p>Pincode : {address.pincode}</p>
                             <p>Phone Number : {address.phone_number}</p>
+                            <p>GST Number : {address.gstn}</p>
+                            <p>Shipping Date : {address.ship_date}</p>
                         </div>
                         )
                         )

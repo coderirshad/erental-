@@ -33,6 +33,9 @@ export default function AddProduct() {
   const [is_best_deal, setIsBestDeal] = useState(false);
   const [is_featured, setIsFeatured] = useState(false);
   const [service, setService] = useState('');
+  const [price_variation, setPriceVariation] = useState('');
+  const [lng, setLng] = useState(0.00);
+  const [lat, setLat] = useState(0.00);
   const fetchdata = async () => {
     const response = await fetch(`http://${process.env.REACT_APP_URL}/category`,{
       method:"GET",
@@ -67,6 +70,7 @@ export default function AddProduct() {
         setIsBestDeal(data.ise_best_deal);
         setIsEnable(data.is_enable);
         setService(data.service);
+        setPriceVariation(data.price_variation);
         // data upadate
         setDiscription(data.description);
         setTermscontion(data.termscondition);
@@ -119,7 +123,7 @@ export default function AddProduct() {
     var images = [];
     images.push(image);
     var id = params.id;
-    let data = { id, name,event_manager_price,sku, price,termscondition,description,discounted_price,service, stock, view, tag, suggestion,images, subcategory, is_hot_deal, is_new, is_enable, is_best_deal, is_featured, is_top_sold }
+    let data = { id, name,event_manager_price,sku, price,termscondition,description,discounted_price,service, stock, view, tag, suggestion,images, subcategory, is_hot_deal, is_new, is_enable, is_best_deal, is_featured, is_top_sold, price_variation, lng, lat}
     await fetch(`http://${process.env.REACT_APP_URL}/admin/product`, {
       method: 'PUT',
       headers: {
@@ -221,6 +225,15 @@ export default function AddProduct() {
                 value={service}
                 onChange={(e) => { setService(e.target.value) }}
                 defaultValue="Service"
+              />
+
+              <TextField
+                required
+                id="price_variation"
+                label="Price Variation"
+                value={price_variation}
+                onChange={(e) => { setPriceVariation(e.target.value) }}
+                defaultValue="0.00"
               />
             </div>
 

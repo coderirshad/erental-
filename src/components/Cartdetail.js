@@ -4,9 +4,11 @@ import CurrencyRupeeTwoToneIcon from '@mui/icons-material/CurrencyRupeeTwoTone';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import GetAuthorization from './GetAuthorization';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import TextField from '@mui/material/TextField';
 export default function Cartdetail() {
     const [cartproduct, setcartproduct] = useState([])
     const [cartsummary, setcartsummary] = useState({})
+    const [trans_charge, setTransportationCharge] = useState(0.00);
     const navigate = useNavigate();
     const UpdateQuantity = async (cart_item_id1,finalquantity,Day)=>{
         const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
@@ -65,6 +67,22 @@ export default function Cartdetail() {
             navigate('/checkout')
         }
     }
+
+const addTransportationCharge = async () => {
+    let data = {trans_charge}
+    await fetch(`http://${process.env.REACT_APP_URL}/cart/transportation`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': GetAuthorization()
+      },
+      body: JSON.stringify(data)
+    }).then((result) => {
+        fetchData();
+    })
+  }
+
     useEffect(() => {
         fetchData()            
      }, [])
@@ -166,11 +184,16 @@ export default function Cartdetail() {
             </div>
             <div className="col-md-4">
                 <div className="coupon mt-lg-0 my-3">
-                    <h6>Discount Coupon</h6>
-                    <p>Enter your coupon code if you have one</p>
                     <form action="#">
-                        <input type="text" name="zip" value="" placeholder="Your Coupon"/>
-                        <button type="button">Apply Code</button>
+                     <TextField
+                required
+                id="trans_charge"
+                label="Enter Transportation Charge"
+                value={trans_charge}
+                onChange={(e) => { setTransportationCharge(e.target.value) }}
+                defaultValue="Enter Transportation Charge"
+              />
+              <button type="button" onClick={() => addTransportationCharge()} >Add</button>
                     </form>
                 </div>
             </div>

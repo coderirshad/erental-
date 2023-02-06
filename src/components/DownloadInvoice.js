@@ -65,17 +65,18 @@ export default function DownloadInvoice(){
             {quotesummary.length === 0? (<></>):(
             <>
             <br></br> {quotesummary.name}, <br></br> {quotesummary.org_name}
-            <br></br> Ph-{quotesummary.mobile}
+            <br></br> GSTN-{quotesummary.gst}
+            <br></br> Mobile-{quotesummary.mobile}
+            <br></br> Email-{quotesummary.email}
             </>)}
           </p>
         </div>
         <div className="">
           <p className="invoice-content invoice-para text-start" style={{color:"900"}}>
           As per your request to eRentals, We have successfully generated the quotation of the required items,  
-          please find the quotation and detail as follows:
+          please find the quotation and detail below.The delivery date is on {quotesummary.date} and delivery location is {quotesummary.delivery_location}.
           </p>
         </div>
-          <div style={{backgroundColor:"rgb(0, 32, 96)", height:"2px"}} className="mt-3 mb-5"></div>
         <table className="table mt-3 text-start">
           <thead className="thead-dark invoice-table text-dark">
             <tr className="align-baseline" style={{backgroundColor:"#002060"}}>
@@ -92,8 +93,8 @@ export default function DownloadInvoice(){
               return (
                 <tr key={key}>
                   <th>{element.item_code}</th>
-                  <td>{element.item_name}</td>
-                  <td>{element.unit_price}</td>                                     
+                  <td>{element.item_name}{element.is_service?<span> (s)</span>:<span> (ws)</span>}</td>
+                  <td>{element.unit_price+0}</td>                                     
                   <td>{element.quantity}</td>
                   <td>{element.days}</td>
                   <td>{element.total}</td>
@@ -102,6 +103,15 @@ export default function DownloadInvoice(){
             }))}
 
             {/* uncomment after the resolving the api issue */}
+
+            <tr className="fw-bold">
+              <th scope="row"></th>
+              <td>Sub Total</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{data.sub_total}</td>
+            </tr>
             
             <tr>
               <th scope="row"></th>
@@ -111,29 +121,21 @@ export default function DownloadInvoice(){
               <td></td>
               <td>{data.transportation_charge}</td>
             </tr>
-            <tr className="fw-bold">
-              <th scope="row"></th>
-              <td>Sub Total</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>{data.sub_total}</td>
-            </tr>
-            <tr>
+            {/*<tr>
               <th scope="row"></th>
               <td>Discount</td>
               <td></td>
               <td></td>
               <td></td>
               <td>0</td>
-            </tr>
+            </tr>*/}
             <tr className="fw-bold">
               <th scope="row"></th>
               <td>Total Payable Before Taxes</td>
               <td></td>
               <td></td>
               <td></td>
-              <td className="fw-bold">{data.sub_total + 0}</td>
+              <td className="fw-bold">{data.sub_total + data.transportation_charge}</td>
             </tr>
             <tr>
               <th scope="row"></th>
@@ -157,14 +159,15 @@ export default function DownloadInvoice(){
               <td></td>
               <td></td>
               <td></td>
-              <td>{(25*data.total)/100}</td>
+              <td>{0.25*data.total}</td>
             </tr>
           </tbody>
         </table>
+        <div><p align="left">{quotesummary.message}</p></div>
         <h4 className="invoice-h2">Terms & Conditions:</h4>
         <ol className="invoice-ul">
           <li className="invoice-li">
-          50% of the bill amount needs to be paid for order confirmation. 50% payment to be made at the time 
+          25% of the bill amount needs to be paid for order confirmation. 75% payment to be made at the time 
           of delivery of the items at your place.
           </li>
           <li className="invoice-li">
@@ -207,12 +210,12 @@ export default function DownloadInvoice(){
         <h4 className="invoice-h2">Note:</h4>
           <p className="text-dark" style={{fontsize:"14px"}}>
             Bank Details:
-            <br></br> Bank Name: Axis Bank
+            <br></br> Bank Name: IndusInd Bank
             <br></br> Account Name: ERENTALS HND PVT LTD
             <br></br> Type of Account: CURRENT 
-            <br></br> Branch Name: Hiranandani Gardens, Powai, Mumbai, 400076
-            <br></br> IFSC Code: UTIB0000246
-            <br></br> Account No. 922020013377806
+            <br></br> Branch Name: Saki Naka
+            <br></br> IFSC Code: INDB0001075
+            <br></br> Account No. 259867348165
           </p>
           <br></br>
           <br></br>

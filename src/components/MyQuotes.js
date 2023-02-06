@@ -15,13 +15,16 @@ const MyQuotes = () => {
     const [receive_date, setreceive_date] = useState("");
     const [return_date, setreturn_date] = useState("");
     const [message, setMessage] = useState("");
+    const [delivery_location, setDeliveryLocation] = useState("");
+    const [gst, setgst] = useState("");
+    const [trans_charge, setTransCharge] = useState("");
     
     const toMyQuotation = async ()=>{
         if(name === "" || org_name === "" || email === "" || mobile === "" || receive_date === ""){
             alert("Please fill all fields marked with *");
         }
         else{
-        let data = {name,org_name,email,mobile,receive_date,return_date,message}
+        let data = {name,org_name,email,mobile,receive_date,return_date,message,trans_charge, delivery_location, gst}
         await fetch(`http://${process.env.REACT_APP_URL}/quote/metadata`, {
         method: 'PUT',
         headers: {
@@ -166,6 +169,18 @@ const MyQuotes = () => {
                 <div className="input-group flex-nowrap p-4">
                     <span className="input-group-text p-3" id="addon-wrapping">Message</span>
                     <textarea type="text" className="form-control p-3" aria-label="phnumber" rows="4" cols="5" aria-describedby="addon-wrapping" value={message} onChange={(e)=>{setMessage(e.target.value)}}/>
+                </div>
+                <div className="input-group flex-nowrap p-4">
+                    <span className="input-group-text p-3" id="addon-wrapping">Delivery location</span>
+                    <textarea type="text" className="form-control p-3" aria-label="phnumber" rows="4" cols="5" aria-describedby="addon-wrapping" value={delivery_location} onChange={(e)=>{setDeliveryLocation(e.target.value)}}/>
+                </div>
+                <div className="input-group flex-nowrap p-4">
+                    <span className="input-group-text p-3" id="addon-wrapping">GST number</span>
+                    <textarea type="text" className="form-control p-3" aria-label="phnumber" rows="4" cols="5" aria-describedby="addon-wrapping" value={gst} onChange={(e)=>{setgst(e.target.value)}}/>
+                </div>
+                <div className="input-group flex-nowrap p-4">
+                    <span className="input-group-text p-3" id="addon-wrapping">Transportation Charge<span className='text-danger fs-4'>*</span></span>
+                    <input type="number" className="form-control p-3" aria-label="trans_charge" aria-describedby="addon-wrapping" value={trans_charge} onChange={(e)=>{setTransCharge(e.target.value)}}/>
                 </div>
             </div>
                 <button type="button" className="btn btn-dark btn-lg" onClick={toMyQuotation}>Send Request</button>

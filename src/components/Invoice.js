@@ -44,7 +44,7 @@ export default function Invoice() {
         <thead className="Erental-header-image w-100 border-none">
           <div className="position-relative">
           <ErentalHeaderAndFooter image={"Erental Invoice Header"}/>
-          <div className="header position-absolute text-light">INVOICE: 123456</div>
+          <div className="header position-absolute text-light">INVOICE: {data.invoice_no}</div>
         <div className="header-date position-absolute text-light">{month[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</div>
           </div>
         </thead>
@@ -53,10 +53,10 @@ export default function Invoice() {
         <div className="row my-3">                                                         
             <div className="col">
                 <div className="text-start">
-                    <h5 className='fw-semibold fst-italic textColor m-3' id="invoice-head">ERENTALS H&D PVT LTD</h5>
+                    <h5 className='fw-semibold fst-italic textColor m-3' id="invoice-head">ERENTALS HND PVT LTD</h5>
                     <div className="e-add d-flex flex-row m-0">
                       <i className="textColor fa fa-home pe-3"></i>
-                      <div className='text-dark fs-6'>7Shop No. 234, City Centre Mall,SV Road,
+                      <div className='text-dark fs-6'>Shop No. 234, City Centre Mall,SV Road,
                             Goregaon West, Mumbai, Maharashtra,
                             PIN Code 400104, India</div>
                     </div>
@@ -99,9 +99,12 @@ export default function Invoice() {
                       <div className='text-dark fs-6'>{data.billing_address.name}</div>
                     </div>
 
-                    <div className="b-add d-flex flex-row m-0">
+                    <div className="b-phn d-flex flex-column m-0">
+                    <div className="s-add d-flex flex-row  m-0">
                       <i className="textColor fa fa-home pe-3"></i>
-                      <div className='text-dark fs-6'>{data.billing_address.address1}, {data.billing_address.address2}, {data.billing_address.city}, {data.billing_address.district}, {data.billing_address.state} - {data.billing_address.pin_code}</div>
+                      <div className='text-dark fs-6'>{data.billing_address.street_add}</div>
+                      </div>
+                      <div className='text-dark fs-6'>landmark-{data.billing_address.address1},{data.billing_address.city}- {data.billing_address.pin_code}</div>
                     </div>
         
                     <div className="b-phn d-flex flex-row align-items-center m-0">
@@ -120,9 +123,12 @@ export default function Invoice() {
 
                     <div className="text-start">
                             <h5 className='fw-semibold fst-italic textColor m-3' id="invoice-head">SHIP TO</h5>
+                            <div className="b-phn d-flex flex-column m-0">
                             <div className="s-add d-flex flex-row  m-0">
                               <i className="textColor fa fa-home pe-3"></i>
-                              <div className='text-dark fs-6'>{data.shipping_address.address1}, {data.shipping_address.address2}, {data.shipping_address.city}, {data.shipping_address.district}, {data.shipping_address.state} - {data.shipping_address.pin_code}</div>
+                              <div className='text-dark fs-6'>{data.shipping_address.street_add}</div>
+                              </div>
+                              <div className='text-dark fs-6'>landmark-{data.shipping_address.address1},{data.billing_address.city}- {data.shipping_address.pin_code}</div>
                             </div>
                             <div className="s-name d-flex flex-row m-0">
                               <i className="textColor fa fa-user-alt pe-3"></i>
@@ -141,11 +147,12 @@ export default function Invoice() {
                         </div>
   </div>     
         </div>
-        <div className='w-100' style={{height:"0.2rem",backgroundColor:"rgb(0, 32, 96)"}}/>
+        {/*<div className='w-100' style={{height:"0.2rem",backgroundColor:"rgb(0, 32, 96)"}}/>*/}
 
   <table className="table mt-5 invoice-main-table fs-5 text-start border-top border-bottom border-dark" >
             <thead className="text-light">
               <tr className="invoice-main-table-head align-baseline" style={{fontSize:"14px",backgroundColor:"rgb(0, 32, 96)"}}>
+              <th scope="col">SERIAL NO</th>
                 <th scope="col">CODE</th>
                 <th scope="col">PARTICULARS</th>
                 <th scope="col">UNIT RATE/DAY/PC</th>
@@ -161,8 +168,9 @@ export default function Invoice() {
                 return (
                   <tr key={key} >
                     <th>{counter_product}</th>
-                    <td>{element.item_name}</td>
-                    <td>{element.unit_price}</td>
+                    <td>{element.item_code}</td>
+                    <td>{element.item_name}{element.is_service?<span> (ws)</span>:<span> (s)</span>}</td>
+                    <td className="row-inv" >{element.with_service_unit_rate}</td>
                     <td>{element.quantity}</td>
                     <td>{element.days}</td>
                     <td>{element.total}</td>
@@ -174,6 +182,7 @@ export default function Invoice() {
             
             <tr>
               <th scope="row"></th>
+              <td></td>
               <td style={{fontWeight:"bold"}}>Sub Total</td>
               <td></td>
               <td></td>
@@ -182,30 +191,33 @@ export default function Invoice() {
             </tr>
             <tr>
               <th scope="row"></th>
+              <td></td>
               <td>Transportation</td>
               <td></td>
               <td></td>
               <td></td>
               <td>{data.delivery_charges}</td>
             </tr>
-            <tr>
+            {/*}<tr>
               <th scope="row"></th>
               <td>Discount</td>
               <td></td>
               <td></td>
               <td></td>
               <td>0</td>
-            </tr>
+            </tr>*/}
             <tr>
               <th scope="row"></th>
+              <td></td>
               <td style={{fontWeight:"bold"}}>Total Payable Before Taxes</td>
               <td></td>
               <td></td>
               <td></td>
-              <td>{data.sub_total + 0}</td>
+              <td>{data.total_without_tax}</td>
             </tr>
             <tr>
               <th scope="row"></th>
+              <td></td>
               <td>CGST@9%</td>
               <td></td>
               <td></td>
@@ -214,6 +226,7 @@ export default function Invoice() {
             </tr>
             <tr>
               <th scope="row"></th>
+              <td></td>
               <td>SGST@9%</td>
               <td></td>
               <td></td>
@@ -222,6 +235,7 @@ export default function Invoice() {
             </tr>
             <tr style={{backgroundColor:"rgb(0, 32, 96)"}} className="text-light">
               <th scope="row"></th>
+              <td></td>
               <td style={{fontWeight:"bold"}}>Total Payable With Taxes</td>
               <td></td>
               <td></td>
@@ -230,6 +244,7 @@ export default function Invoice() {
             </tr>
             <tr>
               <th scope="row"></th>
+              <td></td>
               <td>Advance Paid</td>
               <td></td>
               <td></td>
@@ -238,6 +253,7 @@ export default function Invoice() {
             </tr>
             <tr>
               <th scope="row"></th>
+              <td></td>
               <td>Total Payable Amount at the Time of Delivery</td>
               <td></td>
               <td></td>
@@ -268,6 +284,7 @@ proofs would work.</li>
     <table className="table fs-5 text-start border-top border-bottom border-dark">
             <thead className="text-light">
               <tr className="align-baseline" style={{backgroundColor:"rgb(0, 32, 96)", fontSize:"14px"}}>
+              <th scope="col">SERIAL NO</th>
                 <th scope="col">CODE</th>
                 <th scope="col">PARTICULARS</th>
                 <th scope="col">QUANTITY</th>
@@ -283,6 +300,7 @@ proofs would work.</li>
                 return (
                   <tr key={key} className="align-middle">
                     <th>{counter_other}</th>
+                    <td>{element.item_code}</td>
                     <td>{element.item_name}</td>
                     <td>{element.quantity}</td>
                     <td><input type="checkbox" style={{height:"3rem", width:"6rem"}}/></td>
@@ -316,7 +334,7 @@ proofs would work.</li>
                   </tr>
                   <tr>
                     <td>Delivery Person</td>
-                    <td>Sushil (1044)</td>
+                    <td>Arman (1000D)</td>
                     <td></td>
                     <td></td>
                   </tr>
@@ -344,11 +362,11 @@ proofs would work.</li>
           <h5 className="textColor fw-bold" id="invoice-head">Note:</h5>
           <ul className="list-unstyled">
             <li>Bank Details</li>
-            <li>Bank Name: Axis Bank </li>
+            <li>Bank Name: IndusInd Bank </li>
             <li>Company Name: ERENTALS HND PVT LTD</li>
-            <li>Branch Name: Hiranandani Gardens, Powai, Mumbai 400076</li>
-            <li>IFSC Code: UTIB0000246</li>
-            <li>Account No. 922020013377806</li>
+            <li>Branch Name: Saki Naka</li>
+            <li>IFSC Code: INDB0001075</li>
+            <li>Account No. 259867348165</li>
             <li>Gpay Number: 8652348165</li>
           </ul>
         </div> 
