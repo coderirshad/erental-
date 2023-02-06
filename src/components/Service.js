@@ -5,7 +5,7 @@ const Service = () =>{
             <div className="container-fluid bg-light pt-5">
                 <div className="container">
                         <div className="d-flex justify-content-between align-items-center">
-                            <div className="d-flex p-3 flex-column mx-2 bg-white shadow-sm mt-lg-0 mb-2 servicebox">
+                            <div className="border d-flex p-3 flex-column mx-2 bg-white shadow-sm mt-lg-0 mb-2 servicebox">
                                 <div className="d-flex justify-content-center">
                                   <img src="images/Timelydeliveryservice2.png" width={70}  className='sr-img'/>
                                 </div>

@@ -285,6 +285,9 @@ input:focus, textarea:focus {
   }
 }
 
+.formatcolor{
+  color : #144169;
+}
 /* =======================================
 02. Top Bar
 ======================================= */
@@ -5024,10 +5027,12 @@ border: 10px solid red;
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .about-us .wc-box h4 span {
   color: #5677fc;
+  text-transform: none;
 }
 
 .about-us .wc-box p {
@@ -5035,6 +5040,7 @@ border: 10px solid red;
   color: #969696;
   line-height: 28px;
   margin-bottom: 35px;
+  text-align: left;
 }
 
 .about-us .wc-box a {

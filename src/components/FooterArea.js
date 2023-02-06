@@ -86,7 +86,7 @@ export default function FooterArea() {
           <li className="nav-item mb-2"><Link to="/cart" className="nav-link p-0 text-light"><i className="fa fa-angle-right"></i>Shopping Cart</Link></li>
           <li className="nav-item mb-2"><Link to="/checkout" className="nav-link p-0 text-light"><i className="fa fa-angle-right"></i>Checkout</Link></li>
           <li className="nav-item mb-2"><Link to="/myaccount/Orders" className="nav-link p-0 text-light"><i className="fa fa-angle-right"></i>Order History</Link></li>
-          <li className="nav-item mb-2"><Link to="/contact" className="nav-link p-0 text-light"><i className="fa fa-angle-right"></i>Our Locations</Link></li>
+          <li className="nav-item mb-2"><Link to="/locations" className="nav-link p-0 text-light"><i className="fa fa-angle-right"></i>Our Locations</Link></li>
         </ul>
       </div>
 
@@ -94,7 +94,7 @@ export default function FooterArea() {
         <h5 className='fw-bold'>Support</h5>
         <ul className="nav flex-column text-start">
           <li className="nav-item mb-2"><Link to="/contact" className="nav-link p-0 text-light"><i className="fa fa-angle-right"></i>Contact Us</Link></li>
-          <li className="nav-item mb-2"><Link to="/returnPolicy" className="nav-link p-0 text-light"><i className="fa fa-angle-right"></i>Return Policy</Link></li>
+          <li className="nav-item mb-2"><Link to="/documentrequired" className="nav-link p-0 text-light"><i className="fa fa-angle-right"></i>Documents Required</Link></li>
           <li className="nav-item mb-2"><Link to="/privacyPolicy" className="nav-link p-0 text-light"><i className="fa fa-angle-right"></i>Privacy Policy</Link></li>
           <li className="nav-item mb-2"><Link to="/termsAndConditions" className="nav-link p-0 text-light"><i className="fa fa-angle-right"></i>Terms & Condition</Link></li>
           <li className="nav-item mb-2"><Link to="/paymentPolicy" className="nav-link p-0 text-light"><i className="fa fa-angle-right"></i>Payment Policy</Link></li>

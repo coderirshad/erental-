@@ -3,101 +3,38 @@ export default function AboutUs() {
     
   return (
     <div>
-        <section className="about-us">
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6">
-                        <div className="wc-box">
-                            
-                            <h4>Welcome to <span>XeMart</span></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.!</p>
-                            <a href="">Read More</a>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="wc-img">
-                            <img src="images/about.jpg" alt="" className="img-fluid"/>
-                        </div>
-                    </div>
-                    <div className="col-md-12">
-                        <div className="row his-mis">
-                            <div className="col-md-4">
-                                <div className="about-bnr">
-                                    <a href="#"><img src="images/banner-1.png" alt="" className="img-fluid"/></a>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                <div className="about-bnr">
-                                    <a href="#"><img src="images/banner-2.png" alt="" className="img-fluid"/></a>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                <div className="about-bnr">
-                                    <a href="#"><img src="images/banner-3-1.png" alt="" className="img-fluid"/></a>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="history">
-                                    <h5>Our History</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ut iure doloribus ratione quia nam ducimus nemo, culpa vero eveniet magni fugit non nemo quas dolorum nisi ducimus laboriosam.</p>
-                                    <ul className="list-unstyled">
-                                        <li><i className="fa fa-check"></i>Numquam nesciunt, ex obcaecati libero asperiores</li>
-                                        <li><i className="fa fa-check"></i>Ipsa ut iure doloribus ratione quia nam ducimus</li>
-                                        <li><i className="fa fa-check"></i>Reprehenderit ratione minus commodi magni</li>
-                                        <li><i className="fa fa-check"></i>Porro et laudantium, atque similique</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="history">
-                                    <h5>Our Mission</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ut iure doloribus ratione quia nam ducimus nemo, culpa vero eveniet magni fugit non nemo quas dolorum nisi ducimus laboriosam.</p>
-                                    <ul className="list-unstyled">
-                                        <li><i className="fa fa-check"></i>Numquam nesciunt, ex obcaecati libero asperiores</li>
-                                        <li><i className="fa fa-check"></i>Ipsa ut iure doloribus ratione quia nam ducimus</li>
-                                        <li><i className="fa fa-check"></i>Reprehenderit ratione minus commodi magni</li>
-                                        <li><i className="fa fa-check"></i>Porro et laudantium, atque similique</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-       </section>
-       <section className="team">
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="sec-title">
-                            <h4>Meet Our Team</h4>
-                        </div>
-                        <div >
-                            <div className="team-box" id = 'lst'>
-                                <img src="images/team-1.jpg" alt="" className="img-fluid"/>
-                                <h5>Kevin Smith</h5>
-                                <p>Founder</p>
-                            </div>
-                            <div className="team-box" id = 'lst'>
-                                <img src="images/team-2.jpg" alt="" className="img-fluid"/>
-                                <h5>Alisha Doe</h5>
-                                <p>Chief Officer</p>
-                            </div>
-                            <div className="team-box" id = 'lst' >
-                                <img src="images/team-3.jpg" alt="" className="img-fluid"/>
-                                <h5>Kevin Smith</h5>
-                                <p>Exicutive</p>
-                            </div>
-                            <div className="team-box" id = 'lst' >
-                                <img src="images/team-4.jpg" alt="" className="img-fluid"/>
-                                <h5>Angel Kim</h5>
-                                <p>Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div className='container-fluid img-fluid' style={{height : "60vh", padding:'0'}}>
+          <img src="https://images.pexels.com/photos/8960464/pexels-photo-8960464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="img-fluid" alt="..." style={{width:"100%", height:"100%"}} />
+        </div>
+        <div className='container-fluid bg-light'>
+             <div className='container p-4 border bg-white'>
+                 <h5 style={{fontWeight:"700", color:"#144169"}}>ABOUT US</h5>
+                 <div className='px-5 py-3 mt-5' style={{textAlign:'justify'}}>
+                   <h3 className='px-3 py-2 formatcolor' style={{textDecoration:"none",fontSize:"16px"}}>Who We Are</h3>
+                      <p className='px-5 py-2'>
+                        eRentals HND PVT LTD  is a technology based e-commerce IIT Bombay startup founded by a PhD research scholar in 2022 with a hightech modern innovative idea to formalize and properly  organize the rental sector. Its mission is to establish a systematic, ordered and an efficient digital platform in the Indian rental marketplace through resolving the existing problems in the rental segment.
+                      </p>
+                      <p className='px-5 py-2'>
+                         eRentals has a strong potential to lead the rental market place of the country with a vision to maximize the utility & value of each product by promoting synergetic consumption and encouraging circular utilization, thus contributing to create a more sustainable future. We provide value added propositions to both our vendors and as well as our customers.
+                      </p>
+                    <h3 className='px-3 py-2 formatcolor' style={{textDecoration:"none",fontSize:"16px"}}>Products & Services</h3>
+                      <p className='px-5 py-2'>
+                         eRentals target all the event related rental customers including corporate events,    institutional events, conferences & exhibitions organizers, production houses and individuals or family functions.
+                      </p>
+                      <p className='px-5 py-2'>
+                      eRentals provide a wide variety of products ranging from furniture, electronics, electrical appliances, light & sound devices, special effect gadgets, production houses items, decorations, octonorm stalls, cold storage devices, tents and a lot more……
+                      </p>
+                    <h3 className='px-3 py-2 formatcolor' style={{textDecoration:"none",fontSize:"16px"}}>What We Do</h3>
+                      <p className='px-5 py-2'>
+                        eRentals provide a well organized unique digital platform to onboard different types of vendors connected with rental sectors and enable them to upload their rental products on the website easily through providing a separate dashboard for them. Similarly customers will also be able to register through different channels on the website to get discounts and seasonal offers and product details as well. Customers can easily select any item available on our website and easily book it through paying the rent using the available mode. eRentals always prioritize the customer's needs and try to provide the best quality & timely service.  eRentals make your events more easy, happy, precious and amazing.
+                      </p>
+                 </div>
+             </div>
+             <h4 className='formatcolor py-5' style={{fontWeight:"700"}}>MEET OUR TEAM</h4>
+             <div className='container pb-5 img-fluid' style={{height : "80vh", padding:'0'}}>
+                <img src="https://images.pexels.com/photos/8960464/pexels-photo-8960464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="img-fluid" alt="..." style={{width:"100%", height:"100%"}} />
+             </div>
+        </div>
     </div>
   )
 }

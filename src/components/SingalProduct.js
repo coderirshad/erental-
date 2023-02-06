@@ -24,6 +24,7 @@ const SingalProduct = ({ login }) => {
     const [service, setService] = useState([])
     const [service_id, setServiceid] = useState("without_service");
     const [dayprice, setDayPrice] = useState([])
+    const [flaglenght, setFalglength] = useState(true);
     const navigate = useNavigate();
     const IncrementQuantity = () => {
         setquantity(quantity + 1);
@@ -121,6 +122,8 @@ const SingalProduct = ({ login }) => {
         const response = await fetch(`http://${process.env.REACT_APP_URL}/product/service`)
         const data = await response.json();
         setService(data);
+        console.clear()
+        console.log(data);
     }
 
     const dayandprice = async() =>{
@@ -222,6 +225,18 @@ const SingalProduct = ({ login }) => {
                                                     <input onClick={() => IncrementQuantity()} style={{ color: "green", fontSize: "25px" }} type="button" value="+" className="plus" />
                                                 </li>
                                             </ul>
+                                        </div>
+                                        <div className='d-flex justify-content-around flex-column mb-2'>
+                                           <div>
+                                             <label className='text-secondary'>Length : </label>
+                                             <input type='text' className='w-25 ml-2 mb-3' placeholder='Type In Meter' /><button style={{border:"1px solid black","border-left-style":"none", padding:"1px 4px", background:"transparent"}}>Meter</button>
+                                           </div>
+                                           <div className='d-flex justify-content-center m-auto w-50 mb-1'>
+                                               <div>
+                                                    <label className='text-secondary'>Width : </label>
+                                                    <input type='text' className='w-50 ml-4'placeholder='Type In Meter'/><button style={{border:"1px solid black","border-left-style":"none", padding:"1px 4px", background:"transparent"}}>Meter</button>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div>
                                             <select onChange={handlechnage} style={{marginLeft:"40%", marginBottom:"30px", fontsiz:"20px"}} className="form-select form-select-sm w-25" aria-label=".form-select-sm example">

@@ -31,7 +31,6 @@ import MyOrderDetails from "./components/MyOrderDetails";
 import NotFound from "./components/NotFound";
 import Contact from "./components/Contact";
 import TermsAndConditions from "./components/TermsAndConditions";
-import ReturnPolicy from "./components/ReturnPolicy";
 import PaymentPolicy from "./components/PaymentPolicy";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import DescriptionData from "./components/DescriptionData";
@@ -46,6 +45,8 @@ import EventManagerProfile from "./components/EventMangerProfile";
 import EmployeeProfile from "./components/EmployeeProfile";
 import Invoice from "./components/Invoice";
 import ScrollToTop from "./components/ScrollToTop";
+import Locations from "./components/Locations"
+import DocumentRequired from "./components/DocumentRequired"
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
     const [loginrole,setloginrole]= React.useState("customer");
@@ -79,57 +80,29 @@ const App = () =>{
               <Route exact path="termandcondition" element={<DescriptionTermCon />} />
           </Route>
 
-        <Route
-          exact
-          path="/admin/:id"
-          element={loginrole === "admin" ? <Dash_RightContent /> : <NotFound />}
-        ></Route>
-        <Route
-          exact
-          path="/addproduct"
-          element={loginrole === "admin" ? <AddProduct /> : <NotFound />}
-        ></Route>
-        <Route
-          exact
-          path="/addproduct/:id"
-          element={loginrole === "admin" ? <AddProduct /> : <NotFound />}
-        ></Route>
-        <Route
-          exact
-          path="/admin/report"
-          element={loginrole === "admin" ? <Report /> : <NotFound />}
-        ></Route>
-        <Route
-          exact
-          path="/admin/withdraw"
-          element={loginrole === "admin" ? <Withdraw /> : <NotFound />}
-        ></Route>
-        <Route exact path="/aboutProduct" element={<AboutProduct />} />
-        <Route exact path="/aboutUs" element={<AboutUs />} />
-        <Route exact path="/eachCategory" element={<EachCategory />} />
-        <Route exact path="/productList" element={<ProductList />} />
-        <Route exact path="/productSearch" element={<ProductSearch />} />
-        <Route exact path="/tagProductList" element={<TagProductList />} />
-        <Route exact path="/allProductList" element={<AllProductList />} />
-        <Route
-          exact
-          path="/myOrderDetails"
-          element={<MyOrderDetails />}
-        ></Route>
-        <Route exact path="/contact" element={<Contact />}></Route>
-        <Route
-          exact
-          path="/termsAndConditions"
-          element={<TermsAndConditions />}
-        ></Route>
-        <Route exact path="/returnPolicy" element={<ReturnPolicy />}></Route>
-        <Route exact path="/paymentPolicy" element={<PaymentPolicy />}></Route>
-        <Route exact path="/privacyPolicy" element={<PrivacyPolicy />}></Route>
-        <Route exact path="/Quotation" element={<DownloadInvoice />}></Route>
-        <Route exact path="/Invoice" element={<Invoice />}></Route>
-      </Routes>
-      <FooterArea></FooterArea>
-    </div>
-  );
-};
+          <Route exact path="/admin/:id" element={loginrole==="admin"?<Dash_RightContent/>:<NotFound/>}></Route>
+          <Route exact path="/addproduct" element={loginrole==="admin"?<AddProduct />:<NotFound/>}></Route>
+          <Route exact path="/addproduct/:id" element={loginrole==="admin"?<AddProduct />:<NotFound/>}></Route>
+          <Route exact path="/admin/report" element={loginrole==="admin"?<Report />:<NotFound/>}></Route>
+          <Route exact path="/admin/withdraw" element={loginrole==="admin"?<Withdraw />:<NotFound/>}></Route>
+          <Route exact path="/aboutProduct" element={<AboutProduct />} />
+          <Route exact path="/aboutUs" element={<AboutUs />} />
+          <Route exact path="/eachCategory" element={<EachCategory />} />
+          <Route exact path="/productList" element={<ProductList />} />
+          <Route exact path='/tagProductList' element={<TagProductList/>} />
+          <Route exact path='/allProductList' element={<AllProductList/>} />
+          <Route exact path = "/myOrderDetails" element = {<MyOrderDetails/>}></Route>
+          <Route exact path = "/locations" element = {<Locations />}></Route>
+          <Route exact path = "/contact" element = {<Contact/>}></Route>
+          <Route exact path = "/termsAndConditions" element = {<TermsAndConditions/>}></Route>
+          <Route exact path = "/documentrequired" element = {<DocumentRequired/>}></Route>
+          <Route exact path = "/paymentPolicy" element = {<PaymentPolicy/>}></Route>
+          <Route exact path = "/privacyPolicy" element = {<PrivacyPolicy/>}></Route>
+          <Route exact path = "/Quotation" element = {<DownloadInvoice/>}></Route>
+          <Route exact path = "/Invoice" element = {<Invoice/>}></Route>
+        </Routes>
+        <FooterArea></FooterArea>
+      </div>
+    );
+}
 export default App;
