@@ -58,11 +58,13 @@ const App = () =>{
           
           <StaticHome />
 
-        </div>: 
+        </div>
+        
+        : 
         
         
            <div>
-           <NavigationBar login={login} setlogin={setlogin} setloginrole={setloginrole}></NavigationBar>
+          <NavigationBar login={login} setlogin={setlogin} setloginrole={setloginrole}></NavigationBar>
         <ScrollToTop />
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
@@ -116,7 +118,7 @@ const App = () =>{
           </div>}
 
         
-        <div onClick={() => setNewpage(!newpage)} style={{width:"24px", height:"24px", background:"white", position:"fixed", bottom:"10px", zIndex:"2000"}}><i class="fa-sharp fa-solid fa-down" style={{background:"white"}}></i></div>
+        <div onClick={() => setNewpage(() => !newpage)} style={{width:"24px", height:"24px", background:"white", position:"fixed", bottom:"10px", zIndex:"2000"}}><i class="fa-sharp fa-solid fa-down" style={{background:"white"}}></i></div>
         
       </div>
     );

@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import AboutProduct from "./AboutProduct";
 const ProductSearch = () => {
   const location = useLocation();
+  console.clear();
+  console.log(location)
 
   const [productSerach, setproductSearch] = useState([]);
   console.log("location state is", location);

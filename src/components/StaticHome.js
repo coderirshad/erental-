@@ -18,13 +18,13 @@ import sarf from '../qoute/Catalog_All Items_eRentals.pdf'
   return (
     <div>
         <header className='container-fluid' id='header'>
-            <nav className='container-fluid py-1 flexitem sticky' >
+            <nav className='container-fluid py-1 flexitem sticky' id='home' >
                 <div>
                    <img src="images/logo3.png" alt="" className="img-logo" />
                 </div>
                 <div>
                    <ul className='d-flex justify-content-center align-items-center ulstyle'>
-                        <li><a href='/'>Home</a></li>
+                        <li><a href='#home'>Home</a></li>
                         <li><a href='#service'>Services</a></li>
                         <li><a href='#about'>About Us</a></li>
                         <li><a href='#contact'>Contact Us</a></li>

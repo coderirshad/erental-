@@ -40,7 +40,7 @@ export default function Product() {
   const filteredProducts = useMemo(() => {
     const searchVal = search.toLowerCase();
     return product?.filter(item => {
-      const productName = item?.product_name?.toLowerCase();
+      const productName = item?.sku?.toLowerCase();
       return productName?.includes(searchVal);
     })
   }, [search])
@@ -179,7 +179,7 @@ function Product({data, handleDelete}){
   return (
     <tr className='h5'>
       <td scope="row"><Link to={`/addproduct/${data.product_id}`}><img style={{widht:"80px",height:"80px"}} src={data.images[0]} alt=""/></Link></td>
-      <td><Link to={`/addproduct/${data.product_id}`}>{data.product_name}</Link></td>
+      <td><Link to={`/addproduct/${data.product_id}`}>{data.product_name} ({(data.sku)})</Link></td>
       <th >{data.stock}</th>
       <td>{data.event_manager_price}</td>
       <td>{data.price}</td>

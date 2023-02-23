@@ -32,10 +32,14 @@ export default function AddProduct() {
   const [is_enable, setIsEnable] = useState(false);
   const [is_best_deal, setIsBestDeal] = useState(false);
   const [is_featured, setIsFeatured] = useState(false);
+  const [is_area_based, setAreabased] = useState(false);
   const [service, setService] = useState('');
   const [price_variation, setPriceVariation] = useState('');
   const [lng, setLng] = useState(0.00);
   const [lat, setLat] = useState(0.00);
+  const [length_unit, setLenght_unite] = useState("")
+  const [width_unit, setWidth_unite] = useState("")
+
   const fetchdata = async () => {
     const response = await fetch(`http://${process.env.REACT_APP_URL}/category`,{
       method:"GET",
@@ -76,6 +80,7 @@ export default function AddProduct() {
         setTermscontion(data.termscondition);
         setSuggestion(data.suggested_product_id);
         setsubcategory(data.category);
+        setAreabased(data.is_area_based);
 
       }
       )
@@ -108,7 +113,9 @@ export default function AddProduct() {
     );
 
     setSuggestionlist(await response.json());
-
+    const data = await response.json();
+    console.clear()
+    console.log(data)
   }
 
   useEffect(() => {
@@ -123,7 +130,7 @@ export default function AddProduct() {
     var images = [];
     images.push(image);
     var id = params.id;
-    let data = { id, name,event_manager_price,sku, price,termscondition,description,discounted_price,service, stock, view, tag, suggestion,images, subcategory, is_hot_deal, is_new, is_enable, is_best_deal, is_featured, is_top_sold, price_variation, lng, lat}
+    let data = { id, name,event_manager_price,sku, price,termscondition,description,discounted_price,service,width_unit, length_unit,stock, view, tag, suggestion,images, subcategory, is_hot_deal, is_area_based ,is_new, is_enable, is_best_deal, is_featured, is_top_sold, price_variation, lng, lat}
     await fetch(`http://${process.env.REACT_APP_URL}/admin/product`, {
       method: 'PUT',
       headers: {
@@ -261,6 +268,22 @@ export default function AddProduct() {
                 value={termscondition} onChange={(e) => { setTermscontion(e.target.value) }}
                 defaultValue="Terms and condition"
               />
+             {/* here lenght and width */}
+              <TextField
+                required
+                id="length"
+                label="Length"
+                value={length_unit} onChange={(e) => { setLenght_unite(e.target.value) }}
+                defaultValue="Length"
+              />
+
+             <TextField
+                required
+                id="width"
+                label="Width"
+                value={width_unit} onChange={(e) => { setWidth_unite(e.target.value) }}
+                defaultValue="Width"
+              />
 
               <div style={{ display: "flex" }}>
                 <NestedMultipleSelectChip boxName={"category"} names={category} personName={subcategory} setPersonName={setsubcategory}></NestedMultipleSelectChip>
@@ -279,6 +302,7 @@ export default function AddProduct() {
                 <li style={{ marginRight: "1em" }} className="form-check"><input className="form-check-input" onChange={(e) => { setIsEnable(e.target.checked) }} checked={is_enable} type="checkbox" id="is_enable" name="is_enable" /><label className="form-check-label" htmlFor="is_enable">is enable</label></li>
                 <li style={{ marginRight: "1em" }} className="form-check"><input className="form-check-input" onChange={(e) => { setIsBestDeal(e.target.checked) }} checked={is_best_deal} type="checkbox" id="is_best_deal" name="is_best_deal" /><label className="form-check-label" htmlFor="is_best_deal">is best deal</label></li>
                 <li style={{ marginRight: "1em" }} className="form-check"><input className="form-check-input" onChange={(e) => { setIsFeatured(e.target.checked) }} checked={is_featured} type="checkbox" id="is_featured" name="is_featured" /><label className="form-check-label" htmlFor="is_featured">is featured</label></li>
+                <li style={{ marginRight: "1em" }} className="form-check"><input className="form-check-input" onChange={(e) => { setAreabased(e.target.checked) }} checked={is_area_based} type="checkbox" id="is_area_based" name="is_area_based" /><label className="form-check-label" htmlFor="is_area_based">is areabased</label></li>
               </ul>
             </div>
 
