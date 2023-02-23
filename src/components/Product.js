@@ -1,4 +1,4 @@
-import React ,{useEffect,useState}from 'react'
+import React ,{useEffect,useState,useMemo}from 'react'
 
 import { Link } from 'react-router-dom';
 import { Modal, Button } from "react-bootstrap";
@@ -8,11 +8,17 @@ import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import GetAuthorization from './GetAuthorization';
 export default function Product() {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
+  const handleClose = () => setShow(false)
   const handleShow = () => setShow(true);
-
   const [product, setProduct] =  useState([]);
+
+  const handleclick =(e) =>{
+    e.preventDefault();
+  }
   const fetchData =()=>{
+    setLoading(true);
       fetch(`http://${process.env.REACT_APP_URL}/vendor/product`,{
         method: "GET",
         headers: {
@@ -22,10 +28,23 @@ export default function Product() {
     })
       .then((response)=>{
           return response.json();
-      }).then((data)=>{ 
+      }).then((data)=>{
+        console.clear();
+        console.log(data) 
         setProduct(data)       
-      })
+        setLoading(false);
+
+    })
   }
+
+  const filteredProducts = useMemo(() => {
+    const searchVal = search.toLowerCase();
+    return product?.filter(item => {
+      const productName = item?.product_name?.toLowerCase();
+      return productName?.includes(searchVal);
+    })
+  }, [search])
+
   const deleteProduct = async (product_id)=>{
     await fetch(`http://${process.env.REACT_APP_URL}/product/${product_id}`, {
             method: "DELETE",
@@ -77,8 +96,8 @@ export default function Product() {
     </div>
 
     <div className="col-4 ">
-    <form className="d-flex ">
-        <input className="form-control form-select-lg me-2" type="search" placeholder="Search" aria-label="Search"/>
+    <form className="d-flex " onSubmit={handleclick}>
+        <input onChange={(e) => setSearch(e.target.value)} value={search} className="form-control form-select-lg me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button type="button" className="btn btn-danger">Search</button>
       </form>
     </div>
@@ -141,23 +160,9 @@ export default function Product() {
     </tr>
   </thead>
   <tbody>
-  {
-                    product.map(data => (
-                     
-    <tr className='h5'>
-   
-      <td scope="row"><Link to={`/addproduct/${data.product_id}`}><img style={{widht:"80px",height:"80px"}} src={data.images[0]} alt=""/></Link></td>
-      <td><Link to={`/addproduct/${data.product_id}`}>{data.product_name}</Link></td>
-      <th >{data.stock}</th>
-      <td>{data.event_manager_price}</td>
-      <td>{data.price}</td>
-      <td>{data.discounted_price}</td>
-      <td>{data.view}</td>
-      <td><Link to="/admin/Product" onClick={()=>handleDelete(data.product_id)}><DeleteForeverTwoToneIcon style={{color:"red",fontSize:"25px"}}></DeleteForeverTwoToneIcon></Link></td>
-      
-    
-    </tr>
-            ))}
+  { !search && !loading && product.map(data => <Product data={data} handleDelete={handleDelete} />) }
+  { search && !loading && filteredProducts.map(data => <Product data={data} handleDelete={handleDelete} />) }
+  { loading && <h1>Loading</h1>}
   </tbody>  
 </table>
 </div>
@@ -165,7 +170,22 @@ export default function Product() {
 
 
 
+
 </div>
 
   )
-}
+
+function Product({data, handleDelete}){
+  return (
+    <tr className='h5'>
+      <td scope="row"><Link to={`/addproduct/${data.product_id}`}><img style={{widht:"80px",height:"80px"}} src={data.images[0]} alt=""/></Link></td>
+      <td><Link to={`/addproduct/${data.product_id}`}>{data.product_name}</Link></td>
+      <th >{data.stock}</th>
+      <td>{data.event_manager_price}</td>
+      <td>{data.price}</td>
+      <td>{data.discounted_price}</td>
+      <td>{data.view}</td>
+      <td onClick={()=>handleDelete(data.product_id)}><DeleteForeverTwoToneIcon style={{color:"red",fontSize:"25px"}}></DeleteForeverTwoToneIcon></td>
+    </tr>
+  )
+}}

@@ -1,0 +1,118 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.flexitem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flexcenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+  #header{
+    background: #FFFFFF;
+    padding:0 10rem;
+    position: fixed;
+    top:0px;
+    left: 0;
+    right: 0;
+    z-index: 2010;
+  }
+
+  .ulstyle{
+    list-style: none;
+    font-weight: 700;
+    margin-left: 7px;
+  }
+
+  .ulstyle li{
+    margin-left: 2.5rem;
+  }
+  .ulstyle li a{
+    text-decoration: none;
+    color: #073b4c;
+  }
+
+  .ulstyle li a:hover{
+    color: #149dcc;
+  }
+  .btn{
+    padding: 0.6rem 3rem;
+    background-color: #073b4c;
+    color: white;
+    font-weight: 700;
+    outline: none;
+    border: 1px solid #073b4c ;
+    transition: 0.2s all ease-in;
+  }
+  .btn-quoto{
+    padding: 12px 3rem;
+  }
+  .btn:hover{
+    background-color: transparent;
+    border: 2px solid #073b4c ;
+  }
+
+  .marginsettop{
+    margin-top: 5.5rem !important;
+    background-color: red;
+    padding: 0; margin: 0;
+    border: 2px solid red;
+    height: 100vh;
+  }
+
+  .carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 20rem;
+    left: 15%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    text-align: center;
+}
+
+.carousel-caption2 {
+  position: absolute;
+  right: 15%;
+  bottom: 32.5rem;
+  left: 15%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+  text-align: center;
+}
+
+.carousel-caption3 {
+  position: absolute;
+  right: 15%;
+  bottom: 33rem;
+  left: 15%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+  text-align: center;
+}
+
+.crouselheading{
+  font-size: 4rem !important;
+}
+.crouselcontent{
+  font-size: 2rem;
+}
+.h2{
+  margin-bottom: 0;
+}
+

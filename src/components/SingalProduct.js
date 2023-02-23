@@ -25,6 +25,8 @@ const SingalProduct = ({ login }) => {
     const [service_id, setServiceid] = useState("without_service");
     const [dayprice, setDayPrice] = useState([])
     const [flaglenght, setFalglength] = useState(true);
+    const [Length, setLength] = useState("");
+    const [Width, setWidth] = useState("");
     const navigate = useNavigate();
     const IncrementQuantity = () => {
         setquantity(quantity + 1);
@@ -56,6 +58,8 @@ const SingalProduct = ({ login }) => {
                         size: size,
                         day: day,
                         service_id:service_id,
+                        width: Width,
+                        length: Length,
                         type:"cart"
             
                     }
@@ -87,6 +91,8 @@ const SingalProduct = ({ login }) => {
                         size: size,
                         day: day,
                         service_id:service_id,
+                        width: Width,
+                        length: Length,
                         type:"quote"
             
                     }
@@ -112,6 +118,8 @@ const SingalProduct = ({ login }) => {
             }).then((response)=>{
                 return response.json();
             }).then((data)=>{
+                console.clear();
+                console.log(data)
                  setproduct(data);
                  setimageList(data.images);
                  setCategoryList(data.category);          
@@ -122,8 +130,6 @@ const SingalProduct = ({ login }) => {
         const response = await fetch(`http://${process.env.REACT_APP_URL}/product/service`)
         const data = await response.json();
         setService(data);
-        console.clear()
-        console.log(data);
     }
 
     const dayandprice = async() =>{
@@ -226,18 +232,24 @@ const SingalProduct = ({ login }) => {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div className='d-flex justify-content-around flex-column mb-2'>
+                                        {product.is_area_based ?
+                                       (
+                                        <div className='d-flex justify-content-around flex-column mb-2' style={{fontSize:"14px"}}>
                                            <div>
                                              <label className='text-secondary'>Length : </label>
-                                             <input type='text' className='w-25 ml-2 mb-3' placeholder='Type In Meter' /><button style={{border:"1px solid black","border-left-style":"none", padding:"1px 4px", background:"transparent"}}>Meter</button>
+                                             <input type='text' onChange={(e) => console.log(e.target.value)} className='w-25 ml-2 mb-3' placeholder='Type In Meter' /> <label>Meter </label>
                                            </div>
                                            <div className='d-flex justify-content-center m-auto w-50 mb-1'>
                                                <div>
                                                     <label className='text-secondary'>Width : </label>
-                                                    <input type='text' className='w-50 ml-4'placeholder='Type In Meter'/><button style={{border:"1px solid black","border-left-style":"none", padding:"1px 4px", background:"transparent"}}>Meter</button>
+                                                    <input type='text' onChange={(e) => setWidth(e.target.value)} className='w-50 ml-4'placeholder='Type In Meter'/> <label>Meter </label>
                                                 </div>
                                             </div>
                                         </div>
+                                       )  :(
+                                        null
+                                       )  
+                                    }
                                         <div>
                                             <select onChange={handlechnage} style={{marginLeft:"40%", marginBottom:"30px", fontsiz:"20px"}} className="form-select form-select-sm w-25" aria-label=".form-select-sm example">
                                                 {service.map((option) =>{
@@ -263,7 +275,7 @@ const SingalProduct = ({ login }) => {
                 </div>
             </div>
             <Description />
-            {useMemo(() => <SimilarProducts category={categoryList} />, [categoryList])}
+            {useMemo(() => <SimilarProducts category={categoryList} login={login} />, [categoryList])}
         </section>
 
     );

@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
@@ -47,12 +47,22 @@ import Invoice from "./components/Invoice";
 import ScrollToTop from "./components/ScrollToTop";
 import Locations from "./components/Locations"
 import DocumentRequired from "./components/DocumentRequired"
+import StaticHome from  "./components/StaticHome"
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
     const [loginrole,setloginrole]= React.useState("customer");
+    const [newpage, setNewpage] = useState(false);
     return (      
       <div className="App">
-        <NavigationBar login={login} setlogin={setlogin} setloginrole={setloginrole}></NavigationBar>
+        {newpage ? <div>
+          
+          <StaticHome />
+
+        </div>: 
+        
+        
+           <div>
+           <NavigationBar login={login} setlogin={setlogin} setloginrole={setloginrole}></NavigationBar>
         <ScrollToTop />
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
@@ -102,6 +112,12 @@ const App = () =>{
           <Route exact path = "/Invoice" element = {<Invoice/>}></Route>
         </Routes>
         <FooterArea></FooterArea>
+          
+          </div>}
+
+        
+        <div onClick={() => setNewpage(!newpage)} style={{width:"24px", height:"24px", background:"white", position:"fixed", bottom:"10px", zIndex:"2000"}}><i class="fa-sharp fa-solid fa-down" style={{background:"white"}}></i></div>
+        
       </div>
     );
 }
