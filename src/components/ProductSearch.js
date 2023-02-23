@@ -10,7 +10,7 @@ const ProductSearch = () => {
   console.log("location state is", location);
   useEffect(() => {
     fetchdata();
-  }, []);
+  }, [location]);
   const fetchdata = async () => {
     const response = await fetch(
       `http://${process.env.REACT_APP_URL}/search${location.search}`
