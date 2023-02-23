@@ -82,6 +82,7 @@ const App = () =>{
           <Route exact path="/coupon" element={<Coupon />}></Route>
           <Route exact path="/category" element={<CategoryBox />}></Route>
           <Route exact path="/cart" element={login?<Cartdetail />:<Login/>}></Route>
+          <Route exact path="/ProductSearch" element={<ProductSearch />}></Route>
           <Route exact path="/product/:id" element={<SingalProduct login={login}/>}>
               <Route index element={<DescriptionData />} />
               <Route exact path="Discription"  element={<DescriptionData />}></Route>
