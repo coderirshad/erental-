@@ -54,7 +54,7 @@ const App = () =>{
     const [newpage, setNewpage] = useState(true);
     return (      
       <div className="App">
-        {newpage ? <div>
+        {false ? <div>
           
           <StaticHome />
 
