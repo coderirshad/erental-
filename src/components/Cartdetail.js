@@ -9,6 +9,8 @@ export default function Cartdetail() {
     const [cartproduct, setcartproduct] = useState([])
     const [cartsummary, setcartsummary] = useState({})
     const [trans_charge, setTransportationCharge] = useState(0.00);
+    const [lengthcart, setLengthcart] = useState("")
+    const [width, setWidth] = useState("")
     const navigate = useNavigate();
     const UpdateQuantity = async (cart_item_id1,finalquantity,Day)=>{
         const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
@@ -24,6 +26,8 @@ export default function Cartdetail() {
                     color:'',
                     size:'',
                     day:Day,
+                    length:lengthcart,
+                    width: width,
                 }
             )
         });
@@ -101,6 +105,8 @@ const addTransportationCharge = async () => {
                                 <th className="t-price">Price</th>
                                 <th className="t-price">Day</th>
                                 <th className="t-qty">Quantity</th>
+                                <th className="t-qty">Length</th>
+                                <th className="t-qty">width</th>
                                 <th className="t-total">Total</th>
                                 <th className="t-rem"></th>
                             </tr>
@@ -141,6 +147,16 @@ const addTransportationCharge = async () => {
                                                 <input type="number" step="1" min="1" max="10" value={data.quantity} className="qty text" size="4" disabled/>
                                                 <input onClick={()=>Increment(data.cart_item_id,data.quantity,data.day)} style={{color:"green",fontSize:"25px"}} type="button" value="+" className="plus"/>
                                             </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style={{widht:"10px !important", height:"30px"}}>
+                                           <input type="text" onChange={(e) => setLengthcart(e.target.value)}  className='w-50 h-100' />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style={{widht:"10px !important", height:"30px"}}>
+                                           <input type="text"  onChange={(e) => setWidth(e.target.value)}  className='w-50 h-100' />
                                         </div>
                                     </td>
                                     <td className="t-total">INR {data.total}</td>

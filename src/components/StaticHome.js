@@ -36,7 +36,7 @@ import sarf from '../qoute/Catalog_All Items_eRentals.pdf'
         </header>
 
         {/* carousel */}
-        <div className='container-fluid-md' style={{marginTop:"5rem"}}>
+        <div className='container-fluid-md' style={{marginTop:"5rem"}} id='home'>
           <div className='row'>
             <div className='col-12'>
                   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">

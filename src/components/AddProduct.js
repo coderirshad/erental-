@@ -81,6 +81,8 @@ export default function AddProduct() {
         setSuggestion(data.suggested_product_id);
         setsubcategory(data.category);
         setAreabased(data.is_area_based);
+        setLenght_unite(data.length_uniit)
+        setWidth_unite(data.width_unit)
 
       }
       )
@@ -269,6 +271,13 @@ export default function AddProduct() {
                 defaultValue="Terms and condition"
               />
              {/* here lenght and width */}
+             {!is_area_based ? 
+              
+              null :
+
+              
+             <div>
+
               <TextField
                 required
                 id="length"
@@ -284,6 +293,10 @@ export default function AddProduct() {
                 value={width_unit} onChange={(e) => { setWidth_unite(e.target.value) }}
                 defaultValue="Width"
               />
+             </div>
+            
+            }
+              
 
               <div style={{ display: "flex" }}>
                 <NestedMultipleSelectChip boxName={"category"} names={category} personName={subcategory} setPersonName={setsubcategory}></NestedMultipleSelectChip>

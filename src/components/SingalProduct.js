@@ -133,7 +133,7 @@ const SingalProduct = ({ login }) => {
     }
 
     const dayandprice = async() =>{
-        const response = await fetch(`http://${process.env.REACT_APP_URL}/product/price?product_id=${id}&day=${day}&quantity=${quantity}&service=${service_id}`,{
+        const response = await fetch(`http://${process.env.REACT_APP_URL}/product/price?product_id=${id}&day=${day}&quantity=${quantity}&service=${service_id}&lenght=${Length}&width=${Width}`,{
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -237,12 +237,12 @@ const SingalProduct = ({ login }) => {
                                         <div className='d-flex justify-content-around flex-column mb-2' style={{fontSize:"14px"}}>
                                            <div>
                                              <label className='text-secondary'>Length : </label>
-                                             <input type='text' onChange={(e) => console.log(e.target.value)} className='w-25 ml-2 mb-3' placeholder='Type In Meter' /> <label>Meter </label>
+                                             <input type='text' onChange={(e) => console.log(e.target.value)} className='w-25 ml-2 mb-3' placeholder='Type In Meter' /> <label>{product.length_uniit} </label>
                                            </div>
                                            <div className='d-flex justify-content-center m-auto w-50 mb-1'>
                                                <div>
                                                     <label className='text-secondary'>Width : </label>
-                                                    <input type='text' onChange={(e) => setWidth(e.target.value)} className='w-50 ml-4'placeholder='Type In Meter'/> <label>Meter </label>
+                                                    <input type='text' onChange={(e) => setWidth(e.target.value)} className='w-50 ml-4'placeholder='Type In Meter'/> <label>{product.width_unit} </label>
                                                 </div>
                                             </div>
                                         </div>

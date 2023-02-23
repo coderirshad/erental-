@@ -51,7 +51,7 @@ import StaticHome from  "./components/StaticHome"
 const App = () =>{
     const [login,setlogin]= React.useState(CheckAuth());
     const [loginrole,setloginrole]= React.useState("customer");
-    const [newpage, setNewpage] = useState(false);
+    const [newpage, setNewpage] = useState(true);
     return (      
       <div className="App">
         {newpage ? <div>
