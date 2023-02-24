@@ -58,6 +58,8 @@ export default function Cartdetail() {
         .then((response)=>{
             return response.json();
         }).then((data)=>{
+            console.clear();
+            console.log(data)
              setcartproduct(data.cart)
              setcartsummary(data);       
         })
@@ -149,16 +151,27 @@ const addTransportationCharge = async () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
+                                    {data.is_area_based ? (
+                                      <>
+                                        <td>
                                         <div style={{widht:"10px !important", height:"30px"}}>
-                                           <input type="text" onChange={(e) => setLengthcart(e.target.value)}  className='w-50 h-100' />
+                                            {() =>setLengthcart(data.length)}
+                                           <input type="text" value={lengthcart} onChange={(e) => setLengthcart(e.target.value)}  className='w-50 h-100' />
                                         </div>
                                     </td>
                                     <td>
                                         <div style={{widht:"10px !important", height:"30px"}}>
-                                           <input type="text"  onChange={(e) => setWidth(e.target.value)}  className='w-50 h-100' />
+                                            {() =>setWidth(data.width)}
+                                           <input type="text" value={width}  onChange={(e) => setWidth(e.target.value)}  className='w-50 h-100' />
                                         </div>
                                     </td>
+                                      </>
+                                    ) :
+                                     <>
+                                      <td></td>
+                                       <td></td>
+                                     </>
+                                    }
                                     <td className="t-total">INR {data.total}</td>
                                     <td onClick={()=>UpdateQuantity(data.cart_item_id)}className="t-rem"><Link to="/cart"><DeleteForeverTwoToneIcon style={{color:"red",fontSize:"40px"}}></DeleteForeverTwoToneIcon></Link></td>
                                 </tr>   

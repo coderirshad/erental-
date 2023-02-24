@@ -118,8 +118,6 @@ const SingalProduct = ({ login }) => {
             }).then((response)=>{
                 return response.json();
             }).then((data)=>{
-                console.clear();
-                console.log(data)
                  setproduct(data);
                  setimageList(data.images);
                  setCategoryList(data.category);          
@@ -159,7 +157,7 @@ const SingalProduct = ({ login }) => {
     useEffect(() => {
         setLoader(true)
         dayandprice();
-    }, [day, quantity, service_id])
+    }, [day, quantity, service_id,Length,Width])
 
     return (
         <section className="sg-product mb-sm-0">
@@ -237,7 +235,7 @@ const SingalProduct = ({ login }) => {
                                         <div className='d-flex justify-content-around flex-column mb-2' style={{fontSize:"14px"}}>
                                            <div>
                                              <label className='text-secondary'>Length : </label>
-                                             <input type='text' onChange={(e) => console.log(e.target.value)} className='w-25 ml-2 mb-3' placeholder='Type In Meter' /> <label>{product.length_uniit} </label>
+                                             <input type='text' onChange={(e) => setLength(e.target.value)} className='w-25 ml-2 mb-3' placeholder='Type In Meter' /> <label>{product.length_uniit} </label>
                                            </div>
                                            <div className='d-flex justify-content-center m-auto w-50 mb-1'>
                                                <div>

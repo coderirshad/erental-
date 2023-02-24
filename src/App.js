@@ -54,13 +54,15 @@ const App = () =>{
     const [newpage, setNewpage] = useState(true);
     return (      
       <div className="App">
-        {false ? <div>
+        {/* {newpage ? <div>
           
-          <StaticHome />
+          <Routes>
+            <Route path='/'  element={<StaticHome />} />
+          </Routes>
 
         </div>
         
-        : 
+        :  */}
         
         
            <div>
@@ -116,7 +118,8 @@ const App = () =>{
         </Routes>
         <FooterArea></FooterArea>
           
-          </div>}
+          </div>
+          {/* } */}
 
         
         <div onClick={() => setNewpage(!newpage)} style={{width:"24px", height:"24px", background:"white", position:"fixed", bottom:"10px", zIndex:"2000"}}><i class="fa-sharp fa-solid fa-down" style={{background:"white"}}></i></div>
