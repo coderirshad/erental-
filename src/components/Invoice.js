@@ -170,7 +170,7 @@ export default function Invoice() {
                     <th>{counter_product}</th>
                     <td>{element.item_code}</td>
                     <td>{element.item_name}{element.is_service?<span> (ws)</span>:<span> (s)</span>}</td>
-                    <td className="row-inv" >{element.with_service_unit_rate}</td>
+                    <td className="row-inv" >{element.unit_price}</td>
                     <td>{element.quantity}</td>
                     <td>{element.days}</td>
                     <td>{element.total}</td>
