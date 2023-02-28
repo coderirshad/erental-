@@ -29,17 +29,17 @@ const SingalProduct = ({ login }) => {
     const [Width, setWidth] = useState("");
     const navigate = useNavigate();
     const IncrementQuantity = () => {
-        setquantity(quantity + 1);
+        setquantity(parseInt(quantity) + 1);
     }
     const DecrementQuantity = () => {
-        if (quantity > 1) setquantity(quantity - 1);
+        if (quantity > 1) setquantity(parseInt(quantity) - 1);
         else alert("Sorry You can't select less than 0!")
     }
     const IncrementDay = () => {
-        setday(day + 1);
+        setday(parseInt(day) + 1);
     }
     const DecrementDay = () => {
-        if (day > 1) setday(day - 1);
+        if (day > 1) setday(parseInt(day) - 1);
         else alert("Sorry You can't select less than 0!")
     }
     const AddToCart = async () => {
@@ -215,7 +215,7 @@ const SingalProduct = ({ login }) => {
                                                 <li className="list-inline-item">Day : </li>
                                                 <li className="list-inline-item quantity buttons_added">
                                                     <input onClick={() => DecrementDay()} style={{ color: "red", fontSize: "25px" }} type="button" value="-" className="minus" />
-                                                    <input onClick={() => setday(this.value)} type="number" step="1" min="1" max="10" value={day} className="qty text" size="4" readonly />
+                                                    <input onChange={(e) => setday(e.target.value)} type="number" step="1" min="1" max="10" value={day} className="qty text" size="40"  />
                                                     <input onClick={() => IncrementDay()} style={{ color: "green", fontSize: "25px" }} type="button" value="+" className="plus" />
                                                 </li>
                                             </ul>
@@ -225,7 +225,7 @@ const SingalProduct = ({ login }) => {
                                                 <li className="list-inline-item">Qty : </li>
                                                 <li className="list-inline-item quantity buttons_added">
                                                     <input onClick={() => DecrementQuantity()} style={{ color: "red", fontSize: "25px" }} type="button" value="-" className="minus" />
-                                                    <input onClick={() => setquantity(this.value)} type="number" step="1" min="1" max="10" value={quantity} className="qty text" size="4" readonly />
+                                                    <input onChange={(e) => setquantity(e.target.value)} type="number" step="1" min="1" max="10" value={quantity} className="qty text" size="40" />
                                                     <input onClick={() => IncrementQuantity()} style={{ color: "green", fontSize: "25px" }} type="button" value="+" className="plus" />
                                                 </li>
                                             </ul>
