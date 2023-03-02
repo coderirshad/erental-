@@ -131,7 +131,7 @@ const SingalProduct = ({ login }) => {
     }
 
     const dayandprice = async() =>{
-        const response = await fetch(`http://${process.env.REACT_APP_URL}/product/price?product_id=${id}&day=${day}&quantity=${quantity}&service=${service_id}&lenght=${Length}&width=${Width}`,{
+        const response = await fetch(`http://${process.env.REACT_APP_URL}/product/price?product_id=${id}&day=${day}&quantity=${quantity}&service=${service_id}&length=${Length}&width=${Width}`,{
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',

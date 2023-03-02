@@ -15,7 +15,7 @@ export default function AboutOrder( {product} ) {
               <p className="card-text">Quantity : {product.Cart_item[0].quantity}</p>
               <p className="card-text">Price : ₹{product.grandtotal} </p>
               
-            </div><p1><CheckCircleOutlineIcon style={{ color : "green" , marginRight:"5px"}}></CheckCircleOutlineIcon>Order On</p1>
+            </div><p1><CheckCircleOutlineIcon style={{ color : "green" , marginRight:"5px"}}></CheckCircleOutlineIcon>Order Date: {product.order_date}</p1>
             <a class="btn btn-primary" onClick= {() => handleClick( product ) }>View Order Details</a>                                               
     </div> 
   // <div className = "card p-3" style={{width: "18rem"}}>
