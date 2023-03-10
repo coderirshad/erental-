@@ -1,8 +1,9 @@
-import "./App.css";
+// import "./css/style.css";
+// import "./App.css";
+import "./css/newstyle.css"
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./css/style.css";
 import Checkout from "./components/Checkout";
 import Report from "./components/Report";
 import Home from "./components/Home";
@@ -65,7 +66,7 @@ const App = () =>{
         :  */}
         
         
-           <div>
+           {/* <div> */}
           <NavigationBar login={login} setlogin={setlogin} setloginrole={setloginrole}></NavigationBar>
         <ScrollToTop />
         <Routes>
@@ -118,11 +119,11 @@ const App = () =>{
         </Routes>
         <FooterArea></FooterArea>
           
-          </div>
+          {/* </div> */}
           {/* } */}
 
         
-        <div onClick={() => setNewpage(!newpage)} style={{width:"24px", height:"24px", background:"white", position:"fixed", bottom:"10px", zIndex:"2000"}}><i class="fa-sharp fa-solid fa-down" style={{background:"white"}}></i></div>
+        {/* <div onClick={() => setNewpage(!newpage)} style={{width:"24px", height:"24px", background:"white", position:"fixed", bottom:"10px", zIndex:"2000"}}><i class="fa-sharp fa-solid fa-down" style={{background:"white"}}></i></div> */}
         
       </div>
     );

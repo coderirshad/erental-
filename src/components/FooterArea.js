@@ -5,6 +5,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export default function FooterArea() {
     const [tagList, settagList] = useState([]);
@@ -12,7 +13,7 @@ export default function FooterArea() {
         const response = await fetch(`http://${process.env.REACT_APP_URL}/tag`);
         const now = await response.json() ;
         let sz = now.length ;
-        for ( let i = 0 ; i < sz - 4 ; i ++ ) {
+        for ( let i = 0 ; i < sz - 6 ; i ++ ) {
             now.pop() ;
         }
         settagList(now);
@@ -21,12 +22,81 @@ export default function FooterArea() {
         fetchdata();
     }, []);
 
+
     const navigate = useNavigate();
     const handleClick = async ( tagIid ) =>{
         navigate('/tagProductList',{state:{id:  tagIid }});
     }
   return (
-<div id='footer'>
+         <div className='Footer'>
+            <div className='Footer_box'>
+                <div className='Footer_logobox'>
+                     <div className='FooterLogo_img'>
+                         <img src="images/eRentalLogoWhite.png" alt="eRentalLogo" />
+                        <div className='Footer_Logo_icon'>
+                          <a href="https://www.facebook.com/erentals.in" target="_blank"><FacebookIcon style={{fontSize:"35px"}}></FacebookIcon></a>
+                          <a href="https://www.youtube.com/channel/UC6zM6tvtMNeBqZ9yLKs36qQ" target="_blank"><YouTubeIcon  style={{fontSize:"35px"}}></YouTubeIcon></a>
+                          <a href="https://www.instagram.com/erentalshnd/" target="_blank"><InstagramIcon style={{fontSize:"35px"}}></InstagramIcon></a>
+                          <a href="https://www.linkedin.com/company/erentals/" target="_blank"><LinkedInIcon style={{fontSize:"35px"}}></LinkedInIcon></a>
+                          <a href="https://wa.me/918652348165?text=" target="_blank"><WhatsAppIcon style={{fontSize:"35px"}}></WhatsAppIcon></a>
+                        </div>
+                     </div>
+                </div>
+                <div className='Footer_Service'>
+                     <div className='Footer_thead'>
+                        <div className='Footer_Tags FooterTageafter'>
+                              <h6 className='Footer_tags_head'>Tags</h6>
+                              <ul>
+                                {tagList.map((tag, index) =>
+                                    <li key={index}><Link to="/tagProductList" onClick= {() => handleClick(tag.id )}>{tag.name}</Link></li>
+                                )}
+                              </ul>
+                        </div>
+                        <div className='Footer_Tags FooterQuickLinks'>
+                              <h6 className='Footer_tags_head'>Quick Links</h6>
+                              <ul>
+                                <li><Link to="/">Home</Link></li>
+                                <li><Link to="/myaccount/ProfileInformation">My Account</Link></li>
+                                <li><Link to="/cart">Shopping Cart</Link></li>
+                                <li><Link to="/cart">Checkout</Link></li>
+                                <li><Link to="/myaccount/Orders">Order History</Link></li>
+                                <li><Link Link to="/locations">Our Locations</Link></li>
+                              </ul>
+                        </div>
+                        <div className='Footer_Tags FooterCoutomer'>
+                              <h6 className='Footer_tags_head'>Customer Service</h6>
+                              <ul>
+                                <li><Link to="/contact">Contact Us</Link></li>
+                                <li><Link to="/documentrequired">Return Policy</Link></li>
+                                <li><Link to="/privacyPolicy">Privacy Policy</Link></li>
+                                <li><Link to="/termsAndConditions">Term & Conditions</Link></li>
+                                <li><Link to="/paymentPolicy">Payment Policy</Link></li>
+                                <li><Link to="/aboutUs">About Us</Link></li>
+                              </ul>
+                        </div>
+                     </div>
+
+                     <div className='Footer_ContactBox'>
+                            <div className='Footer_ContactBoxContent'>
+                                 <h3>Subscribe to Our Newsletter</h3>
+                                 <p>Monthly Digest of what’s new and exciting from us.</p>
+                                 <div className='Footer_input'>
+                                  <input type='text' placeholder='Email address'/>
+                                  <button className='Footer_input_btn'><ArrowForwardIcon style={{fontSize:"54px", color:"D3D3D3"}}></ArrowForwardIcon></button>
+                                 </div>
+                            </div>
+                     </div>
+                </div>
+            </div>
+            <hr></hr>
+            <div className='Footer_text_last'>© 2022 All rights reserved. eRentalshop</div>
+         </div>
+  )
+}
+
+
+
+/* <div id='footer'>
 <div className="bg-secondary">
 <div className="container text-light ">
   <footer className="py-5 ">
@@ -128,6 +198,4 @@ export default function FooterArea() {
   </footer>
 </div>
 </div>
-</div>
-  )
-}
+</div> */

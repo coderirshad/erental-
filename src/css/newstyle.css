@@ -1,0 +1,1218 @@
+
+:root {
+    --bgwhite: #ffffff;
+    --textcolor: #222222;
+    --navtextcolor: #666666;
+    --honecolor:#003459;
+    --pcolor:#737373;
+    --navwordcolor:#666666;
+    --background-color: #F3F9FB;
+    
+  }
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    font-size: 62.5% !important;
+  }
+
+  ::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+  }
+
+  ::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+  }
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+body {
+    font-family: 'Roboto', sans-serif !important;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    
+  }
+
+  h1, h1 a {
+    font-size: 3.2rem;
+  }
+
+  h3, h3 a {
+    font-size: 1.6rem !important;
+  }
+
+  h6, h6 a {
+    font-size: 1.4rem !important;
+  }
+
+
+  p,
+  li,
+  a,
+  button {
+    font-size: 1.4rem !important;
+    font-family: 'Roboto', sans-serif !important; 
+  }
+
+a{
+    text-decoration: none !important;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.4rem !important;
+}
+
+a:hover,
+a:active,
+a:focus,
+button:hover,
+button:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+a,
+button {
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+  }
+
+.dCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dBetween{
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+}
+
+hr{
+    color: #EDEDED !important;
+    margin: 0 !important;
+    height: 2px;
+    opacity: 1 !important;
+      
+}
+  /* *______________________*
+
+      Component Name And Css
+  *__________________________* */
+/* _____________________________________________
+---------------------------------------------
+  1. UserNav
+  2. LogoArea
+  3. ContousrolledCarel
+  4. Service
+  5. HotDeals
+  6. CategorySlider
+  7. Feature Product (same css as Hot deat)
+  8. FullBanner
+  9. New Products (same css as Hot deat)
+  10. BestOffer (same css as Hot deat)
+  11. Top sold  (same css as Hot deat)
+  12. FontBlog
+  13. FooterArea
+  14. Checkout
+----------------------------------------------
+______________________________________________ */
+
+/* ______________________________
+            
+           1. UserNave
+------------------------------ */
+.usernav_bottom{
+    width: 100%;
+    height: 6.5rem !important;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.usernav_container{
+    width: 113rem;
+    background-color: var(--bgwhite);
+    margin: auto;
+}
+
+.usernav_start{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.usernav_display{
+    font-size: 1.6rem;
+    display: flex;
+    background-color: #003459;
+    color: var(--bgwhite);
+    padding: 1rem 2rem;
+    cursor: pointer;
+}
+
+/* cluster */
+
+.cluster_nav ul{
+    list-style: none;
+    margin-left: 1.3rem;
+}
+.cluster_nav ul li{
+    border-radius: 1.8rem;
+    margin-left: 1.3rem;
+    background: #F3F9FB;
+    color: #222222;
+    padding: 0.8rem 2rem;
+    
+}
+.cluster_nav ul li a{
+    font-size: 1.4rem !important;
+    font-weight: 400 !important;
+}
+
+
+/* ______________________________
+            
+           2. LogoArea
+------------------------------ */
+
+.Header{
+     height: 8.3rem;
+     width: 100%;
+     background-color: var(--bgwhite);
+}
+
+.Header .Header_nav{
+    width: 113rem;
+    background-color: var(--bgwhite);
+}
+
+.img_Logonav{
+    width: 15.5rem;
+    height: 7rem;
+}
+
+.img_Logonav img{
+    width: 100%;
+    height: 100%;
+}
+
+.input_nav_container{
+    position: relative;
+}
+
+.input_nav{
+    width: 58rem;
+    height: 4.8rem;
+    background: #F3F9FB;
+    outline: none;
+    font-size: 1.4rem;
+    border: 1px solid #F3F9FB;
+    border-radius: 1rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+.nav_log_search{
+    position: absolute;
+    left: 1rem;
+    top:1.3rem;
+    cursor: pointer;
+}
+.nav_log_menu{
+    position: absolute;
+    top:1.3rem;
+    right:1rem;
+    cursor: pointer;
+}
+.nav_quote_cart_component{
+    width: 25.4rem;
+    height: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quote_logo{
+    width: 2.3rem;
+    height: 2rem;
+}
+
+.cart_logo{
+    width: 2.3rem;
+    height: 2rem;
+}
+
+.quote_logotext{
+    margin-left: 0.5rem;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--navwordcolor);
+}
+
+.divider{
+    display: inline-block;
+    width: 0.1rem;
+    height: 2rem;
+    background: #D9D9D9;
+
+}
+
+/* ______________________________
+            
+        LogoArea Done
+------------------------------ */
+
+
+/* ______________________________
+            
+          4. ContousrolledCarel
+------------------------------ */
+
+.carousel .carousel-item {
+    height: 60vh;
+  }
+
+  .carousel-item img {
+    position: absolute;
+    /* object-fit: cover; */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* ______________________________
+            
+    4. ContousrolledCarel Done
+------------------------------ */
+
+/* ______________________________
+            
+          5. Service
+------------------------------ */
+.Service{
+    margin-top: 9rem;
+    margin-bottom: 3rem;
+}
+
+.service_width{
+    margin: auto;
+    width: 109rem;
+    height: 21.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.service_width .service_box{
+    height: 21.4rem;
+    width: 32.5rem;
+    background: #FCFCFC;
+    padding: 1.7rem;
+    text-align: center;
+    box-shadow: 0 13px 19px rgb(0 0 0 / 7%);
+}
+
+.service_width .service_box h5{
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    color: #252B42;
+}
+
+.service_width .service_box p{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #737373;
+    margin-top: 1rem;
+}
+
+
+/* ______________________________
+            
+           6. HotDeals
+------------------------------ */
+
+.Hotdeals{
+    margin-top: 9rem;
+}
+.Hotdeals_width{
+   width: 113rem;
+   margin: auto;
+}
+
+.hotdeals_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hotdeals_header h1{
+    font-weight: 600;
+    font-size: 3.2rem;
+    color: #003459;
+    margin-bottom: 0.8rem;
+}
+
+.Hotdeal_after h1::after{
+    content: "";
+    display: block;
+    position: relative;
+    width: 15rem;
+    height: 0.3rem !important;
+    background: #003459;
+    top:1.1rem;
+}
+
+.hotdeals_view{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hotdeals_header p{
+    font-weight: 400;
+    color: #222222;
+    font-size: 2rem !important;
+    margin: 0;
+    padding: 0;
+}
+
+.Hotdeals_item_box{
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap !important;
+}
+.Hotdeals_item{
+    color:#CECECE;
+    width: 20rem;
+    height: 35rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid #CECECE;
+    margin-top: 3rem;
+    transition: 0.3s all ease-in-out;
+}
+.Hotdeals_item:hover{
+     border: 1px solid #003459;
+     box-shadow: 0 6px 13px rgba(0, 0, 0 / 5%);
+}
+
+.Hotdeal_image{
+    height: 19.5rem;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.Hotdeal_image img{
+    width: 100%;
+    height: 100%;
+}
+
+.Hotdeal_image_discount{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    padding-top: 0.4rem;
+    padding-left: 0.7rem;
+    background: var(--honecolor);
+    color: #ffffff;
+    z-index: 4000;
+    font-size: 1.2rem !important;
+    border-bottom-left-radius: 1rem;
+}
+
+.Hotdeal_content{
+    padding: 1rem;
+    color:#222222;
+}
+.Hotdeal_content a{
+    color:#222222;
+}
+.Hotdeal_content h3{
+    font-size: 1.4rem !important;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.Hotdeal_rating{
+    display: flex;
+    align-items:center;
+    justify-content: flex-start;
+    margin-top: 0.7rem;
+}
+
+.Hotdeal_price h5{
+    margin-top: 0.7rem !important;
+    font-size: 1.3rem !important;
+    color: #222222;
+}
+
+.Hotdeal_cart_quote{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #CECECE;
+}
+
+.Hotdeal_quote_image{
+    color: #666666;
+    border-right: 1px solid #CECECE;
+    width: 10.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
+.Hotdeal_quote_image img{
+    height: 1.4rem;
+    width: 1.6rem;
+}
+
+.Hotdeal_cart_image{
+    color: #666666;
+    width: 10.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.Hotdeal_cart_image img{
+    height: 1.4rem;
+    width: 1.6rem;
+}
+
+.Hotdeal_addrental{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background-color: #003459;
+    padding: 0.5rem 0;
+    overflow: hidden;
+    border-bottom-left-radius:1rem;
+    border-bottom-right-radius: 1rem;
+    cursor: pointer;
+}
+
+.Hotdeal_addrental a{
+    color: #ffffff;
+}
+
+
+
+/* ______________________________
+            
+          7. Category
+     Hot deal css used here     
+------------------------------ */
+
+.Category_after h1::after{
+    content: "";
+    display: block;
+    position: relative;
+    width: 23rem;
+    height: 0.3rem !important;
+    background: #003459;
+    top:1.1rem;
+}
+
+.Category_itmes{
+    color:#CECECE;
+    width: 19.9rem;
+    height: 24rem;
+    border-radius: 1.3rem;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid #CECECE;
+    margin-top: 3rem;
+    transition: 0.3s all ease-in-out;
+}
+.Category_itmes:hover{
+    border: 1px solid #003459;
+    box-shadow: 0 12px 13px rgba(0, 0, 0 / 5%);
+}
+
+.category_image{
+    height: 19rem;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.category_image img{
+    width: 100%;
+    height: 100%;
+}
+
+.category_name{
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;  
+}
+
+.category_name a{
+    font-size: 1.4rem;
+    font-weight: 600 !important;
+    color:#222222 !important; 
+}
+
+.Hotdeals_width{
+   width: 113rem;
+   margin: auto;
+} 
+
+
+/* ______________________________
+            
+          7. FullBanner    
+------------------------------ */
+
+.full_banner{
+    margin-top: 9rem;
+}
+.full_bannerWidht{
+    width: 113rem;
+    margin: auto;
+    background: #F5F5F5;
+    height: 20rem;
+}
+
+/* ______________________________
+            
+          8. NewProduct
+     Hot deal css used here     
+------------------------------ */
+
+.NewProduct_after h1::after{
+    content: "";
+    display: block;
+    position: relative;
+    width: 21.5rem;
+    height: 0.3rem !important;
+    background: #003459;
+    top:1.1rem;
+}
+
+/* ______________________________
+            
+          8. BestOffer
+     Hot deal css used here     
+------------------------------ */
+
+.Bestdeal_after h1::after{
+    content: "";
+    display: block;
+    position: relative;
+    width: 16.5rem;
+    height: 0.3rem !important;
+    background: #003459;
+    top:1.1rem;
+}
+
+
+/* ______________________________
+            
+          8. BestOffer
+     Hot deal css used here     
+------------------------------ */
+
+.Topsold_after h1::after{
+    content: "";
+    display: block;
+    position: relative;
+    width: 13.7rem;
+    height: 0.3rem !important;
+    background: #003459;
+    top:1.1rem;
+}
+
+
+/* ______________________________
+            
+          12. FontBlog
+     Hot deal css used here     
+------------------------------ */
+
+.FontBlog_after h1::after{
+    content: "";
+    display: block;
+    position: relative;
+    width: 25rem;
+    height: 0.3rem !important;
+    background: #003459;
+    top:1.1rem;
+}
+
+.FontBlog_item{
+    height: 33.4rem;
+    width: 35rem;
+    margin-top: 3rem;
+    margin-bottom: 12rem;
+}
+
+.FontBlog_img{
+    height: 21.4rem;
+    width: 35rem;
+    cursor: pointer;
+}
+
+.FontBlog_img a img{
+    width: 100%;
+    height: 100%;
+}
+
+.fontBlog_Namedate{
+    padding-top: 2.2rem;
+    width: 35rem;
+    display: flex;
+}
+
+.FontBlog_userLogo{
+    display: flex;
+    align-items: center;
+}
+
+.FontBlog_date{
+    margin-left: 2.5rem;
+    display: flex;
+    align-items: center;
+  
+}
+
+.FontBlog_userName{
+    color: #707070;
+    font-size: 1.4rem;
+    margin-left: 0.5rem;
+    font-weight: 600;
+}
+
+.FontBlog_userdate{
+    color: #707070;
+    font-size: 1.4rem;
+    margin-left: 0.5rem;
+    font-weight: 600;
+}
+.FontBlog_Content{
+    margin-top: 1rem;
+    height: 5.6rem;
+}
+.FontBlog_Content a{
+    font-size: 1.6rem !important;
+    font-weight: 700;
+    color: #121212;
+}
+
+/* ______________________________
+            
+          8. Footer     
+------------------------------ */
+
+.Footer{
+    width: 100%;
+    height: 70.9rem;
+    background-color: #003459;
+    color: #FFFFFF !important;
+    padding: 11rem 11rem 8rem 11rem;
+    margin: auto;
+}
+
+.Footer_box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.Footer_logobox{
+    width: 32.8rem;
+    height: 32.8rem;
+}
+
+.Footer_Service{
+    width: 71rem;
+    height: 38.8rem;
+}
+
+.Footer_thead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Footer_Tags h6{
+    font-size: 2.5rem !important;
+    margin-bottom: 3.5rem;
+}
+
+.FooterTageafter h6::after{
+    content: "";
+    display: block;
+    position: relative;
+    width: 6rem;
+    height: 0.3rem !important;
+    background: #FFFFFF;
+    top:1.1rem;
+}
+
+.Footer_Tags ul{
+    padding-left: 2.3rem;
+}
+
+.Footer_Tags ul li{
+    margin-top: 1.3rem !important;
+    font-size: 1.6rem !important;
+    color: #ffffff;
+}
+
+.Footer_Tags ul li a{
+    font-size: 1.6rem !important;
+    color: #ffffff;
+}
+
+.FooterQuickLinks h6::after{
+    content: "";
+    display: block;
+    position: relative;
+    width: 14rem;
+    height: 0.3rem !important;
+    background: #FFFFFF;
+    top:1.1rem;
+}
+
+.FooterCoutomer h6::after{
+    content: "";
+    display: block;
+    position: relative;
+    width: 20rem;
+    height: 0.3rem !important;
+    background: #FFFFFF;
+    top:1.1rem;
+}
+.Footer_ContactBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Footer_ContactBoxContent{
+    width: 55rem;
+    height: 12.6rem;
+    margin-top: 7rem;
+    text-align: center;
+}
+
+.Footer_ContactBoxContent h3{
+    font-size: 2rem !important;
+    color:#D3D3D3;
+    font-weight: 600;
+}
+
+.Footer_ContactBoxContent p{
+    font-size: 1.8rem !important;
+    color:#D3D3D3;
+    margin-top: 0.8rem;
+}
+.Footer_input_btn{
+    padding: 0 20px;
+    outline: none;
+    background: #ffffff;
+    border-end-end-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border: none;
+    position: relative;
+    bottom: 1px;
+}
+
+.Footer_input input{
+    padding: 13px 20px;
+    width: 40rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    outline: none;
+    border: none;
+    font-size: 1.8rem;
+
+}
+
+.Footer_last_text{
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    background-color: #003459;
+    font-size: 2rem !important;
+}
+
+.Footer_text_last{
+    text-align: center;
+    margin-top: 2rem;
+    height: 3rem;
+    margin-bottom: 3rem;
+    font-size: 2rem !important;
+}
+
+.FooterLogo_img{
+    width: 32rem;
+    height: 20rem;
+    position: relative;
+}
+.FooterLogo_img img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 8rem;
+}
+
+.Footer_Logo_icon{
+    display: flex;
+    padding-top: 10rem;
+}
+
+.Footer_Logo_icon a{
+    margin-left: 1.5rem;
+    color: #ffffff;
+}
+
+/* ______________________________
+            
+          14. Checkout     
+------------------------------ */
+.Checkout{
+    width: 100%;
+    color: #FFFFFF !important;
+    background-color: #003459;
+}
+.Checkout_header{
+    width: 113rem;
+    background-color: #003459;
+    margin: auto;
+}
+
+.Checkout_header h1{
+    font-size: 2rem !important;
+    color: #FFFFFF;
+    padding-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+.Checkout_header_content{
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.8rem;
+    cursor: pointer;
+}
+
+.Chockout_product{
+    width: 100%;
+}
+
+.Chockout_product_box{
+    width: 113rem;
+    margin: 12rem auto 9rem auto;
+    padding: 1.8rem;
+    background-color: #FAFAFA;
+}
+
+.Checkout_product_table{
+    width: 100%;
+    font-size: 1.8rem;
+    
+}
+
+.Checkout_product_table thead{
+    border-bottom: 1px solid #DEDEDE;
+    padding-bottom: 2.5rem;
+    font-weight: 600;
+    color: #151515;
+}
+.Checkout_product_table thead td{
+    padding: 0 0 1rem 0;
+}
+
+.Checkout_product_table tbody td{
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+    color: #151515;
+    font-size: 1.8rem;
+}
+.Checkout_product_imgbox{
+    display: flex;
+    align-items: center;
+}
+.checkout_product_img{
+    width: 9rem;
+    height: 10rem;
+}
+
+.checkout_product_img img{
+    width: 100%;
+    height: 100%;
+}
+.checkout_product_img_content{
+    font-size: 1.8rem;
+    margin-left: 1rem;
+}
+.checkout_product_img_content h3{
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.checkout_product_img_content p{
+    color: #A1A1A1;
+    font-size: 1.6rem;
+}
+
+.Checkout_product_day input{
+    border: none;
+    border-bottom: 1px solid #151515;
+    width: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: #FAFAFA;
+}
+
+.Checkout_product_day input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  .Checkout_product_day button{
+    padding: 0.2rem 0.5rem;
+    outline: none;
+    border: 1px solid #151515;  
+  }
+
+  .Checkout_address_paymen{
+    width: 100%;
+  }
+
+  .Checkout_address_paymen_box{
+    width: 113rem;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10rem;
+  }
+
+  .Checkout_address{
+    width: 64rem;
+  }
+
+  .Checkout_payment{
+    width: 43rem;
+    max-height: 72.5rem;
+    padding: 3rem;
+    background:#FAFAFA;
+  }
+  .Checkout_Heder{
+    font-size: 2.8rem !important;
+    color: #151515;
+    font-weight: 600;
+  }
+  .Checkout_header_content_{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .Checkout_header_content_ h3{
+    color: #444444;
+    font-size: 2.2rem !important;
+    font-weight: 600;
+  }
+
+  .Checkout_header_content_ button{
+    padding: 1rem 3rem;
+    outline: none;
+    border: none;
+    background: #003459;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    border-radius: 0.3rem;
+  }
+
+  .Checkout_address_box{
+    width: 100;
+    border: 1px solid #BABABA;
+    padding: 3rem 3rem 0 3rem;
+    margin-top: 2.5rem;
+    border-radius: 0.3rem;
+  }
+
+  .Checkout_address_box_mini{
+    border: 1px solid #BABABA;
+    padding: 2.5rem 2rem;
+    border-radius: 0.3rem;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+  }
+
+  .Checkout_address_box_mini p{
+    font-size: 1.8rem !important;
+    color: #434343;
+  }
+
+  .Checkout_address_box_mini div{
+    position: relative;
+    top: 1rem;
+  }
+
+  .Checkout_address_box_mini:hover{
+    border:1px solid #003459;
+    background: rgba(0, 52, 89, 0.05);
+  }
+  .Checkout_address_box_mini p span{
+    font-weight: 600;
+    color: #434343;
+  }
+
+  .Checkout_again_address{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .Checkout_again_address input{
+    margin-right: 2rem;
+    padding: 1rem;
+  }
+
+  .Checkout_map_location h1{
+    font-size: 2.4rem;
+    color: #000000;
+    font-weight: 600;
+    margin-bottom: 3rem;
+  }
+
+  .Checkout_map_location_input input{
+    width: 70%;
+    height: 6rem;
+    padding-left: 2rem;
+    font-size: 1.8rem;
+  }
+
+  .Checkout_map_location_input button{
+    padding: 1.9rem 4.5rem;
+    outline: none;
+    border: none;
+    background: #003459;
+    color:#FFFFFF;
+    font-size: 1.6rem !important;
+  }
+
+  .Checkout_map_location p{
+    margin-top: 5rem;
+    font-size: 1.8rem !important;
+  }
+
+  .Checkout_payment h1{
+    color: #000000;
+    font-size: 2.4rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .Checkout_payment_price{
+    margin-top: 4rem;
+  }
+  .Checkout_payment_price div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
+
+  .Checkout_payment_price div p{
+    font-size: 1.9rem !important;
+    color:#151515 !important;
+  }
+
+  .Checkout_Payment_metod{
+    margin-top: 2.5rem;
+  }
+
+  .Checkout_Google_pay{
+    width: 100%;
+    height: 7rem;
+    border-radius: 0.5rem;
+    border: 1px solid #DADEE3;
+    background: #FAFAFA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-bottom: 2rem;
+  }
+  .Checkout_Google_pay_box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Checkout_Flex_icon{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+  }
+
+  .Checkout_Flex_icon div{
+    margin-right: 2rem;
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .Checkout_Flex_icon div img{
+    width: 100%;
+    height: 100%;
+  }
+
+  .Checkout_button_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Checkout_button{
+      margin-top: 2rem;
+      padding: 1.5rem 6.7rem;
+      border: none;
+      outline: none;
+      background: #003459;
+      color: #FFFFFF;
+  }

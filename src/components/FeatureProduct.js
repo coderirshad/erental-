@@ -6,6 +6,8 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Link } from 'react-router-dom';
 import GetAuthorization from './GetAuthorization';
 import { useParams } from "react-router-dom";
+import HotDealBox from './HotDealBox';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
  const FeatureProduct = ({ login }) => {
     const [quantity, setquantity] = useState(1)
@@ -15,14 +17,10 @@ import { useParams } from "react-router-dom";
     const [day, setday] = useState(1)
     const [id, setId] = useState("")
     const [service_id, setServiceid] = useState("without_service");
-          console.clear();
-          console.log(id)
 
     const navigate = useNavigate();
 
     const AddToCart = async (id) => {
-        console.clear()
-        console.log(id)
         if (login) {
             const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
                 method: "POST",
@@ -56,8 +54,6 @@ import { useParams } from "react-router-dom";
     }
 
     const AddToQuote = async (id) => {
-        console.clear()
-        console.log(id)
         if (login) {
             const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
                 method: "POST",
@@ -109,7 +105,37 @@ import { useParams } from "react-router-dom";
 
 
   return (
-    <section className="product-area">
+           <div className='Hotdeals'>
+                <div className='Hotdeals_width'>
+                    <div className='hotdeals_header Hotdeal_after'>
+                       <h1>Feature Products</h1>
+                       <div className='hotdeals_view'>
+                         <p>View All</p>
+                         <NavigateNextIcon style={{fontSize:"30px"}}></NavigateNextIcon>
+                       </div>
+                    </div>
+                    <hr></hr>
+                    <div className='Hotdeals_item_box'>
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />   
+                    </div>
+                </div>
+            </div>
+       )
+   }
+
+
+
+
+     {/* <section className="product-area">
         <div className="container-fluid" >
             <div className="ftr-row" style={{width:"100%"}}>
         <div className="col-md-8" style={{width:"100%"}}>
@@ -212,8 +238,7 @@ import { useParams } from "react-router-dom";
         </div>
             </div>
         </div>
-    </section>
-  );
-}
+    </section> */}
+
 
 export default FeatureProduct;

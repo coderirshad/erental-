@@ -1,5 +1,5 @@
 import React from 'react'
-import "../StaticHome.css"
+// import "../StaticHome.css"
 import Service from './Service'
 import AboutUs from './AboutUs'
 import Contact from './Contact'

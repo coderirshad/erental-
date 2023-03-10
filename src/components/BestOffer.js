@@ -6,6 +6,9 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 import { Link } from "react-router-dom";
+import HotDealBox from './HotDealBox';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+
 const BestOffer = ( ) =>{
     const [newProduct, setnewProduct] = useState([]);
     const [hotOffer, sethotOffer] = useState([]);
@@ -17,7 +20,6 @@ const BestOffer = ( ) =>{
         })
         .then((data)=>{       
             setnewProduct(data);
-            console.log("datanewproduct", data);
         }
         )
 
@@ -43,7 +45,37 @@ const BestOffer = ( ) =>{
       fetchData();    
     }, [])
     return (
-        <section className="best-ofr">
+        <div className='Hotdeals'>
+            <div className='Hotdeals_width'>
+                <div className='hotdeals_header Bestdeal_after'>
+                   <h1>Best Deals</h1>
+                <div className='hotdeals_view'>
+                    <p>View All</p>
+                    <NavigateNextIcon style={{fontSize:"30px"}}></NavigateNextIcon>
+                </div>
+                </div>
+                <hr></hr>
+                <div className='Hotdeals_item_box'>
+                <HotDealBox />
+                <HotDealBox />
+                <HotDealBox />
+                <HotDealBox />
+                <HotDealBox />
+                <HotDealBox />
+                <HotDealBox />
+                <HotDealBox />
+                <HotDealBox />
+                <HotDealBox />   
+                </div>
+            </div>
+      </div>
+    )
+}
+export default BestOffer;
+
+
+
+{/* <section className="best-ofr">
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-4">
@@ -149,7 +181,4 @@ const BestOffer = ( ) =>{
                     </div>
                 </div>
             </div>
-        </section>
-    )
-}
-export default BestOffer;
+        </section> */}

@@ -1,4 +1,5 @@
-/*===========================================
+
+/* ===========================================
 
 Template Name: XeMart - Ecommerce Template
 Author: Md Tahmidur Rahman
@@ -73,14 +74,14 @@ html {
   text-shadow: none;
 }
 
-hr {
+/* hr {
   display: block;
   height: 1px;
   border: 0;
   border-top: 1px solid #e5e5e5;
   margin: 1em 0;
   padding: 0;
-}
+} */
 
 audio,
 canvas,

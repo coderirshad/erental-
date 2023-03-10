@@ -8,6 +8,8 @@ import BestOffer from "./BestOffer";
 import Service from "./Service";
 import CategorySlider from "./CategorySlider";
 import { CheckAuth } from "./CheckAuth";
+import NewProduct from "./NewProduct";
+import TopSold from "./TopSold";
 
 
 
@@ -22,7 +24,9 @@ const UserHome = ()=>{
             <CategorySlider></CategorySlider>
             <FeatureProduct login={login}></FeatureProduct> 
             <FullBanner></FullBanner>
+            <NewProduct />
             <BestOffer></BestOffer>
+            <TopSold />
             <FrontBlog></FrontBlog>                 
         </div>
      )

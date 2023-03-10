@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import GetAuthorization from './GetAuthorization';
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import Rating from '@mui/material/Rating';
+import HotDealBox from './HotDealBox';
 
 const HotDeals = ({login}) => {
     const [product, setproduct] = useState([]); 
@@ -16,11 +19,9 @@ const HotDeals = ({login}) => {
     const [id, setId] = useState("")
     const [service_id, setServiceid] = useState("without_service");
     const navigate = useNavigate();
-    
+    const [value, setValue] = useState(4)
 
     const AddToCart = async (id) => {
-        console.clear()
-        console.log(id)
         if (login) {
             const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
                 method: "POST",
@@ -54,8 +55,7 @@ const HotDeals = ({login}) => {
     }
 
     const AddToQuote = async (id) => {
-        console.clear()
-        console.log(id)
+    
         if (login) {
             const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
                 method: "POST",
@@ -100,9 +100,37 @@ const HotDeals = ({login}) => {
         fetchData();
     },[])
   return (
-    <section className="product-area">
+            <div className='Hotdeals'>
+                <div className='Hotdeals_width'>
+                    <div className='hotdeals_header Hotdeal_after'>
+                       <h1>Hot Deals</h1>
+                       <div className='hotdeals_view'>
+                         <p>View All</p>
+                         <NavigateNextIcon style={{fontSize:"30px"}}></NavigateNextIcon>
+                       </div>
+                    </div>
+                    <hr></hr>
+                    <div className='Hotdeals_item_box'>
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />
+                       <HotDealBox />   
+                    </div>
+                </div>
+            </div>
+        )
+     }
+
+
+     {/*  <section className="product-area">
         <div className="container-fluid" >
-            <div className="ftr-row" style={{width:"100%"}}>
+          <div className="ftr-row" style={{width:"100%"}}> 
         <div className="col-md-8" style={{width:"100%"}}>
             <div className="ftr-row" >
                 <div className="col-md-12 padding-fix-l20" >
@@ -204,7 +232,6 @@ const HotDeals = ({login}) => {
             </div>
         </div>
     </section>
-  )
-}
+    */}
 
 export default HotDeals;

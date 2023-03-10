@@ -17,16 +17,14 @@ export default function Cluster() {
         navigate('/tagProductList',{state:{id:  tagIid }});
     }
     return (
-        <div className='py-md-2 overflowHidden'>
-            <div>
-                <ul className="list-unstyled list-inline d-flex justify-conter-between align-item-center">
-                    {tagList.map(( tag ) => (
-                        <li className = "py-3 px-2" onClick= {() => handleClick( tag.id ) } >
-                            <a style={{cursor:"pointer"}} id = 'spacing'><strong>{tag.name}</strong></a>
+            <div className='cluster_nav'> 
+                <ul className=" d-flex justify-conter-between align-item-center">
+                    {tagList.map(( tag, index ) => (
+                        <li key={index} onClick= {() => handleClick( tag.id ) } >
+                            <Link>{tag.name}</Link>
                         </li>
                     ))}
                 </ul>
             </div>
-        </div>
   )
 }

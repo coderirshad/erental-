@@ -4,7 +4,8 @@ import OwlCarousel from 'react-owl-carousel';
 
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 
-import 'owl.carousel/dist/assets/owl.theme.default.css';  
+import 'owl.carousel/dist/assets/owl.theme.default.css'; 
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'; 
 import { Link } from 'react-router-dom';
 
  function CategorySlider() {
@@ -32,7 +33,96 @@ import { Link } from 'react-router-dom';
     }
 
   return (
-    <section className="product-area">
+        <div className='Hotdeals'>
+            <div className='Hotdeals_width'>
+                <div className='hotdeals_header Category_after'>
+                <h1>Top Categories</h1>
+                <div className='hotdeals_view'>
+                    <p>View All</p>
+                    <NavigateNextIcon style={{fontSize:"30px"}}></NavigateNextIcon>
+                </div>
+                </div>
+                <hr></hr>
+                <div className='Hotdeals_item_box'>
+
+
+                   <div className='Category_itmes'>
+                     <Link>
+                        <div className='category_image'>
+                            <img  src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='category_image'/>
+                        </div>
+                     </Link>
+                     <div className='category_name'>
+                        <Link>
+                           Home Appliances
+                        </Link>
+                     </div>
+                   </div>
+
+                   <div className='Category_itmes'>
+                     <Link>
+                        <div className='category_image'>
+                            <img  src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='category_image'/>
+                        </div>
+                     </Link>
+                     <div className='category_name'>
+                        <Link>
+                           Home Appliances
+                        </Link>
+                     </div>
+                   </div>
+
+                   <div className='Category_itmes'>
+                     <Link>
+                        <div className='category_image'>
+                            <img  src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='category_image'/>
+                        </div>
+                     </Link>
+                     <div className='category_name'>
+                        <Link>
+                           Home Appliances
+                        </Link>
+                     </div>
+                   </div>
+
+                   <div className='Category_itmes'>
+                     <Link>
+                        <div className='category_image'>
+                            <img  src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='category_image'/>
+                        </div>
+                     </Link>
+                     <div className='category_name'>
+                        <Link>
+                           Home Appliances
+                        </Link>
+                     </div>
+                   </div>
+
+                   <div className='Category_itmes'>
+                     <Link>
+                        <div className='category_image'>
+                            <img  src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='category_image'/>
+                        </div>
+                     </Link>
+                     <div className='category_name'>
+                        <Link>
+                           Home Appliances
+                        </Link>
+                     </div>
+                   </div>
+
+
+                </div>
+            </div>
+        </div>
+     );
+    }
+
+
+
+
+
+   /* <section className="product-area">
         <div className="container-fluid" >
             <div className="ftr-row" style={{width:"100%"}}>
         <div className="col-md-8" style={{width:"100%"}}>
@@ -70,7 +160,7 @@ import { Link } from 'react-router-dom';
                                         <button className = "button1" onClick= {() => handleClick1 ( data ) } >
                                             <a>
                                             <img class = "productImage"src= {data.image}></img>
-                                            <h4>{data.name}</h4>
+                                            <h4>{data.name} hello</h4>
                                             </a>                                                      
                                         </button>
                                     </div>
@@ -109,8 +199,7 @@ import { Link } from 'react-router-dom';
         </div>
             </div>
         </div>
-    </section>
-  );
-}
+     </section> */
+ 
 
 export default CategorySlider;
