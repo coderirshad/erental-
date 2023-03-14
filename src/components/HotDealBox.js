@@ -116,7 +116,7 @@ const HotDealBox = ({data, login}) => {
                                 </div>
                            </div>
                            <div className='Hotdeal_addrental'>
-                              <Link>
+                              <Link to='/checkout'>
                                  <div>Add To Rental</div>
                               </Link>
                            </div>

@@ -4,17 +4,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import GetAuthorization from './GetAuthorization';
 import { useNavigate } from 'react-router-dom'
-import SimilarProducts from './SimilarProducts';
-import SuggestProduct from './SuggestProduct';
 import Description from './Description ';
 import PathHeader from './PathHeader';
+import SuggestProduct from './SuggestProduct';
 import {
     FacebookShareButton,
     LinkedinShareButton,
@@ -22,7 +20,7 @@ import {
     WhatsappShareButton,
   } from "react-share";
   
-import { width } from '@mui/system';
+import SimilarProducts from './SimilarProducts';
 const SingalProduct = ({ login }) => {
     const params = useParams();
     const id = params.id;
@@ -395,50 +393,14 @@ const SingalProduct = ({ login }) => {
                                             </tr>
                                         </table>
                                     </div>
-                                    <div>
-                                    {/* {product.is_area_based ?
-                                       (
-                                        <div className='d-flex justify-content-around flex-column mb-2' style={{fontSize:"14px"}}>
-                                           <div>
-                                             <label className='text-secondary'>Length : </label>
-                                             <input type='text' onChange={(e) => setLength(e.target.value)} className='w-25 ml-2 mb-3' placeholder='Type In Meter' /> <label>{product.length_uniit} </label>
-                                           </div>
-                                           <div className='d-flex justify-content-center m-auto w-50 mb-1'>
-                                               <div>
-                                                    <label className='text-secondary'>Width : </label>
-                                                    <input type='text' onChange={(e) => setWidth(e.target.value)} className='w-50 ml-4'placeholder='Type In Meter'/> <label>{product.width_unit} </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                       )  :(
-                                        null
-                                       )  
-                                    } */}
-                                        {/* <div>
-                                            <select onChange={handlechnage} style={{marginLeft:"40%", marginBottom:"30px", fontsiz:"20px"}} className="form-select form-select-sm w-25" aria-label=".form-select-sm example">
-                                                {service.map((option) =>{
-                                                    return(
-                                                        <option value={option.id}>{option.name}</option>
-                                                    )
-                                                        
-                                                })}
-                                            </select>
-                                        </div> */}
-                                        <div className="pro-btns">
-                                            {/* <a onClick={() => AddToCart()} href='/cart' className="cart">Add To Cart</a>
-                                            <a onClick={() => AddToQuote()} className="cart bg-primary">Add To Quote</a> */}
-                                            {/* <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><FavoriteBorderIcon></FavoriteBorderIcon></a>
-                                            <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Compare"><FavoriteBorderIcon></FavoriteBorderIcon></a> */}
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                    {/* <SimilarProducts category={categoryList} login={login}></SimilarProducts> */}
+                    <SuggestProduct login={login}></SuggestProduct>
                 </div>
             </div>
             <Description />
-            {/* {useMemo(() => <SimilarProducts category={categoryList} login={login} />, [categoryList])} */}
+            {useMemo(() => <SimilarProducts category={categoryList} login={login} />, [categoryList])}
         </section>
 
     );

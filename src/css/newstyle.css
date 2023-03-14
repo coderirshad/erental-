@@ -464,6 +464,8 @@ ______________________________________________ */
     font-size: 1.4rem !important;
     font-weight: 600;
     cursor: pointer;
+    height: 1.7rem;
+    overflow: hidden;
 }
 
 .Hotdeal_rating{

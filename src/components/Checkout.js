@@ -13,7 +13,6 @@ export default function Checkout() {
  const navigate = useNavigate();
  const [payment, setPayment] = useState("")
  const [orderReview,setOrderReview]=useState({})
- const [cart,setcart]=useState([])
  const [paymentMethod,setPaymentMethod]=useState([])
  const [cartsummary, setcartsummary] = useState({})
  const [day, setDay] = useState();
@@ -34,16 +33,14 @@ export default function Checkout() {
                 color:'',
                 size:'',
                 day:Day,
-                length:"",
-                width: "",
+                length:'',
+                width: '',
             }
         )
     });
     const data = await response.json();
     setcartproduct(data.cart)
     setcartsummary(data); 
-    console.clear();
-    console.log("hello",data.cart)
 }
 const Increment = (id1,quantity,day,type) =>{
     if(type) day = day + 1;
@@ -88,7 +85,7 @@ const Decrement = (id1,quantity,day,type) =>{
     }).then((data)=>{
          setcartsummary(data);
          setOrderReview(data)
-         setcart(data.cart);     
+         setcartproduct(data.cart);     
     })
 
 }
@@ -137,7 +134,7 @@ const Decrement = (id1,quantity,day,type) =>{
     fetchData()
     fetchAddress()
     fetchDataCart();
-  }, [day, Quantity])
+  }, [])
 
  const [addresses, setAddresses] = useState( [] );
  const [Billingaddress , setBillingAddress] = useState( '' );
