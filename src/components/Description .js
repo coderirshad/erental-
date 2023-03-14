@@ -9,21 +9,21 @@ function Description (props) {
   
 
   return (
-    <div>
+    <div className='DescriptionContainer'>
       <hr style={{border:"2px solid silver", marginTop:"4rem", marginBottom:"2rem"}} />
-          <div className='Ds_div'>
-            <div className='Ds-div-container'>
+            <div className='Ds_div'>
+              <div className='Ds-div-container'>
                     <ul>
-                        <li><NavLink className={active ? 'active' :'inactive'}to="Discription">Discription </NavLink></li>
+                        <li className={active ? 'active' :'inactive'}><NavLink to="Discription">Discription </NavLink></li>
                         <li><NavLink to="Reviews">Reviews(0)</NavLink></li>
                         <li><NavLink to="Shipping">Question & Answer</NavLink></li>
                         <li><NavLink to="Delivery">shipping & delivery</NavLink></li>
                         <li><NavLink to="termandcondition">Terms & Conditions</NavLink></li>
-                        <li><NavLink to="ProductEnquiry">PRODUCT ENQUIRY</NavLink></li>
+                        <li><NavLink to="ProductEnquiry">Product Enquiry</NavLink></li>
                     </ul>
-                </div>
+              </div>
             </div>
-            <Outlet />
+            <Outlet/>
             <hr style={{marginTop:"4rem", border:"2px solid silver"}}/>
     </div>
   )

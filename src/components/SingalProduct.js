@@ -1,15 +1,28 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
+import OwlCarousel from 'react-owl-carousel';  
+import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import GetAuthorization from './GetAuthorization';
 import { useNavigate } from 'react-router-dom'
 import SimilarProducts from './SimilarProducts';
 import SuggestProduct from './SuggestProduct';
 import Description from './Description ';
+import PathHeader from './PathHeader';
+import {
+    FacebookShareButton,
+    LinkedinShareButton,
+    TwitterShareButton,
+    WhatsappShareButton,
+  } from "react-share";
+  
+import { width } from '@mui/system';
 const SingalProduct = ({ login }) => {
     const params = useParams();
     const id = params.id;
@@ -25,9 +38,54 @@ const SingalProduct = ({ login }) => {
     const [service_id, setServiceid] = useState("without_service");
     const [dayprice, setDayPrice] = useState([])
     const [flaglenght, setFalglength] = useState(true);
-    const [Length, setLength] = useState("");
-    const [Width, setWidth] = useState("");
+    const [Length, setLength] = useState("26");
+    const [Width, setWidth] = useState("26");
+    const [state, setState] = useState({activeService:"Without Service",activeButton:"Rental"})
+
+    const handleActiveService = (value) => {
+        setState(prev=>({
+            ...prev,
+            activeService:value
+        }))
+    }
+
+    const handleActiveButton = (value) => {
+        setState(prev=>({
+            ...prev,
+            activeButton:value
+        }))
+    }
+    const options = {
+        margin: 30,
+        // loop: true,
+        responsiveClass: true,
+        // autoplay: true,
+        // autoplayHoverPause: true,
+        smartSpeed: 500,
+        // nav:true,
+        // navText:[
+        //     (imageList.map((imageLink)=>{
+        //         return (
+        //             `<img src=${imageLink} style={{width:'100px',height:'100px'}}></img>`
+        //         )
+        //     }))
+        // ],
+    };
     const navigate = useNavigate();
+    const IncrementWidth = () => {
+        setWidth(parseInt(Width) + 1);
+    }
+    const DecrementWidth = () => {
+        if (Width > 1) setWidth(parseInt(Width) - 1);
+        else alert("Sorry You can't select less than 0!")
+    }
+    const IncrementLength = () => {
+        setLength(parseInt(Length) + 1);
+    }
+    const DecrementLength = () => {
+        if (Length > 1) setLength(parseInt(Length) - 1);
+        else alert("Sorry You can't select less than 0!")
+    }
     const IncrementQuantity = () => {
         setquantity(parseInt(quantity) + 1);
     }
@@ -43,6 +101,11 @@ const SingalProduct = ({ login }) => {
         else alert("Sorry You can't select less than 0!")
     }
     const AddToCart = async () => {
+        
+        setState(prev=>({
+            ...prev,
+            activeButton:'Cart'
+        }))
         if (login) {
             await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
                 method: "POST",
@@ -74,8 +137,12 @@ const SingalProduct = ({ login }) => {
         }
 
     }
-
     const AddToQuote = async () => {
+        setState(prev=>({
+            ...prev,
+            activeButton:'Quote'
+        }))
+
         if (login) {
             await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
                 method: "POST",
@@ -106,6 +173,12 @@ const SingalProduct = ({ login }) => {
             navigate('/login')
         }
 
+    }
+    const AddToRental = () => {
+        setState(prev=>({
+            ...prev,
+            activeButton:'Rental'
+        }))
     }
 
     const fetchData = () => {
@@ -142,8 +215,9 @@ const SingalProduct = ({ login }) => {
         setDayPrice(data);
         setLoader('f')
     }
-     const handlechnage = (e) =>{
-        setServiceid(e.target.value)
+     const handlechange = (value) =>{
+        setServiceid(value.id)
+        handleActiveService(value.name)
      }
      useEffect(()=>{
         fetchData();
@@ -161,34 +235,32 @@ const SingalProduct = ({ login }) => {
 
     return (
         <section className="sg-product mb-sm-0">
-
+            <PathHeader path="Home > Table > Product Name"></PathHeader>
             <div className="container">
                 <div className="row">
-
-                    <div className="col-md-9 mb-3">
-                        <div className="row">
+                        <div className="row1">
                             <div className="col-md-5">
                                 <div className="sg-img">
-                                    <OwlCarousel key={`carousel_${imageList.length}`} className="tab-content owl-carousel" items={1} nav loop>
-                                        {imageList.map((imagelink, imageid) => (
-                                            <div key={imageid} className="tab-pane fade show active" id="sg1" role="tabpanel">
-                                                <img src={imagelink} alt="" className="img-fluid" />
-                                            </div>
+                                    <OwlCarousel key={`carousel_${imageList.length}`} className="owl-theme" {...options} items={1}>
+                                        {imageList.map((imagelink,id) => (
+                                           <img key={id} src={imagelink} alt="" />
                                         ))}
                                     </OwlCarousel>
                                 </div>
                             </div>
                             <div className="col-md-7">
                                 <div className="sg-content">
-                                    <div className="pro-tag">
+                                    
+                                    <div className="pro-name">
+                                        <div className='productName'>{product.product_name}</div>
+                                    </div>
+                                    <div className="pro-price">
                                         <ul className="list-unstyled list-inline">
-                                            <li className="list-inline-item"><a href="">{product.category_id} ,</a></li>
-                                            <li className="list-inline-item"><a href="">{product.product_name}</a></li>
+                                            <li className="list-inline-item">INR {dayprice.final_price}</li>
+                                            <li className="list-inline-item">INR {dayprice.price}</li>
                                         </ul>
                                     </div>
-                                    <div className="pro-name">
-                                        <p>{product.product_name}</p>
-                                    </div>
+
                                     <div className="pro-rating">
                                         <ul className="list-unstyled list-inline">
                                             <li className="list-inline-item"><i className="fa fa-star"></i></li>
@@ -196,41 +268,135 @@ const SingalProduct = ({ login }) => {
                                             <li className="list-inline-item"><i className="fa fa-star"></i></li>
                                             <li className="list-inline-item"><i className="fa fa-star"></i></li>
                                             <li className="list-inline-item"><i className="fa fa-star-o"></i></li>
-                                            <li className="list-inline-item"><a href="">( 09 Review )</a></li>
+                                            <span style={{marginLeft:"20px",fontSize:"22px"}}>|</span>
+                                            <li className="list-inline-item"><a href="">50 Customer Review</a></li>
                                         </ul>
                                     </div>
-                                    <div className="pro-price">
-                                        <ul className="list-unstyled list-inline">
-                                            <li className="list-inline-item">INR {dayprice.final_price}</li>
-                                            <li className="list-inline-item">INR {dayprice.price}</li>
-                                        </ul>
-                                        <p>Availability : {product.stock > 1 ? <label>({product.stock}) available</label> : <lable>Out Of Stock</lable> } </p>
+
+                                    <div className='description'>
+                                        <p>
+                                            {product.short_description}
+                                        </p>
+                                    </div>                                
+                                    
+                                    <div className="colo-siz">
+                                        {product.is_area_based
+                                        ?
+                                        (<>
+                                            <div className="qty-box">
+                                                <ul className="list-unstyled list-inline">
+                                                    <li className="list-inline-item">Size(width in {product.width_unit}): </li>
+                                                    <li className="list-inline-item quantity buttons_added size">
+                                                        <input onClick={() => DecrementWidth()} style={{fontSize: "25px", backgroundColor:'#FBEBB5' }} type="button" value="-" className="minus" />
+                                                        <input onChange={(e) => setWidth(e.target.value)} type="number" step="1" min="1" max="10" value={Width} className="qty text" size="40"  />
+                                                        <input onClick={() => IncrementWidth()} style={{fontSize: "25px", backgroundColor:'#FBEBB5' }} type="button" value="+" className="plus" />
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div className="qty-box">
+                                                <ul className="list-unstyled list-inline">
+                                                    <li className="list-inline-item">Size(length in {product.length_uniit}) : </li>
+                                                    <li className="list-inline-item quantity buttons_added size">
+                                                        <input onClick={() => DecrementLength()} style={{fontSize: "25px", backgroundColor:'#FBEBB5' }} type="button" value="-" className="minus" />
+                                                        <input onChange={(e) => setLength(e.target.value)} type="number" step="1" min="1" max="10" value={Length} className="qty text" size="40" />
+                                                        <input onClick={() => IncrementLength()} style={{fontSize: "25px",  backgroundColor:'#FBEBB5' }} type="button" value="+" className="plus" />
+                                                    </li>
+                                                </ul>
+                                        </div>
+                                        </>)
+                                        :""
+                                        }
                                         
                                     </div>
                                     <div className="colo-siz">
-
-
                                         <div className="qty-box">
                                             <ul className="list-unstyled list-inline">
-                                                <li className="list-inline-item">Day : </li>
+                                                <li className="list-inline-item">Days: </li>
                                                 <li className="list-inline-item quantity buttons_added">
-                                                    <input onClick={() => DecrementDay()} style={{ color: "red", fontSize: "25px" }} type="button" value="-" className="minus" />
+                                                    <input onClick={() => DecrementDay()} style={{fontSize: "25px"}} type="button" value="-" className="minus" />
                                                     <input onChange={(e) => setday(e.target.value)} type="number" step="1" min="1" max="10" value={day} className="qty text" size="40"  />
-                                                    <input onClick={() => IncrementDay()} style={{ color: "green", fontSize: "25px" }} type="button" value="+" className="plus" />
+                                                    <input onClick={() => IncrementDay()} style={{fontSize: "25px"}} type="button" value="+" className="plus" />
                                                 </li>
                                             </ul>
                                         </div>
                                         <div className="qty-box">
                                             <ul className="list-unstyled list-inline">
-                                                <li className="list-inline-item">Qty : </li>
+                                                <li className="list-inline-item">Quantity: </li>
                                                 <li className="list-inline-item quantity buttons_added">
-                                                    <input onClick={() => DecrementQuantity()} style={{ color: "red", fontSize: "25px" }} type="button" value="-" className="minus" />
+                                                    <input onClick={() => DecrementQuantity()} style={{fontSize: "25px"}} type="button" value="-" className="minus" />
                                                     <input onChange={(e) => setquantity(e.target.value)} type="number" step="1" min="1" max="10" value={quantity} className="qty text" size="40" />
-                                                    <input onClick={() => IncrementQuantity()} style={{ color: "green", fontSize: "25px" }} type="button" value="+" className="plus" />
+                                                    <input onClick={() => IncrementQuantity()} style={{fontSize: "25px"}} type="button" value="+" className="plus" />
                                                 </li>
                                             </ul>
                                         </div>
-                                        {product.is_area_based ?
+                                    </div>
+                                    <div className='services'>
+                                        <div className='label'>Service</div>
+                                        <ul>
+                                            {service.map((option,id)=>{
+                                                return ( <li key={id} className={`${state.activeService === option.name ? "active" : "inactive"}`} onClick={()=>handlechange(option)}>{option.name}</li>
+                                                )
+                                            })
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div className='availability'>
+                                        <p>Availability : {product.stock > 1 ? <label>({product.stock}) available</label> : <lable style={{color:'red'}}>Out Of Stock</lable> } </p>
+                                    </div>
+                                    <div className='addItem'>
+                                        <ul>
+                                            <li className={`${state.activeButton === "Rental" ? "active" : "inactive"}`} onClick={()=> AddToRental()}>Add To Rental</li>
+                                            <li className={`${state.activeButton === "Quote" ? "active" : "inactive"}`} onClick={() => AddToQuote()}>Add To Quote</li>
+                                            <li className={`${state.activeButton === "Cart" ? "active" : "inactive"}`} onClick={() => AddToCart()} href='/cart'>Add To Cart</li>
+                                        </ul>
+                                    </div>
+                                    <div className='table'>
+                                        <table>
+                                            <tr>
+                                                <th>Category:</th>
+                                                <td>{product.category?.map((item,id)=>(
+                                                                <>{item}, </>
+                                                                ))}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tags:</th>
+                                                <td>{product.tag?.map((item,id)=>(
+                                                               <>{item}, </>
+                                                            ))}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Share :</th>
+                                                <td>
+                                                    <ul>
+                                                        <li>
+                                                            <FacebookShareButton url={window.location.href} quote={'Erental Product!'} hashtag="#erental">
+                                                                <FacebookIcon size={30} style={{color:'#000000',fontSize:'24px'}} round></FacebookIcon>
+                                                            </FacebookShareButton>                                                        
+                                                        </li>
+                                                        <li>
+                                                            <LinkedinShareButton url={window.location.href} quote={'Erental Peoduct!'} hashtag="#erental">
+                                                                <LinkedInIcon size={30} style={{color:'#000000',fontSize:'24px'}} round></LinkedInIcon>
+                                                            </LinkedinShareButton>
+                                                        </li>
+                                                        <li>
+                                                            <TwitterShareButton url={window.location.href} quote={'Erental Peoduct!'} hashtag="#erental">
+                                                                <TwitterIcon size={30} style={{color:'#000000',fontSize:'24px'}} round></TwitterIcon>
+                                                            </TwitterShareButton>
+                                                        </li>
+                                                        <li>
+                                                            <WhatsappShareButton url={window.location.href} quote={'Erental Peoduct!'} hashtag="#erental">
+                                                                <WhatsAppIcon size={30} style={{color:'#000000',fontSize:'24px'}} round></WhatsAppIcon>
+                                                            </WhatsappShareButton>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div>
+                                    {/* {product.is_area_based ?
                                        (
                                         <div className='d-flex justify-content-around flex-column mb-2' style={{fontSize:"14px"}}>
                                            <div>
@@ -247,8 +413,8 @@ const SingalProduct = ({ login }) => {
                                        )  :(
                                         null
                                        )  
-                                    }
-                                        <div>
+                                    } */}
+                                        {/* <div>
                                             <select onChange={handlechnage} style={{marginLeft:"40%", marginBottom:"30px", fontsiz:"20px"}} className="form-select form-select-sm w-25" aria-label=".form-select-sm example">
                                                 {service.map((option) =>{
                                                     return(
@@ -257,10 +423,10 @@ const SingalProduct = ({ login }) => {
                                                         
                                                 })}
                                             </select>
-                                        </div>
+                                        </div> */}
                                         <div className="pro-btns">
-                                            <a onClick={() => AddToCart()} href='/cart' className="cart">Add To Cart</a>
-                                            <a onClick={() => AddToQuote()} className="cart bg-primary">Add To Quote</a>
+                                            {/* <a onClick={() => AddToCart()} href='/cart' className="cart">Add To Cart</a>
+                                            <a onClick={() => AddToQuote()} className="cart bg-primary">Add To Quote</a> */}
                                             {/* <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Wishlist"><FavoriteBorderIcon></FavoriteBorderIcon></a>
                                             <a href="" className="fav-com" data-toggle="tooltip" data-placement="top" title="Compare"><FavoriteBorderIcon></FavoriteBorderIcon></a> */}
                                         </div>
@@ -268,12 +434,11 @@ const SingalProduct = ({ login }) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <SuggestProduct />
+                    {/* <SimilarProducts category={categoryList} login={login}></SimilarProducts> */}
                 </div>
             </div>
             <Description />
-            {useMemo(() => <SimilarProducts category={categoryList} login={login} />, [categoryList])}
+            {/* {useMemo(() => <SimilarProducts category={categoryList} login={login} />, [categoryList])} */}
         </section>
 
     );

@@ -1929,21 +1929,21 @@ h6 {
 }
 
 /* Description component */
-
+.DescriptionContainer{
+  width: 100%;
+}
 .Ds_div{
-  margin-top: auto; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 56px;
 }
 .Ds-div-container{
-  width: -1%;
   margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
 }
 
 
@@ -1966,12 +1966,24 @@ h6 {
   align-items: center;
   list-style: none;
 }
+.Ds_div ul li {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  background: #FFFFFF;
+  border: 1px solid #EBEBEB;
+}
 .Ds_div ul li a{
-  font-size: 1.7rem;
-  margin-right: 3rem;
+  font-family: 'Roboto';
+  font-style: normal;
   font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #818181;
+  margin-right: 3rem;
   text-decoration: none;
-  text-transform: uppercase;
   opacity: .8;
   overflow: hidden; 
   text-overflow: ellipsis;
@@ -1981,13 +1993,11 @@ h6 {
   opacity: 1;
 }
 
-.Ds_div ul li .active{
-  border-top: 5px solid tomato;
-  padding-top: 2.3rem;
+.Ds_div ul .active{
+  border-top: 5px solid rgb(124, 120, 120);
   position: relative;
-  color: inherit;
+  color: #1D1D1D;
   transition: none;
-  height: 4px;
   opacity: 1;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1995,7 +2005,7 @@ h6 {
 }
 
 @media (min-width: 360px) and (max-width: 896px) {
-  .Ds_div ul li .active {
+  .Ds_div ul .active {
     border-top: 5px solid tomato;
     padding-top: 2.3rem;
     position: relative;
@@ -2007,7 +2017,7 @@ h6 {
 }
 
 
-.Ds_div ul li .nonactive{
+.Ds_div ul .nonactive{
   border: none;
 }
 

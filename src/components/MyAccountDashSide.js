@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
 import GetAuthorization from './GetAuthorization';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 export default function MyAccountDashSide() {
 
     const [userData, setuserData] =  useState([]);
@@ -55,45 +56,48 @@ export default function MyAccountDashSide() {
       <>
       { scw < 1024 ?
          (<nav className="navbar navbar-dark bg-dark fixed shadow p-3 my-3 container">
-         <div className="container-fluid">
-         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-         <span className="navbar-toggler-icon"></span>
-         </button>
-         <a className="navbar-brand fw-bold fs-3">Hello {userData.user_name}</a>
-     <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-       <div className="offcanvas-header">
-         <h5 className="offcanvas-title fw-bold fs-3" id="offcanvasNavbarLabel">Hello {userData.user_name}</h5>
-         <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-       </div>
-       <div className="offcanvas-body">
-         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-           {
-                    options.map( option  => (
-                        <>
-                        <li className="nav-item" style={{color:"black"}} data-bs-dismiss="offcanvas"><Link to= {`/myaccount/${option}`} className={`nav-link ${state.active === option ? "active shadow bg-dark text-light" : "text-dark"}`} onClick={()=>handleClick(option)} > <img src="images/sm.png" alt=""/>My {option === "ProfileInformation" ? "Profile" : option}</Link></li>
-                        </>
-                        ))} 
-        </ul>
-      </div>
-    </div>
-  </div>
-</nav>):
-(<div className='shadow my-2' style={{minWidth:"23%"}}>
-  <div className='col fs-2 fw-bold my-2 border border-secondary shadow border-2'>
-    Hello {userData.user_name}
-  </div>
-  <div className='col text-start'>
-    <ul className="navbar-nav">
-            {
+            <div className="container-fluid">
+              <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+              <span className="navbar-toggler-icon"></span>
+              </button>
+              <a className="navbar-brand fw-bold fs-3">Hello {userData.user_name}</a>
+              <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div className="offcanvas-header">
+                  <h5 className="offcanvas-title fw-bold fs-3" id="offcanvasNavbarLabel">Hello {userData.user_name}</h5>
+                  <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div className="offcanvas-body">
+                  <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    {
                       options.map( option  => (
-                          <>
-                          <li className="nav-item" style={{color:"black"}} data-bs-dismiss="offcanvas"><Link to= {`/myaccount/${option}`} className={`nav-link fs-5 px-3 ${state.active === option ? "active shadow bg-dark text-light" : "text-dark"}`} onClick={()=>handleClick(option)} > <img src="images/sm.png" alt=""/>My {option === "ProfileInformation" ? "Profile" : option}</Link></li>
-                          </>
-                          ))} 
-          </ul>
-  </div>
+                        <>
+                          <li className="nav-item" style={{color:"black"}} data-bs-dismiss="offcanvas"><Link to= {`/myaccount/${option}`} className={`nav-link ${state.active === option ? "active shadow bg-dark text-light" : "text-dark"}`} onClick={()=>handleClick(option)} > <img src="images/sm.png" alt=""/>My {option === "ProfileInformation" ? "Profile" : option}</Link></li>
+                        </>
+                    ))} 
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>):
+         (<div className='sideBar'>
+            <div className='name'>
+              Hello {userData.user_name}
+            </div>
+            <div className='list'>
+              <ul>
+                      {
+                        options.map( option  => (
+                            <li data-bs-dismiss="offcanvas" className={`${state.active === option ? "active" : "inactive"}`}>
+                              <Link to= {`/myaccount/${option}`} style={{textDecoration:'none',display:'flex',justifyContent:'space-between'}} onClick={()=>handleClick(option)} > 
+                                <span>My {option === "ProfileInformation" ? "Profile" : option}</span>
+                                <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
+                              </Link>
+                            </li>
+                      ))} 
+                    </ul>
+            </div>
 
-</div>)}
+         </div>)}
 </>
   );
 }

@@ -136,11 +136,7 @@ import { Link } from 'react-router-dom';
                                         loop={true} >
                             {
                                product.map((data) => (                      
-                                    <div className="tab-item" style={{margin:"5px"}}>
-                                        <div className="tab-heading mt-2">
-                                            <div style={{height:"20px",overflow:"hidden"}}><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></div>
-                                        </div>
-                                        
+                                    <div className="tab-item" style={{margin:"5px"}}>                                        
                                         <div className="tab-img d-flex justify-content-center">
                                             <Link to={`/product/${data.product_id}`}>
                                               <img className="main-img img-fluid" src={data.image} style={{height:"200px",width:"200px"}} alt=""/>
@@ -149,6 +145,10 @@ import { Link } from 'react-router-dom';
                                                 <a href="" className="it-comp" data-toggle="tooltip" data-placement="left" title="Compare"><img src="images/it-comp.png" alt=""/></a>
                                                 <a onClick={() =>AddToQuote(data.product_id)} style={{cursor:"pointer"}} className="it-fav" data-toggle="tooltip" data-placement="left" title="Add To Quote"><img src="images/it-fav.png" alt=""/></a>
                                             </div>
+                                        </div>
+
+                                        <div className="tab-heading mt-2">
+                                            <div style={{height:"20px",overflow:"hidden"}}><Link to={`/product/${data.product_id}`}>{data.product_name}</Link></div>
                                         </div>
                                        
                                         <div className="img-content d-flex justify-content-between">
