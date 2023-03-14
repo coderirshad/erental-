@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 const SimilarProducts = ({category, login}) => {
     const [product, setproduct] = useState([]); 
     const fetchData = ()=>{
-        fetch(`http://${process.env.REACT_APP_URL}/category/${category[0]}/product`).then((response)=>{
+        fetch(`http://${process.env.REACT_APP_URL}/category/${category[0]}/product?is_similar=true`).then((response)=>{
             return response.json();
         }).then((data)=>{
             setproduct(data);
