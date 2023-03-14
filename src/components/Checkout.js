@@ -16,6 +16,49 @@ export default function Checkout() {
  const [cart,setcart]=useState([])
  const [paymentMethod,setPaymentMethod]=useState([])
  const [cartsummary, setcartsummary] = useState({})
+ const [day, setDay] = useState();
+ const [Quantity, setQuantity] = useState();
+ const [cartproduct, setcartproduct] = useState([])
+ 
+ const UpdateQuantity = async (cart_item_id1,finalquantity,Day)=>{
+    const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': GetAuthorization()
+          },
+        body: JSON.stringify(
+            {
+                cart_item_id:cart_item_id1,
+                quantity:finalquantity,
+                color:'',
+                size:'',
+                day:Day,
+                length:"",
+                width: "",
+            }
+        )
+    });
+    const data = await response.json();
+    setcartproduct(data.cart)
+    setcartsummary(data); 
+    console.clear();
+    console.log("hello",data.cart)
+}
+const Increment = (id1,quantity,day,type) =>{
+    if(type) day = day + 1;
+    else quantity = quantity + 1;
+    UpdateQuantity(id1,quantity,day);
+}
+const Decrement = (id1,quantity,day,type) =>{
+    if(type) day = day - 1;
+    else quantity = quantity - 1;
+    UpdateQuantity(id1,quantity,day);
+}
+
+ 
+ 
+ 
  const fetchAddress = async() =>{
     await fetch(`http://${process.env.REACT_APP_URL}/address`,{
           method:"GET",
@@ -45,7 +88,7 @@ export default function Checkout() {
     }).then((data)=>{
          setcartsummary(data);
          setOrderReview(data)
-         setcart(data.cart);      
+         setcart(data.cart);     
     })
 
 }
@@ -94,7 +137,7 @@ export default function Checkout() {
     fetchData()
     fetchAddress()
     fetchDataCart();
-  }, [])
+  }, [day, Quantity])
 
  const [addresses, setAddresses] = useState( [] );
  const [Billingaddress , setBillingAddress] = useState( '' );
@@ -158,36 +201,38 @@ export default function Checkout() {
                                     <td><DeleteIcon style={{fontSize:"2.4rem"}}/></td>
                                 </tr> 
 
-                                <tr> 
-                                    <td>
-                                        <div className='Checkout_product_imgbox'>
-                                            <div className='checkout_product_img'>
-                                                <img src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='Product_image'/>
-                                            </div>
-                                            <div className='checkout_product_img_content'>
-                                                <h3>Product Name</h3>
-                                                <p>Lorem Ipsum</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>199.00</td>
-                                    <td>
-                                        <div className='Checkout_product_day'>
-                                            <button>-</button>
-                                            <input type='number' />
-                                            <button>+</button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className='Checkout_product_day'>
-                                            <button>-</button>
-                                            <input type='number' />
-                                            <button>+</button>
-                                        </div>
-                                    </td>
-                                    <td>199.00</td>
-                                    <td><DeleteIcon style={{fontSize:"2.4rem"}}/></td>
-                                </tr> 
+                                {cartproduct.map(data => 
+                                        <tr> 
+                                            <td>
+                                                <div className='Checkout_product_imgbox'>
+                                                    <div className='checkout_product_img'>
+                                                        <img src={data.image} alt='Product_image'/>
+                                                    </div>
+                                                    <div className='checkout_product_img_content'>
+                                                        <h3>{data.name}</h3>
+                                                        <p>Lorem Ipsum</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{data.price}</td>
+                                            <td>
+                                                <div className='Checkout_product_day'>
+                                                    <button onClick={()=>Decrement(data.cart_item_id,data.quantity,data.day,true)}>-</button>
+                                                    <input type='number' value={data.day} />
+                                                    <button onClick={()=>Increment(data.cart_item_id,data.quantity,data.day,true)}>+</button>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div className='Checkout_product_day quantity'>
+                                                    <button onClick={()=>Decrement(data.cart_item_id,data.quantity,data.day,true)}>-</button>
+                                                    <input type='number' onChange={(e) => setQuantity(e.taraget.value)} value={data.quantity}/>
+                                                    <button onClick={()=>Increment(data.cart_item_id,data.quantity,data.day,true)}>+</button>
+                                                </div>
+                                            </td>
+                                            <td>{data.total}</td>
+                                            <td><DeleteIcon style={{fontSize:"2.4rem"}} onClick={()=>UpdateQuantity(data.cart_item_id)}/></td>
+                                        </tr> 
+                                    )}
                                 {/* here product image over */}
                             </tbody>
                         </table>

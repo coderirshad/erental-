@@ -9,20 +9,10 @@ import { Link } from "react-router-dom";
 import HotDealBox from './HotDealBox';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
-const BestOffer = ( ) =>{
-    const [newProduct, setnewProduct] = useState([]);
+const BestOffer = ({login}) =>{
     const [hotOffer, sethotOffer] = useState([]);
     const [topRated, settopRated] = useState([]);
     const fetchData = ()=>{
-        fetch(`http://${process.env.REACT_APP_URL}/new-product`)
-        .then((response)=>{ 
-            return response.json();
-        })
-        .then((data)=>{       
-            setnewProduct(data);
-        }
-        )
-
         fetch(`http://${process.env.REACT_APP_URL}/best-deal`)
         .then((response)=>{ 
             return response.json();
@@ -56,16 +46,9 @@ const BestOffer = ( ) =>{
                 </div>
                 <hr></hr>
                 <div className='Hotdeals_item_box'>
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />   
+                   {hotOffer.map(item =>
+                          <HotDealBox data={item} login={login}/>
+                        )}    
                 </div>
             </div>
       </div>

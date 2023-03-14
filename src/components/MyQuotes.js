@@ -60,6 +60,8 @@ const MyQuotes = () => {
             )
         });
         const data = await response.json();
+        console.clear();
+        console.log(data.cart);
         setquoteproduct(data.cart)
         setquotesummary(data); 
     }

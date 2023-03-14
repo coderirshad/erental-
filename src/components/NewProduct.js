@@ -1,8 +1,21 @@
 import React from 'react'
 import HotDealBox from './HotDealBox';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { useState, useEffect } from 'react';
 
-const NewProduct = () => {
+const NewProduct = ({login}) => {
+    const [product, setproduct] = useState([]); 
+
+    const fetchData = ()=>{
+        fetch(`http://${process.env.REACT_APP_URL}/new-product`).then((response)=>{
+            return response.json();
+        }).then((data)=>{
+            setproduct(data);
+        })
+    }
+    useEffect(()=>{
+        fetchData();
+    },[])
   return (
         <div className='Hotdeals'>
             <div className='Hotdeals_width'>
@@ -15,16 +28,9 @@ const NewProduct = () => {
                 </div>
                 <hr></hr>
                 <div className='Hotdeals_item_box'>
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />
-                <HotDealBox />   
+                      {product.map(item =>
+                          <HotDealBox data={item} login={login}/>
+                        )}  
                 </div>
             </div>
       </div>

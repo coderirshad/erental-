@@ -44,74 +44,20 @@ import { Link } from 'react-router-dom';
                 </div>
                 <hr></hr>
                 <div className='Hotdeals_item_box'>
-
-
-                   <div className='Category_itmes'>
-                     <Link>
-                        <div className='category_image'>
-                            <img  src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='category_image'/>
-                        </div>
-                     </Link>
-                     <div className='category_name'>
-                        <Link>
-                           Home Appliances
-                        </Link>
-                     </div>
-                   </div>
-
-                   <div className='Category_itmes'>
-                     <Link>
-                        <div className='category_image'>
-                            <img  src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='category_image'/>
-                        </div>
-                     </Link>
-                     <div className='category_name'>
-                        <Link>
-                           Home Appliances
-                        </Link>
-                     </div>
-                   </div>
-
-                   <div className='Category_itmes'>
-                     <Link>
-                        <div className='category_image'>
-                            <img  src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='category_image'/>
-                        </div>
-                     </Link>
-                     <div className='category_name'>
-                        <Link>
-                           Home Appliances
-                        </Link>
-                     </div>
-                   </div>
-
-                   <div className='Category_itmes'>
-                     <Link>
-                        <div className='category_image'>
-                            <img  src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='category_image'/>
-                        </div>
-                     </Link>
-                     <div className='category_name'>
-                        <Link>
-                           Home Appliances
-                        </Link>
-                     </div>
-                   </div>
-
-                   <div className='Category_itmes'>
-                     <Link>
-                        <div className='category_image'>
-                            <img  src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='category_image'/>
-                        </div>
-                     </Link>
-                     <div className='category_name'>
-                        <Link>
-                           Home Appliances
-                        </Link>
-                     </div>
-                   </div>
-
-
+                     {product.map(data => 
+                         <div className='Category_itmes' onClick= {() => handleClick1 ( data ) }>
+                            <Link>
+                                <div className='category_image'>
+                                    <img  src={data.image} alt='category_image'/>
+                                </div>
+                            </Link>
+                            <div className='category_name'>
+                                <Link>
+                                  {data.name}
+                                </Link>
+                            </div>
+                         </div>
+                        )} 
                 </div>
             </div>
         </div>

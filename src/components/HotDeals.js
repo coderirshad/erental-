@@ -12,82 +12,8 @@ import HotDealBox from './HotDealBox';
 
 const HotDeals = ({login}) => {
     const [product, setproduct] = useState([]); 
-    const [quantity, setquantity] = useState(1);
-    const [color, setcolor] = useState("");
-    const [size, setsize] = useState("");
-    const [day, setday] = useState(1)
-    const [id, setId] = useState("")
-    const [service_id, setServiceid] = useState("without_service");
     const navigate = useNavigate();
     const [value, setValue] = useState(4)
-
-    const AddToCart = async (id) => {
-        if (login) {
-            const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': GetAuthorization(),
-                },
-                body: JSON.stringify(
-                    {
-                        cart_item_id: id,
-                        quantity: quantity,
-                        color: color,
-                        size: size,
-                        day: day,
-                        service_id:service_id,
-                        type:"cart"
-            
-                    }
-                )
-            })
-            if(!response.ok){
-                alert("something went wrong")
-                return;
-            }
-            navigate('/cart');
-        }
-        else {
-            alert("please login!!")
-            navigate('/login')
-        }
-    }
-
-    const AddToQuote = async (id) => {
-    
-        if (login) {
-            const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': GetAuthorization(),
-                },
-                body: JSON.stringify(
-                    {
-                        cart_item_id: id,
-                        quantity: quantity,
-                        color: color,
-                        size: size,
-                        day: day,
-                        service_id:service_id,
-                        type:"quote"
-            
-                    }
-                )
-            })
-            if(!response.ok){
-                alert("something went wrong")
-                return;
-            }
-            navigate('/myaccount/Quotes');
-        }
-        else {
-            alert("please login!!")
-            navigate('/login')
-        }
-    }
-
     
     const fetchData = ()=>{
         fetch(`http://${process.env.REACT_APP_URL}/hot-deal`).then((response)=>{
@@ -111,16 +37,9 @@ const HotDeals = ({login}) => {
                     </div>
                     <hr></hr>
                     <div className='Hotdeals_item_box'>
-                       <HotDealBox />
-                       <HotDealBox />
-                       <HotDealBox />
-                       <HotDealBox />
-                       <HotDealBox />
-                       <HotDealBox />
-                       <HotDealBox />
-                       <HotDealBox />
-                       <HotDealBox />
-                       <HotDealBox />   
+                      {product.map(item =>
+                          <HotDealBox data={item} login={login}/>
+                        )}
                     </div>
                 </div>
             </div>

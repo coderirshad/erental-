@@ -1,8 +1,26 @@
 import React from 'react'
 import HotDealBox from './HotDealBox';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { useState, useEffect } from 'react';
 
-const TopSold = () => {
+const TopSold = ({login}) => {
+
+    const [topRated, settopRated] = useState([]);
+    const fetchData = ()=>{
+       
+        fetch(`http://${process.env.REACT_APP_URL}/top-sold-product`)
+        .then((response)=>{ 
+            return response.json();
+        })
+        .then((data)=>{       
+            settopRated(data);
+        }
+        )
+    }
+    useEffect(() => {
+      fetchData();    
+    }, [])
+
     return (
         <div className='Hotdeals'>
             <div className='Hotdeals_width'>
@@ -15,16 +33,9 @@ const TopSold = () => {
                 </div>
                 <hr></hr>
                 <div className='Hotdeals_item_box'>
-                    <HotDealBox />
-                    <HotDealBox />
-                    <HotDealBox />
-                    <HotDealBox />
-                    <HotDealBox />
-                    <HotDealBox />
-                    <HotDealBox />
-                    <HotDealBox />
-                    <HotDealBox />
-                    <HotDealBox />
+                     {topRated.map(item =>
+                          <HotDealBox data={item} login={login}/>
+                        )} 
                 </div>
             </div>
         </div>

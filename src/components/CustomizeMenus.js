@@ -14,6 +14,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 import { Link, Navigate } from 'react-router-dom';
 import { LogOut } from './LogOut';
+
 const StyledMenu = styled((props) => (
   <Menu
     elevation={0}
@@ -104,7 +105,7 @@ export default function CustomizedMenus({role,login,setlogin}) {
         <Divider sx={{ my: 0.5 }} />
         </div>
         :
-        <></>
+        null
       }
 
 
@@ -120,7 +121,7 @@ export default function CustomizedMenus({role,login,setlogin}) {
         <Divider sx={{ my: 0.5 }} />
         </div>
         :
-        <></>
+        null
       }
 
 
@@ -135,7 +136,7 @@ export default function CustomizedMenus({role,login,setlogin}) {
         </Link>
         </div>
         :
-        <></>
+        null
       }
 
 
@@ -152,7 +153,7 @@ export default function CustomizedMenus({role,login,setlogin}) {
         <Divider sx={{ my: 0.5 }} />
         </div>
         :
-        <></>
+        null
       }
         
         <a href='/login'>

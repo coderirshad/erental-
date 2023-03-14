@@ -11,22 +11,20 @@ import { CheckAuth } from "./CheckAuth";
 import NewProduct from "./NewProduct";
 import TopSold from "./TopSold";
 
-
-
 const UserHome = ()=>{
     const [login,setlogin]= React.useState(CheckAuth());
     
      return (
         <div>  
-            <ContousrolledCarel></ContousrolledCarel>
-            <Service></Service>            
-            <HotDeals login={login}></HotDeals>
-            <CategorySlider></CategorySlider>
-            <FeatureProduct login={login}></FeatureProduct> 
-            <FullBanner></FullBanner>
-            <NewProduct />
-            <BestOffer></BestOffer>
-            <TopSold />
+            <ContousrolledCarel />
+            <Service />          
+            <HotDeals login={login} />
+            <CategorySlider />
+            <FeatureProduct login={login} /> 
+            <FullBanner  />
+            <NewProduct  login={login}/>
+            <BestOffer login={login} />
+            <TopSold login={login}/>
             <FrontBlog></FrontBlog>                 
         </div>
      )

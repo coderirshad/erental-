@@ -7,8 +7,6 @@ export default function Login({setlogin}) {
     const [data, setdata] = useState({user_id:"",password:""})
     const [message,setmessage] = useState("");
     const [color,setcolor] = useState("2px 2px 20px 2px white");
-    const [status, setstatus] = useState(0);
-    const [cookieData, setCookieData] = useState({});
     const navigate = useNavigate();
     const setValue = (e) =>{
        setcolor("2px 2px 20px 2px white");
@@ -25,7 +23,6 @@ export default function Login({setlogin}) {
                         method:"POST",
                         body:JSON.stringify(data)
                     }).then((response)=>{
-                        setstatus(response.status); 
                         if(response.status!=200){
                            if(response.status==401){
                             setmessage("invaild password!")
@@ -39,7 +36,7 @@ export default function Login({setlogin}) {
                         }           
                         return response.json();
                     }).then((cookieData1)=>{
-                        setCookieData(cookieData1)  
+                        setCookie(cookieData1)
                         localStorage.setItem('profile', JSON.stringify({ data }));                  
                     })               
                 }
@@ -78,22 +75,12 @@ export default function Login({setlogin}) {
         }
                
     }
-    const setCookie = () =>{
+
+    console.log("Hey ####################################")
+    const setCookie = (cookieData) =>{
         Cookies.set('authToken',cookieData?.authToken,{path:'/'})
         Cookies.set('refreshToken',cookieData?.refreshToken,{path:'/'})   
-    }
-    useEffect(() => {
-        if(status==0){
-            setmessage("")
-        }
-        else if(status!=200){
-            setcolor("2px 2px 20px 2px red");
-            setmessage(cookieData.message);
-        }
-        else{
-            setCookie()    
-        }
-     }, [cookieData])  
+    } 
     
   return (
     <div>

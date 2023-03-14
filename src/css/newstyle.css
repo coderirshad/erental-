@@ -413,7 +413,7 @@ ______________________________________________ */
 .Hotdeals_item{
     color:#CECECE;
     width: 20rem;
-    height: 35rem;
+    min-height: 35rem;
     border-radius: 1.2rem;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.05);
     border: 1px solid #CECECE;
@@ -427,7 +427,8 @@ ______________________________________________ */
 
 .Hotdeal_image{
     height: 19.5rem;
-    border-radius: 1.2rem;
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
     overflow: hidden;
     position: relative;
 }
@@ -565,7 +566,8 @@ ______________________________________________ */
 
 .category_image{
     height: 19rem;
-    border-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+    border-top-left-radius: 1.2rem;
     overflow: hidden;
     cursor: pointer;
 }
