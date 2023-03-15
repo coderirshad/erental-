@@ -1,5 +1,5 @@
 import {React, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import GetAuthorization from './GetAuthorization';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
@@ -7,6 +7,7 @@ import {  Button } from '@material-ui/core/';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Checkbox from '@mui/material/Checkbox';
+import Address from './Adresses';
 
 
 export default function Checkout() {
@@ -18,6 +19,7 @@ export default function Checkout() {
  const [day, setDay] = useState();
  const [Quantity, setQuantity] = useState();
  const [cartproduct, setcartproduct] = useState([])
+ const [shippingChecked, setShippindChecked] = useState(false)
  
  const UpdateQuantity = async (cart_item_id1,finalquantity,Day)=>{
     const response = await fetch(`http://${process.env.REACT_APP_URL}/cart`, {
@@ -101,6 +103,8 @@ const Decrement = (id1,quantity,day,type) =>{
     }).then((response)=>{
         return response.json();
     }).then((pay)=>{
+        console.clear()
+         console.log(pay)
          setPaymentMethod(pay);
     })
  }
@@ -110,9 +114,14 @@ const Decrement = (id1,quantity,day,type) =>{
         alert("Please Add Address First");
     }
     else{
-        e.preventDefault()
+        e.preventDefault();
         placeOrder();
     }
+ }
+
+ const HandleAddress = (e) =>{
+    e.preventDefault();
+    navigate("/myaccount/Adresses");
  }
  const placeOrder = async () =>{
     await fetch(`http://${process.env.REACT_APP_URL}/checkout`,{
@@ -124,7 +133,7 @@ const Decrement = (id1,quantity,day,type) =>{
         body:JSON.stringify({
             payment_method_id:payment,
             billing_address_id:Billingaddress,
-            shipping_address_id:Shippinggaddress
+            shipping_address_id:Shippinggaddress,
         })
     })
     
@@ -151,7 +160,7 @@ const Decrement = (id1,quantity,day,type) =>{
                         <h1>Shopping Cart</h1>
                         <div className='Checkout_header_content'>
                             <KeyboardBackspaceIcon style={{fontSize:"2.2rem", marginRight:"0.5rem"}} />
-                            <p style={{textDecoration:"underline"}}>Continue Shopping</p>
+                            <Link to="/"><p style={{textDecoration:"underline", color:"white"}}>Continue Shopping</p></Link>
                         </div>
                     </div>  
                 </div>
@@ -166,70 +175,42 @@ const Decrement = (id1,quantity,day,type) =>{
                                 <td>Total</td>
                                 <td></td>
                             </thead>
-                            <tbody>
-                               <tr> 
-                                    <td>
-                                        <div className='Checkout_product_imgbox'>
-                                            <div className='checkout_product_img'>
-                                                <img src='https://drive.google.com/uc?export=view&id=13tS9doCqrMN6FObi2nL_cZT8UsR-sh9y' alt='Product_image'/>
+                            <tbody> 
+                                {cartproduct.length === 0 ? <h1 style={{textAlign:"center", padding:"20rem"}}>Please Add Item To Cart</h1> : 
+                                
+                                cartproduct.map(data => 
+                                    <tr> 
+                                        <td>
+                                            <div className='Checkout_product_imgbox'>
+                                                <div className='checkout_product_img'>
+                                                    <img src={data.image} alt='Product_image'/>
+                                                </div>
+                                                <div className='checkout_product_img_content'>
+                                                    <h3>{data.name}</h3>
+                                                    <p>Lorem Ipsum</p>
+                                                </div>
                                             </div>
-                                            <div className='checkout_product_img_content'>
-                                                <h3>Product Name</h3>
-                                                <p>Lorem Ipsum</p>
+                                        </td>
+                                        <td>{data.price}</td>
+                                        <td>
+                                            <div className='Checkout_product_day'>
+                                                <button onClick={()=>Decrement(data.cart_item_id,data.quantity,data.day,true)}>-</button>
+                                                <input type='number' value={data.day} />
+                                                <button onClick={()=>Increment(data.cart_item_id,data.quantity,data.day,true)}>+</button>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>199.00</td>
-                                    <td>
-                                        <div className='Checkout_product_day'>
-                                            <button>-</button>
-                                            <input type='number' />
-                                            <button>+</button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className='Checkout_product_day'>
-                                            <button>-</button>
-                                            <input type='number' />
-                                            <button>+</button>
-                                        </div>
-                                    </td>
-                                    <td>199.00</td>
-                                    <td><DeleteIcon style={{fontSize:"2.4rem"}}/></td>
-                                </tr> 
-
-                                {cartproduct.map(data => 
-                                        <tr> 
-                                            <td>
-                                                <div className='Checkout_product_imgbox'>
-                                                    <div className='checkout_product_img'>
-                                                        <img src={data.image} alt='Product_image'/>
-                                                    </div>
-                                                    <div className='checkout_product_img_content'>
-                                                        <h3>{data.name}</h3>
-                                                        <p>Lorem Ipsum</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>{data.price}</td>
-                                            <td>
-                                                <div className='Checkout_product_day'>
-                                                    <button onClick={()=>Decrement(data.cart_item_id,data.quantity,data.day,true)}>-</button>
-                                                    <input type='number' value={data.day} />
-                                                    <button onClick={()=>Increment(data.cart_item_id,data.quantity,data.day,true)}>+</button>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className='Checkout_product_day quantity'>
-                                                    <button onClick={()=>Decrement(data.cart_item_id,data.quantity,data.day,true)}>-</button>
-                                                    <input type='number' onChange={(e) => setQuantity(e.taraget.value)} value={data.quantity}/>
-                                                    <button onClick={()=>Increment(data.cart_item_id,data.quantity,data.day,true)}>+</button>
-                                                </div>
-                                            </td>
-                                            <td>{data.total}</td>
-                                            <td><DeleteIcon style={{fontSize:"2.4rem"}} onClick={()=>UpdateQuantity(data.cart_item_id)}/></td>
-                                        </tr> 
-                                    )}
+                                        </td>
+                                        <td>
+                                            <div className='Checkout_product_day quantity'>
+                                                <button onClick={()=>Decrement(data.cart_item_id,data.quantity,data.day)}>-</button>
+                                                <input type='number' value={data.quantity}/>
+                                                <button onClick={()=>Increment(data.cart_item_id,data.quantity,data.day)}>+</button>
+                                            </div>
+                                        </td>
+                                        <td>{data.total}</td>
+                                        <td><DeleteIcon style={{fontSize:"2.4rem", cursor:"pointer"}} onClick={()=>UpdateQuantity(data.cart_item_id)}/></td>
+                                    </tr> 
+                                )}
+                                
                                 {/* here product image over */}
                             </tbody>
                         </table>
@@ -243,40 +224,53 @@ const Decrement = (id1,quantity,day,type) =>{
                            <h3 className='Checkout_Heder'>Address</h3>
                            <div className='Checkout_header_content_'>
                              <h3>Billing Address</h3>
-                             <button>Add New Address</button>
+                             <button onClick={(e) =>HandleAddress(e)}>Add New Address</button>
                            </div>
                            <div className='Checkout_address_box'>
-                                 <div className='Checkout_address_box_mini'>
-                                     <Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />
-                                     <div>
-                                        <p> Name - <span>Suraj</span></p>
-                                        <p>Address - <span>Hanuman nagar nai basti</span></p>
-                                        <p>Landmark - <span>4 mandir ke pass</span></p>
-                                        <p>Phone No - <span>8839931558</span></p>
-                                        <p>GST No - <span>jfksduf3555</span></p>
-                                        <p>Billing Date - <span>28/12/25</span></p>
-                                     </div>
-                                 </div>
-                                 <div className='Checkout_address_box_mini'>
-                                     <Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />
-                                     <div>
-                                        <p> Name - <span>Suraj</span></p>
-                                        <p>Address - <span>Hanuman nagar nai basti</span></p>
-                                        <p>Landmark - <span>4 mandir ke pass</span></p>
-                                        <p>Phone No - <span>8839931558</span></p>
-                                        <p>GST No - <span>jfksduf3555</span></p>
-                                        <p>Billing Date - <span>28/12/25</span></p>
-                                     </div>
-                                 </div>
+                                 {addresses.length === 0 ?
+                                   <h1>Please Add your Address</h1>
+                                   :
+                                   addresses.map((address) => 
+                                   <div className='Checkout_address_box_mini'>
+                                        <Checkbox onChange={() =>setBillingAddress(address.address_id)} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />
+                                        <div>
+                                            <p> Name - <span>{address.name}</span></p>
+                                            <p>Address - <span>{address.street_add}</span></p>
+                                            <p>Landmark - <span>{address.locality}</span></p>
+                                            <p>Phone No - <span>{address.phone_number}</span></p>
+                                            <p>GST No - <span>{address.gstn}</span></p>
+                                            <p>Billing Date - <span>{address.ship_date}</span></p>
+                                        </div>
+                                    </div>
+                                   )
+                                }
                            </div>
 
                            <div className='Checkout_again_address'>
-                                <input type='checkbox'  />
+                                <input type='checkbox' onChange={(e) =>setShippindChecked(e.target.checked)} />
                                 <p>Shipping Address is Different</p>
                            </div>
+                            <div className='Checkout_address_box' style={{marginBottom:"2rem"}}>
+                                 {shippingChecked === false ?
+                                   <h1 style={{color:"black", paddingBottom:"3rem"}}>Please Add your Address</h1>
+                                   :
+                                   addresses.map((address) => 
+                                   <div className='Checkout_address_box_mini'>
+                                        <Checkbox onChange={() =>setShippingAddress(address.address_id)} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />
+                                        <div>
+                                            <p> Name - <span>{address.name}</span></p>
+                                            <p>Address - <span>{address.street_add}</span></p>
+                                            <p>Landmark - <span>{address.locality}</span></p>
+                                            <p>Phone No - <span>{address.phone_number}</span></p>
+                                            <p>GST No - <span>{address.gstn}</span></p>
+                                            <p>Billing Date - <span>{address.ship_date}</span></p>
+                                        </div>
+                                    </div>
 
+                                   )
+                                }
+                           </div>
                            <div className='Checkout_map_location'>
-                              <h1>Add Your Shipping Address</h1>
                               <div className='Checkout_map_location_input'>
                                 <input type='text'  placeholder='Enter your delivery location'/>
                                 <button>Add Address</button>
@@ -294,38 +288,43 @@ const Decrement = (id1,quantity,day,type) =>{
                            <div className='Checkout_payment_price'>
                                 <div>
                                     <p>Subtotal :</p>
-                                    <p>INR  597.00</p>
+                                    <p>INR  {cartsummary.sub_total}</p>
                                 </div>
                                 <div>
                                     <p>Transportation Charge :</p>
-                                    <p>INR  597.00</p>
+                                    <p>INR  {cartsummary.transportation_charge}</p>
                                 </div>
                                 <div>
                                     <p>CGST (9%) :</p>
-                                    <p>INR  597.00</p>
+                                    <p>INR  {cartsummary.cgst}</p>
                                 </div>
                                 <div>
                                     <p>SGST :</p>
-                                    <p>INR  597.00</p>
+                                    <p>INR  {cartsummary.sgst}</p>
                                 </div>
                                 <div>
                                     <p>Grand Total :</p>
-                                    <p>INR  597.00</p>
+                                    <p>INR  {cartsummary.total}</p>
                                 </div>
                            </div>
                            <hr></hr>
                            <div className='Checkout_Payment_metod'>
+                              
+                             {paymentMethod.map((payment) =>
                               <div className='Checkout_Google_pay'>
-                                <div className='Checkout_Google_pay_box'>
-                                    <div className='Checkout_Flex_icon'>
-                                         <div>
-                                            <img src='' alt='icont_image' />
-                                         </div>
-                                         Google pay
-                                    </div>
-                                </div>
-                                <input type='radio' name='googlepay' />
-                              </div>
+                                 <div className='Checkout_Google_pay_box'>
+                                     <div className='Checkout_Flex_icon'>
+                                          <div>
+                                             <img src='' alt='icont_image' />
+                                          </div>
+                                          {payment.name}
+                                     </div>
+                                 </div>
+                                 <input type='radio' onClick={() =>setPayment(payment.id)} name='googlepay' />
+                               </div>
+                             
+                             )} 
+                             
 
                               <div className='Checkout_Google_pay'>
                                 <div className='Checkout_Google_pay_box'>
@@ -355,7 +354,7 @@ const Decrement = (id1,quantity,day,type) =>{
                            </div>
 
                            <div className='Checkout_button_box'>
-                              <button className='Checkout_button'>Check Out</button>
+                              <button onClick={handleSubmit} className='Checkout_button'>Check Out</button>
                            </div>
                        </div>
                    </div>
@@ -363,6 +362,7 @@ const Decrement = (id1,quantity,day,type) =>{
             </div>
   );
 }
+
 
 
 

@@ -1,6 +1,7 @@
 import React , {useState , useEffect } from 'react';
 import {useLocation} from 'react-router-dom';
 import AboutProduct from './AboutProduct';
+import HotDealBox from './HotDealBox';
 
 const TagProductList = () => {
   const [tagproductList, settagProductList] = useState([]);
@@ -8,7 +9,6 @@ const TagProductList = () => {
   const [Categoryoption, setCategoryoption] = useState(false);
 
   const location = useLocation();
-  console.log("location",location)
 
   const priceHandleChange = (e, newprice) =>{
     setPrice(e.target.value)
@@ -21,10 +21,12 @@ const TagProductList = () => {
   useEffect(() => {
     fetchdata();
   }, [location.state.id]);
-  const fetchdata = async() =>{
+    const fetchdata = async() =>{
     const response = await fetch(`http://${process.env.REACT_APP_URL}/product/tag/${location.state.id}`)
     const data = await response.json();
     settagProductList(data)
+    console.clear()
+    console.log("ello",data);
         // .then((response)=>{
         //     return response.json();
         // }).then((data)=>{
@@ -35,7 +37,7 @@ const TagProductList = () => {
           <div className='container'>
              <div className='mx-1 row'>
               {/*  for filer code here */}
-              <div className='col-md-3 border py-4' style={{textAlign:"left"}}>
+              <div className='col-md-3 py-4' style={{textAlign:"left"}}>
                 <h5 className='h5 text-dark' style={{fontWeight: "600"}}>Filter</h5>
                     <div className='mt-4'>
                         <label class="form-label text-dark mb-2 font-weight-bold h6" for="customRange1" style={{fontWeight: "600"}}>Price Range</label>
@@ -157,13 +159,13 @@ const TagProductList = () => {
                             </div>
                     </div>
                </div>
-               <div className='col-md-9 border font-weight-bold'>
+               <div className='col-md-9 font-weight-bold'>
                  {/*  for prodcut details code here */}
                   <div>
                     {!tagproductList.length ? <h1></h1> : (
-                        <div className = "parent">
+                        <div className = "parent" style={{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap"}}>
                           {tagproductList.map(( product ) => (
-                            <AboutProduct product = { product } />
+                            <HotDealBox data={product} />
                           ))}
                         </div>
                       )}

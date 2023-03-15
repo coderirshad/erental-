@@ -6,6 +6,8 @@ import GetAuthorization from './GetAuthorization';
 import { useNavigate } from 'react-router-dom'
 
 const HotDealBox = ({data, login}) => {
+    console.clear()
+    console.log(data)
     const [value, setValue] = useState(4)
     const [quantity, setquantity] = useState(1);
     const [color, setcolor] = useState("");
@@ -41,7 +43,6 @@ const HotDealBox = ({data, login}) => {
                 alert("something went wrong")
                 return;
             }
-            navigate('/cart');
         }
         else {
             alert("please login!!")
@@ -78,6 +79,15 @@ const HotDealBox = ({data, login}) => {
         }
     }
 
+    const DirectCheckout = () =>{
+        if(login){
+            navigate('/checkout'); 
+        }else{
+            alert("please login!!")
+            navigate('/login')  
+        }
+    }
+
 
               return (
                       <div className='Hotdeals_item' key={data.product_id}>
@@ -90,11 +100,12 @@ const HotDealBox = ({data, login}) => {
                               <div className='Hotdeal_rating text-secoundry'>
                                 <div>
                                    <Rating 
-                                    value={value}
+                                    value={data.rating}
+                                    readOnly 
                                    />
                                 </div>
                                 <div style={{color:"#9B9B9B", position:'relative',bottom:"3px", marginLeft:"2px"}}>
-                                    (3)
+                                    ({data.review})
                                 </div>
                               </div>
                               <hr></hr>
@@ -116,9 +127,7 @@ const HotDealBox = ({data, login}) => {
                                 </div>
                            </div>
                            <div className='Hotdeal_addrental'>
-                              <Link to='/checkout'>
-                                 <div>Add To Rental</div>
-                              </Link>
+                                 <div onClick={DirectCheckout}>Add To Rental</div>
                            </div>
                        </div>
                    )

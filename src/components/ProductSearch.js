@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import AboutProduct from "./AboutProduct";
+import HotDealBox from "./HotDealBox";
 const ProductSearch = () => {
   const location = useLocation();
   console.clear();
@@ -27,9 +28,9 @@ const ProductSearch = () => {
   return !productSerach.length ? (
     <h1></h1>
   ) : (
-    <div className="parent">
+    <div className="parent" style={{width:"112rem", margin:"auto", display:"flex", justifyContent:"space-between", flexWrap:"wrap"}}>
       {productSerach.map((product) => (
-        <AboutProduct product={product} />
+        <HotDealBox data={product} />
       ))}
     </div>
   );

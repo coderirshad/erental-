@@ -28,7 +28,7 @@ export default function FooterArea() {
         navigate('/tagProductList',{state:{id:  tagIid }});
     }
   return (
-         <div className='Footer'>
+         <div className='Footer' id='footer'>
             <div className='Footer_box'>
                 <div className='Footer_logobox'>
                      <div className='FooterLogo_img'>
@@ -48,7 +48,7 @@ export default function FooterArea() {
                               <h6 className='Footer_tags_head'>Tags</h6>
                               <ul>
                                 {tagList.map((tag, index) =>
-                                    <li key={index}><Link to="/tagProductList" onClick= {() => handleClick(tag.id )}>{tag.name}</Link></li>
+                                    <li key={index} onClick= {() => handleClick(tag.id )} style={{cursor:"pointer"}}>{tag.name}</li>
                                 )}
                               </ul>
                         </div>

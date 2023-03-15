@@ -24,7 +24,7 @@ const AllProductList = () => {
     }
   }
     return (
-      !productList.length ? <h1></h1> : (
+      !productList.length ? <h1>hello</h1> : (
         <div className = "parent">
           {productList.map(( product ) => (
             <AboutProduct product = { product } />

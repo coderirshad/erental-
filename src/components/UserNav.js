@@ -6,7 +6,7 @@ import Cluster from "./Cluster.js";
 
 const UserNav = ({login,setlogin})=>{
      return (
-        <div className="usernav"> 
+        <div className="usernav" id="navbar"> 
             <LogoArea role={"customer"} login={login} setlogin={setlogin}></LogoArea>
             <hr></hr>
             <div className="usernav_bottom">
